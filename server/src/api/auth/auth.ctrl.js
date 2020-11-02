@@ -9,7 +9,7 @@ const schema = Joi.object().keys({
     user_pw: Joi.string().required(),
     user_gender: Joi.string().required(),
     user_age:Joi.number().required(),
-    user_nick:Joi.string().required(),
+    user_nick: Joi.string().required(),
     profile_pic:Joi.array().items(Joi.string()),
     join_date:Joi.date().default(Date.now()),
     brief_intro: Joi.string().default(''),
@@ -32,7 +32,7 @@ const schema = Joi.object().keys({
     return;
   }
 
-  const { user_email, user_pw } = ctx.request.body;
+  const { user_email, user_pw,user_gender,user_age,user_nick } = ctx.request.body;
   try {
     const exists = await User.findByUser_email(user_email);
     if (exists) {
@@ -41,6 +41,9 @@ const schema = Joi.object().keys({
     }
     const user = new User({
       user_email,
+      user_gender,
+      user_age,
+      user_nick
     });
     await user.setUser_pw(user_pw);
     await user.save();
@@ -84,7 +87,6 @@ export const login = async (ctx) => {
       maxAge: 1000 * 60 * 60 * 24 * 7,
       httpOnly: true,
     });
-    console.log('접속유저: ',ctx.state.user)
   } catch (e) {
     ctx.throw(500, e);
   }
@@ -149,6 +151,16 @@ export const logout = async (ctx) => {
   ctx.status = 204;
 };
 
+//회원 탈퇴
+export const remove = async (ctx) => {
+  const { id } = ctx.params;
+  try {
+    await user.findByIdAndRemove(id).exec();
+    ctx.status = 204;
+  } catch (e) {
+    ctx.throw(500, e);
+  }
+};
 
 //프로필수정
 export const profileUpdate = async (ctx) => {

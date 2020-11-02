@@ -1,50 +1,111 @@
-import mongoose, { Schema } from "mongoose";
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
+import mongoose, { Schema } from 'mongoose';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 const UserSchema = new Schema({
-  username: String,
-  hashedPassword: String,
-  premium: {
-    type: String,
-    enum: ['no_sub','3month','6month','1year'],
-    default: 'no_sub'
-  }
+    user_email: String,
+    hashedUser_pw: String,
+    user_gender: {
+        type: String,
+        enum: ['male', 'female'],
+        default : 'male'
+    },
+    user_age: Number,
+    user_nick: String,
+    profile_pic : {
+        type: [String],
+        default:  '../../images/gorapaduck.jpg'
+        },
+    regdate:{
+        type: Date,
+        default: Date.now
+    },
+    brief_intro: {
+        type: String,
+        default: ''
+    },
+    address: {
+        type: String,
+        default: ''
+    },
+    school: {
+        type: String,
+        default: ''
+    },
+    personality: {
+        type: [String],
+        default: ''
+    },
+    fav_song: {
+        type: String,
+        default: ''
+    },
+    fav_movie: {
+        type: String,
+        default: ''
+    },
+    fav_food: {
+        type: String,
+        default: ''
+    },
+    login_time:{
+        type: Date,
+        default: Date.now
+        },
+    premium: {
+        type: String,
+        enum: ['no_sub','3month','6month','1year'],
+        default: 'no_sub'
+    },
+    stopAccount: {
+        type: String,
+        default: false
+    },
+    match_gender: {
+        type: String,
+        enum: ['male', 'female','both'],
+        default : 'both'
+    }
 });
 
-UserSchema.methods.setPassword = async function (password) {
-  const hash = await bcrypt.hash(password, 10);
-  this.hashedPassword = hash;
-};
-UserSchema.methods.checkPassword = async function (password) {
-  const result = await bcrypt.compare(password, this.hashedPassword);
-  return result;
-};
-UserSchema.methods.serialize = function () {
-  const data = this.toJSON();
-  delete data.hashedPassword;
-  return data;
-};
-UserSchema.methods.generateToken = function () {
-  const token = jwt.sign(
-    {
-      // 토큰 안에 집어놓고 싶은 데이터
-      _id: this.id,
-      username: this.username,
-    },
-    process.env.JWT_SECRET, //JWT 암호
-    {
-      expiresIn: "7d", //7일 유지
-    }
-  );
-  return token;
+
+
+UserSchema.methods.setUser_pw = async function(user_pw){
+    const hash = await bcrypt.hash(user_pw , 10);
+    this.hashedUser_pw = hash;
 };
 
-UserSchema.statics.findByUsername = function (username) {
-  // console.dir(this);
-  return this.findOne({ username });
+UserSchema.methods.checkUser_pw = async function(user_pw){
+    const result = await bcrypt.compare(user_pw, this.hashedUser_pw);
+    return result;
 };
 
-const User = mongoose.model("User", UserSchema);
+//username찾아 전달받는
+UserSchema.statics.findByUser_email = function(user_email){
+    return this.findOne({user_email});
+}
+
+UserSchema.methods.serialize = function(){
+    const data = this.toJSON();
+    delete data.hashedUser_pw;
+    return data;
+}
+
+//토큰만드는거
+UserSchema.methods.generateToken = function(){
+    const token = jwt.sign(
+        {
+            _id: this._id,
+            user_email : this.user_email 
+        },
+        process.env.JWT_SECRET,
+        {
+            expiresIn: '7d' //7일동안 값이 유지
+        }
+    );
+    return token;
+}
+
+const User = mongoose.model('User', UserSchema);
 
 export default User;

@@ -1,12 +1,13 @@
 import Gram from '../../models/gram';
 import mongoose from 'mongoose';
 import Joi from '@hapi/joi';
+import User from '../../models/user';
 
 const { ObjectId } = mongoose.Types;
 
 export const write = async ctx => {
     const schema = Joi.object().keys({
-        image: Joi.string().required(),
+        InstaImage: Joi.string().required(),
         content: Joi.string().required(),
         comment: Joi.array().items(Joi.string())
     });
@@ -18,13 +19,18 @@ export const write = async ctx => {
         return;
     }
 
-    const { image, content, comment } = ctx.request.body;
+    const { InstaImage, content, comment } = ctx.request.body;
+    console.log('접속유저: ',ctx.state.user._id);
+    const user_id = ctx.state.user._id;
+    const user_nick = await User.findById(user_id).user_nick;
+    console.log(user_nick);
+
     const post = new Gram({
-        image,
+        InstaImage,
         content,
         comment,
         User: {
-            user_nick: '임시'// 수정해야함
+            user_nick: user_nick
         }
     });
     try{

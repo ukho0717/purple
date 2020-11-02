@@ -1,12 +1,14 @@
 import BadBoard from '../../models/badBoard';
 import mongoose from 'mongoose';
 import Joi from '@hapi/joi';
+import User from '../../models/user';
 
 const { ObjectId } = mongoose.Types;
 
 export const write = async ctx => {
     // console.log('badBoard write');
     const schema = Joi.object().keys({
+        user_email : Joi.string().required(),
         reason: Joi.string().required()
     });
 
@@ -17,14 +19,15 @@ export const write = async ctx => {
         return;
     }
 
-    const { reason } = ctx.request.body;
+    const { _id, reason } = ctx.request.body;
+    // const user_email = ctx.state.user_email;
+    const user = await User.findById(_id);
+    console.log('불러와지는가',user);
     const post = new BadBoard({
         reason,
         User: {
-            user_nick: '임시',// 수정해야함
-            Join_user: {
-                profile_pic: '임시.png'
-            }
+            user_nick: user.user_nick,
+            profile_pic: user.profile_pic[0]
         }
     });
     try{

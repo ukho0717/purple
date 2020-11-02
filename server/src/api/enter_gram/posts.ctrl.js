@@ -20,17 +20,17 @@ export const write = async ctx => {
     }
 
     const { InstaImage, content, comment } = ctx.request.body;
-    console.log('접속유저: ',ctx.state.user._id);
+    // console.log(ctx.state.user._id);
     const user_id = ctx.state.user._id;
-    const user_nick = await User.findById(user_id).user_nick;
-    console.log(user_nick);
+    const user = await User.findById(user_id);
+    // console.log(user.user_nick);
 
     const post = new Gram({
         InstaImage,
         content,
         comment,
         User: {
-            user_nick: user_nick
+            user_nick: user.user_nick
         }
     });
     try{

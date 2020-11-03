@@ -6,6 +6,9 @@ import User from '../../models/user';
 const { ObjectId } = mongoose.Types;
 
 export const write = async ctx => {
+    console.log('write Post 호출');
+    console.log(ctx.request.body);
+    console.log(ctx.request.files);
     const schema = Joi.object().keys({
         InstaImage: Joi.string().required(),
         content: Joi.string().required(),
@@ -19,7 +22,8 @@ export const write = async ctx => {
         return;
     }
 
-    const { InstaImage, content, comment } = ctx.request.body;
+    const { content, comment } = ctx.request.body;
+    const { InstaImage } = ctx.request.files;
     // console.log(ctx.state.user._id);
     const user_id = ctx.state.user._id;
     const user = await User.findById(user_id);

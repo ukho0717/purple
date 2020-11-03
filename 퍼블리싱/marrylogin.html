@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <link rel="stylesheet" href="css/marrylogin.css">
+</head>
+<body>
+    <div id="loginWrap">
+        <div id="MLcontainer">
+            <div id="MLheader">
+                <div class="MLlogo">
+                    <p><a href="./main.html"><img src="./img/LoginH.png"></a></p>
+                </div>
+            </div>
+            <div class="HeadT">
+                <h1>로그인</h1>
+            </div>
+            
+        <form action="/login" method="post">
+            <div class="MLid">
+                <input type="text" name="userId" placeholder="아이디">
+            </div>
+            <div class="MLid">
+                <input type="password" name="userPw" placeholder="비밀번호">
+            </div>
+            <div class="loginQ">
+                <p><a href="./regist.html">로그인하실 수 없나요??</a></p>
+            </div>
+            <div class="loginQ pwQ">
+                <p><a href="./find_pw.html">비밀번호를 잊어버리셨나요?</a></p>
+            </div>
+            <div id="MLlogin">
+                <button type="submit" class="loginBtn"><span>로그인</span></button>
+            </div>
+        </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>근무모드</title>
+    <style>
+        /* 공통 */
+        * { margin: 0; padding: 0; box-sizing: 0; list-style: none; letter-spacing: -1px; font-family: "맑은 고딕", sans-serif; }
+        a { text-decoration: none; }
+        #wrap { width: 100%; height: 100vh; overflow-y: scroll; -ms-overflow-style: none; }
+        #wrap::-webkit-scrollbar { display: none; }
+
+
+        #work_header { width: 100%; height: 60px; position: relative; border-bottom: 1px solid #e8e8e8; }
+        #work_header div { display: inline-block; }
+        #work_header > div:nth-child(1) { width: 50px; height: 100%; background: #9e7ff9; }
+        #work_header > div:nth-child(1) img { width: 16px; height: 16px; position: absolute; top: 22px; left: 17px; }
+        #work_header > div:nth-child(2) { margin: 0 16px; color: #2c2c2c; position: relative; top: -8px; }
+        #work_header > div:nth-child(2) #work_header_title { margin: 4px 0; font-weight: 600; font-size: 18px; display: block; }
+        #work_header > div:nth-child(2) #work_header_menu { font-size: 16px; font-weight: 600; }
+        #work_header > div:nth-child(3) { padding: 0 14px; height: 36px; cursor: pointer; background: linear-gradient( to left, #FFD7DD, #9E7FFE ); border-radius: 36px; position: absolute; right: 2%; top: 12px; }
+        #work_header > div:nth-child(3) img { width: 16px; height: 16px; position: relative; top: 9px; margin-right: 10px; }
+        #work_header > div:nth-child(3) span { font-size: 12px; color: #fff; font-weight: 800; position: relative; top: 6px; }
+
+        #work_nemu { width: 100%; padding: 0 16px; height: 36px; font-size: 14px; font-weight: 800; background: #fff; border-bottom: 1px solid #e8e8e8; position: relative; }
+        #work_nemu div { color: #2c2c2c; display: inline-block; }
+        #work_nemu #work_nemu1 { height: 100%; }
+        #work_nemu #work_nemu1 > div { padding: 0 16px; height: 100%; border-right: 1px solid #e8e8e8; }
+        #work_nemu #work_nemu1 > div:nth-child(1) { padding: 0; padding-right: 16px; height: 100%; border-right: 1px solid #e8e8e8; }
+        #work_nemu #work_nemu1 > div:nth-child(1) img { height: 16px; position: relative; top: 10px; }
+        #work_nemu #work_nemu1 > div:nth-child(2) span { position: relative; top: 8px; }
+        #work_nemu #work_nemu1 > div:nth-child(2) img { height: 4px; margin-left: 20px; position: relative; top: 5px; }
+        #work_nemu #work_nemu1 > div:nth-child(3) span { position: relative; top: 8px; }
+        #work_nemu #work_nemu1 > div:nth-child(3) img { height: 4px; margin-left: 20px; position: relative; top: 5px; }
+        #work_nemu #work_nemu1 > div:nth-child(4) img:first-child { height: 16px; position: relative; top: 10px; }
+        #work_nemu #work_nemu1 > div:nth-child(4) img:last-child { margin-left: 6px; height: 4px; position: relative; top: 5px; }
+        #work_nemu #work_nemu1 > div:nth-child(5) img { height: 16px; position: relative; top: 10px; }
+        #work_nemu #work_nemu2 { padding: 0 16px; height: 100%; border-right: 1px solid #e8e8e8; margin-right: 16px; position: absolute; right: 30px; }
+        #work_nemu #work_nemu2 img:first-child { margin-right: 12px; height: 16px; position: relative; top: 10px; }
+        #work_nemu #work_nemu2 span { position: relative; top: 8px; }
+        #work_nemu #work_nemu2 img:last-child { margin-left: 16px; height: 4px; position: relative; top: 5px; }
+
+        #work_nemu3 { width: 100%; border-bottom: 1px solid #e8e8e8; background: #e0e4e9; }
+        #work_nemu3 div { width: 750px; margin: 0 auto; }
+        #work_nemu3 img { height: 14px; margin: 0 auto; }
+        
+        #work_content { width: 100%; background: #f5f7fa; overflow-y: scroll; }
+        #work_content #work_content_box { width: 750px; margin: 10px auto; }
+        #work_content #work_content_box img { width: 750px; height: 970px; box-shadow: 0 0 5px 0 rgba(0,0,0,0.17); background-color: #fff; }
+        #work_content::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="work_wrap">
+            <div id="work_header">
+                <div>
+                    <img src="./images/icon/e4abb78c96f47624b9744bc156d7a4c9.png">
+                </div>
+                <div>
+                    <div id="work_header_title">
+                        <span>회의록</span>
+                    </div>
+                    <div id="work_header_menu">
+                        <span>파일</span>
+                        <span>수정</span>
+                        <span>보기</span>
+                        <span>삽입</span>
+                        <span>슬라이드</span>
+                        <span>도구</span>
+                        <span>퓨전 테이블</span>
+                        <span>도움말</span>
+                    </div>
+                </div>
+                <div>
+                    <img src="./images/icon/6bf9cc98add48255195a75bdf7057eee.png">
+                    <span>근무 모드</span>
+                </div>
+            </div>
+            <div id="work_nemu">
+                <div id="work_nemu1">
+                    <div>
+                        <img src="./images/icon/a8143f7a1037d59a71d613621b835539.png">
+                    </div>
+                    <div>
+                        <span>100%</span>
+                        <img src="./images/icon/8ed07696477f751bedb268fbcabeb627.png">
+                    </div>
+                    <div>
+                        <span>16</span>
+                        <img src="./images/icon/8ed07696477f751bedb268fbcabeb627.png">
+                    </div>
+                    <div>
+                        <img src="./images/icon/c019a8e459fbfc00394fb9634129350b.png">
+                        <img src="./images/icon/8ed07696477f751bedb268fbcabeb627.png">
+                    </div>
+                    <div>
+                        <img src="./images/icon/1c8956fcf7d8ae90fa302316d281ebd1.png">
+                    </div>
+                </div>
+                <div id="work_nemu2">
+                    <img src="./images/icon/cf099b01bbc84cb8e9ed0986a29f73a4.png">
+                    <span>수정 중...</span>
+                    <img src="./images/icon/8ed07696477f751bedb268fbcabeb627.png">
+                </div>
+            </div>
+            <div id="work_nemu3">
+                <div><img src="./images/icon/7f1ea73499c69f4dbb415a7cbf577ce6.png"></div>
+            </div>
+            <div id="work_content">
+                <div id="work_content_box">
+                    <img src="./images/icon/514b07e13c210c48a1abf8fc906b7e9d.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

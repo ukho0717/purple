@@ -60,10 +60,10 @@ export const list = async ctx => {
 };
 
 export const read = async (ctx) => {
-    const { id } = ctx.params;
-    console.log(id);
+    const { post_id } = ctx.params;
+    console.log(post_id);
     try{
-        const post = await Gram.findById(id).exec();
+        const post = await Gram.findById(post_id).exec();
         ctx.body = post.toJSON();
     }catch(e){
         ctx.throw(500, e);
@@ -71,10 +71,10 @@ export const read = async (ctx) => {
 };
 
 export const remove = async ctx => {
-    const { id } = ctx.params;
-    console.log(id);
+    const { post_id } = ctx.params;
+    console.log(post_id);
     try{
-        await Gram.findByIdAndRemove(id).exec();
+        await Gram.findByIdAndRemove(post_id).exec();
         ctx.status = 204;
     }catch(e){
         ctx.throw(500, e);

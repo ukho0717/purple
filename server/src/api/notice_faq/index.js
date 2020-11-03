@@ -5,8 +5,8 @@ const faq = new Router();
 faq.get('/', faqCtrl.list);
 faq.post('/', faqCtrl.write);
 
-faq.get('/:id', faqCtrl.read);
-faq.delete('/:id', faqCtrl.remove);
-faq.patch('/:id', faqCtrl.update);
+faq.get('/:faq_id', faqCtrl.read);
+faq.delete('/:faq_id', faqCtrl.remove);
+faq.patch('/:faq_id', faqCtrl.update);
 
 export default faq;

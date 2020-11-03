@@ -7,8 +7,8 @@ posts.get('/', postsCtrl.list);
 posts.post('/', postsCtrl.write);
 
 // const post = new Router();
-posts.get('/:id', postsCtrl.read);
-posts.delete('/:id', postsCtrl.remove);
+posts.get('/:post_id', postsCtrl.read);
+posts.delete('/:post_id', postsCtrl.remove);
 // post.patch('/:id', postsCtrl.update);
 
 export default posts;

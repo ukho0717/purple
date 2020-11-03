@@ -5,8 +5,8 @@ const badBoard = new Router();
 badBoard.get('/', badBoardCtrl.list);
 badBoard.post('/', badBoardCtrl.write);
 
-badBoard.get('/:id', badBoardCtrl.read);
-badBoard.delete('/:id', badBoardCtrl.remove);
-badBoard.patch('/:id', badBoardCtrl.update);
+badBoard.get('/:bad_id', badBoardCtrl.read);
+badBoard.delete('/:bad_id', badBoardCtrl.remove);
+badBoard.patch('/:bad_id', badBoardCtrl.update);
 
 export default badBoard;

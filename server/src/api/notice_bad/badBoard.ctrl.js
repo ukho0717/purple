@@ -48,10 +48,10 @@ export const list = async ctx => {
 };
 
 export const read = async (ctx) => {
-    const { id } = ctx.params;
-    console.log(id);
+    const { bad_id } = ctx.params;
+    console.log(bad_id);
     try{
-        const post = await BadBoard.findById(id).exec();
+        const post = await BadBoard.findById(bad_id).exec();
         ctx.body = post.toJSON();
     }catch(e){
         ctx.throw(500, e);
@@ -59,10 +59,10 @@ export const read = async (ctx) => {
 };
 
 export const remove = async ctx => {
-    const { id } = ctx.params;
-    console.log(id);
+    const { bad_id } = ctx.params;
+    console.log(bad_id);
     try{
-        await BadBoard.findByIdAndRemove(id).exec();
+        await BadBoard.findByIdAndRemove(bad_id).exec();
         ctx.status = 204;
     }catch(e){
         ctx.throw(500, e);
@@ -70,7 +70,7 @@ export const remove = async ctx => {
 };
 
 export const update = async ctx => {
-    const { id } = ctx.params;
+    const { bad_id } = ctx.params;
 
     const schema = Joi.object().keys({
         reason: Joi.string()
@@ -84,7 +84,7 @@ export const update = async ctx => {
     }
 
     try{
-        const post = await BadBoard.findByIdAndUpdate(id, ctx.request.body, {
+        const post = await BadBoard.findByIdAndUpdate(bad_id, ctx.request.body, {
             new: true
         }).exec();
         if(!post){

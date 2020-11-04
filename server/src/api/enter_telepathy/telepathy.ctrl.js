@@ -30,6 +30,7 @@ export const mun = async ctx=>{
         await Telepathy.findOneAndUpdate(query, { $set: { questions: mun , answers: ans, user_nick: user.user_nick, profile_pic: (user.profile_pic)[0]} }, {
             new: true
         }).exec()//문제와 답을 스키마에 갱신시켜줌
+        ctx.status = 200
         ctx.body = "성공"
     }catch(e){
         ctx.throw(500,e)
@@ -58,8 +59,12 @@ export const ans1 = async ctx=>{
     const {ans_user, ans_mine} = ctx.request.body;
     try{
         if(ans_user == ans_mine){
-            ctx.body = '성공';
-        }else{ctx.body = '틀렸습니다.'}
+        ctx.status = 200
+        ctx.body = '성공';
+        }else{
+        ctx.status = 300//틀렷을땐이거
+        ctx.body = '틀렸습니다.'
+        }
     }catch(e){
         ctx.throw(500,e)
     }
@@ -70,8 +75,12 @@ export const ans2 = async ctx=>{
     const {ans_user, ans_mine} = ctx.request.body;
     try{
         if(ans_user == ans_mine){
+            ctx.status = 200
             ctx.body = '성공';
-        }else{ctx.body = '틀렸습니다.'}
+            }else{
+            ctx.status = 300//틀렷을땐이거
+            ctx.body = '틀렸습니다.'
+            }
     }catch(e){
         ctx.throw(500,e)
     }
@@ -90,8 +99,12 @@ export const ans3 = async ctx=>{
             await Matching.findOneAndUpdate(query2, { $push: { matched: _id, like: _id, pass: _id } }, {
                 new: true
             }).exec()//상대방의 매치 pass like 에다가 내 id 넣기
+            ctx.status = 200
             ctx.body = '성공';
-        }else{ctx.body = '틀렸습니다.'}
+        }else{
+            ctx.status = 300
+            ctx.body = '틀렸습니다.'
+        }
     }catch(e){
         ctx.throw(500,e)
     }

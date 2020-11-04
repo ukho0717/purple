@@ -23,6 +23,7 @@ export const list = async ctx=>{
         try{
             await matching.save(); //포스트를 저장하는 문법.
             my_id = await Matching.findOne({'user':login_id})
+            await User.findOneAndUpdate({'_id':login_id}, { $set: { match: my_id }})
         }catch(e){
             ctx.throw(500,e);
         }
@@ -37,25 +38,23 @@ export const list = async ctx=>{
         const pass_arr = pass.map(user => user._id.toJSON())
 
         // 그사람들 제외하고 카운트
-        const userCount = await Matching.countDocuments({_id:{$nin: pass_arr}, user:{$ne: login_id}, gender: prefer_gender=='both'? {$in: [ 'male', 'female' ]} : prefer_gender}).exec();
+        const userCount = await User.countDocuments({match:{$nin: pass_arr}, _id:{$ne: login_id},  user_gender: prefer_gender=='both'? {$in: [ 'male', 'female' ]} : prefer_gender}).exec();
         const page = Math.random() * userCount + 1//랜덤으로 보여주기 위해 랜덤으로 페이지 정하기
 
         // 나와 패스 누른사람을 제외하고 원하는 성별만 보여주기
-        const list = await Matching.
-        find({_id:{$nin: pass_arr}, user:{$ne: login_id},  gender: prefer_gender=='both'? {$in: [ 'male', 'female' ]} : prefer_gender})
+        const list = await User.
+        find({match:{$nin: pass_arr}, _id:{$ne: login_id},  user_gender: prefer_gender=='both'? {$in: [ 'male', 'female' ]} : prefer_gender})
         .limit(1)
         .skip(page-1).exec()
         //슈퍼라이크를 받은경우
         const got_super = await Matching.findOne({'user':login_id}).populate('superLike')
         // console.log('나를 슈퍼라이크 한 사람: ',got_super.superLike)
-        if(got_super.superLike == null){
+        if(got_super.superLike[0] == null){
             ctx.body = list.map(user => user.toJSON()) 
         }else{
-            await Matching.findOneAndUpdate({'user':login_id}, { $set: { superLike: null }})
-            ctx.body = got_super.superLike
+            await Matching.findOneAndUpdate({'user':login_id},{$pull:{superLike:got_super.superLike[0]._id}})
+            ctx.body = await User.findOne({'match':got_super.superLike[0]._id})
         }
-
-
     }catch(e){
         ctx.throw(500,e);
     }
@@ -90,6 +89,7 @@ export const like = async ctx=>{
                 new: true
             }).exec()//상대방의 매치에다가 내 id 넣기
         }
+        ctx.status= 202 // 이거 나오면 매치로 연결해준다고 생각
         ctx.body = '성공'
     }catch(e){
         ctx.throw(500,e)
@@ -113,7 +113,8 @@ export const pass = async ctx=>{
             new: true
         }).exec()
 
-        ctx.body = user_pass
+        ctx.status= 202 // 이거 나오면 매치로 연결해준다고 생각
+        ctx.body = '성공'
     }catch(e){
         ctx.throw(500,e)
     }
@@ -123,7 +124,7 @@ export const pass = async ctx=>{
 export const sendSuper = async ctx=>{
     const login_id = ctx.state.user._id//로그인한아이디
     const my_id = await Matching.findOne({'user':login_id})
-    const { id } = ctx.request.body//내 id, 상대방 id정보
+    const { id } = ctx.request.body//상대방id
     const query = { '_id': my_id._id }
     const query2 = { '_id': id }
     
@@ -141,7 +142,7 @@ export const sendSuper = async ctx=>{
         const another_like_check_arr = another_like_check.map(user => user._id.toJSON())
 
         //상대방의 superlike에 내 id를 넣는다(들어간 id는 이벤트 실행 후 id는 삭제된다)
-        await Matching.findOneAndUpdate(query2, { $set: { superLike: my_id._id } }, {
+        await Matching.findOneAndUpdate(query2, { $push: { superLike: my_id._id } }, {
             new: true
         }).exec()
 
@@ -154,6 +155,7 @@ export const sendSuper = async ctx=>{
             }).exec()//상대방의 매치에다가 내 id 넣기
         }
 
+        ctx.status= 202 // 이거 나오면 매치로 연결해준다고 생각
         ctx.body = '성공'
 
     }catch(e){
@@ -165,14 +167,9 @@ export const sendSuper = async ctx=>{
 
 export const back = async ctx=>{
     const login_id = ctx.state.user._id//로그인한아이디
-    const user = await User.findById(login_id)//user안에 id검색하여 상수에저장
     try{
         const back_user = await Matching.findOne({'user':login_id}).populate('back')
-        if(user.premium == 'no_sub'){
-            ctx.body="결제를하세요"
-        }else{
         ctx.body = back_user.back //이전 유저 정보
-        }
     }catch(e){
         ctx.throw(500,e)
     }
@@ -187,6 +184,7 @@ export const checkLikeMe = async ctx=>{
         const list = await Matching.find({ like: my_id._id })//내 id포함하고있는것 검색
         //결제 하지 않았으면 못본다
         if(user.premium == 'no_sub'){
+            ctx.status = 402
             ctx.body="결제를하세요"
         }else{//했으면 볼 수 있다.
             ctx.body = list.map(user => user.toJSON())

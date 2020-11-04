@@ -65,7 +65,8 @@ const UserSchema = new Schema({
         type: String,
         enum: ['male', 'female','both'],
         default : 'both'
-    }
+    },
+    match:{ type: mongoose.Schema.Types.ObjectId, ref: 'Matching' }
 });
 
 

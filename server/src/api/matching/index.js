@@ -3,7 +3,7 @@ import * as matchCtrl from './match.ctrl';
 
 const match = new Router();
 
-match.get('/', matchCtrl.list);                 // 매칭되는 회원 보여주기
+match.post('/', matchCtrl.list);                 // 매칭되는 회원 보여주기
 match.patch('/like', matchCtrl.like);           // 라이크 눌렀을 때
 match.patch('/super', matchCtrl.sendSuper)      // 슈퍼라이크 눌렀을 때
 match.patch('/pass', matchCtrl.pass);           // 넘기기 눌렀을 때

@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Route } from 'react-router-dom';
+import GramPage from './pages/GramPage';
+import BadBoardPage from './pages/BadBoardPage';
+import FaqPage from './pages/FaqPage';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Route path="/" exact/>
+      <Route component={GramPage} path="/enter_gram"/>
+      <Route component={BadBoardPage} path="/notice_bad"/>
+      <Route component={FaqPage} path="/notice_faq"/>
+    </>
+  )
 }
 
 export default App;

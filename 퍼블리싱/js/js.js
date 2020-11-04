@@ -178,6 +178,13 @@ $(function(){
         }
     });
 
+    // gram_write
+    // 파일 선택하면 미리보게
+    $('#gramW_1_file').on('change', function(){
+        readURL(this);
+    });
+
+
 });
 
 // function adjustHeight() {
@@ -205,3 +212,17 @@ function xSize(e){
 
 xSize($('#ta'));
 
+// 파일 선택 미리보기 관련
+function readURL(input) {
+    if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+        $('#photoPre').css({'display': 'none'});
+        $('#gramW_1_photo img').css({'display': 'block'});
+        $('#gramW_1_photo img').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+    }
+}

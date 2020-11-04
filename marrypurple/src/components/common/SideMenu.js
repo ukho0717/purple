@@ -2,12 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import SideMenuResponsive from './SideMenuResponsive';
+import '../../lib/styles/styles.scss';
 
 const SideMenu = () => {
     return (
         <>
-            <div id="wrap">
-                <div id="left_menu">
+            <div className="wrap">
+                <div className="left_menu">
                     <ul>
                         <li>
                             <ul id="myprofile">

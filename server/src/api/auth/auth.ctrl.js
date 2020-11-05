@@ -2,7 +2,7 @@ import Joi from "@hapi/joi";
 import User from "../../models/user";
 
 
-export const register = async (ctx) => {
+export const register = async ctx => {
   // 회원 가입
 const schema = Joi.object().keys({
     user_email: Joi.string().required(),
@@ -24,15 +24,24 @@ const schema = Joi.object().keys({
     stopAccount: Joi.string().default('false'),
     match_gender:  Joi.string().default('both')
   });
+  const user_email = ctx.req.body.user_email;
+  const user_pw = ctx.req.body.user_pw;
+  const user_gender= ctx.req.body.user_gender;
+  const user_age = ctx.req.body.user_age;
+  const user_nick = ctx.req.body.user_nick;
+  const profile_pic = ctx.req.files[0].filename;
+  
+  // const  join_date = "";
+  // const brief_intro = "";
+  // const result = schema.validate(ctx.request.body);
+  // if (result.error) {
+  //   ctx.status = 400;
+  //   ctx.body = result.error;
+  //   return;
+  // }
 
-  const result = schema.validate(ctx.request.body);
-  if (result.error) {
-    ctx.status = 400;
-    ctx.body = result.error;
-    return;
-  }
-
-  const { user_email, user_pw,user_gender,user_age,user_nick } = ctx.request.body;
+  // const { user_email, user_pw,user_gender,user_age,user_nick } = ctx.request.body;
+  // const profile_pic = ctx.request.files[0].filename;
   try {
     const exists = await User.findByUser_email(user_email);
     if (exists) {
@@ -40,10 +49,11 @@ const schema = Joi.object().keys({
       return;
     }
     const user = new User({
-      user_email,
-      user_gender,
-      user_age,
-      user_nick
+      user_email: user_email,
+      user_gender: user_gender,
+      user_age: user_age,
+      user_nick: user_nick,
+      profile_pic: [profile_pic],
     });
     await user.setUser_pw(user_pw);
     await user.save();
@@ -167,7 +177,6 @@ export const profileUpdate = async (ctx) => {
   const { id } = ctx.params;
 
   const schema = Joi.object().keys({
-    profile_pic:Joi.array().items(Joi.string()),
     join_date:Joi.date().default(Date.now()),
     brief_intro: Joi.string(),
     address: Joi.string(),
@@ -181,7 +190,7 @@ export const profileUpdate = async (ctx) => {
     stopAccount: Joi.string().default('false'),
     match_gender:  Joi.string().default('both')
   });
-
+ 
   const result = schema.validate(ctx.request.body);
   if (result.error) {
     ctx.status = 400;
@@ -200,3 +209,6 @@ export const profileUpdate = async (ctx) => {
     ctx.throw(500, e);
 }
 }
+//사진 추가
+
+

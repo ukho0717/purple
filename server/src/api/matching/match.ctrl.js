@@ -167,9 +167,15 @@ export const sendSuper = async ctx=>{
 
 export const back = async ctx=>{
     const login_id = ctx.state.user._id//로그인한아이디
+    const user = await User.findById(login_id)//user안에 id검색하여 상수에저장
     try{
         const back_user = await Matching.findOne({'user':login_id}).populate('back')
-        ctx.body = back_user.back //이전 유저 정보
+        if(user.premium == 'no_sub'){
+            ctx.status = 402
+            ctx.body="결제를하세요"
+        }else{//했으면 볼 수 있다.
+            ctx.body = back_user.back //이전 유저 정보
+        }
     }catch(e){
         ctx.throw(500,e)
     }

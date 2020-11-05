@@ -3,6 +3,7 @@ import * as authCtrl from "./auth.ctrl";
 import koaMulter from 'koa-multer';
 // import koaBody from 'koa-body';
 const path = require('path');
+let passport = require('passport');
 
 let storage = koaMulter.diskStorage({
     destination: (req, file, callback) => {
@@ -32,10 +33,43 @@ auth.patch("/changePw/:id", authCtrl.changePw);
 auth.patch("/profile/:id",upload.array('file',1), authCtrl.profileUpdate);
 auth.get("/check", authCtrl.check);
 auth.post("/logout", authCtrl.logout);
+auth.patch("/snsRegister/:id",authCtrl.snsRegister);
 
 
 
+//sns
+module.exports = function(router, passport){
+auth.route('/auth/facebook').get(passport.authenticate('facebook',{
+    scope: 'email'
+}));
 
+auth.route('/auth/facebook/callback').get(passport.authenticate('facebook',{
+    successRedirect: '/profile', //성공시 프로필로
+    failureRedirect: '/' //실패시 메인으로
+}));
+
+auth.route('/auth/kakao').get(passport.authenticate('kakao',{
+    account_email: 'account_email'
+}));
+
+auth.route('/auth/kakao/callback').get(passport.authenticate('kakao',{
+    successRedirect: '/profile', //성공시 프로필로
+    failureRedirect: '/' //실패시 메인으로
+}));
+auth.route('/auth/google').get(passport.authenticate('google',{
+    scope: ['profile','email']
+    
+}));
+
+auth.route('/auth/google/callback').get(passport.authenticate('google',{
+    successRedirect: '/profile', //성공시 프로필로
+    failureRedirect: '/' //실패시 메인으로
+}));
+}
+// auth.get('/write', async ctx => {
+//     console.log('/write 호출')
+//     ctx.body = '<h2>파일 업로드</h2><form method="post" action="/api/auth" enctype="multipart/form-data"><p><label>아이디 : <input type="text" name="user_email"></label></p><p><label>비밀번호 : <input type="password" name="user_pw"></label></p><p><label>성별 : <input type="text" name="user_gender"></label></p><p><label>나이 : <input type="text" name="user_age"><p><label>닉네임 : <input type="text" name="user_nick"></label></p></label></p><p><label>사진 : <input type="file" name="file"></label></p><p><input type="submit" value="전송"></p></form>';
+// });
 
 // auth.get('/write', async ctx => {
 //     console.log('/write 호출')

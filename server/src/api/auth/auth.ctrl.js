@@ -4,26 +4,26 @@ import User from "../../models/user";
 
 export const register = async ctx => {
   // 회원 가입
-const schema = Joi.object().keys({
-    user_email: Joi.string().required(),
-    user_pw: Joi.string().required(),
-    user_gender: Joi.string().required(),
-    user_age:Joi.number().required(),
-    user_nick: Joi.string().required(),
-    profile_pic:Joi.array().items(Joi.string()),
-    join_date:Joi.date().default(Date.now()),
-    brief_intro: Joi.string().default(''),
-    address: Joi.string().default(''),
-    school: Joi.string().default(''),
-    personality: Joi.array().items(Joi.string()),
-    fav_song: Joi.string().default(''),
-    fav_movie: Joi.string().default(''),
-    fav_food: Joi.string().default(''),
-    login_time:Joi.date().default(Date.now()),
-    premium: Joi.string().default('no_sub'),
-    stopAccount: Joi.string().default('false'),
-    match_gender:  Joi.string().default('both')
-  });
+// const schema = Joi.object().keys({
+//     user_email: Joi.string().required(),
+//     user_pw: Joi.string().required(),
+//     user_gender: Joi.string().required(),
+//     user_age:Joi.number().required(),
+//     user_nick: Joi.string().required(),
+//     profile_pic:Joi.array().items(Joi.string()),
+//     join_date:Joi.date().default(Date.now()),
+//     brief_intro: Joi.string().default(''),
+//     address: Joi.string().default(''),
+//     school: Joi.string().default(''),
+//     personality: Joi.array().items(Joi.string()),
+//     fav_song: Joi.string().default(''),
+//     fav_movie: Joi.string().default(''),
+//     fav_food: Joi.string().default(''),
+//     login_time:Joi.date().default(Date.now()),
+//     premium: Joi.string().default('no_sub'),
+//     stopAccount: Joi.string().default('false'),
+//     match_gender:  Joi.string().default('both')
+//   });
   const user_email = ctx.req.body.user_email;
   const user_pw = ctx.req.body.user_pw;
   const user_gender= ctx.req.body.user_gender;
@@ -153,6 +153,7 @@ export const check = async (ctx) => {
     return;
   }
   ctx.body = user;
+  user.login_time = Date.now();
 };
 
 export const logout = async (ctx) => {
@@ -210,5 +211,39 @@ export const profileUpdate = async (ctx) => {
 }
 }
 //사진 추가
+
+//sns 회원가입
+export const snsRegister = async (ctx) => {
+  const { id } = ctx.params;
+  
+
+  const schema = Joi.object().keys({
+    user_gender: Joi.string(),
+    user_age:Joi.number(),
+    user_nick: Joi.string(),
+  });
+  const result = schema.validate(ctx.request.body);
+  if (result.error) {
+    ctx.status = 400;
+    ctx.body = result.error;
+    return;
+  }
+  // const profile_pic = ctx.req.files[0].filename;
+  const nextData = { ...ctx.request.body };
+  try{
+    const user = await User.findByIdAndUpdate(id,nextData,{new: true}).exec(); //new : true 업데이트된값을 리턴 false는 바뀌기전내용을 리턴
+    // const user2 = await User.findByIdAndUpdate(id,profile_pic,{new: true}).exec();
+    if(!user){
+        ctx.status = 404;
+        return;
+    }
+    
+    ctx.body = user;
+
+}catch(e){
+    ctx.throw(500, e);
+}
+}
+
 
 

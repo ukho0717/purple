@@ -17,6 +17,12 @@ import jwtMiddleware from './lib/jwtMiddleware';
 //소켓
 import SocketIo from 'socket.io';
 import socketEvents from './socket.js';
+//패스포트
+let passport = require('passport');
+let flash = require('flash');
+const logger = require('morgan');
+
+
 
 const { PORT, MONGO_URL } = process.env;
 
@@ -54,6 +60,16 @@ app.use(serve(__dirname + '/'));
 router.get('/contacts', async ctx => {
     ctx.body = await readFileThunk(__dirname + '/message.html');
 })
+
+// Passport 사용 설정
+// Passport의 세션을 사용하려면 그 전에 Express의 세션을 사용하는 코드가 있어야 합니다.
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+
+
+app.use(logger('dev'));
 
 
 const port = PORT || 4000;

@@ -66,7 +66,11 @@ const UserSchema = new Schema({
         enum: ['male', 'female','both'],
         default : 'both'
     },
-    match:{ type: mongoose.Schema.Types.ObjectId, ref: 'Matching' }
+    match:{ type: mongoose.Schema.Types.ObjectId, ref: 'Matching' },
+    provider: {type: String, default:''},
+    facebook:{},
+    kakao:{},
+    google:{}
 });
 
 

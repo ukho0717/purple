@@ -1,13 +1,16 @@
 import React from 'react';
 import SideMenuContainer from '../containers/common/SideMenuContainer';
-import ContentContainer from '../containers/common/ContentContainer';
+// import ContentContainer from '../containers/common/ContentContainer';
+import BadBoardContainer from '../containers/notice/BoardBadContainer';
 
 const BadBoardPage = () => {
     return (
         <>
             <div id="wrap">
                 <SideMenuContainer/>
-                <ContentContainer>불량회원</ContentContainer>
+                <BadBoardContainer >
+                    
+                </BadBoardContainer>
             </div>
         </>
     )

@@ -4,8 +4,10 @@ import mongoose from 'mongoose';
 
 //매칭 리스트 보여주기
 export const list = async ctx=>{
-    console.log('접속유저: ',ctx.state.user)
-    const login_id = ctx.state.user._id//로그인한아이디
+    // console.log('접속유저: ',ctx.state.user)
+    // const login_id = ctx.state.user._id//로그인한아이디
+
+    const login_id = '5f9f69328413900d78dd8774'
     let my_id = await Matching.findOne({'user':login_id})//token에 저장된 내 정보로 matching스키마가져오기
     const user = await User.findById(login_id)//user안에 id검색하여 상수에저장
     if(!login_id){//토큰에 저장된 아이디 없으면 오류페이지.

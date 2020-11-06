@@ -1,6 +1,6 @@
 import React from 'react';
 import SideMenuContainer from '../containers/common/SideMenuContainer';
-// import ContentContainer from '../containers/common/ContentContainer';
+import ContentContainer from '../containers/common/ContentContainer';
 import BadBoardContainer from '../containers/notice/BoardBadContainer';
 
 const BadBoardPage = () => {
@@ -8,9 +8,9 @@ const BadBoardPage = () => {
         <>
             <div id="wrap">
                 <SideMenuContainer/>
-                <BadBoardContainer >
-                    
-                </BadBoardContainer>
+                <ContentContainer >
+                    안녕하세요
+                </ContentContainer>
             </div>
         </>
     )

@@ -1,8 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ContentContainer from '../common/ContentContainer';
-import BadBoard from '../../components/notice/BadBoard';
+import BoardBad from '../../components/notice/BoardBad';
+import qs from 'qs';
+import { withRouter } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { badListPosts } from '../../modules/badList';
 
-const BoardBadContainer = () => {
+const BoardBadContainer = ({ location }) => {
+    // const dispatch = useDispatch();
+    // const { badLists, loading } = useSelector(
+    //     ({ badLists, loading }) => ({
+    //         badLists: badLists,
+    //         // error: error,
+    //         loading: loading['post/LIST_POSTS']
+    //     })
+    // );
+
+    // useEffect(() => {
+    //     const { user_nick, reason } = qs.parse(location.search, {
+    //         ignoreQueryPrefix: true
+    //     });
+    //     dispatch(badListPosts({ user_nick, reason }));
+    // }, [dispatch, location.search]);
 
     return (
         // <ContentContainer>
@@ -10,10 +29,10 @@ const BoardBadContainer = () => {
         // </ContentContainer>
         <div id="content">
             <div id="contentBox">
-                <BadBoard/>
+                {/* <BoardBad loading={loading}  badLists={badLists}/> */}
             </div>
         </div>
     )
 }
 
-export default BoardBadContainer;
+export default withRouter(BoardBadContainer);

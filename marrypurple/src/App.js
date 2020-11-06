@@ -10,7 +10,7 @@ import MarryLoginPage from './pages/MarryLoginPage';
 import RegistPage from './pages/RegistPage';
 import FindPwPage from './pages/FindPwPage';
 import ChangePwPage from './pages/ChangePwPage';
-
+import MatchingPage from './pages/MatchingPage'
 
 const App = () => {
   return (
@@ -25,6 +25,7 @@ const App = () => {
       <Route component={BadBoardPage} path="/board_bad"/>
       <Route component={FaqPage} path="/FAQ"/>
       <Route component={WorkPage} path="/work"/>
+      <Route component={MatchingPage} path="/match"/>
     </>
   )
 }

@@ -1,0 +1,62 @@
+.gramB_1 { 
+    margin: 15px; 
+    padding-bottom: 10px; 
+    border-bottom: 1px solid #e8e8e8; 
+}
+
+.gramB_2 { 
+    margin: 15px 25px; 
+}
+.gramB_2 dt, .gramB_2 dd { 
+    margin-bottom: 10px; 
+    border-bottom: 1px solid gray; 
+}
+.gramB_2 a { 
+    color: #000; 
+    position: relative; 
+    width: 100%; 
+}
+.gramB_2 .gramB_2_wrap { 
+    position: relative; 
+    margin-bottom: 10px; 
+}
+.gramB_2 p { 
+    display: inline-block; 
+    font-size: 18px; 
+}
+.gramB_2 .gramB_2_id { 
+    font-weight: bold; 
+}
+.gramB_2 .gramB_2_icon { 
+    width: 25px; 
+    height: 25px; 
+    background: url('../images/icon/add.png') no-repeat; 
+    background-size: 100%; 
+    position: absolute; 
+    bottom: -1px; 
+    right: 0; 
+}
+.gramB_2 .gramB_2_detail { 
+    margin: 15px; 
+    text-align: center; 
+}
+.gramB_2 .gramB_2_detail .gramB_2_datail_photo { 
+    width: 300px; 
+    height: 300px; 
+    // background: url('../images/images/12344.jpg') no-repeat; 
+    background-size: 100%; 
+    margin: 0 auto 10px; 
+}
+.gramB_2 .gramB_2_detail .gramB_2_detail_content { 
+    font-size: 16px; 
+}
+.gramB_2 dd { 
+    display: none; 
+}
+.gramB_2 dd.on { 
+    display: block; 
+}
+.gramB_2 dt.on .gramB_2_icon { 
+    background: url('../images/icon/minus.png') no-repeat; 
+    background-size: 100%; 
+}

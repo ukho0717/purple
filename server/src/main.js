@@ -1,7 +1,7 @@
 require('dotenv').config();
-
+//dsjhdiasjdaskldjaskld
 const fs = require('fs')
-const serve = require('koa-static');
+const serve   = require('koa-static');
 
 const path = require('path');
 
@@ -11,6 +11,7 @@ import bodyParser from 'koa-bodyparser';
 import mongoose from 'mongoose';
 
 import api from './api';
+// import createFakeData from './createFakeData';
 import jwtMiddleware from './lib/jwtMiddleware';
 
 //소켓
@@ -31,8 +32,7 @@ mongoose.connect(MONGO_URL, { useNewUrlParser: true, useFindAndModify: false }).
 
 const app = new Koa();
 const router = new Router();
-
-app.use((serve(__dirname + '/uploads')));
+app.use((serve(__dirname + '/uploads')))
 
 router.use('/api', api.routes());
 app.use(bodyParser());
@@ -40,7 +40,9 @@ app.use(jwtMiddleware);
 
 app.use(router.routes()).use(router.allowedMethods());
 
-// router.use('/uploads', serve(path.resolve(__dirname, './api/enter_gram/uploads')));
+
+// router.use('/uploads',serve(path.resolve(__dirname, './api/enter_gram/uploads')));
+
 
 router.get('/', ctx => {
     ctx.body = '홍';
@@ -51,7 +53,7 @@ var readFileThunk = function(src) {
         fs.readFile(src, {'encoding': 'utf8'}, function (err, data) {
         if(err) return reject(err);
         resolve(data);
-        });
+    });
     });
 }
 app.use(serve(__dirname + '/'));

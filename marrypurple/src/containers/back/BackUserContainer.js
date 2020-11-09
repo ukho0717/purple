@@ -37,8 +37,6 @@ const MatchingContainer = ({match}) => {
         };
     }, [dispatch]);
     return (
-        <div id="content">
-            <div id="contentBox">
                 <Matching 
                     back={back} 
                     error={error} 
@@ -48,8 +46,6 @@ const MatchingContainer = ({match}) => {
                     onToggle_report={onToggle_report}
                     urlAddress = {urlAddress}
                 />
-            </div>
-        </div>
     )
 }
 

@@ -23,6 +23,7 @@ export const write = async ctx => {
     //     ctx.body = result.error;
     //     return;
     // }
+    console.log('!!!!!', ctx.request);
 
     const content = ctx.req.body.content;
     const comment = ctx.req.body.comment;
@@ -32,10 +33,10 @@ export const write = async ctx => {
     // const user_id = ctx.state.user._id;
     const user_id = '5f9f692d8413900d78dd8773';
     const user = await User.findById(user_id);
-    // console.log(user.user_nick);
+    console.log('user야 나와라',user);
 
     const post = new Gram({
-        InstaImage: InstaImage,
+        InstaImage: 'http://localhost:4000/' + InstaImage,
         content: content,
         comment: [comment],
         User: {
@@ -45,6 +46,7 @@ export const write = async ctx => {
     try{
         await post.save();
         ctx.body = post;
+        console.log('성공');
     }catch(e){
         ctx.throw(500, e);
     }

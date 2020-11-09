@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 // import qs from 'qs';
 import { withRouter } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import SideMenu from '../../components/common/SideMenu';
 
 

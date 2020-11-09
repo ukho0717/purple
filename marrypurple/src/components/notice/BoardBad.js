@@ -3,10 +3,11 @@ import React, { useEffect } from 'react';
 import '../../lib/styles/boardBad.scss';
 import $ from 'jquery';
 // import { Helmet } from 'react-helmet';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getPhoto, unloadPhoto } from '../../modules/photos';
 
 const BoardBad = ({ badList }) => {
+    // console.log(badList);
     const dispatch = useDispatch();
         useEffect(() => {
             dispatch(getPhoto());
@@ -43,7 +44,7 @@ const BoardBad = ({ badList }) => {
                                     </dt>
                                     <dd>
                                         <div class="gramB_2_detail">
-                                            <div class="gramB_2_datail_photo" src='http://localhost:4000/라이언_1604896039048.png'></div>
+                                            <div class="gramB_2_datail_photo"><img src={post.User.profile_pic}/></div>
                                             <p class="gramB_2_detail_content">{
                                                 post.reason === '음담패설' && (
                                                 <span>상대방에게 음담패설을 하여</span>

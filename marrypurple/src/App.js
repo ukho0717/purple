@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import GramPage from './pages/GramPage';
+import GramMainPage from './pages/GramMainPage';
+import GramWritePage from './pages/GramWritePage';
 import BadBoardPage from './pages/BadBoardPage';
 import FaqPage from './pages/FaqPage';
 import WorkPage from './pages/WorkPage';
@@ -21,7 +22,8 @@ const App = () => {
       <Route component={RegistPage} path="/regist"/>
       <Route component={FindPwPage} path="/findPw"/>
       <Route component={ChangePwPage} path="/changePw"/>
-      <Route component={GramPage} path="/gram_main"/>
+      <Route component={GramMainPage} path="/gram_main"/>
+      <Route component={GramWritePage} path="/gram_write"/>
       <Route component={BadBoardPage} path="/board_bad"/>
       <Route component={FaqPage} path="/FAQ"/>
       <Route component={WorkPage} path="/work"/>

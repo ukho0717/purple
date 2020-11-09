@@ -8,7 +8,7 @@ const path = require('path');
 
 let storage = koaMulter.diskStorage({
     destination: (req, file, callback) => {
-        callback(null, 'uploads');
+        callback(null, 'src/uploads');
     },
     filename: (req, file, callback) => {
         let extension = path.extname(file.originalname);

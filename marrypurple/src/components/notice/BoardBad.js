@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // import styled from 'styled-components';
 import '../../lib/styles/boardBad.scss';
 import $ from 'jquery';
 // import { Helmet } from 'react-helmet';
+import { useDispatch, useSelector } from 'react-redux';
+import { getPhoto, unloadPhoto } from '../../modules/photos';
 
 const BoardBad = ({ badList }) => {
+    const dispatch = useDispatch();
+        useEffect(() => {
+            dispatch(getPhoto());
+            return () => {
+                dispatch(unloadPhoto());
+            };
+        }, [dispatch]);
+
     const script = () => {
         $('#contentBox .gramB_2 dt a').on('click', function(){
             $(this).parent().toggleClass('on').next().toggleClass('on');
@@ -33,7 +43,7 @@ const BoardBad = ({ badList }) => {
                                     </dt>
                                     <dd>
                                         <div class="gramB_2_detail">
-                                            <div class="gramB_2_datail_photo" /*style="background: url('../../../../server/uploads/다운로드.jpg') no-repeat"*/></div>
+                                            <div class="gramB_2_datail_photo" src='http://localhost:4000/라이언_1604896039048.png'></div>
                                             <p class="gramB_2_detail_content">{
                                                 post.reason === '음담패설' && (
                                                 <span>상대방에게 음담패설을 하여</span>

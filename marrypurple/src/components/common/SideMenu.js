@@ -5,11 +5,9 @@ import '../../lib/styles/styles.scss';
 import $ from 'jquery';
 import { Helmet } from 'react-helmet';
 
-const SideMenu = () => {
+const SideMenu = ({ currentPage }) => {
+    // console.log('~~~',currentPage);
     async function script(){
-        console.log(window.location.pathname);
-        let currentPage = window.location.pathname;
-
         switch(currentPage){
             case '/match':
             case '/match_like':
@@ -389,4 +387,4 @@ const SideMenu = () => {
     )
 };
 
-export default SideMenu
+export default SideMenu;

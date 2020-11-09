@@ -29,8 +29,8 @@ export const write = async ctx => {
     const InstaImage = ctx.req.file.filename;
     console.log('content', content, ' comment', comment, ' InstaImage', InstaImage);
     // console.log(ctx.state.user._id);
-    const user_id = ctx.state.user._id;
-    // const user_id = '5f9f692d8413900d78dd8773';
+    // const user_id = ctx.state.user._id;
+    const user_id = '5f9f692d8413900d78dd8773';
     const user = await User.findById(user_id);
     // console.log(user.user_nick);
 

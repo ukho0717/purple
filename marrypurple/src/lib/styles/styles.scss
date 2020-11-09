@@ -12,7 +12,7 @@ a {
     cursor: pointer; 
     color: #2c2c2c; 
 }
-#wrap { 
+#wrap10 { 
     display: flex; 
     width: 100%; 
     height: 100vh;
@@ -36,6 +36,7 @@ a {
 }
 #left_menu::-webkit-scrollbar { display: none; }
 #left_menu > ul { height: 100%; }
+#left_menu > ul li:hover { background: none; border: none; }
 
 // 사이드 나의 프로필 부분
 #left_menu #myprofile { 
@@ -88,9 +89,12 @@ a {
 #left_menu #sub_menu { 
     padding: 12px 20px; 
 }
+#left_menu #sub_menu li:hover { 
+    color: #2c2c2c;
+}
 #left_menu #sub_menu a { 
     display: inline-block; 
-    color: #000; 
+    color: #2c2c2c; 
     font-weight: bold; 
     font-size: 17px; 
     margin-right: 7px; 
@@ -116,6 +120,9 @@ a {
     display: inline-flex; 
     overflow-x: hidden; 
     height: fit-content; 
+}
+#left_menu #slide_box > div li:hover {
+    color: #2c2c2c;
 }
 
 // 사이드 매치
@@ -152,7 +159,7 @@ a {
     background: none; 
 }
 #left_menu #slide_box #sub_menu_match ul a:first-child div li { 
-    color: #000; 
+    color: #2C2C2C; 
 }
 
 // 사이드 메시지
@@ -164,7 +171,7 @@ a {
     width: 100%; 
 }
 #left_menu #slide_box #sub_menu_message a { 
-    color: #000; 
+    color: #2C2C2C; 
 }
 #left_menu #slide_box #sub_menu_message .message_listP div { 
     display: inline-block; 
@@ -207,7 +214,7 @@ a {
     width: 100%; 
 }
 #left_menu #slide_box #sub_menu_enter ul a { 
-    color: #000; 
+    color: #2C2C2C; 
 }
 #left_menu #slide_box #sub_menu_enter ul li { 
     width: 100%; 
@@ -251,7 +258,7 @@ a {
     width: 100%; 
 }
 #left_menu #slide_box #sub_menu_myprofile dl a { 
-    color: #000; 
+    color: #2C2C2C; 
 }
 #left_menu #slide_box #sub_menu_myprofile dl dd { 
     width: 100%; 
@@ -294,7 +301,7 @@ a {
     right: 16px; 
 }
 #left_menu #slide_box #sub_menu_myprofile div:nth-child(4) dd:hover span { 
-    color: #000; 
+    color: #2C2C2C; 
 }
 
 #left_menu #slide_box #sub_menu_myprofile .input_type_radio2 { 
@@ -438,7 +445,7 @@ div[slider] > input[type=range]::-ms-tooltip { display: none; }
     margin-left: -11px; 
     top: -60px; 
     z-index:3; 
-    color: #000; 
+    color: #2C2C2C; 
     width: 28px; 
     height: 28px; 
     border-radius: 28px; 

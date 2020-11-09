@@ -3,15 +3,17 @@ import { all } from "redux-saga/effects";
 import loading from "./loading";
 import matching, { matchSaga } from "./matching";
 import badList, { badListSagaPostsSaga } from './badList';
+import photo, { photoSaga } from './photos';
 
 const rootReducer = combineReducers({ 
     matching,
     loading,
-    badList
+    badList,
+    photo
 });
 
 export function* rootSaga() {
-    yield all([matchSaga(), badListSagaPostsSaga()]);
+    yield all([matchSaga(), badListSagaPostsSaga(), photoSaga()]);
 }
 
 export default rootReducer;

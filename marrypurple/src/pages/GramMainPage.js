@@ -1,19 +1,19 @@
 import React from 'react';
 import SideMenuContainer from '../containers/common/SideMenuContainer';
 import ContentContainer from '../containers/common/ContentContainer';
-import BadBoardContainer from '../containers/notice/BoardBadContainer';
+import GramMainContainer from '../containers/enter_gram/GramMainContainer';
 
-const BadBoardPage = () => {
+const GramMainPage = () => {
     return (
         <>
             <div id="wrap10">
                 <SideMenuContainer/>
                 <ContentContainer >
-                    <BadBoardContainer/>
+                    <GramMainContainer/>
                 </ContentContainer>
             </div>
         </>
     )
 }
 
-export default BadBoardPage;
+export default GramMainPage;

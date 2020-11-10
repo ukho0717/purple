@@ -5,7 +5,8 @@ import $ from 'jquery';
 // import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 
-const GramMain = () => {
+const GramMain = ({ listGram }) => {
+    console.log(listGram);
     const script = () => {
 
     }
@@ -14,23 +15,14 @@ const GramMain = () => {
 
     return(
         <>
-            <div class="gram_1">
-                <Link to="/gram_write"><div class="gram_1_button">게시물 올리기</div></Link>
-            </div>
-            <div class="gram_2">
-                <p>HOT</p>
-                <Link to="/gram_post"><div class="gram_2_photo"></div></Link>
-                <Link to="/gram_post"><div class="gram_2_photo"></div></Link>
-                <Link to="/gram_post"><div class="gram_2_photo"></div></Link>
-                <Link to="/gram_post"><div class="gram_2_photo"></div></Link>
-            </div>
-            <div class="gram_3">
-                <p>최신 스토리</p>
-                <Link to="/gram_post"><div class="gram_3_photo"></div></Link>
-                <Link to="/gram_post"><div class="gram_3_photo"></div></Link>
-                <Link to="/gram_post"><div class="gram_3_photo"></div></Link>
-                <Link to="/gram_post"><div class="gram_3_photo"></div></Link>
-            </div>
+            {listGram && (
+                <div className="gram_3">
+                    <p>최신 스토리</p>
+                    {listGram.map(gram => (
+                        <Link to={`/gram_post/${gram._id}`}><div className="gram_3_photo" style={{ background: `url(${gram.InstaImage})`, backgroundSize: '100%', backgroundRepeat: 'no-repeat' }}></div></Link>
+                    ))}
+                </div>
+            )}
         </>
     )
 }

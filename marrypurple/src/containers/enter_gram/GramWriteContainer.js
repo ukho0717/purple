@@ -1,44 +1,42 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import GramWrite from '../../components/enter_gram/GramWrite';
 // import qs from 'qs';
 import { withRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { writeGram } from '../../modules/gramWrite';
+import { changeField, initializeForm, writeGram } from '../../modules/gramWrite';
 
 const GramWriteContainer = ({ history }) => {
-    // const dispatch = useDispatch();
-    // const { InstaImage, content, gram, gramError } = useSelector(({ gramWrite }) => ({
-    //     InstaImage: gramWrite.InstaImage,
-    //     content: gramWrite.content,
-    //     gram: gramWrite.gram,
-    //     gramError: gramWrite.gramError
-    // }));
+    const [error, serError] = useState(null);
+    const dispatch = useDispatch();
+    const { form, gram, gramError } = useSelector(({ gramWrite }) => ({
+        form: gramWrite.form,
+        gram: gramWrite.gram,
+        gramError: gramWrite.gramError
+    }));
 
-    // const onPublish = () => {
-    //     // event.preventDefault();
-    //     // const formData = new FormData();
-    //     // console.log(event.target.InstaImage.files[0]);
-    //     // formData.append('content', event.target.InstaImage.file);
-    //     // formData.append('content', event.target.content.value);
+    const onChange = e => {
+        const { value, name } = e.target;
+        dispatch(changeField({
+            form,
+            key: name,
+            value
+        }))
+    }
+    
+    const onSubmit = e => {
+        e.preventDefault();
+        const { file, content } = form;
+        console.log('file', file, 'content', content);
 
-    //     // console.log(formData);
-    //     dispatch(
-    //         writeGram({
-    //             // formData
-    //         })
-    //     )
-    // };
 
-    // useEffect(() => {
-    //     if(gram){
-    //         history.push('/gram_write');
-    //     }
-    //     if(gramError){
-    //         console.log(gramError);
-    //     }
-    // }, [history, gram, gramError])
+    }
+
+    useEffect(() => {
+        dispatch(initializeForm());
+    }, [dispatch]);
+
     return (
-        <GramWrite />
+        <GramWrite onChange={onChange} onSubmit={onSubmit} form={form}/>
     )
 }
 

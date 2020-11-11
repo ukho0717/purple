@@ -23,12 +23,16 @@ export const write = async ctx => {
     //     ctx.body = result.error;
     //     return;
     // }
-    console.log('!!!!!', ctx.request);
+    console.log('!!!!!', ctx.request.body);
+    // console.log('12345', ctx.req);
+    console.log('99999', ctx.req.body);
+    console.log('55555', ctx.file.filename);
+    
 
     const content = ctx.req.body.content;
-    const comment = ctx.req.body.comment;
+    // const comment = ctx.req.body.comment;
     const InstaImage = ctx.req.file.filename;
-    console.log('content', content, ' comment', comment, ' InstaImage', InstaImage);
+    console.log('content', content, ' InstaImage', InstaImage);
     // console.log(ctx.state.user._id);
     // const user_id = ctx.state.user._id;
     const user_id = '5f9f692d8413900d78dd8773';
@@ -38,7 +42,7 @@ export const write = async ctx => {
     const post = new Gram({
         InstaImage: 'http://localhost:4000/' + InstaImage,
         content: content,
-        comment: [comment],
+        comment: [],
         User: {
             user_nick: user.user_nick
         }

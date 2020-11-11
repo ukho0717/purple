@@ -16,10 +16,9 @@ export const changeField = createAction(CHANGE_FIELD, ({ key, value }) => ({
     key,
     value
 }));
-export const writeGram = createAction(WRITE_GRAM, ({ InstaImage, content, comment }) => ({
+export const writeGram = createAction(WRITE_GRAM, ({ InstaImage, content }) => ({
     InstaImage,
-    content,
-    comment
+    content
 }));
 
 const writeGramSaga = createRequestSaga(WRITE_GRAM, gramPostsAPI.gramWrite);
@@ -30,7 +29,6 @@ export function* writeSaga(){
 const initialState = {
     InstaImage: '',
     content: '',
-    comment: [],
     gram: null,
     gramError: null
 };

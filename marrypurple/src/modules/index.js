@@ -8,8 +8,12 @@ import badList, { badListsSaga } from './badList';
 import listGram, { gramListsSaga } from './listGram';
 import listLikeGram, { likeGramListsSaga } from './listLikeGram'
 import gramWrite, { writeSaga } from './gramWrite';
+import user, { userSaga } from "./user";
+import auth, {authSaga} from "./auth";
 
 const rootReducer = combineReducers({ 
+    user,
+    auth,
     matching,
     loading,
     back,
@@ -21,7 +25,7 @@ const rootReducer = combineReducers({
 });
 
 export function* rootSaga() {
-    yield all([matchSaga(), backSaga(), ctrlSaga(), badListsSaga(), gramListsSaga(), likeGramListsSaga(), writeSaga()]);
+    yield all([authSaga(),userSaga(),matchSaga(), backSaga(), ctrlSaga(), badListsSaga(), gramListsSaga(), likeGramListsSaga(), writeSaga()]);
 }
 
 export default rootReducer;

@@ -8,6 +8,7 @@ import axios from 'axios';
 
 const RegisterForm = ({ history }) => {
   const [error, setError] = useState(null);
+  const [profile_pic, setProfile_pic] = useState(null);
   const dispatch = useDispatch();
   const { form, auth, authError, user } = useSelector(({ auth, user }) => ({
     form: auth.register,
@@ -15,25 +16,24 @@ const RegisterForm = ({ history }) => {
     authError: auth.authError,
     user: user.user,
   }));
-
   const fileSelectHandler = (event) =>{
 
     imgbbUploader(event.target.files[0]).then(resp => {
       
       console.log(resp.data.data.url);
-       
-    })
-    
-    const {  name } = event.target;
-    const  { value } = event.target.files[0];
+      setProfile_pic(resp.data.data.url);
+      const { value, name} = event.target;
       dispatch(
         changeField({
+          url: resp.data.data.url,
           form: "register",
           key: name,
           value,
+          
         }),
-      );
-      
+        );
+        
+      })
 }
 
 
@@ -69,7 +69,8 @@ const imgbbUploader = ( img ) => {
   const onSubmit = (event) => {
     console.log("회원가입시도")
     event.preventDefault();
-    const { user_email, user_pw, user_gender,user_age,user_nick,profile_pic} = form;
+
+    const { user_email, user_pw, user_gender,user_age,user_nick} = form;
     if ([user_email, user_pw, user_gender,user_age,user_nick].includes("")) {
       setError("빈 칸을 모두 입력하세요");
       return;

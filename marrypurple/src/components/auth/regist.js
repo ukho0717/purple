@@ -89,7 +89,7 @@ const Register = ({type,form,onSubmit,error,onChange,fileSelectHandler}) => {
                         <input type="file" 
                         name="profile_pic" 
                         onChange={fileSelectHandler}
-                        value={form.profile_pic} 
+                        // value={form.profile_pic} 
                         />
                     </div>
                     <div className="inputPro inputPro2"> 

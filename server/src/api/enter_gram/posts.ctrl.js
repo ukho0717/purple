@@ -6,7 +6,7 @@ import User from '../../models/user';
 const { ObjectId } = mongoose.Types;
 
 export const write = async ctx => {
-    // console.log('write Post 호출');
+    console.log('write Post 호출');
     // console.log(ctx.request.body);
     // console.log(ctx.request.file);
     // console.log('!!!', ctx.req.file);
@@ -23,15 +23,16 @@ export const write = async ctx => {
     //     ctx.body = result.error;
     //     return;
     // }
-    console.log('!!!!!', ctx.request.body);
-    // console.log('12345', ctx.req);
-    console.log('99999', ctx.req.body);
-    console.log('55555', ctx.file.filename);
-    
+    // console.log('!!!!!', ctx.request.body);
+    // console.log('9999', ctx.request);
+    // console.log(ctx.req.file);
+    // console.log('12345', ctx.req.file.filename);
+    console.log(ctx.request.body);
+    const { InstaImage, content } = ctx.request.body;    
 
-    const content = ctx.req.body.content;
+    // const content = ctx.req.body.content;
     // const comment = ctx.req.body.comment;
-    const InstaImage = ctx.req.file.filename;
+    // const InstaImage = ctx.req.file.filename;
     console.log('content', content, ' InstaImage', InstaImage);
     // console.log(ctx.state.user._id);
     // const user_id = ctx.state.user._id;
@@ -40,7 +41,7 @@ export const write = async ctx => {
     console.log('user야 나와라',user);
 
     const post = new Gram({
-        InstaImage: 'http://localhost:4000/' + InstaImage,
+        InstaImage: InstaImage,
         content: content,
         comment: [],
         User: {

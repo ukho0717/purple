@@ -2,6 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import GramMainPage from './pages/GramMainPage';
 import GramWritePage from './pages/GramWritePage';
+import GramReadPage from './pages/GramReadPage';
 import BadBoardPage from './pages/BadBoardPage';
 import FaqPage from './pages/FaqPage';
 import WorkPage from './pages/WorkPage';
@@ -25,6 +26,7 @@ const App = () => {
       <Route component={ChangePwPage} path="/changePw"/>
       <Route component={GramMainPage} path="/gram_main"/>
       <Route component={GramWritePage} path="/gram_write"/>
+      <Route component={GramReadPage} path="/gram_post/:gram_id"/>
       <Route component={BadBoardPage} path="/board_bad"/>
       <Route component={FaqPage} path="/FAQ"/>
       <Route component={WorkPage} path="/work"/>

@@ -68,16 +68,17 @@ import axios from 'axios';
 //     }
 // }
 
-const GramWrite = ({ onSubmit, onChange, form }) => {
+const GramWrite = ({ onSubmit }) => {
     const script = () => {
-        $('#gramW_1_file').on('change', function(){
-            readURL(this);
-            // console.log('this', this);
+        $('.gramW_1_back').on('click', function(){
+            window.history.back();
         });
     }
 
     function readURL(input) {
         if(input.files && input.files[0]) {
+            // console.log('파일이름', input.files[0].name);
+            // console.log(input.files[0].name);
             var reader = new FileReader();
         
             reader.onload = function (e) {
@@ -87,7 +88,33 @@ const GramWrite = ({ onSubmit, onChange, form }) => {
             }
         
             reader.readAsDataURL(input.files[0]);
+            // $('#gramW_1_file').addClass(res.data.data.url);
         }
+    }
+
+    const fileSelectHandler = e =>{
+        imgbbUploader(e.target.files[0]).then(res => {
+            // console.log(res.data.data.url);
+            // console.log(e.target);
+            readURL(e.target);
+            $('#gramW_1_file').addClass(res.data.data.url);
+        });
+    }
+
+    const imgbbUploader = ( img ) => {
+        let body = new FormData();
+        body.set('key', 'a88534ba3406503cc7c607af2810b2d9');
+        body.append('image', img)
+    
+        return axios({
+            url: 'https://api.imgbb.com/1/upload',
+            method: 'post',
+            timeout: 0,
+            processData: false,
+            mimeType: "multipart/form-data",
+            contentType: false,
+            data: body
+        })
     }
 
     script();
@@ -96,16 +123,16 @@ const GramWrite = ({ onSubmit, onChange, form }) => {
         <>
             <div class="gramW_1">
                 <form method="post" enctype="multipart/form-data" onSubmit={onSubmit}>
-                    <p>작성하기</p>
+                    <div><div className="gramW_1_back"></div><p>작성하기</p></div>
                     <label for="gramW_1_file">사진선택</label>
-                    <input type="file" id="gramW_1_file" name="file" onChange={onChange} value={form.file}/>
+                    <input type="file" id="gramW_1_file" name="file" onChange={fileSelectHandler}/>
                     <div id="gramW_1_photo">
                         <span id="photoPre">미리보기</span>
                         <img/>
                     </div>
                     <textarea placeholder="내용을 입력해주세요.(100자 제한)
 카카오톡 아이디 또는 개인 연락처를 
-노출할 경우 계정이 정지될 수 있습니다." name="content" onChange={onChange} value={form.content}></textarea>
+노출할 경우 계정이 정지될 수 있습니다." name="content" ></textarea>
                     <p id="warning">* 개인 연락처 노출, 부적절한 이미지 등록,<br/>신고 3회 이상의 경우 계정이 정지처리 됩니다.</p>
                     <input type="submit" value="완료"/>
                 </form>

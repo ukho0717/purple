@@ -6,7 +6,7 @@ import $ from 'jquery';
 import { Link } from 'react-router-dom';
 
 const GramLikeMain = ({ listLikeGram }) => {
-    console.log(listLikeGram);
+    // console.log(listLikeGram);
     const script = () => {
 
     }
@@ -23,7 +23,7 @@ const GramLikeMain = ({ listLikeGram }) => {
                 <div class="gram_2">
                     <p>HOT</p>
                     {listLikeGram.map(likeGram => (
-                        <Link to={`/gram_post/${likeGram._id}`}><div className="gram_2_photo" style={{ background: `url(${likeGram.InstaImage})`, backgroundSize: '100%', backgroundRepeat: 'no-repeat' }}></div></Link>
+                        <Link to={`/gram_post/${likeGram._id}`}><div className="gram_2_photo" style={{ background: `url(${likeGram.InstaImage})`, backgroundSize: '100%', backgroundRepeat: 'no-repeat', backgroundPosition: 'center' }}></div></Link>
                     ))}
                 </div>
             )}

@@ -8,35 +8,44 @@ import { changeField, initializeForm, writeGram } from '../../modules/gramWrite'
 const GramWriteContainer = ({ history }) => {
     const [error, serError] = useState(null);
     const dispatch = useDispatch();
-    const { form, gram, gramError } = useSelector(({ gramWrite }) => ({
-        form: gramWrite.form,
+    const { gram, gramError } = useSelector(({ gramWrite }) => ({
         gram: gramWrite.gram,
         gramError: gramWrite.gramError
     }));
 
-    const onChange = e => {
-        const { value, name } = e.target;
-        dispatch(changeField({
-            form,
-            key: name,
-            value
-        }))
-    }
+    // const onChange = e => {
+    //     const { value, name } = e.target;
+    //     dispatch(changeField({
+    //         form,
+    //         key: name,
+    //         value
+    //     }))
+    // }
     
     const onSubmit = e => {
+        console.log('onSubmit');
+        console.log(e.target.content.value);
+        console.log(e.target.file.className);
+        let InstaImage = e.target.file.className;
+        let content = e.target.content.value;
+
         e.preventDefault();
-        const { file, content } = form;
-        console.log('file', file, 'content', content);
 
-
+        dispatch(writeGram({
+            InstaImage,
+            content
+        }));
     }
 
     useEffect(() => {
-        dispatch(initializeForm());
-    }, [dispatch]);
+        if(gram){
+            alert('성공');
+            history.push('/gram_main');
+        }
+    }, [dispatch, gram]);
 
     return (
-        <GramWrite onChange={onChange} onSubmit={onSubmit} form={form}/>
+        <GramWrite onSubmit={onSubmit}/>
     )
 }
 

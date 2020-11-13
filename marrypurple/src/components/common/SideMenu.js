@@ -5,11 +5,10 @@ import '../../lib/styles/styles.scss';
 import $ from 'jquery';
 import { Helmet } from 'react-helmet';
 const Haa = ({list}) => {
-    console.log('asdfasdf', list.user_nick);
+    // console.log('asdfasdf', list.user_nick);
     return<>
         <Link to="/chat">
             <div style={{ background: `url(${list.profile_pic})`, backgroundSize: '100%', textShadow: '1px 1px 1px gray', backgroundPosition:"center",color:'#fff'}} >{list.user_nick}</div>
-            
         </Link>
     </>
 }
@@ -17,10 +16,10 @@ const Haa = ({list}) => {
 const Chatt = ({list})=> {
     return(
         <>
-            <a href="message.html"><li class="message_listP">
+            <Link to={`/chat/${list.match}`}><li class="message_listP">
             <div class="message_listP_wrap"><div class="message_listP_photo"><div></div></div>
             <div><span class="message_listP_id">{list.user_nick}</span></div></div>
-            </li></a>
+            </li></Link>
         </>
     )
 }
@@ -185,6 +184,7 @@ const SideMenu = ({ currentPage , chat}) => {
                                                 {chat.map(list => (
                                                     <Haa 
                                                     list={list} 
+                                                    key={list._id}
                                                     />
                                                 ))}
                                             </>
@@ -200,6 +200,7 @@ const SideMenu = ({ currentPage , chat}) => {
                                                 {chat.map(list => (
                                                     <Chatt 
                                                     list={list} 
+                                                    key={list._id}
                                                     />
                                                 ))}
                                             </>

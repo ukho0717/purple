@@ -15,3 +15,22 @@ export const chatUser = async ctx=>{
         ctx.throw(500,e);
     }
 }
+
+export const getUserById = async (ctx, next) => {
+    const { id } = ctx.params;
+    if (!ObjectId.isValid(id)) {
+      ctx.status = 400;
+      return;
+    }
+    try {
+      const user = await User.findOne({match:id});
+      if(!user){
+        ctx.status = 404;
+        return;
+      }
+      ctx.state.chat = user;
+      return next()
+    }catch(e){
+      ctx.throw(500, e);
+    }
+  };

@@ -12,6 +12,7 @@ import gramPost, { postSaga } from './gramPost';
 import user, { userSaga } from "./user";
 import auth, {authSaga} from "./auth";
 import chat, {chatSaga} from "./chat"
+import getChat, {chatUserSaga} from './getChtUser'
 
 const rootReducer = combineReducers({ 
     user,
@@ -25,12 +26,13 @@ const rootReducer = combineReducers({
     listLikeGram,
     gramWrite,
     gramPost,
-    chat
+    chat,
+    getChat
 });
 
 export function* rootSaga() {
 
-    yield all([matchSaga(), backSaga(), ctrlSaga(), badListsSaga(), gramListsSaga(), likeGramListsSaga(), writeSaga(), postSaga(), authSaga(),userSaga(),matchSaga(), backSaga(), ctrlSaga(), badListsSaga(), gramListsSaga(), likeGramListsSaga(), writeSaga(), chatSaga()]);
+    yield all([matchSaga(), backSaga(), ctrlSaga(), badListsSaga(), gramListsSaga(), likeGramListsSaga(), writeSaga(), postSaga(), authSaga(),userSaga(),matchSaga(), backSaga(), ctrlSaga(), badListsSaga(), gramListsSaga(), likeGramListsSaga(), writeSaga(), chatSaga(),chatUserSaga()]);
 
 }
 

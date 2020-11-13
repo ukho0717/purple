@@ -6,7 +6,7 @@ import SideMenu from '../../components/common/SideMenu';
 import Side from '../../components/common/Side';
 
 const SideMenuContainer = ({ location, chat }) => {
-    console.log('!!!!', chat);
+    // console.log('!!!!', chat);
     // const dispatch = useDispatch();
     const { currentPage } = useSelector(() => ({ currentPage: location.pathname }));
 

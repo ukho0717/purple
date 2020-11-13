@@ -1,27 +1,30 @@
 import React, {useEffect} from 'react';
 import ChatContainer from './ChatContainer'
+import { withRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { chatUser, unloadChatUser } from '../../modules/chat'
+import { getChatUser, unloadCUser } from '../../modules/getChtUser'
 
-const ChatContainerContainer = () => {
+const ChatContainerContainer = ({match}) => {
+    const chatId = match.params;
     const dispatch = useDispatch();
-    const { chat, error, loading } = useSelector(({ chat, loading }) => ({
-        chat: chat.chat,
-        error: chat.error,
-        loading: loading['chat/CHAT_LIST']
+    const { getChat, error, loading } = useSelector(({ getChat, loading }) => ({
+        getChat: getChat.getChat,
+        error: getChat.error,
+        loading: loading['chat/CHAT_USER']
     }));
     useEffect(() => {
-        dispatch(chatUser());
+        dispatch(getChatUser(chatId));
         return () => {
-            dispatch(unloadChatUser());
+            dispatch(unloadCUser());
         };
-    }, [dispatch]);
-    console.log('매칭된 chatUser 불러오는 중.... ', chat)
+    }, [dispatch, chatId]);
+    // console.log('매칭된 chatUser 불러오는 중.... ', chat)
     return(
         <ChatContainer
-            chat={chat}
+            user={getChat}
+            loading = {loading}
         />
     )
 }
 
-export default ChatContainerContainer
+export default withRouter(ChatContainerContainer)

@@ -4,7 +4,9 @@ import '../../lib/styles/chat.scss'
 
 const socket = io.connect('/')
 
-const ChatContainer = () => {
+const ChatContainer = ({user, loading}) => {
+    console.log('채팅 유저유저유저유저 ', user)
+
     const [state, setState] = useState({message: '', name:'김사과'});
     const [chat, setChat] = useState([])
 
@@ -40,7 +42,7 @@ const ChatContainer = () => {
         <div>
             <div class="message_1">
                     <a href="message_profile.html"><div id="message_1_photo"><div></div></div>
-                    <p><span id="message_1_id">냐냐냐냐오오오오옹</span>님과 <span id="message_1_date">2020.9.8</span>에 매치되었습니다.</p></a>
+        <p><span id="message_1_id"></span>님과 <span id="message_1_date">2020.9.8</span>에 매치되었습니다.</p></a>
                 </div>
                 <div class="message_2" id="msgBoard">
                     <p>2020.10.07</p>

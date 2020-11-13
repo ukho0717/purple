@@ -12,7 +12,7 @@ import imgE from '../../../lib/images/icon/8c6f9b49103dd67cf3bfd50f561b46d6.png'
 const MatchingItem = ({ back, list, onToggle, showProfile, onToggle_report, urlAddress }) => {
   // console.log('showProfile.reportActive : ', showProfile.reportActive)
     const dispatch = useDispatch();
-    const { profile_pic, user_nick, address, user_age, personality, brief_intro, match} = list;
+    const { profile_pic, user_nick, address, user_age, personality, brief_intro, match, _id} = list;
     return (
     <>
         <div className="match_1">
@@ -25,7 +25,7 @@ const MatchingItem = ({ back, list, onToggle, showProfile, onToggle_report, urlA
         <div className="match_2">
             <a href="#aaa"><div className="match_2_pre"></div></a>
             <a href="#aaa"><div className="match_2_next"></div></a>
-            <div id="match_2_photo"><ProfilePic pics={profile_pic}/></div>
+            <div id="match_2_photo"><ProfilePic pics={profile_pic} key={_id}/></div>
             {/* <div id="match_2_photo"><img src={profile_pic} alt="프로필사진"/></div> */}
         </div>
         <div className="match_3">

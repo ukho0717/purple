@@ -3,7 +3,7 @@ require('dotenv').config();
 const fs = require('fs')
 const serve   = require('koa-static');
 
-const path = require('path');
+// const path = require('path');
 
 import Koa from 'koa';
 import Router from 'koa-router';
@@ -43,10 +43,6 @@ app.use(router.routes()).use(router.allowedMethods());
 
 // router.use('/uploads',serve(path.resolve(__dirname, './api/enter_gram/uploads')));
 
-
-router.get('/', ctx => {
-    ctx.body = '홍';
-});
 
 var readFileThunk = function(src) {
     return new Promise(function (resolve, reject) {

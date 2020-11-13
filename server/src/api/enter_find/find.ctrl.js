@@ -1,3 +1,4 @@
+import User from '../../models/user';
 import Matching from '../../models/matching';
 
 export const select = async ctx=>{
@@ -32,7 +33,7 @@ export const select = async ctx=>{
         let my_style = list[0]? list[0]: null
     
         // 내이상형 유저 정보 보냄
-        ctx.body = await Matching.findById(my_style)
+        ctx.body = await User.findOne({match:my_style})
     
     }catch(e){
         ctx.throw(500,e);

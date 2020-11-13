@@ -131,8 +131,10 @@ a {
     width: 100%; 
 }
 #left_menu #slide_box #sub_menu_match ul div { 
-    width: 47%; 
-    height: 128px; 
+    width: 15vw; 
+    max-width: 45%;
+    height: 10vw; 
+    max-height: 128px;
     margin-right: 5%; 
     margin-bottom: 5%; 
     float: left; 

@@ -14,6 +14,7 @@ import FindPwPage from './pages/FindPwPage';
 import ChangePwPage from './pages/ChangePwPage';
 import MatchingPage from './pages/MatchingPage'
 import BackUserPage from './pages/BackUserPage';
+import ChatPage from './pages/ChatPage'
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
       <Route component={WorkPage} path="/work"/>
       <Route component={MatchingPage} path="/match"/>
       <Route component={BackUserPage} path="/back"/>
+      <Route component={ChatPage} path="/chat"/>
     </>
   )
 }

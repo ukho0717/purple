@@ -2,9 +2,22 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../lib/styles/marrylogin.scss'
 import LoginH from '../../lib/img/LoginH.png';
+import io from 'socket.io-client'
 
+const socket = io.connect('/')
 const MarryLogin = ({type, form, onChange, onSubmit, error }) => {
     console.log(form)
+    
+    const Onclick = () => {
+        let output = {id:form.user_email};
+        console.log('서버로 보낼 데이터 : ' + JSON.stringify(output));
+        
+        if(socket == undefined){
+            alert('서버에 연결되어 있지 않습니다. 먼저 서버에 연결하세요.');
+            return;
+        }
+        socket.emit('login', output);
+    }
     return(
         <div id="loginWrap">
         <div id="MLcontainer">

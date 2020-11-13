@@ -2,9 +2,9 @@ import React from 'react';
 
 const ProfilePic = ({pics}) => {
     return(
-        <div>
+        <div style={{display:"flex"}}>
             {pics.map(pic => (
-                <img src={require({pic})} alt="프로필사진"/>
+                <img src={pic} alt="프로필사진"/>
             ))}
         </div>
     )

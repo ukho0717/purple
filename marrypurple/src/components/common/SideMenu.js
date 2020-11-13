@@ -4,8 +4,28 @@ import { Link } from 'react-router-dom';
 import '../../lib/styles/styles.scss';
 import $ from 'jquery';
 import { Helmet } from 'react-helmet';
+const Haa = ({list}) => {
+    console.log('asdfasdf', list.user_nick);
+    return<>
+        <Link to="/chat">
+            <div style={{ background: `url(${list.profile_pic})`, backgroundSize: '100%', textShadow: '1px 1px 1px gray', backgroundPosition:"center",color:'#fff'}} >{list.user_nick}</div>
+            
+        </Link>
+    </>
+}
 
-const SideMenu = ({ currentPage }) => {
+const Chatt = ({list})=> {
+    return(
+        <>
+            <a href="message.html"><li class="message_listP">
+            <div class="message_listP_wrap"><div class="message_listP_photo"><div></div></div>
+            <div><span class="message_listP_id">{list.user_nick}</span></div></div>
+            </li></a>
+        </>
+    )
+}
+
+const SideMenu = ({ currentPage , chat}) => {
     // console.log('~~~',currentPage);
     async function script(){
         switch(currentPage){
@@ -121,123 +141,6 @@ const SideMenu = ({ currentPage }) => {
         });
     }
 
-    // const script = () => {
-    //     console.log(window.location.pathname);
-    //     let currentPage = window.location.pathname;
-
-    //     switch(currentPage){
-    //         case '/match':
-    //         case '/match_like':
-    //         case '/match_profile':
-    //             $('#m1').addClass('on');
-    //             $('#slide_box div').removeClass('on').removeClass('off');
-    //             $('#sub_menu_match').addClass('on');
-    //             $('#sub_menu_match').siblings().addClass('off');
-    //             break;
-    //         case '/message':
-    //         case '/message_profile':
-    //             $('#m2').addClass('on');
-    //             $('#slide_box div').removeClass('on').removeClass('off');
-    //             $('#sub_menu_message').addClass('on');
-    //             $('#sub_menu_message').siblings().addClass('off');
-    //             break;
-    //         case '/worldcup1':
-    //         case '/worldcup2':
-    //         case '/worldcup3':
-    //         case '/Telepathy':
-    //         case '/Telepathy_make_quiz':
-    //         case '/Telepathy_get_quiz':
-    //         case '/find_main':
-    //         case '/find_select':
-    //         case '/find_match':
-    //         case '/gram_main':
-    //         case '/gram_write':
-    //         case '/gram_post':
-    //         case '/board_bad':
-    //             $('#m3').addClass('on');
-    //             $('#slide_box div').removeClass('on').removeClass('off');
-    //             $('#sub_menu_enter').addClass('on');
-    //             $('#sub_menu_enter').siblings().addClass('off');
-    //             switch(currentPage){
-    //                 case '/worldcup1':
-    //                 case '/worldcup2':
-    //                 case '/worldcup3':
-    //                     $('#left_menu #slide_box #sub_menu_enter ul a:nth-child(1)').addClass('on');
-    //                     break;
-    //                 case '/Telepathy':
-    //                 case '/Telepathy_make_quiz':
-    //                 case '/Telepathy_get_quiz':
-    //                     $('#left_menu #slide_box #sub_menu_enter ul a:nth-child(2)').addClass('on');
-    //                     break;
-    //                 case '/find_main':
-    //                 case '/find_select':
-    //                 case '/find_match':
-    //                     $('#left_menu #slide_box #sub_menu_enter ul a:nth-child(3)').addClass('on');
-    //                     break;
-    //                 case '/gram_main':
-    //                 case '/gram_write':
-    //                 case '/gram_post':
-    //                     $('#left_menu #slide_box #sub_menu_enter ul a:nth-child(4)').addClass('on');
-    //                     break;
-    //                 case '/board_bad':
-    //                     $('#left_menu #slide_box #sub_menu_enter ul a:nth-child(6)').addClass('on');
-    //                     break;
-    //             }
-    //     }
-
-    //     // 서브 메뉴 클릭시
-    //     $('#m1').on('click', function() { 
-    //         $('#slide_box div').removeClass('on').removeClass('off');
-    //         $('#sub_menu_match').addClass('on');
-    //         $('#sub_menu_match').siblings().addClass('off');
-    
-    //         $('#sub_menu a').removeClass('on');
-    //         $(this).addClass('on');
-    //     });
-    //     $('#m2').on('click', function() {
-    //         $('#slide_box div').removeClass('on').removeClass('off');
-    //         $('#sub_menu_message').addClass('on');
-    //         $('#sub_menu_message').siblings().addClass('off');
-    
-    //         $('#sub_menu a').removeClass('on');
-    //         $(this).addClass('on');
-    //     });
-    //     $('#m3').on('click', function() {
-    //         $('#slide_box div').removeClass('on').removeClass('off');
-    //         $('#sub_menu_enter').addClass('on');
-    //         $('#sub_menu_enter').siblings().addClass('off');
-    
-    //         $('#sub_menu a').removeClass('on');
-    //         $(this).addClass('on');
-    //     });
-    //     $('#myprofile_btn').on('click', function() {
-    //         $('#slide_box div').removeClass('on').removeClass('off');
-    //         $('#sub_menu_myprofile').addClass('on');
-    //         $('#sub_menu_myprofile').siblings().addClass('off');
-    
-    //         $('#sub_menu a').removeClass('on');
-    //         $(this).addClass('on');
-    //     });
-
-    //     // 공지사항 누르면
-    //     // 웹 버전
-    //     $('#left_menu #slide_box #sub_menu_enter ul a:nth-child(5)').on('click', function(){
-    //         $('#left_menu #slide_box #sub_menu_enter ul a:nth-child(6)').toggleClass('on2');
-    //         $('#left_menu #slide_box #sub_menu_enter ul a:nth-child(7)').toggleClass('on2');
-    //     });
-
-    //     if($('#left_menu #slide_box #sub_menu_enter ul a:nth-child(6)').hasClass('on') || $('#left_menu #slide_box #sub_menu_enter ul a:nth-child(7)').hasClass('on')){
-    //         $('#left_menu #slide_box #sub_menu_enter ul a:nth-child(6)').addClass('on2');
-    //         $('#left_menu #slide_box #sub_menu_enter ul a:nth-child(7)').addClass('on2');
-    //     }
-
-    //     // 모바일 버전
-    //     $('.enterM_1 a:nth-child(5)').on('click', function(){
-    //         $('.enterM_1 a:nth-child(6)').toggleClass('on2');
-    //         $('.enterM_1 a:nth-child(7)').toggleClass('on2');
-    //     });
-    // }
-
     script();
 
     return(
@@ -276,24 +179,32 @@ const SideMenu = ({ currentPage }) => {
                             <div id="sub_menu_match" class="off">
                                 <ul>
                                     <Link to="match_like"><div><li>나를 좋아요</li></div></Link>
-                                    <Link to="message"><div><li>123</li></div></Link>
-                                    <Link to="message"><div><li>야야야</li></div></Link>
+                                    <>
+                                        {chat && (
+                                            <>
+                                                {chat.map(list => (
+                                                    <Haa 
+                                                    list={list} 
+                                                    />
+                                                ))}
+                                            </>
+                                        )}
+                                    </>
                                 </ul>
                             </div>
                             <div id="sub_menu_message" class="off">
                                 <ul id="message_list">
-                                    <a href="message.html"><li class="message_listP">
-                                        <div class="message_listP_wrap"><div class="message_listP_photo"><div></div></div>
-                                        <div><span class="message_listP_id">냐옹</span></div></div>
-                                    </li></a>
-                                    <a href="message.html"><li class="message_listP">
-                                        <div class="message_listP_wrap"><div class="message_listP_photo"><div></div></div>
-                                        <div><span class="message_listP_id">냐옹</span></div></div>
-                                    </li></a>
-                                    <a href="message.html"><li class="message_listP">
-                                        <div class="message_listP_wrap"><div class="message_listP_photo"><div></div></div>
-                                        <div><span class="message_listP_id">냐옹</span></div></div>
-                                    </li></a>
+                                    <>
+                                        {chat && (
+                                            <>
+                                                {chat.map(list => (
+                                                    <Chatt 
+                                                    list={list} 
+                                                    />
+                                                ))}
+                                            </>
+                                        )}
+                                    </>
                                 </ul>
                             </div>
                             <div id="sub_menu_enter" class="off">

@@ -3,14 +3,15 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import SideMenu from '../../components/common/SideMenu';
+import Side from '../../components/common/Side';
 
-
-const SideMenuContainer = ({ location }) => {
-    // console.log('!!!!', location);
+const SideMenuContainer = ({ location, chat }) => {
+    console.log('!!!!', chat);
     // const dispatch = useDispatch();
     const { currentPage } = useSelector(() => ({ currentPage: location.pathname }));
 
-    return <SideMenu currentPage={currentPage}/>;
+    return <SideMenu currentPage={currentPage} chat={chat}/>;
+
 }
 
 export default withRouter(SideMenuContainer);

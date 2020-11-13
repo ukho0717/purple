@@ -3,8 +3,7 @@ import '../../../lib/styles/matching.scss';
 import { pass, like, superlike } from '../../../modules/ctrl'
 import { useDispatch} from "react-redux";
 import Personality from './Personality';
-// import ProfilePic from './pieces/ProfilePic';
-import imgA from '../../../lib/images/images/C2005270925279578r.jpeg';
+import ProfilePic from './ProfilePic';
 import imgB from '../../../lib/images/icon/004980c2c35d4fa37d9635ed7f159c3c.png';
 import imgC from '../../../lib/images/icon/f84abf6d0bd53bf97dbb1011aa640499.png';
 import imgD from '../../../lib/images/icon/49f19f63a24305a4f1dedfd8481c01e2.png';
@@ -26,8 +25,8 @@ const MatchingItem = ({ back, list, onToggle, showProfile, onToggle_report, urlA
         <div className="match_2">
             <a href="#aaa"><div className="match_2_pre"></div></a>
             <a href="#aaa"><div className="match_2_next"></div></a>
-            {/* <div id="match_2_photo"><ProfilePic pics={profile_pic}/></div> */}
-            <div id="match_2_photo"><img src={imgA} alt="프로필사진"/></div>
+            <div id="match_2_photo"><ProfilePic pics={profile_pic}/></div>
+            {/* <div id="match_2_photo"><img src={profile_pic} alt="프로필사진"/></div> */}
         </div>
         <div className="match_3">
             <div>

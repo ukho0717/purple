@@ -5,12 +5,15 @@ import { useSelector } from 'react-redux';
 import SideMenu from '../../components/common/SideMenu';
 import Side from '../../components/common/Side';
 
-const SideMenuContainer = ({ location, chat }) => {
+const SideMenuContainer = ({ chat, match }) => {
     // console.log('!!!!', chat);
     // const dispatch = useDispatch();
-    const { currentPage } = useSelector(() => ({ currentPage: location.pathname }));
+    const { currentPage, user } = useSelector(({ user }) => ({ 
+        currentPage: match.path,
+        user: user.user
+    }));
 
-    return <SideMenu currentPage={currentPage} chat={chat}/>;
+    return <SideMenu currentPage={currentPage} chat={chat} user={user}/>;
 
 }
 

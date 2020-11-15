@@ -24,9 +24,10 @@ const Chatt = ({list})=> {
     )
 }
 
-const SideMenu = ({ currentPage , chat}) => {
+const SideMenu = ({ currentPage , chat, user }) => {
     // console.log('~~~',currentPage);
-    async function script(){
+    // console.log(user);
+    function script(){
         switch(currentPage){
             case '/match':
             case '/match_like':
@@ -54,7 +55,7 @@ const SideMenu = ({ currentPage , chat}) => {
             case '/find_match':
             case '/gram_main':
             case '/gram_write':
-            case '/gram_post':
+            case '/gram_post/:gram_id':
             case '/board_bad':
                 $('#m3').addClass('on');
                 $('#slide_box div').removeClass('on').removeClass('off');
@@ -78,7 +79,7 @@ const SideMenu = ({ currentPage , chat}) => {
                         break;
                     case '/gram_main':
                     case '/gram_write':
-                    case '/gram_post':
+                    case '/gram_post/:gram_id':
                         $('#left_menu #slide_box #sub_menu_enter ul a:nth-child(4)').addClass('on');
                         break;
                     case '/board_bad':
@@ -162,7 +163,7 @@ const SideMenu = ({ currentPage , chat}) => {
                 <ul>
                     <li>
                         <ul id="myprofile">
-                            <Link to="/Profile" id="myprofile_btn"><li><div id="myPho"><div></div></div><span>나의 프로필</span></li></Link>
+                            <Link to="/Profile" id="myprofile_btn"><li><div id="myPho" /*style={{ background: `url(${user.profile_pic[0]})`, backgroundSize: '100%', backgroundRepeat: 'no-repeat' }}*/><img src={user.profile_pic[0]}/><div></div></div><span>나의 프로필</span></li></Link>
                             <Link to="work"><li></li></Link>
                         </ul>
                     </li>

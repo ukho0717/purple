@@ -9,8 +9,9 @@ const CHANGE_FIELD = 'gram/CHANGE_FIELD';  // 특정 key값 바꾸기
 const [
     WRITE_GRAM,
     WRITE_GRAM_SUCCESS,
-    WRITE_GRAM_FAILURE
+    WRITE_GRAM_FAILURE,
 ] = createRequestActionTypes('gram/WRITE_GRAM');   // 그램 작성
+
 
 export const initializeForm = createAction(INITIALIZE_FORM);
 export const changeField = createAction(CHANGE_FIELD, ({ key, value }) => ({
@@ -23,6 +24,7 @@ export const writeGram = createAction(WRITE_GRAM, ({ InstaImage, content }) => (
 }));
 
 const writeGramSaga = createRequestSaga(WRITE_GRAM, gramPostsAPI.gramWrite);
+
 export function* writeSaga(){
     yield takeLatest(WRITE_GRAM, writeGramSaga);
 }

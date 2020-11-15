@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { getPhoto, unloadPhoto } from '../../modules/photos';
 
 const BoardBad = ({ badList }) => {
-    // console.log(badList);
+    // console.log('불량회원',badList);
     const dispatch = useDispatch();
         useEffect(() => {
             dispatch(getPhoto());
@@ -45,15 +45,10 @@ const BoardBad = ({ badList }) => {
                                     <dd>
                                         <div class="gramB_2_detail">
                                             <div class="gramB_2_datail_photo"><img src={post.User.profile_pic}/></div>
-                                            <p class="gramB_2_detail_content">{
-                                                post.reason === '음담패설' && (
-                                                <span>상대방에게 음담패설을 하여</span>
-                                                ),post.reason === '욕설' && (
-                                                    <span>상대방에게 욕설을 하여</span>
-                                                ),post.reason === '사진도용' && (
-                                                    <span>사진도용을 하여</span>
-                                                )
-                                            } 신고당하였습니다.<br/>이 회원을 보게되면 운영진에게 신고하여주세요.</p>
+                                            <p class="gramB_2_detail_content">
+                                                {post.reason == "음담패설" && (<span>상대방에게 음담패설을 하여</span>)}
+                                                {post.reason == "욕설" && (<span>상대방에게 욕설 하여</span>)}
+                                                {post.reason == "사진도용" && (<span>사진도용을 하여</span>)}신고당하였습니다.<br/>이 회원을 보게되면 운영진에게 신고하여주세요.</p>
                                         </div>
                                     </dd>
                                 </>

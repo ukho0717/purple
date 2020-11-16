@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 import '../../lib/styles/styles.scss';
 import $ from 'jquery';
 import { Helmet } from 'react-helmet';
+import io from 'socket.io-client'
+
+const socket = io.connect('/')
+
 const Haa = ({list}) => {
     // console.log('asdfasdf', list.user_nick);
     return<>
@@ -13,10 +17,21 @@ const Haa = ({list}) => {
     </>
 }
 
-const Chatt = ({list})=> {
+const Chatt = ({list,user})=> {
+        
+    // 소켓좀 넣겠습니다..
+    const OnClick = () => {
+        let output = {sender: user.user_email, recepient: list.user_email };
+        console.log(user.user_email)
+        if(socket == undefined){
+            alert('서버에 연결되어 있지 않습니다. 먼저 서버에 연결하세요.');
+            return;
+        }
+        socket.emit('preload', output);
+    }
     return(
         <>
-            <Link to={`/chat/${list.match}`}><li class="message_listP">
+            <Link to={`/chat/${list.match}`}  onClick={OnClick}><li class="message_listP">
             <div class="message_listP_wrap"><div class="message_listP_photo"><div></div></div>
             <div><span class="message_listP_id">{list.user_nick}</span></div></div>
             </li></Link>
@@ -24,7 +39,7 @@ const Chatt = ({list})=> {
     )
 }
 
-const SideMenu = ({ currentPage , chat, userPic }) => {
+const SideMenu = ({ currentPage, user, chat, userPic }) => {
     // console.log('~~~',currentPage);
 
     let userPicImg = '';
@@ -211,6 +226,7 @@ const SideMenu = ({ currentPage , chat, userPic }) => {
                                             <>
                                                 {chat.map(list => (
                                                     <Chatt 
+                                                    user={user}
                                                     list={list} 
                                                     key={list._id}
                                                     />

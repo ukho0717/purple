@@ -4,10 +4,22 @@ const socketEvents = (io)=>{
     io.on('connection', (socket) => { // 웹소켓 연결 시
         console.log('웹소켓이 실행됩니다.');
         // DB에 저장되어있던 이전 대화 띄워짐
-        // Chat.find(function (err, result) {
+        socket.on('preload', function(data){
+            Chat.find({users: { $in: [data.sender, data.recepient] }}, function (err, result) {
+            for(var i = 0 ; i < result.length ; i++) {
+                var dbData = { sender: result[i].sender, message : result[i].message};
+                console.log('preload를 받았습니다.',dbData)
+                
+                io.to(socket.id).emit('preloadup', dbData);
+            }
+        });
+        })
+        // Chat.find({users: { $in: ['apple@apple.com','banana@banana.com'] }},function (err, result) {
         //     for(var i = 0 ; i < result.length ; i++) {
-        //         var dbData = { roomname: result[i].room, name : result[i].username, message : result[i].message};
-        //         io.sockets.sockets[socket.id].emit('preload', dbData);
+        //         var dbData = { sender: result[i].sender, message : result[i].message};
+        //         console.log('preload를 받았습니다.',dbData)
+                
+        //         io.to(socket.id).emit('preload', dbData);
         //     }
         // });
         
@@ -32,17 +44,17 @@ const socketEvents = (io)=>{
                 io.sockets.emit('message', data);
             }else{
                 console.log('보내는사람',data.sender)
-                io.sockets.emit('message', data);
+                io.to(socket.id).emit('message', data);
             }
-            // chat스키마에 대화내용 추가
-            // let chat = new Chat({ roomname: data.room, username: data.name, message: data.message });
+            //chat스키마에 대화내용 추가
+            let chat = new Chat({ sender: data.sender, message: data.data, users:[data.recepient,data.sender] });
     
-            // chat.save(function (err, data) {
-            // if (err) {// TODO handle the error
-            //     console.log("error");
-            // }
-            // console.log('message is inserted');
-            // });
+            chat.save(function (err, data) {
+            if (err) {// TODO handle the error
+                console.log("error");
+            }
+            console.log('message is inserted');
+            });
     
         });
     });

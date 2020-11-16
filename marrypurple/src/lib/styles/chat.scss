@@ -2,7 +2,7 @@
 #contentBox .message_1 { margin: 15px; cursor: pointer; }
 #contentBox .message_1 div, #contentBox .message_1 p { display: inline-block; }
 #contentBox .message_1 #message_1_photo { width: 50px; height: 50px; box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.28); border-radius: 50%; padding: 3px; margin-right: 20px; }
-#contentBox .message_1 #message_1_photo div { width: 100%; height: 100%; background: url('../images/images/C2005270925279578r.jpeg') no-repeat; background-size: 100%; border-radius: 50%; }
+#message_1_photo img { width: 100%; height: 100%; border-radius: 50%; }
 #contentBox .message_1 p { color: #5C5C5C; font-size: 18px; font-weight: bold; position: relative; top: -5px; width: 75%; word-break: keep-all; }
 
 #contentBox .message_2 { padding: 15px; border-top: 1px solid #E8E8E8; border-bottom: 1px solid #E8E8E8; height: 525px; overflow-y: scroll; -ms-overflow-style: none; position: relative; }

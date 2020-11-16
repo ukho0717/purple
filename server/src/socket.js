@@ -3,13 +3,15 @@ let login_ids = {};
 const socketEvents = (io)=>{
     io.on('connection', (socket) => { // 웹소켓 연결 시
         console.log('웹소켓이 실행됩니다.');
-            // DB에 저장되어있던 이전 대화 띄워짐
+        // DB에 저장되어있던 이전 대화 띄워짐
         // Chat.find(function (err, result) {
         //     for(var i = 0 ; i < result.length ; i++) {
         //         var dbData = { roomname: result[i].room, name : result[i].username, message : result[i].message};
         //         io.sockets.sockets[socket.id].emit('preload', dbData);
         //     }
         // });
+        
+        socket.emit('yourId', socket.id);
 
         //로그인
         socket.on('login', function(login){
@@ -23,18 +25,22 @@ const socketEvents = (io)=>{
         });
 
         // 메세지 보내기 + DB에 메세지 넣기
-        socket.on('message', function(data) {
-    
+        // socket.on("send message", body => {
+        //     console.log('message 이벤트를 받았습니다.');
+        //     io.emit("message",body)
+        // })
+        socket.on('sendMessage', function(data) {
+            console.log('message 이벤트를 받았습니다.');
             io.sockets.emit('message', data);
             // chat스키마에 대화내용 추가
-            let chat = new Chat({ roomname: data.room, username: data.name, message: data.message });
+            // let chat = new Chat({ roomname: data.room, username: data.name, message: data.message });
     
-            chat.save(function (err, data) {
-            if (err) {// TODO handle the error
-                console.log("error");
-            }
-            console.log('message is inserted');
-            });
+            // chat.save(function (err, data) {
+            // if (err) {// TODO handle the error
+            //     console.log("error");
+            // }
+            // console.log('message is inserted');
+            // });
     
         });
 

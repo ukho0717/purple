@@ -7,7 +7,7 @@ const [
     CHAT_USER,
     CHAT_USER_SUCCESS,
     CHAT_USER_FAILURE
-] = createRequestActionTypes('chat/CHAT_LIST'); //MATCH리스트의 액션타입만들어주기.
+] = createRequestActionTypes('chat/CHAT_USER'); //MATCH리스트의 액션타입만들어주기.
 const UNLOAD_CHAT_USER = 'chat/UNLOAD_CHAT_USER';
 
 export const getChatUser = createAction(CHAT_USER, id => id);
@@ -24,7 +24,12 @@ const initialState = {
 };
 
 const getChat = handleActions (
-    {
+    {   
+        [CHAT_USER]: (state)=>({
+            ...state,
+            getChat:null,
+            error: null
+        }),
         [CHAT_USER_SUCCESS]: (state, { payload: getChat }) => ({
             ...state,
             getChat

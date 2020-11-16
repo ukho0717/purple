@@ -16,20 +16,15 @@ export const chatUser = async ctx=>{
     }
 }
 
-export const getUserById = async (ctx, next) => {
+export const getUserById = async ctx => {
     const { id } = ctx.params;
-    if (!ObjectId.isValid(id)) {
-      ctx.status = 400;
-      return;
-    }
     try {
-      const user = await User.findOne({match:id});
+      const user = await User.findOne({match:id}).exec();
       if(!user){
         ctx.status = 404;
         return;
       }
-      ctx.state.chat = user;
-      return next()
+      ctx.body = user.toJSON();
     }catch(e){
       ctx.throw(500, e);
     }

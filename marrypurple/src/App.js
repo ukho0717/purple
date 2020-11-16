@@ -15,6 +15,7 @@ import ChangePwPage from './pages/ChangePwPage';
 import MatchingPage from './pages/MatchingPage'
 import BackUserPage from './pages/BackUserPage';
 import ChatPage from './pages/ChatPage'
+import PaymentPage from './pages/PaymentPage';
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
       <Route component={MatchingPage} path="/match"/>
       <Route component={BackUserPage} path="/back"/>
       <Route component={ChatPage} path="/chat/:id"/>
+      <Route component={PaymentPage} path="/Payment"/>
     </>
   )
 }

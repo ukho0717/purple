@@ -9,14 +9,20 @@ const GramSchema = new Schema({
     },
     InstaImage: String,
     content: String,
-    comment: [String],
+    comment: [{
+        nickName: String,
+        text: String
+    }],
     likeCount: {
         type: Number,
         default: 0
     },
     User:{
-        user_nick: String
-    }
+        user_nick: String,
+        _id: String,
+        profile_pic: String
+    },
+    likeUser: [String]
 });
 
 const Gram = mongoose.model('Gram', GramSchema);

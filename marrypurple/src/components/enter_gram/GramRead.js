@@ -3,173 +3,216 @@ import React from 'react';
 import '../../lib/styles/gram.scss';
 import $ from 'jquery';
 // import { Helmet } from 'react-helmet';
+import img1 from '../../lib/images/icon/004980c2c35d4fa37d9635ed7f159c3c.png';
+import img2 from '../../lib/images/icon/f84abf6d0bd53bf97dbb1011aa640499.png';
+import img3 from '../../lib/images/icon/49f19f63a24305a4f1dedfd8481c01e2.png';
+import img4 from '../../lib/images/icon/8c6f9b49103dd67cf3bfd50f561b46d6.png';
+import { BiTrash } from 'react-icons/bi'
 import { Link } from 'react-router-dom';
 
-const GramWrite = ({ gram }) => {
-    console.log(gram);
-    const script = () => {
-        $('.gramP_1_back').on('click', function(){
-            window.history.back();
-        });
+const GramWrite = ({ user, gram, listLikeGram, commentSubmit, deleteClick, heartClick , error, loading}) => {
+    // console.log(gram);
+    // console.log(gram.likeUser);
+    // console.log(user);
+    // console.log(listLikeGram);
 
+    let LikeList = '';
+    if(listLikeGram){
+        LikeList = listLikeGram;
+    }
+    // console.log(LikeList[0]);
 
-        let media = window.matchMedia('( max-width: 768px )');
-        if(media.matches == true) {
-            // 모바일
+    function script() {
+        // console.log($("#gramP_3_heart").attr('class'));
+        // let className = $("#gramP_3_heart").attr('class');
+        // className.replace('false', '');
+        // console.log(className);
 
-            // 신고버튼 누르면 팝업
-            $('.declare_popup').on('click',function(){
-                var $href = $(this).attr('href');
-                layer_popup($href);
-            });
-            function layer_popup(el){
-                var $el = $(el);        //레이어의 id를 $el 변수에 저장
-                var isDim = $el.prev().hasClass('dimBg');   //dimmed 레이어를 감지하기 위한 boolean 변수
-
-                isDim ? $('.dim-layer').fadeIn() : $el.fadeIn();
-
-                var $elWidth = ~~($el.outerWidth()),
-                    $elHeight = ~~($el.outerHeight()),
-                    docWidth = $(document).width(),
-                    docHeight = $(document).height();
-
-                // 화면의 중앙에 레이어를 띄운다.
-                if ($elHeight < docHeight || $elWidth < docWidth) {
-                    $el.css({
-                        marginTop: 0,
-                        marginLeft: 0
-                    })
-                } else {
-                    $el.css({top: 0, left: 0});
-                }
-
-                $el.find('.popup_close').on('click', function(){
-                    isDim ? $('.dim-layer').fadeOut() : $el.fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
-                    return false;
-                });
-
-                $('.layer .dimBg').on('click', function(){
-                    $('.dim-layer').fadeOut();
-                    return false;
-                });
-            }
-        }else{
-            // 웹
-
-            // 신고버튼 누르면 팝업
-            $('.declare_popup').on('click', function(){
-                var $href = $(this).attr('href');
-                layer_popup($href);
-            });
-            function layer_popup(el){
-                var $el = $(el);        //레이어의 id를 $el 변수에 저장
-                var isDim = $el.prev().hasClass('dimBg');   //dimmed 레이어를 감지하기 위한 boolean 변수
-
-                isDim ? $('.dim-layer').fadeIn() : $el.fadeIn();
-
-                var $elWidth = ~~($el.outerWidth()),
-                    $elHeight = ~~($el.outerHeight()),
-                    docWidth = $(document).width(),
-                    docHeight = $(document).height();
-
-                // 화면의 중앙에 레이어를 띄운다.
-                if ($elHeight < docHeight || $elWidth < docWidth) {
-                    $el.css({
-                        marginTop: -$elHeight /2,
-                        marginLeft: -$elWidth/2
-                    })
-                } else {
-                    $el.css({top: 0, left: 0});
-                }
-
-                $el.find('.popup_close').on('click', function(){
-                    isDim ? $('.dim-layer').fadeOut() : $el.fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
-                    return false;
-                });
-
-                $('.layer .dimBg').on('click',function(){
-                    $('.dim-layer').fadeOut();
-                    return false;
-                });
-
-            }
-        }
-        $('.pop-layer a').on('click', function(){
-            // alert('on');
-            $(this).toggleClass('on');
-            $(this).parent().siblings().children('a').removeClass('on');
-            if($(this).hasClass('on')){
-                $('.pop-layer button').css({
-                    'background': 'linear-gradient( to left, #FFD7DD, #9E7FFE )'
-                }).text('신고').on('click', function(){
-                    alert('신고가 접수되었습니다');
-                });
-            }
-        });
+    }
+    
+    const clickBack = () => {
+        window.history.back();
     }
 
+    const clickPopup = e => {
+        let media = window.matchMedia('( max-width: 768px )');
+        if(media.matches === true){
+            let $href = $(e.target.parentNode).attr('href');
+            // layer_popup2($href);
+
+            let $el = $($href);        //레이어의 id를 $el 변수에 저장
+            let isDim = $el.prev().hasClass('dimBg2');   //dimmed 레이어를 감지하기 위한 boolean 변수
+
+            isDim ? $('.dim-layer2').fadeIn() : $el.fadeIn();
+
+            let $elWidth = ~~($el.outerWidth()),
+                $elHeight = ~~($el.outerHeight()),
+                docWidth = $(document).width(),
+                docHeight = $(document).height();
+
+            // 화면의 중앙에 레이어를 띄운다.
+            if ($elHeight < docHeight || $elWidth < docWidth) {
+                $el.css({
+                    marginTop: 0,
+                    marginLeft: 0
+                })
+            } else {
+                $el.css({top: 0, left: 0});
+            }
+
+            $el.find('.popup_close2').on('click', function(){
+                isDim ? $('.dim-layer2').fadeOut() : $el.fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
+                return false;
+            });
+
+            $('.layer .dimBg2').on('click', function(){
+                $('.dim-layer2').fadeOut();
+                return false;
+            });
+        }else{
+            let $href = $(e.target.parentNode).attr('href');
+            // layer_popup($href);
+
+            let $el = $($href);        //레이어의 id를 $el 변수에 저장
+            let isDim = $el.prev().hasClass('dimBg2');   //dimmed 레이어를 감지하기 위한 boolean 변수
+
+            isDim ? $('.dim-layer2').fadeIn() : $el.fadeIn();
+
+            let $elWidth = ~~($el.outerWidth()),
+                $elHeight = ~~($el.outerHeight()),
+                docWidth = $(document).width(),
+                docHeight = $(document).height();
+
+            // 화면의 중앙에 레이어를 띄운다.
+            if ($elHeight < docHeight || $elWidth < docWidth) {
+                $el.css({
+                    marginTop: -$elHeight /2,
+                    marginLeft: -$elWidth/2
+                })
+            } else {
+                $el.css({top: 0, left: 0});
+            }
+
+            $el.find('.popup_close2').on('click', function(){
+                isDim ? $('.dim-layer2').fadeOut() : $el.fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
+                return false;
+            });
+
+            $('.layer .dimBg2').on('click',function(){
+                $('.dim-layer2').fadeOut();
+                return false;
+            });
+        }
+    }
+
+    const clickA = e => {
+        // console.log(e.target.parentNode);
+        let $current = $(e.target.parentNode);
+        $current.toggleClass('on');
+        $current.parent().siblings().children('a').removeClass('on');
+        if($current.hasClass('on')){
+            $('.pop-layer2 button').css({
+                'background': 'linear-gradient( to left, #FFD7DD, #9E7FFE )'
+            }).text('신고').on('click', function(){
+                alert('신고가 접수되었습니다');
+            });
+        }else{
+            $('.pop-layer2 button').css({
+                'background': '#dadfe6'
+            }).text('취소').on('click', function(){
+                $('.dim-layer2').fadeOut();
+            });
+        }
+    }
 
     script();
 
-
+    if(error){
+        return <div><h2>에러가 발생했습니다.</h2></div>
+    }
     return(
         <>
-            {gram && (
+            {!loading && gram && user && (
                 <>
-                    <div class="gramP_1">
-                        <div className="gramP_1_back"></div><div class="gramP_1_myPho"><div></div></div><span class="gramP_id" id="gramP_1_id">apple</span><div id="gramP_1_hot">HOT</div> <a href="#layer2"><div id="gramP_1_decla"></div></a>
+                    <div className="gramP_1">
+                        <div className="gramP_1_back" onClick={clickBack}></div><div class="gramP_1_myPho">{<img src={gram.User.profile_pic} alt="gram user profile_pic"/>}</div><span className="gramP_id" id="gramP_1_id">{gram.User.user_nick}</span>
+                        {/* {LikeList.map(listLike => listLike._id === gram._id && (
+                            <div id="gramP_1_hot">HOT</div>
+                        ))} */}
+                        {gram.User._id === user._id ? (
+                            <div className="gramP_1_trash" onClick={deleteClick}><BiTrash/></div>
+                        ) : (
+                            <div href={`#${gram._id}layer2`} className="declare_popup" onClick={clickPopup}><div id="gramP_1_decla"></div></div>
+                        )}
                     </div>
-                    <div class="gramP_2">
-                        <div id="gramP_2_photo"><img src={gram.InstaImage}/></div>
+                    <div className="gramP_2">
+                        <div id="gramP_2_photo"><img src={gram.InstaImage} alt="instaImage"/></div>
                     </div>
-                    <div class="gramP_3">
-                        <div id="gramP_3_heart"></div>
+                    <div className="gramP_3">
+                        {/* {user._id == gram.likeUser[0] ? (
+                            <div id="gramP_3_heart" className="on" onClick={heartClick}></div>
+                        ) : (
+                            <div id="gramP_3_heart" onClick={heartClick}></div>
+                        )} */}
+                        {/* {gram.likeUser.map(likeuser => likeuser == user._id ? (
+                            <div id="gramP_3_heart" className="on" onClick={heartClick}></div>
+                        ) : (
+                            <div id="gramP_3_heart" onClick={heartClick}></div>
+                        ))} */}
+                        {/* <div id="gramP_3_heart" onClick={heartClick} className={gram.likeUser.map(likeuser => {if(likeuser == user.id){return "on"}})}></div> */}
+                        <div id="gramP_3_heart" onClick={heartClick} className={gram.likeUser.find((uuser) => {return uuser === user._id})}></div>
+
                         <p><span id="gramP_3_count">{gram.likeCount}</span>명이 좋아합니다.</p>
-                        <p><span class="gramP_id" id="gramP_3_id">apple</span> <span id="gramP_3_content">{gram.content}</span></p>
+            <p><span className="gramP_id" id="gramP_3_id">{gram.User.user_nick}</span> <span id="gramP_3_content">{gram.content}</span></p>
                     </div>
-                    <div class="gramP_4">
-                        <p><span class="gramP_reID" id="gramP_4_reID">야오옹</span> 멈뭄미가 정말 귀엽네요.</p>
+                    <div className="gramP_4">
+                        {gram.comment.map(comment => (
+                            <p><span className="gramP_reID" id="gramP_4_reID">{comment.nickName}</span> {comment.text}</p>
+                        ))}
                     </div>
-                    <div class="gramP_5">
-                        <div class="gramP_id" id="gramP_5_id">apple</div><input type="text"/> <button>게시</button>
+                    <div className="gramP_5">
+                        <form method="patch" onSubmit={commentSubmit}>
+                            <input type="hidden" name="nickName" value={user.user_nick}/><div class="gramP_id" id="gramP_5_id">{user.user_nick}</div><input type="text" name="comment"/> <input type="submit" value="게시" className="gramP_5_button"/>
+                        </form>
+                        
                     </div>
-                    <div class="dim-layer">
-                        <div class="dimBg"></div>
-                        <div id={`${gram._id}layer2`} class="pop-layer">
-                            <div class="pop-container">
+                    <div className="dim-layer2">
+                        <div className="dimBg2"></div>
+                        <div id={`${gram._id}layer2`} className="pop-layer2">
+                            <div className="pop-container2">
                                 <div>
                                 <h2>회원 신고</h2>
-                                <p><span class="messageP_id">apple</span>님께는 알리지 않습니다.</p>
+                                <p><span className="messageP_id">{gram.User.user_nick}</span>님께는 알리지 않습니다.</p>
                                 </div>
                                 <hr/>
-                                <div>
-                                <ul>
-                                    <li>
-                                    <a>
-                                        <div><img src="./images/icon/004980c2c35d4fa37d9635ed7f159c3c.png" alt="부적절한 사진"/></div>
-                                        <div>부적절한 사진</div>
-                                    </a>
-                                    </li>
-                                    <li>
-                                    <a>
-                                        <div><img src="./images/icon/f84abf6d0bd53bf97dbb1011aa640499.png" alt="스팸으로 의심됨"/></div>
-                                        <div>스팸으로 의심됨</div>
-                                    </a>
-                                    </li>
-                                    <li>
-                                    <a>
-                                        <div><img src="./images/icon/49f19f63a24305a4f1dedfd8481c01e2.png" alt="부적절한 메시지"/></div>
-                                        <div>부적절한 메시지</div>
-                                    </a>
-                                    </li>
-                                    <li>
-                                    <a>
-                                        <div><img src="./images/icon/8c6f9b49103dd67cf3bfd50f561b46d6.png" alt="부적절한 메시지"/></div>
-                                        <div>기타</div>
-                                    </a>
-                                    </li>
-                                </ul>
-                                <button class="popup_close"><span>취소</span></button>
+                                <div className="pop_reason">
+                                    <ul>
+                                        <li>
+                                            <Link onClick={clickA}>
+                                                <div><img src={img1} alt="부적절한 사진" /></div>
+                                                <div>부적절한 사진</div>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link onClick={clickA}>
+                                                <div><img src={img2} alt="스팸으로 의심됨"/></div>
+                                                <div>스팸으로 의심됨</div>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link onClick={clickA}>
+                                                <div><img src={img3} alt="부적절한 메시지"/></div>
+                                                <div>부적절한 메시지</div>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link onClick={clickA}>
+                                                <div><img src={img4} alt="기타"/></div>
+                                                <div>기타</div>
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                    <button className="popup_close2"><span>취소</span></button>
                                 </div>
                             </div>
                         </div>

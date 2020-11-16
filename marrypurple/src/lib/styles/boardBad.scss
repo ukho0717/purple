@@ -48,13 +48,31 @@
     height: 300px; 
     // background: url('../images/images/12344.jpg') no-repeat; 
     background-size: 100%; 
-    margin: 0 auto 10px; 
+    margin: 0 auto 10px;
+    overflow: hidden;
 }
 .gramB_2 .gramB_2_detail .gramB_2_datail_photo img {
     width: 100%;
     height: 100%;
     size: 100%;
+    filter: blur(6px)
 }
+// .gramB_2 .gramB_2_detail .gramB_2_datail_photo img::before {
+//     position: fixed; 
+//     top: 0; 
+//     left: 0; 
+//     right: 0; 
+//     bottom: 0; 
+//     // background-image: url(bg.jpg); 
+//     -webkit-filter: blur(5px); 
+//     -moz-filter: blur(5px); 
+//     -o-filter: blur(5px); 
+//     -ms-filter: blur(5px); 
+//     filter: blur(5px); 
+//     z-index: -1; 
+//     content: "";
+
+// }
 .gramB_2 .gramB_2_detail .gramB_2_detail_content { 
     font-size: 16px; 
 }

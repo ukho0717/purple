@@ -151,13 +151,17 @@ export const changePw = async ctx => { //특정필드만 수정
 }
 
 export const check = async (ctx) => {
+  console.log('로그인유저123', ctx.state);
   // 로그인 상태 확인
-  const { user } = ctx.state;
+  // const { user } = ctx.state;
+  const user = await User.findById(ctx.state.user._id);
+  console.log(user)
   if (!user) {
     ctx.status = 401;
     return;
   }
-  ctx.body = user;
+
+  ctx.body = user.toJSON();
   user.login_time = Date.now();
 };
 

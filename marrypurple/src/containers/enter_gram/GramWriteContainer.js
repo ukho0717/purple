@@ -12,15 +12,6 @@ const GramWriteContainer = ({ history }) => {
         gram: gramWrite.gram,
         gramError: gramWrite.gramError
     }));
-
-    // const onChange = e => {
-    //     const { value, name } = e.target;
-    //     dispatch(changeField({
-    //         form,
-    //         key: name,
-    //         value
-    //     }))
-    // }
     
     const onSubmit = e => {
         console.log('onSubmit');
@@ -39,7 +30,7 @@ const GramWriteContainer = ({ history }) => {
 
     useEffect(() => {
         if(gram){
-            alert('성공');
+            // alert('성공');
             history.push('/gram_main');
         }
     }, [dispatch, gram]);

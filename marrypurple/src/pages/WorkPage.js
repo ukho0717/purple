@@ -1,9 +1,16 @@
 import React from 'react';
+import WorkContainer from '../containers/work/WorkContainer';
 
 const WorkPage = () => {
+    const onClick = () => {
+        window.history.back();
+    }
+
     return (
         <>
-            <h2>근무모드</h2>
+            <div id="wrap11" onClick={onClick}>
+                <WorkContainer/>
+            </div>
         </>
     )
 }

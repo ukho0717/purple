@@ -7,11 +7,16 @@ import { chatUser, unloadChatUser } from '../../modules/chat'
 
 const SideMenuContainer = ({ match }) => {
     const dispatch = useDispatch();
-    const { chat, error, loading } = useSelector(({ chat, loading }) => ({
+    const { chat, error, loading, currentPage, user } = useSelector(({ chat, loading, user }) => ({
         chat: chat.chat,
+        currentPage: match.path,
+        user: user.user,
         error: chat.error,
         loading: loading['chat/CHAT_LIST']
     }));
+
+    const userPic = user.profile_pic;
+
     useEffect(() => {
         dispatch(chatUser());
         return () => {
@@ -20,7 +25,7 @@ const SideMenuContainer = ({ match }) => {
     }, [dispatch]);
     // console.log('매칭된 chatUser 불러오는 중.... ', chat)
     const currentPage = match.url
-    return <SideMenu currentPage={currentPage}  chat={chat} loading={loading}/>;
+    return <SideMenu currentPage={currentPage} chat={chat} loading={loading} user={user} userPic={userPic}/>;
 
 }
 

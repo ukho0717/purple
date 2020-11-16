@@ -24,9 +24,16 @@ const Chatt = ({list})=> {
     )
 }
 
-const SideMenu = ({ currentPage , chat}) => {
+const SideMenu = ({ currentPage , chat, userPic }) => {
     // console.log('~~~',currentPage);
-    async function script(){
+
+    let userPicImg = '';
+    // console.log(userPic);
+    if(userPic){
+        userPicImg = userPic;
+    }
+
+    function script(){
         switch(currentPage){
             case '/match':
             case '/match_like':
@@ -85,6 +92,9 @@ const SideMenu = ({ currentPage , chat}) => {
                         $('#left_menu #slide_box #sub_menu_enter ul a:nth-child(6)').addClass('on');
                         break;
                 }
+            case '/Payment':
+                $('#sub_menu_myprofile').addClass('on').removeClass('off');
+                $('#sub_menu_myprofile').siblings().addClass('off');
         }
 
         // 서브 메뉴 클릭시
@@ -162,7 +172,9 @@ const SideMenu = ({ currentPage , chat}) => {
                 <ul>
                     <li>
                         <ul id="myprofile">
-                            <Link to="/Profile" id="myprofile_btn"><li><div id="myPho"><div></div></div><span>나의 프로필</span></li></Link>
+                            <Link to="/Profile" id="myprofile_btn"><li><div id="myPho">
+                                <img src={userPicImg[0]}/>
+                            <div></div></div><span>나의 프로필</span></li></Link>
                             <Link to="work"><li></li></Link>
                         </ul>
                     </li>

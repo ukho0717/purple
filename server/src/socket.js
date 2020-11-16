@@ -25,13 +25,15 @@ const socketEvents = (io)=>{
         });
 
         // 메세지 보내기 + DB에 메세지 넣기
-        // socket.on("send message", body => {
-        //     console.log('message 이벤트를 받았습니다.');
-        //     io.emit("message",body)
-        // })
         socket.on('sendMessage', function(data) {
             console.log('message 이벤트를 받았습니다.');
-            io.sockets.emit('message', data);
+            if(login_ids[data.recepient]){
+                // io.sockets.connected[login_ids[data.recepient]].emit('message', data);
+                io.sockets.emit('message', data);
+            }else{
+                console.log('보내는사람',data.sender)
+                io.sockets.emit('message', data);
+            }
             // chat스키마에 대화내용 추가
             // let chat = new Chat({ roomname: data.room, username: data.name, message: data.message });
     
@@ -43,53 +45,6 @@ const socketEvents = (io)=>{
             // });
     
         });
-
-        //입장
-        socket.on('room', function(room){
-            console.log('room 이벤트를 받았습니다.');
-            console.dir(room);
-            console.log(room.commamd);
-            if(room.command === 'create'){
-                if(io.sockets.adapter.rooms[room.roomId]){
-                    console.log('방이 이미 만들어져 있습니다.');
-                }else{
-                    console.log('방을 새로 만듭니다.');
-                    socket.join(room.roomId);
-                    let curRoom = io.sockets.adapter.rooms[room.roomId];
-                    curRoom.id = room.roomId;
-                    curRoom.name = room.roomName;
-                    curRoom.owner = room.roomOwner;
-                }
-            }else if(room.command === 'update'){
-                let curRoom = io.sockets.adapter.rooms[room.roomId];
-                curRoom.id = room.roomId;
-                curRoom.name = room.roomName;
-                curRoom.owner = room.roomOwner;
-            }else if(room.command === 'delete'){
-                console.log('delete 호출');
-                socket.leave(room.roomId);
-                if(io.sockets.adapter.rooms[room.roomId]){
-                    delete io.sockets.adapter.rooms[room.roomId];
-                }else{
-                    console.log('방이 만들어져 있지 않습니다.');
-                }
-            }else if(room.command === 'join'){
-                console.log('join 됨');
-                socket.join(room.roomId);
-                sendResponse(socket, 'room', '200', '방에 입장했습니다.');
-            }else if(room.command === 'leave'){
-                console.log('leave 됨');
-                socket.leave(room.roomId);
-                sendResponse(socket, 'room', '200', '방에서 나갔습니다.');
-            }
-            
-            let roomList = getRoomList();
-            let output = {command:'list', rooms:roomList};
-            console.log('클라이언트로 보낼 데이터 : ' + JSON.stringify(output));
-            io.sockets.emit('room', output);
-        });
-
-
     });
 };
 

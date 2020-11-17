@@ -21,6 +21,8 @@ import PaymentPage from './pages/PaymentPage';
 import ProfilePage from './pages/ProfilePage';
 import EnterMainPage from './pages/EnterMainPage';
 import Worldcup1Page from './pages/Worldcup1Page';
+import Worldcup2Page from './pages/Worldcup2Page';
+import Worldcup3Page from './pages/Worldcup3Page';
 import FindOnePage from './pages/FindOnePage';
 
 const App = () => {
@@ -47,6 +49,8 @@ const App = () => {
       <Route component={ProfilePage} path="/Profile"/>
       <Route component={EnterMainPage} path="/enter_main"/>
       <Route component={Worldcup1Page} path="/worldcup1"/>
+      <Route component={Worldcup2Page} path="/worldcup2"/>
+      <Route component={Worldcup3Page} path="/worldcup3"/>
       <Route component={FindOnePage} path="/findone"/>
     </>
   )

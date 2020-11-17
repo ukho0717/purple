@@ -3,6 +3,7 @@ import posts from './enter_gram';
 import badBoard from './notice_bad';
 import faq from './notice_faq';
 import payment from './payment';
+import worldcup from './enter_worldcup';
 
 import match from './matching'
 import chat from './chat';
@@ -17,6 +18,7 @@ api.use('/posts', posts.routes());
 api.use('/badBoard', badBoard.routes());
 api.use('/faq', faq.routes());
 api.use('/payment', payment.routes());
+api.use('/worldcup', worldcup.routes());
 
 api.use('/match',match.routes());
 api.use('/chat',chat.routes());

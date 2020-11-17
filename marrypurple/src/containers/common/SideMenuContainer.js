@@ -24,7 +24,7 @@ const SideMenuContainer = ({ match }) => {
         };
     }, [dispatch]);
     // console.log('매칭된 chatUser 불러오는 중.... ', chat)
-    const currentPage = match.url
+    
     return <SideMenu currentPage={currentPage} chat={chat} loading={loading} user={user} userPic={userPic}/>;
 
 }

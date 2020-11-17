@@ -4,34 +4,22 @@ import { Link } from 'react-router-dom';
 import '../../lib/styles/styles.scss';
 import $ from 'jquery';
 import { Helmet } from 'react-helmet';
-import io from 'socket.io-client'
 
-const socket = io.connect('/')
-
-const Haa = ({list}) => {
-    // console.log('asdfasdf', list.user_nick);
-    return<>
-        <Link to="/chat">
-            <div style={{ background: `url(${list.profile_pic})`, backgroundSize: '100%', textShadow: '1px 1px 1px gray', backgroundPosition:"center",color:'#fff'}} >{list.user_nick}</div>
+const Haa = ({list, user}) => {
+    const profilePic = (list.profile_pic)[0]
+    return(
+    <>
+        <Link to={{ pathname:'/chat', data: list, myInfo: user.user_email }}>
+            <div style={{ background: `url(${profilePic})`, backgroundSize: '100%', textShadow: '1px 1px 1px gray', backgroundPosition:"center",color:'#fff'}} >{list.user_nick}</div>
         </Link>
     </>
+    )
 }
 
-const Chatt = ({list,user})=> {
-        
-    // 소켓좀 넣겠습니다..
-    const OnClick = () => {
-        let output = {sender: user.user_email, recepient: list.user_email };
-        console.log(user.user_email)
-        if(socket == undefined){
-            alert('서버에 연결되어 있지 않습니다. 먼저 서버에 연결하세요.');
-            return;
-        }
-        socket.emit('preload', output);
-    }
+const Chatt = ({list, user})=> {
     return(
         <>
-            <Link to={`/chat/${list.match}`}  onClick={OnClick}><li class="message_listP">
+            <Link to={{ pathname:'/chat', data: list, myInfo: user.user_email }}><li class="message_listP">
             <div class="message_listP_wrap"><div class="message_listP_photo"><div></div></div>
             <div><span class="message_listP_id">{list.user_nick}</span></div></div>
             </li></Link>
@@ -210,6 +198,7 @@ const SideMenu = ({ currentPage, user, chat, userPic }) => {
                                             <>
                                                 {chat.map(list => (
                                                     <Haa 
+                                                    user={user}
                                                     list={list} 
                                                     key={list._id}
                                                     />
@@ -225,7 +214,7 @@ const SideMenu = ({ currentPage, user, chat, userPic }) => {
                                         {chat && (
                                             <>
                                                 {chat.map(list => (
-                                                    <Chatt 
+                                                    <Chatt
                                                     user={user}
                                                     list={list} 
                                                     key={list._id}

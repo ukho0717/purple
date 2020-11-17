@@ -35,7 +35,7 @@ const App = () => {
       <Route component={WorkPage} path="/work"/>
       <Route component={MatchingPage} path="/match"/>
       <Route component={BackUserPage} path="/back"/>
-      <Route component={ChatPage} path="/chat/:id"/>
+      <Route component={ChatPage} path="/chat"/>
       <Route component={PaymentPage} path="/Payment"/>
       <Route component={ProfilePage} path="/Profile"/>
     </>

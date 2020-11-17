@@ -1,18 +1,34 @@
 import React from 'react';
-import ChatContainerContainer from '../containers/chat/ChatContainerContainer'
+import JoinChatRoomContainer from '../containers/chat/JoinChatRoomContainer'
 import ContentContainer from '../containers/common/ContentContainer';
 import SideMenuContainer from '../containers/common/SideMenuContainer';
+import { withRouter } from 'react-router-dom';
 
+const ChatPage = ({location}) => {
+    let profile_pic = [];
+    let user_nick = '';
+    let user_email = '';
+    let my_email =''
+    if(location.data && location.myInfo){
+        profile_pic = location.data.profile_pic
+        user_nick = location.data.user_nick
+        user_email = location.data.user_email
+        my_email = location.myInfo
+    }
 
-const ChatPage = () => {
     return(
         <div id="wrap10">
             <SideMenuContainer/>
             <ContentContainer>
-                <ChatContainerContainer/>
+                <JoinChatRoomContainer
+                    profile_pic={profile_pic}
+                    user_nick={user_nick}
+                    user_email={user_email}
+                    my_email={my_email}
+                />
             </ContentContainer>
         </div>
     )
 }
 
-export default ChatPage
+export default withRouter(ChatPage)

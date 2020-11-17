@@ -1,5 +1,6 @@
 import User from '../../models/user';
 import Matching from '../../models/matching';
+import Chat from '../../models/chat'
 
 export const chatUser = async ctx=>{
         console.log('접속유저: ',ctx.state.user)
@@ -29,3 +30,17 @@ export const getUserById = async ctx => {
       ctx.throw(500, e);
     }
   };
+
+export const getChatInfo = async ctx => {
+  const {sender, recepient} = ctx.request.body;
+  try{
+    const user = await Chat.find({users: { $in: [[sender,recepient],[recepient,sender]]}}).exec();
+    if(!user){
+      ctx.status = 404;
+      return
+    }
+    ctx.body = user.map(msg => msg.toJSON());
+  }catch(e){
+    ctx.throw(500, e);
+  }
+}

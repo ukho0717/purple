@@ -3,26 +3,7 @@ let login_ids = {};
 const socketEvents = (io)=>{
     io.on('connection', (socket) => { // 웹소켓 연결 시
         console.log('웹소켓이 실행됩니다.');
-        // DB에 저장되어있던 이전 대화 띄워짐
-        socket.on('preload', function(data){
-            Chat.find({users: { $in: [data.sender, data.recepient] }}, function (err, result) {
-            for(var i = 0 ; i < result.length ; i++) {
-                var dbData = { sender: result[i].sender, message : result[i].message};
-                console.log('preload를 받았습니다.',dbData)
-                
-                io.to(socket.id).emit('preloadup', dbData);
-            }
-        });
-        })
-        // Chat.find({users: { $in: ['apple@apple.com','banana@banana.com'] }},function (err, result) {
-        //     for(var i = 0 ; i < result.length ; i++) {
-        //         var dbData = { sender: result[i].sender, message : result[i].message};
-        //         console.log('preload를 받았습니다.',dbData)
-                
-        //         io.to(socket.id).emit('preload', dbData);
-        //     }
-        // });
-        
+
         socket.emit('yourId', socket.id);
 
         //로그인
@@ -40,7 +21,6 @@ const socketEvents = (io)=>{
         socket.on('sendMessage', function(data) {
             console.log('message 이벤트를 받았습니다.');
             if(login_ids[data.recepient]){
-                // io.sockets.connected[login_ids[data.recepient]].emit('message', data);
                 io.sockets.emit('message', data);
             }else{
                 console.log('보내는사람',data.sender)

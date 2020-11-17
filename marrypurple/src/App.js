@@ -5,6 +5,8 @@ import GramWritePage from './pages/GramWritePage';
 import GramReadPage from './pages/GramReadPage';
 import BadBoardPage from './pages/BadBoardPage';
 import FaqPage from './pages/FaqPage';
+import Faq2Page from './pages/Faq2Page';
+import Faq3Page from './pages/Faq3Page';
 import WorkPage from './pages/WorkPage';
 import LoginPage from './pages/LoginPage';
 import MainPage from './pages/MainPage';
@@ -17,6 +19,8 @@ import BackUserPage from './pages/BackUserPage';
 import ChatPage from './pages/ChatPage'
 import PaymentPage from './pages/PaymentPage';
 import ProfilePage from './pages/ProfilePage';
+import EnterMainPage from './pages/EnterMainPage';
+import Worldcup1Page from './pages/Worldcup1Page';
 
 const App = () => {
   return (
@@ -32,12 +36,16 @@ const App = () => {
       <Route component={GramReadPage} path="/gram_post/:gram_id"/>
       <Route component={BadBoardPage} path="/board_bad"/>
       <Route component={FaqPage} path="/FAQ"/>
+      <Route component={Faq2Page} path="/FAQ2"/>
+      <Route component={Faq3Page} path="/FAQ3"/>
       <Route component={WorkPage} path="/work"/>
       <Route component={MatchingPage} path="/match"/>
       <Route component={BackUserPage} path="/back"/>
       <Route component={ChatPage} path="/chat"/>
       <Route component={PaymentPage} path="/Payment"/>
       <Route component={ProfilePage} path="/Profile"/>
+      <Route component={EnterMainPage} path="/enter_main"/>
+      <Route component={Worldcup1Page} path="/worldcup1"/>
     </>
   )
 }

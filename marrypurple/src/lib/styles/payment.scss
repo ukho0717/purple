@@ -151,6 +151,25 @@
 }
 
 
+
+.go_pay form input[type=radio] {
+    display: none;
+}
+.go_pay form .inputCircle {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #ddd;
+    display: inline-block;
+    // border: 3px solid #ffc400;
+    box-sizing: border-box;
+}
+.test_css .inputCircle {
+    border: 3px solid #ffc400;
+}
+
+
+
 /*선택을 눌렀을때만 아래 효과가 나오기 때문에 일단 테스트용으로 넣었습니다*/
 .test_css {
     border: 2px solid #ffc400;

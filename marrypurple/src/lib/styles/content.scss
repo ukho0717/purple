@@ -21,6 +21,9 @@
 
 // 모바일버전
 @media (max-width:768px){
+    #content {
+        padding-top: 0 !important;
+    }
     #contentBox { 
         width: 100%;
         height: fit-content;

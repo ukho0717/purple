@@ -233,7 +233,6 @@ const SideMenu = ({ currentPage, user, chat, userPic }) => {
                                     <Link to="/gram_main"><div><li>메리퍼플그램</li></div></Link>
                                     <a><div><li>공지사항</li></div></a>
                                     <Link to="/board_bad"><div><li>불량회원</li></div></Link>
-                                    <Link to="/FAQ" ><div><li>FAQ</li></div></Link>
                                 </ul>
                             </div>
                             <div id="sub_menu_myprofile" class="off">

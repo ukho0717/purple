@@ -1,14 +1,10 @@
 import React from 'react';
-import SideMenuContainer from '../containers/common/SideMenuContainer';
-import ContentContainer from '../containers/common/ContentContainer';
+import FAQContainer from '../containers/faq/FAQContainer';
 
 const FaqPage = () => {
     return (
         <>
-            <div id="wrap">
-                <SideMenuContainer/>
-                <ContentContainer></ContentContainer>
-            </div>
+            <FAQContainer/>
         </>
     )
 }

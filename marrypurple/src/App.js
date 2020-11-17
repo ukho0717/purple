@@ -21,6 +21,7 @@ import PaymentPage from './pages/PaymentPage';
 import ProfilePage from './pages/ProfilePage';
 import EnterMainPage from './pages/EnterMainPage';
 import Worldcup1Page from './pages/Worldcup1Page';
+import FindOnePage from './pages/FindOnePage';
 
 const App = () => {
   return (
@@ -46,6 +47,7 @@ const App = () => {
       <Route component={ProfilePage} path="/Profile"/>
       <Route component={EnterMainPage} path="/enter_main"/>
       <Route component={Worldcup1Page} path="/worldcup1"/>
+      <Route component={FindOnePage} path="/findone"/>
     </>
   )
 }

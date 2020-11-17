@@ -8,7 +8,7 @@ const [
     Get_MSG,
     Get_MSG_SUCCESS,
     Get_MSG_FAILURE
-] = createRequestActionTypes('chat/Get_MSG');   // 그램 작성
+] = createRequestActionTypes('chat/Get_MSG'); 
 const UNLOAD_MSG = 'chat/UNLOAD_MSG';
 
 export const getMsgFrom = createAction(Get_MSG, ({ sender, recepient }) => ({

@@ -15,7 +15,6 @@ const JoinChatRoomContainer = ({ profile_pic, user_nick, user_email, my_email })
 
     const dispatch = useDispatch();
     useEffect(() => {
-        console.log('useEffect가 실행되고 있는지를 체크할 console@@@@@@@@',my_email,user_email)
         dispatch(getMsgFrom({sender: my_email, recepient:user_email}));
         return () => {
             dispatch(unloadMsg());

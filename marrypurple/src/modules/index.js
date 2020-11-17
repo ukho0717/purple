@@ -14,6 +14,7 @@ import auth, {authSaga} from "./auth";
 import chat, {chatSaga} from "./chat"
 import getChat, {chatUserSaga} from './getChtUser'
 import getMsg, {MsgSaga} from './getMsg'
+import findOne, {findSaga} from './findOne'
 
 const rootReducer = combineReducers({ 
     user,
@@ -29,12 +30,13 @@ const rootReducer = combineReducers({
     gramPost,
     chat,
     getChat,
-    getMsg
+    getMsg,
+    findOne
 });
 
 export function* rootSaga() {
 
-    yield all([matchSaga(), backSaga(), ctrlSaga(), badListsSaga(), gramListsSaga(), likeGramListsSaga(), writeSaga(), postSaga(), authSaga(),userSaga(),matchSaga(), backSaga(), ctrlSaga(), badListsSaga(), gramListsSaga(), likeGramListsSaga(), writeSaga(), chatSaga(), chatUserSaga(), MsgSaga() ]);
+    yield all([matchSaga(), backSaga(), ctrlSaga(), badListsSaga(), gramListsSaga(), likeGramListsSaga(), writeSaga(), postSaga(), authSaga(),userSaga(),matchSaga(), backSaga(), ctrlSaga(), badListsSaga(), gramListsSaga(), likeGramListsSaga(), writeSaga(), chatSaga(), chatUserSaga(), MsgSaga(), findSaga() ]);
 
 }
 

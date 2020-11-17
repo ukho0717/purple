@@ -5,21 +5,21 @@ import '../../lib/styles/styles.scss';
 import $ from 'jquery';
 import { Helmet } from 'react-helmet';
 
-const Haa = ({list, user}) => {
+function Haa({list, user}){
     const profilePic = (list.profile_pic)[0]
     return(
     <>
-        <Link to={{ pathname:'/chat', data: list, myInfo: user.user_email }}>
+        <Link to={{ pathname:'/chat', data: list, myInfo: user.user_email }} >
             <div style={{ background: `url(${profilePic})`, backgroundSize: '100%', textShadow: '1px 1px 1px gray', backgroundPosition:"center",color:'#fff'}} >{list.user_nick}</div>
         </Link>
     </>
     )
 }
 
-const Chatt = ({list, user})=> {
+function Chatt({list, user}){
     return(
         <>
-            <Link to={{ pathname:'/chat', data: list, myInfo: user.user_email }}><li class="message_listP">
+            <Link to={{ pathname:'/chat', data: list, myInfo: user.user_email }} ><li class="message_listP">
             <div class="message_listP_wrap"><div class="message_listP_photo"><div></div></div>
             <div><span class="message_listP_id">{list.user_nick}</span></div></div>
             </li></Link>
@@ -229,7 +229,7 @@ const SideMenu = ({ currentPage, user, chat, userPic }) => {
                                 <ul>
                                     <Link to="/worldcup1"><div><li>이상형 월드컵</li></div></Link>
                                     <Link to="/Telepathy"><div><li>텔레파시</li></div></Link>
-                                    <Link to="/find_main"><div><li>이상형 찾기</li></div></Link>
+                                    <Link to="/findone"><div><li>이상형 찾기</li></div></Link>
                                     <Link to="/gram_main"><div><li>메리퍼플그램</li></div></Link>
                                     <a><div><li>공지사항</li></div></a>
                                     <Link to="/board_bad"><div><li>불량회원</li></div></Link>

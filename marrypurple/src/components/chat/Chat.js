@@ -1,10 +1,10 @@
 import React, {useState, useEffect, useRef} from 'react';
 import io from 'socket.io-client'
 import '../../lib/styles/chat.scss'
+import { withRouter } from 'react-router-dom';
 const socket = io.connect('/')
 
-const Chat = ({profile_pic, user_nick, user_email, my_email, getMsg}) => {
-    const divRref = useRef();
+const Chat = ({history, profile_pic, user_nick, user_email, my_email, getMsg}) => {
     let Msgs =[];
     if(getMsg){
         Msgs = getMsg
@@ -26,10 +26,6 @@ const Chat = ({profile_pic, user_nick, user_email, my_email, getMsg}) => {
             setPreload([...preload,data])
         });
     },[chat,preload])
-
-    useEffect(() => {
-        divRref.current.scrollIntoView({ behavior: 'smooth' });
-    });
 
     const onTextChange = (e) =>{
         setState({...state, [e.target.name]:e.target.value})
@@ -54,7 +50,7 @@ const Chat = ({profile_pic, user_nick, user_email, my_email, getMsg}) => {
                 <a href="message_profile.html"><div id="message_1_photo"><img src={profile_pic[0]}/></div>
                 <p><span id="message_1_id"></span>{user_nick}님과 매치되었습니다.</p></a>
             </div>
-            <div class="message_2" id="msgBoard" ref={divRref} >
+            <div class="message_2" id="msgBoard" >
                 {/* <p>2020.10.07</p> */}
                 {Msgs.map(({sender, message}, index)=>{
                     if(sender === my_email){
@@ -104,4 +100,4 @@ const Chat = ({profile_pic, user_nick, user_email, my_email, getMsg}) => {
     )
 }
 
-export default Chat;
+export default withRouter(Chat);

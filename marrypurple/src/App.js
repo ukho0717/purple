@@ -17,6 +17,7 @@ import BackUserPage from './pages/BackUserPage';
 import ChatPage from './pages/ChatPage'
 import PaymentPage from './pages/PaymentPage';
 import ProfilePage from './pages/ProfilePage';
+import FindOnePage from './pages/FindOnePage';
 
 const App = () => {
   return (
@@ -38,6 +39,7 @@ const App = () => {
       <Route component={ChatPage} path="/chat"/>
       <Route component={PaymentPage} path="/Payment"/>
       <Route component={ProfilePage} path="/Profile"/>
+      <Route component={FindOnePage} path="/findone"/>
     </>
   )
 }

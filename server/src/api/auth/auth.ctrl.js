@@ -4,29 +4,7 @@ import User from "../../models/user";
 
 export const register = async (ctx) => {
   console.log('회원가입중')
-  // console.log(ctx.request.body.user_email);
-  // console.log(JSON.stringify(ctx.req.profile_pic));
-  // 회원 가입
-// const schema = Joi.object().keys({
-//     user_email: Joi.string().required(),
-//     user_pw: Joi.string().required(),
-//     user_gender: Joi.string().required(),
-//     user_age:Joi.number().required(),
-//     user_nick: Joi.string().required(),
-//     profile_pic:Joi.array().items(Joi.string()),
-//     join_date:Joi.date().default(Date.now()),
-//     brief_intro: Joi.string().default(''),
-//     address: Joi.string().default(''),
-//     school: Joi.string().default(''),
-//     personality: Joi.array().items(Joi.string()),
-//     fav_song: Joi.string().default(''),
-//     fav_movie: Joi.string().default(''),
-//     fav_food: Joi.string().default(''),
-//     login_time:Joi.date().default(Date.now()),
-//     premium: Joi.string().default('no_sub'),
-//     stopAccount: Joi.string().default('false'),
-//     match_gender:  Joi.string().default('both')
-//   });
+
   const user_email = ctx.request.body.user_email;
   const user_pw = ctx.request.body.user_pw;
   const user_gender= ctx.request.body.user_gender;
@@ -34,18 +12,7 @@ export const register = async (ctx) => {
   const user_nick = ctx.request.body.user_nick;
   const profile_pic = ctx.request.body.profile_pic;
   
-  
-  // const  join_date = "";
-  // const brief_intro = "";
-  // const result = schema.validate(ctx.request.body);
-  // if (result.error) {
-  //   ctx.status = 400;
-  //   ctx.body = result.error;
-  //   return;
-  // }
 
-  // const { user_email, user_pw,user_gender,user_age,user_nick } = ctx.request.body;
-  // const profile_pic = ctx.request.files[0].filename;
   try {
     const exists = await User.findByUser_email(user_email);
     if (exists) {
@@ -74,6 +41,18 @@ export const register = async (ctx) => {
     ctx.throw(500, e);
   }
 };
+
+export const read = async (ctx) => {
+  const { user_id } = ctx.params;
+  console.log(user_id);
+  try{
+      const post = await User.findById(user_id).exec();
+      ctx.body = post.toJSON();
+  }catch(e){
+      ctx.throw(500, e);
+  }
+};
+
 
 export const login = async (ctx) => {
   // 로그인

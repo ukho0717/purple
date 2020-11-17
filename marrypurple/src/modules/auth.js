@@ -63,6 +63,8 @@ const initialState = {
     user_email: "",
     user_pw: "",
   },
+  user:null,
+  error:null
 };
 
 const auth = handleActions(

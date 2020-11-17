@@ -28,7 +28,7 @@ input[type=button], input[type=submit],input[type=file] { cursor: pointer;}
 .regiId,.regiPw, .regiPro { position: relative; margin: 0 auto; text-align: center;}
 .regiId span, .regiPw span { margin-right: 480px;}
 .inputId { width: 422px; height: 57px; display: inline-block; position: relative; margin: 0 auto; }
-.inputId input,button { display: inline-block; padding-top: 16px; padding-bottom: 16px; padding-left: 20px; padding-right: 20px; width: 90%; border: 2px solid #e8e8e8; border-radius: 8px; background-color: #f5f7fa; margin: 0 auto; }
+.inputId input, .inputId button { display: inline-block; padding-top: 16px; padding-bottom: 16px; padding-left: 20px; padding-right: 20px; width: 90%; border: 2px solid #e8e8e8; border-radius: 8px; background-color: #f5f7fa; margin: 0 auto; }
 .flexS {justify-content: flex-start;}
 .inputId button,input::-webkit-input-placeholder:before{
     display: inline-block; width: 21px; height: 17px; background: url(../img/email.png) no-repeat; content:'';

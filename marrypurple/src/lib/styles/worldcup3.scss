@@ -1,0 +1,125 @@
+#contentBox .world3_1 { 
+    background-color: #BCA6EC;  
+    text-align: center; 
+    vertical-align: middle; 
+}
+#contentBox .world3_1 .world3_1_header { 
+    border-bottom: 5px groove darkgray;  
+    vertical-align: middle;
+}
+#contentBox .world3_1 .world3_1_header .Wcup { 
+    margin-left: 10px; 
+    width: 30px; 
+    height: 30px; 
+    border-radius: 50%; 
+    display: inline-block; 
+    margin-right: 8px; 
+    margin-top: 8px; 
+    margin-bottom: 10px; 
+}
+#contentBox .world3_1 .world3_1_header .Wcup div{ 
+    width: 100%; 
+    height: 100%; 
+    background: url('../images/images/winner.png') no-repeat; 
+    background-size: 100%; 
+    display: inline-block; 
+    border-radius: 50%; 
+}
+#contentBox .world3_1 .world3_1_header span{ 
+    color: #fff; 
+    font-size: 20px; 
+    font-weight: 500;
+}
+#contentBox .world3_1 a { 
+    width: 100%; 
+}
+#contentBox .world3_2 { 
+    width:100%; 
+    height: 647px; 
+}
+#contentBox .world3_2 p { 
+    margin-bottom: 5px; 
+    font-size: 68px; 
+    font-weight: bold; 
+    color: #fff; 
+    letter-spacing: 25px; 
+    margin-left: 20px; 
+}
+#contentBox .world3_2 .pictureMain {
+    width: 100%; 
+    height: 30%;  
+    display: inline-block; 
+    text-align: center; 
+    background: url('../images/images/picture3.jpg') no-repeat; 
+    background-size: cover; 
+    background-position: center; 
+    text-align: center; 
+    padding-bottom: 5px; 
+    padding-top: 5px;
+}
+#contentBox .world3_2 .profile {
+    width: 100%; 
+    height: 20%;  
+    display: inline-block; 
+    margin-top: 20px; 
+    margin-left: 10px;
+}
+#contentBox .world3_2 .profile span { 
+    font-size: 1rem; 
+}
+#contentBox .world3_2 .profile h1 span { 
+    margin-left: 10px;
+}
+#contentBox .world3_2 .profile .location { 
+    width: 30px; 
+    height: 30px; 
+    border-radius: 50%; 
+    display: inline-block; 
+    margin-top: 8px;
+}
+#contentBox .world3_2 .profile .location div { 
+    width: 100%; 
+    height: 100%; 
+    background: url('../images/images/location.png') no-repeat; 
+    background-size: 100%; 
+    display: inline-block; 
+    border-radius: 50%; 
+}
+#contentBox .world3_2 .profile #hobbywrap { 
+    margin-top: 20px;
+}
+#contentBox .world3_2 .profile .hobby {
+    display: inline-block; 
+    border: 3px solid gray; 
+    padding: 3px 7px 3px 7px; 
+    border-radius: 7px; 
+    margin: 3px 3px 3px 3px;
+}
+#contentBox .world3_2 .sogae {
+    width: 100%; 
+    height: 25%; 
+    margin-top: 40px; 
+    margin-left: 10px; 
+}
+#contentBox .world3_2 .likeU { 
+    width: 100%;height: 13%; 
+    text-align: center;
+}
+#contentBox .world3_2 .likeU button {
+    width: 100%; 
+    height: 100%; 
+    border: none; 
+    cursor: pointer; 
+    color: rgba(136, 136, 136, 0.77); 
+    font-size: 2.5rem; 
+    letter-spacing: 1.2rem; 
+}
+
+@media (max-width: 768px){
+    #contentBox .world3_2 .sogae { 
+        width: 100%; 
+        height: 52%; 
+        margin-top: 40px; 
+        margin-left: 10px; 
+    }
+}

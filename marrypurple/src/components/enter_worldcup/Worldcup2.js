@@ -1,111 +1,75 @@
 import React, { useState, useEffect } from 'react';
 import '../../lib/styles/worldcup2.scss';
-import $ from 'jquery';
-import { Link } from 'react-router-dom';
-import fight from '../../lib/images/images/fight.png'
+
+const Worldcup2 = ({ userList, history, error, loading }) => {
+    let item = new Array();
+    if(userList){
+        item = userList;
+        console.log(item.length);
+        // console.log(item);
+    }
+
+    const [users, setUsers] = useState([]);
+    const [display, setDisplay] = useState([]);
+    const [winner, setWinner] = useState([]);
+    useEffect(() => {
+        setUsers(item);
+        console.log('설정된user',users);
+        setDisplay([item[0], item[1]]);
+        console.log('display',display);
+    }, []);
+    // console.log('설정된user2',users);
+    // console.log('display2',display);
 
 
-import styled from "styled-components";
+    const clickHandler = user => () => {
+        console.log(user);
+        console.log('users', users);
+        console.log('winner', winner);
+        if(users.length <= 2){
+            if(winner.length === 0){
+                setDisplay([user]);
+                history.push(`/worldcup3/${user._id}`);
+            }else{
+                let updateUser = [...winner, user];
+                setUsers(updateUser);
+                setDisplay([updateUser[0], updateUser[1]]);
+                setWinner([]);
+            }
+        }else if(users.length > 2){
+            setWinner([...winner, user]);
+            setDisplay([users[2], users[3]]);
+            setUsers(users.slice(2));
+        }
+    }
 
-export const FlexBox = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  height: 100vh;
-  .title {
-    position: absolute;
-    z-index: 2;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #fff;
-    padding: 0px 30px;
-    text-transform: uppercase;
-    padding-bottom: 10px;
-  }
-  .flex-1 {
-    flex: 1;
-    min-width: 500px;
-    overflow: hidden;
-    background-color: black;
-    position: relative;
-  }
-  .food-img {
-    width: 100%;
-    height: 100%;
-    transition: 0.5s;
-    cursor: pointer;
-  }
-  .food-img:hover {
-    transform: scale(1.1);
-    opacity: 0.8;
-  }
-  .name {
-    position: absolute;
-    z-index: 3;
-    color: #fff;
-    bottom: 10%;
-    font-size: 90px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-`;
-
-
-const Worldcup2 = ({ userList }) => {
-    // console.log(userList);
-
-    // const [users, setUsers] = useState([]);
-    // const [display, setDisplay] = useState([]);
-    // const [winner, setWinner] = useState([]);
-    // useEffect(() => {
-    //     setUsers(userList);
-    //     setDisplay([userList[0], userList[1]]);
-    // }, []);
-
-    // const clickHandler = user => () => {
-    //     if(users.length <= 2){
-    //         if(winner.length === 0){
-    //             setDisplay([user]);
-    //         }else{
-    //             let updateUser = [...winner, user];
-    //             setUsers(updateUser);
-    //             setDisplay([updateUser[0], upadateUser[1]]);
-    //             setWinner([]);
-    //         }
-    //     }else if(users.length > 2){
-    //         setWinner([...winner, user]);
-    //         setDisplay([users[2]], users[3]);
-    //         setUsers(users.slice(2));
-    //     }
-    // }
-
+    if(error){
+        return (
+            <div><h2>오류가 발생했습니다.</h2></div>
+        )
+    }
     return(
-        <>
-            {/* <div class="world2_1">
-                <div class="world2_1_header"><div id="Wcup"><div></div></div><span>메리퍼플배 이상형 월드컵 4강 (1/4)</span><div id="Wcup"><div></div></div></div>
-            </div>
-            <div class="world2_2">
-                <div class="picture1">
-                    <a href="./worldcup3.html"><button></button></a>
-                </div>
-                <div class="fightG">
-                    <img src={fight}/>
-                </div>
-                <div class="picture2">
-                    <a href="./worldcup3.html"><button></button></a>
-                </div>
-            </div> */}
-            {/* <FlexBox>
-                <h1 className="title">Favorite Worldcup</h1>
-                {display.map(d => {
-                    return (
-                    <div className="flex-1" key={d.name} onClick={clickHandler(d)}>
-                        <img className="food-img" src={d.src} />
-                        <div className="name">{d.name}</div>
+        <>  {!userList && (
+                <div>준비중</div>
+            )}
+            {!loading && (
+                <>
+                    <div className="world2_1">
+                        <div className="world2_1_header"><div className="Wcup"><div></div></div><span>메리퍼플배 이상형 월드컵 4강 (1/4)</span><div className="Wcup"><div></div></div></div>
                     </div>
-                    );
-                })}
-            </FlexBox> */}
+                    <div className="world2_2">
+                        {display.map(user => {
+                            return (
+                                <div key={user._id} onClick={clickHandler(user)} className="world2_2_picture">
+                                    <img src={user.profile_pic[0]} alt="회원 프로필사진"/>
+                                </div>
+                                // <div>{user}</div>
+                            )
+                        })}
+                    </div>
+                </>
+            )}
+            
         </>
     )
 }

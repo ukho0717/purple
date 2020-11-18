@@ -14,7 +14,7 @@ const GramLikeMainContainer = ({ location }) => {
             loading: loading['gram/LIKEGRAMLIST_POSTS']
         })
     );
-    console.log('list',listLikeGram);
+    // console.log('list',listLikeGram);
 
     useEffect(() => {
         const { InstaImage, content, comment, likeCount } = qs.parse(location.search, {

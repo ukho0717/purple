@@ -15,21 +15,21 @@ const Worldcup1 = () => {
 
     return(
         <>
-            <div class="world1_1">
-                <div class="world1_1_header"><div id="Wcup"><div></div></div><span>메리퍼플배 이상형 월드컵</span><div id="Wcup"><div></div></div></div>
+            <div className="world1_1">
+                <div className="world1_1_header"><div className="Wcup"><div></div></div><span>메리퍼플배 이상형 월드컵</span><div className="Wcup"><div></div></div></div>
             </div>
-            <div class="world1_2">
-                <div class="heartS">
+            <div className="world1_2">
+                <div className="heartS">
                     <img src={heart} alt="heart image"/>
                     <img src={heart} alt="heart image"/>
                     <img src={heart} alt="heart image"/>
                 </div>
                 <p>이상형</p>
                 <p>월드컵</p>
-                <div class="fightS">
+                <div className="fightS">
                     <img src={fight} alt="fight image"/>
                 </div>
-                <div class="startS">
+                <div className="startS">
                     <Link to="/worldcup2"><button>시작하기</button></Link>
                 </div>
             </div>

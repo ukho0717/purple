@@ -28,7 +28,7 @@ function Chatt({list, user}){
 }
 
 const SideMenu = ({ currentPage, user, chat, userPic }) => {
-    // console.log('~~~',currentPage);
+    console.log('~~~',currentPage);
 
     let userPicImg = '';
     // console.log(userPic);
@@ -38,6 +38,10 @@ const SideMenu = ({ currentPage, user, chat, userPic }) => {
 
     function script(){
         switch(currentPage){
+            case '/Payment':
+                $('#sub_menu_myprofile').addClass('on').removeClass('off');
+                $('#sub_menu_myprofile').siblings().addClass('off');
+                break;
             case '/match':
             case '/match_like':
             case '/match_profile':
@@ -95,9 +99,7 @@ const SideMenu = ({ currentPage, user, chat, userPic }) => {
                         $('#left_menu #slide_box #sub_menu_enter ul a:nth-child(6)').addClass('on');
                         break;
                 }
-            case '/Payment':
-                $('#sub_menu_myprofile').addClass('on').removeClass('off');
-                $('#sub_menu_myprofile').siblings().addClass('off');
+            
         }
 
         // 서브 메뉴 클릭시

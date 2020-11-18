@@ -24,6 +24,7 @@ import Worldcup1Page from './pages/Worldcup1Page';
 import Worldcup2Page from './pages/Worldcup2Page';
 import Worldcup3Page from './pages/Worldcup3Page';
 import FindOnePage from './pages/FindOnePage';
+import FoundOnePage from './pages/FoundOnePage';
 
 const App = () => {
   return (
@@ -52,6 +53,7 @@ const App = () => {
       <Route component={Worldcup2Page} path="/worldcup2"/>
       <Route component={Worldcup3Page} path="/worldcup3/:user_id"/>
       <Route component={FindOnePage} path="/findone"/>
+      <Route component={FoundOnePage} path="/findone2"/>
     </>
   )
 }

@@ -3,7 +3,7 @@ import SideMenuContainer from '../containers/common/SideMenuContainer';
 import ContentContainer from '../containers/common/ContentContainer';
 import FindOneContainer from '../containers/enter_find/FindOneContainer'
 
-const MatchingPage = () => {
+const FindOnePage = () => {
 
     return(
         <div id="wrap10">
@@ -15,4 +15,4 @@ const MatchingPage = () => {
     )
 }
 
-export default MatchingPage
+export default FindOnePage

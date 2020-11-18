@@ -36,17 +36,15 @@ const MatchingContainer = ({match}) => {
         };
     }, [dispatch]);
     return (
-
-                <Matching 
-                    matching={matching} 
-                    error={error} 
-                    loading={loading} 
-                    onToggle={onToggle} 
-                    showProfile={showProfile} 
-                    onToggle_report={onToggle_report}
-                    urlAddress = {urlAddress}
-                />
-
+        <Matching 
+            matching={matching} 
+            error={error} 
+            loading={loading} 
+            onToggle={onToggle} 
+            showProfile={showProfile} 
+            onToggle_report={onToggle_report}
+            urlAddress = {urlAddress}
+        />
     )
 }
 

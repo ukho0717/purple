@@ -50,7 +50,7 @@ const App = () => {
       <Route component={EnterMainPage} path="/enter_main"/>
       <Route component={Worldcup1Page} path="/worldcup1"/>
       <Route component={Worldcup2Page} path="/worldcup2"/>
-      <Route component={Worldcup3Page} path="/worldcup3"/>
+      <Route component={Worldcup3Page} path="/worldcup3/:user_id"/>
       <Route component={FindOnePage} path="/findone"/>
     </>
   )

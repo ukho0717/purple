@@ -6,18 +6,29 @@ import { takeLatest } from 'redux-saga/effects';
 const [
     WORLDCUP_LIST,
     WORLDCUP_LIST_SUCCESS,
-    WORLDCUP_LIST_FAILURE
+    WORLDCUP_LIST_FAILURE,
 ] = createRequestActionTypes('worldcup/WORLDCUP_LIST');
+const [
+    WINNER,
+    WINNER_SUCCESS,
+    WINNER_FAILURE,
+] = createRequestActionTypes('worldcup/WINNER');
+const UNLOAD_WINNER = 'worldcup/UNLOAD_WINNER';
 
 export const worldcupList = createAction(WORLDCUP_LIST);
+export const winnerProfile = createAction(WINNER, user_id => user_id);
+export const unloadWinner = createAction(UNLOAD_WINNER);
 
 const worldcupListSaga = createRequestSaga(WORLDCUP_LIST, worldcupAPI.userList);
+const winnerSaga = createRequestSaga(WINNER, worldcupAPI.winner);
 export function* worldcupSaga(){
     yield takeLatest(WORLDCUP_LIST, worldcupListSaga);
+    yield takeLatest(WINNER, winnerSaga);
 }
 
 const initialState = {
     list: null,
+    winner: null,
     error: null
 }
 
@@ -30,7 +41,16 @@ const worldcup = handleActions(
         [WORLDCUP_LIST_FAILURE]: (state, { payload: error }) => ({
             ...state,
             error
-        })
+        }),
+        [WINNER_SUCCESS]: (state, { payload: winner }) => ({
+            ...state,
+            winner
+        }),
+        [WINNER_FAILURE]: (state, { payload: error }) => ({
+            ...state,
+            error
+        }),
+        [UNLOAD_WINNER]: () => initialState,
     },
     initialState
 );

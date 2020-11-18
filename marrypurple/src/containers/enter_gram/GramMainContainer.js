@@ -15,6 +15,8 @@ const GramMainContainer = ({ location }) => {
         })
     );
 
+    // console.log('인스타', listGram);
+
     useEffect(() => {
         const { InstaImage, content, comment } = qs.parse(location.search, {
             ignoreQueryPrefix: true

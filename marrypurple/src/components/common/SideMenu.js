@@ -28,7 +28,7 @@ function Chatt({list, user}){
 }
 
 const SideMenu = ({ currentPage, user, chat, userPic }) => {
-    // console.log('~~~',currentPage);
+    console.log('~~~',currentPage);
 
     let userPicImg = '';
     // console.log(userPic);

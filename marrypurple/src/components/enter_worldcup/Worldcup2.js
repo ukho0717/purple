@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import '../../lib/styles/worldcup2.scss';
 
-const Worldcup2 = ({ userList, history }) => {
+const Worldcup2 = ({ userList, history, error, loading }) => {
     let item = new Array();
     if(userList){
         item = userList;
         console.log(item.length);
+        // console.log(item);
     }
 
     const [users, setUsers] = useState([]);
@@ -15,11 +16,14 @@ const Worldcup2 = ({ userList, history }) => {
         setUsers(item);
         console.log('설정된user',users);
         setDisplay([item[0], item[1]]);
-        
+        console.log('display',display);
     }, []);
+    // console.log('설정된user2',users);
+    // console.log('display2',display);
+
 
     const clickHandler = user => () => {
-        // console.log(users.length);
+        console.log(user);
         console.log('users', users);
         console.log('winner', winner);
         if(users.length <= 2){
@@ -39,20 +43,33 @@ const Worldcup2 = ({ userList, history }) => {
         }
     }
 
+    if(error){
+        return (
+            <div><h2>오류가 발생했습니다.</h2></div>
+        )
+    }
     return(
-        <>
-            <div className="world2_1">
-                <div className="world2_1_header"><div className="Wcup"><div></div></div><span>메리퍼플배 이상형 월드컵 4강 (1/4)</span><div className="Wcup"><div></div></div></div>
-            </div>
-            <div className="world2_2">
-                {display.map(user => {
-                    return (
-                        <div onClick={clickHandler(user)} className="world2_2_picture">
-                            <img src={user.profile_pic[0]} alt="회원 프로필사진"/>
-                        </div>
-                    )
-                })}
-            </div>
+        <>  {!userList && (
+                <div>준비중</div>
+            )}
+            {!loading && (
+                <>
+                    <div className="world2_1">
+                        <div className="world2_1_header"><div className="Wcup"><div></div></div><span>메리퍼플배 이상형 월드컵 4강 (1/4)</span><div className="Wcup"><div></div></div></div>
+                    </div>
+                    <div className="world2_2">
+                        {display.map(user => {
+                            return (
+                                <div key={user._id} onClick={clickHandler(user)} className="world2_2_picture">
+                                    <img src={user.profile_pic[0]} alt="회원 프로필사진"/>
+                                </div>
+                                // <div>{user}</div>
+                            )
+                        })}
+                    </div>
+                </>
+            )}
+            
         </>
     )
 }

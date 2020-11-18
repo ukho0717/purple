@@ -40,7 +40,7 @@ const FAQ = () => {
                     <span> | </span>
                     <span>한국어</span>
                 </footer>
-                <Link className="Toggle_btn" to="/Profile"><i className="fas fa-bars"></i></Link>
+                <Link className="Toggle_btn" to="/Profile_main"><i className="fas fa-bars"></i></Link>
             </div>
         </>
     )

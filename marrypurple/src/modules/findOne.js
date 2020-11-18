@@ -2,6 +2,7 @@ import { createAction, handleActions } from "redux-actions";
 import { takeLatest } from "redux-saga/effects";
 import createRequestSaga, {createRequestActionTypes,} from "../lib/createRequestSaga";
 import * as findAPI from "../lib/api/enterFind";
+import produce from "immer";
 
 // 이상형찾기
 const [
@@ -19,6 +20,7 @@ export function* findSaga(){
 
 const initialState = {
     one: null,
+    check: 'checked',
     error:null
 };
 
@@ -27,7 +29,7 @@ const findOne = handleActions(
         [FIND_ONE_SUCCESS]: (state, { payload: one }) => ({
             ...state,
             error: null,
-            one,
+            one
         }),
         [FIND_ONE_FAILURE]: (state, { payload: error }) => ({
             ...state,

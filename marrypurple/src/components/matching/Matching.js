@@ -2,6 +2,7 @@ import React from 'react';
 import '../../lib/styles/matching.scss';
 import MatchingItem from './pieces/MatchingItem';
 import Error from './pieces/error'
+import { BiExitFullscreen } from 'react-icons/bi';
 
 const Matching = ({urlAddress, matching, error, loading, onToggle, onToggle_report, showProfile, back}) => {
   if(error){

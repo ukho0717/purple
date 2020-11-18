@@ -26,6 +26,8 @@ import Worldcup3Page from './pages/Worldcup3Page';
 import FindOnePage from './pages/FindOnePage';
 import FoundOnePage from './pages/FoundOnePage';
 import FindOnePageMain from './pages/FindOnePageMain';
+import TelepathyPage from './pages/TelepathyPage';
+import TelepathyMakeQuizPage from './pages/TelepathyMakeQuizPage'
 
 const App = () => {
   return (
@@ -52,16 +54,18 @@ const App = () => {
       <Route component={EnterMainPage} path="/enter_main"/>
       <Route component={Worldcup1Page} path="/worldcup1"/>
       <Route component={Worldcup2Page} path="/worldcup2"/>
-<<<<<<< HEAD
+
       <Route component={Worldcup3Page} path="/worldcup3"/>
       <Route component={FindOnePageMain} path="/find_main"/>
       <Route component={FindOnePage} path="/find_select"/>
       <Route component={FoundOnePage} path="/find_match"/>
-=======
+
       <Route component={Worldcup3Page} path="/worldcup3/:user_id"/>
-      <Route component={FindOnePage} path="/findone"/>
-      <Route component={FoundOnePage} path="/findone2"/>
->>>>>>> 93acf3a6834345db0bb221fb2d53aff6ed2d73f2
+
+      <Route component={TelepathyPage} path="/Telepathy"/>
+      <Route component={TelepathyMakeQuizPage} path="/Telepathy_make_quiz"/>
+      {/* <Route component={FindOnePage} path="/find_select"/> */}
+
     </>
   )
 }

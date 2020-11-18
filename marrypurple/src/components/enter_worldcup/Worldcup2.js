@@ -52,32 +52,32 @@ export const FlexBox = styled.div`
 
 
 const Worldcup2 = ({ userList }) => {
-    console.log(userList);
+    // console.log(userList);
 
-    const [users, setUsers] = useState([]);
-    const [display, setDisplay] = useState([]);
-    const [winner, setWinner] = useState([]);
-    useEffect(() => {
-        setUsers(userList);
-        setDisplay([userList[0], userList[1]]);
-    }, []);
+    // const [users, setUsers] = useState([]);
+    // const [display, setDisplay] = useState([]);
+    // const [winner, setWinner] = useState([]);
+    // useEffect(() => {
+    //     setUsers(userList);
+    //     setDisplay([userList[0], userList[1]]);
+    // }, []);
 
-    const clickHandler = user => () => {
-        if(users.length <= 2){
-            if(winner.length === 0){
-                setDisplay([user]);
-            }else{
-                let updateUser = [...winner, user];
-                setUsers(updateUser);
-                setDisplay([updateUser[0], upadateUser[1]]);
-                setWinner([]);
-            }
-        }else if(users.length > 2){
-            setWinner([...winner, user]);
-            setDisplay([users[2]], users[3]);
-            setUsers(users.slice(2));
-        }
-    }
+    // const clickHandler = user => () => {
+    //     if(users.length <= 2){
+    //         if(winner.length === 0){
+    //             setDisplay([user]);
+    //         }else{
+    //             let updateUser = [...winner, user];
+    //             setUsers(updateUser);
+    //             setDisplay([updateUser[0], upadateUser[1]]);
+    //             setWinner([]);
+    //         }
+    //     }else if(users.length > 2){
+    //         setWinner([...winner, user]);
+    //         setDisplay([users[2]], users[3]);
+    //         setUsers(users.slice(2));
+    //     }
+    // }
 
     return(
         <>
@@ -95,7 +95,7 @@ const Worldcup2 = ({ userList }) => {
                     <a href="./worldcup3.html"><button></button></a>
                 </div>
             </div> */}
-            <FlexBox>
+            {/* <FlexBox>
                 <h1 className="title">Favorite Worldcup</h1>
                 {display.map(d => {
                     return (
@@ -105,7 +105,7 @@ const Worldcup2 = ({ userList }) => {
                     </div>
                     );
                 })}
-            </FlexBox>
+            </FlexBox> */}
         </>
     )
 }

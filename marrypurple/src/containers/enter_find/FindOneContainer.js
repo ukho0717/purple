@@ -15,7 +15,7 @@ const FindOneContainer = ({history}) => {
     useEffect(() => {
         if (findOne) {
             history.push({
-                pathname: '/findone2',
+                pathname: '/find_match',
                 data: findOne
             });
         }

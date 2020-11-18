@@ -1,8 +1,11 @@
 import React from 'react';
 import '../../lib/styles/found.scss';
 import { IoMdRefreshCircle } from 'react-icons/io'
+import { useDispatch} from "react-redux";
+import {like, pass} from '../../modules/ctrl'
 
 const FoundOne = ({who}) => {
+    const dispatch = useDispatch();
     return(
         <>
             <div id="yours_is" className="common_div">당신의 이상형은...</div>
@@ -19,8 +22,8 @@ const FoundOne = ({who}) => {
                 </div>
             </div>
             <div id="flex_div">
-                <a><div id="like_you"></div><div>좋아요 하기</div></a>
-                <a><IoMdRefreshCircle id="pass_you"/><div>다른사람 찾아볼래요</div></a>
+                <a href="/find_main" onClick={()=>dispatch(like({ id: who.match }))} ><div id="like_you"></div><div>좋아요 하기</div></a>
+                <a href="/find_main" onClick={()=>dispatch(pass({ id: who.match }))}><IoMdRefreshCircle id="pass_you"/><div>다른사람 찾아볼래요</div></a>
             </div>
         </>
     )

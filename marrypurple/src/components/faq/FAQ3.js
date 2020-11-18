@@ -48,7 +48,7 @@ const FAQ3 = () => {
                 </div>
             </div>
             <div id="back_btn"><Link to="/FAQ2">뒤로가기</Link></div>
-            <Link class="Toggle_btn" to="/Profile"><i class="fas fa-bars"/></Link>
+            <Link class="Toggle_btn" to="/Profile_main"><i class="fas fa-bars"/></Link>
         </>
     )
 }

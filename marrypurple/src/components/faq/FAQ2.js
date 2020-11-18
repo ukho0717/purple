@@ -78,7 +78,7 @@ const FAQ2 = () => {
                         </div>
                     </p>
                 </div>
-                <Link className="Toggle_btn" to="/Profile"><i className="fas fa-bars"></i></Link>
+                <Link className="Toggle_btn" to="/Profile_main"><i className="fas fa-bars"></i></Link>
             </div>
         </>
     )

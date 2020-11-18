@@ -3,9 +3,9 @@ import Matching from '../../models/matching';
 
 export const select = async ctx=>{
     try{
-        // console.log('접속유저: ',ctx.state.user);
-        // const login_id = ctx.state.user._id; // 로그인한아이디(User스키마)
-        const login_id = '5fb1c4de3e823e1648543c35'
+        console.log('접속유저: ',ctx.state.user);
+        const login_id = ctx.state.user._id; // 로그인한아이디(User스키마)
+
         const me = await Matching.findOne({'user':login_id})
         const passed = me.pass//내가 pass한 사람
         const my_id = me._id//내 _id(Matching)

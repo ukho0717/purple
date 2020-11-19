@@ -62,6 +62,9 @@ const SideMenu = ({ currentPage, user, chat, userPic }) => {
             case '/worldcup3':
             case '/Telepathy':
             case '/Telepathy_make_quiz':
+            case '/Telepathy_make_quiz2':
+            case '/Telepathy_make_quiz3':
+            case '/Telepathy_make_quiz_fin':
             case '/Telepathy_get_quiz':
             case '/find_main':
             case '/find_select':

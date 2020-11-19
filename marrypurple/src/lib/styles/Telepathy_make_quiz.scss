@@ -68,13 +68,13 @@
     border: 4px solid transparent;
     box-sizing: border-box;
 }
-.num2 {/*현재 고르고있는 문제 번호를 나타냄*/
-    background-color: #9813ae;
-    border: 4px solid #ff00ca;
-}
-.num3 {/*아직 고르지 않은 문제 번호를 나타냄*/
-    background-color: #888;
-}
+// .num2 {/*현재 고르고있는 문제 번호를 나타냄*/
+//     background-color: #9813ae;
+//     border: 4px solid #ff00ca;
+// }
+// .num3 {/*아직 고르지 않은 문제 번호를 나타냄*/
+//     background-color: #888;
+// }
 /*문제 고르는 현황 끝*/
 
 .mun {/*문제*/
@@ -128,9 +128,8 @@ label:hover{
     font-weight: bold;
 }
 
-input[type=submit]{
-    border: none;
-    outline: none;
+#telepahtyGoGo{
+    display: inline-block;
     background-color: #9813ae;
     width: 300px;
     height: 50px;
@@ -138,8 +137,9 @@ input[type=submit]{
     font-weight: bold;
     font-size: 20px;
     margin: 20px 0;
+    padding-top: 20px;
 }
-input[type=submit]:hover{
+#telepahtyGoGo:hover{
     cursor: pointer;
 }
 
@@ -206,4 +206,11 @@ input[type=submit]:hover{
         font-size: 22px;
         padding: 0;
     }
+}
+
+#selectAll{
+    margin: 22px 0;
+    color: #777;
+    font-weight: bold;
+    font-size: 20px;
 }

@@ -48,17 +48,26 @@ const QuizPieces = ({info, OnToggle, unfoldDiv, selectAns}) => {
 }
 
 
-const TelepathyMakeQuiz = ({ OnToggle, unfoldDiv, Qna, sort, handMun, handAns }) => {
+const TelepathyMakeQuiz2 = ({ OnToggle, unfoldDiv, Qna, sort, handMun, handAns }) => {
+    const [collectMun, setCollectMun] = useState([])
+    const [collectAns, setCollectAns] = useState([])
     const [mun, setMun] = useState('')//내가 고른 문제
     const [ans, setAns] = useState('')//내가 고른 답
+
+    const collectVal = () =>{
+        setCollectMun(collectMun.concat(handMun));// 문제에다가 넘어온 이전 문제를 합쳐줌
+        setCollectAns(collectAns.concat(handAns));// 답에다가 넘어온 이전 답을 합쳐줌
+        console.log("현재까지의 문제: ",collectMun)
+        console.log("현재까지의 답변: ",collectAns)
+    }
 
     const selectAns = (e, question) => {//답 고르기
         setMun(question)
         setAns(e.target.value)
-    }
-
-    const ifDidnt = () => {
-        alert('답변을 선택해주세요')
+        // if(question){//얘는 그냥 문제랑 답이 잘 찍히는지 보기 위해 쓴것.
+        //      console.log(mun)
+        //      console.log(ans)
+        // }
     }
     return(
         <>
@@ -70,9 +79,9 @@ const TelepathyMakeQuiz = ({ OnToggle, unfoldDiv, Qna, sort, handMun, handAns })
             <section id="part1">
                 <div class="part1_fc">3가지 질문을 선택하고 답해주세요</div>
                 <div class="process">
-                    <div class="num1" style={{borderWidth:'4px', borderColor:'#ff00ca'}}>1</div>
-                    <div class="num2" style={{backgroundColor:"#888"}}>2</div>
-                    <div class="num3" style={{backgroundColor:"#888"}}>3</div>
+                    <div class="num1">1</div>
+                    <div class="num2">2</div>
+                    <div class="num3" style={{borderWidth:'4px', borderColor:'#ff00ca'}}>3</div>
                 </div>
             </section>
             <form>
@@ -87,16 +96,11 @@ const TelepathyMakeQuiz = ({ OnToggle, unfoldDiv, Qna, sort, handMun, handAns })
                             selectAns={selectAns}
                         />
                     ))}
-                    {ans !== '' &&(
-                        <div><Link to={{ pathname:'/Telepathy_make_quiz2', mun:mun, ans:ans }} id="telepahtyGoGo">등록</Link></div>
-                    )}
-                    {ans === '' &&(
-                        <div><a id="telepahtyGoGo" onClick={ifDidnt}>등록</a></div>
-                    )}
+                    <div><Link to={{ pathname:'/Telepathy_make_quiz_fin', mun:mun, ans:ans }} onClick={collectVal}></Link>등록</div>
                 </section>
             </form>
         </>
     )
 }
 
-export default withRouter(TelepathyMakeQuiz);
+export default withRouter(TelepathyMakeQuiz2);

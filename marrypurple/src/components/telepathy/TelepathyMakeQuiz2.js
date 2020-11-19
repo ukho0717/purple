@@ -48,18 +48,32 @@ const QuizPieces = ({info, OnToggle, unfoldDiv, selectAns}) => {
 }
 
 
-const TelepathyMakeQuiz = ({ OnToggle, unfoldDiv, Qna, sort, handMun, handAns }) => {
-    const [mun, setMun] = useState('')//내가 고른 문제
-    const [ans, setAns] = useState('')//내가 고른 답
+const TelepathyMakeQuiz2 = ({ OnToggle, unfoldDiv, Qna, sort, handMun, handAns }) => {
+    const [mun, setMun] = useState([handMun])//내가 고른 문제
+    const [ans, setAns] = useState([handAns])//내가 고른 답
 
     const selectAns = (e, question) => {//답 고르기
-        setMun(question)
-        setAns(e.target.value)
+        if(mun.length === 1){
+            console.log(mun)
+            setMun(mun.concat(question))
+        }else{
+            console.log(mun)
+            setMun(mun.slice(0,1).concat(question))
+        }
+        if(ans.length === 1){
+            console.log(ans)
+            setAns(ans.concat(e.target.value))
+        }else{
+            console.log(ans)
+            setAns(ans.slice(0,1).concat(e.target.value))
+        }
     }
 
-    const ifDidnt = () => {
-        alert('답변을 선택해주세요')
+    const whatsIn = () => {
+        console.log("문제는 : ",mun)
+        console.log("답은 : ", ans)
     }
+
     return(
         <>
             <p class="guideline">
@@ -70,8 +84,8 @@ const TelepathyMakeQuiz = ({ OnToggle, unfoldDiv, Qna, sort, handMun, handAns })
             <section id="part1">
                 <div class="part1_fc">3가지 질문을 선택하고 답해주세요</div>
                 <div class="process">
-                    <div class="num1" style={{borderWidth:'4px', borderColor:'#ff00ca'}}>1</div>
-                    <div class="num2" style={{backgroundColor:"#888"}}>2</div>
+                    <div class="num1">1</div>
+                    <div class="num2" style={{borderWidth:'4px', borderColor:'#ff00ca'}}>2</div>
                     <div class="num3" style={{backgroundColor:"#888"}}>3</div>
                 </div>
             </section>
@@ -87,16 +101,11 @@ const TelepathyMakeQuiz = ({ OnToggle, unfoldDiv, Qna, sort, handMun, handAns })
                             selectAns={selectAns}
                         />
                     ))}
-                    {ans !== '' &&(
-                        <div><Link to={{ pathname:'/Telepathy_make_quiz2', mun:mun, ans:ans }} id="telepahtyGoGo">등록</Link></div>
-                    )}
-                    {ans === '' &&(
-                        <div><a id="telepahtyGoGo" onClick={ifDidnt}>등록</a></div>
-                    )}
+                    <div><Link to={{ pathname:'/Telepathy_make_quiz3', mun:mun, ans:ans }} id="telepahtyGoGo" onClick={whatsIn}>등록</Link></div>
                 </section>
             </form>
         </>
     )
 }
 
-export default withRouter(TelepathyMakeQuiz);
+export default withRouter(TelepathyMakeQuiz2);

@@ -15,7 +15,7 @@ const SideMenuContainer = ({ match }) => {
         loading: loading['chat/CHAT_LIST']
     }));
 
-    const userPic = user.profile_pic;
+    // const userPic = user.profile_pic;
 
     useEffect(() => {
         dispatch(chatUser());
@@ -25,7 +25,7 @@ const SideMenuContainer = ({ match }) => {
     }, [dispatch]);
     // console.log('매칭된 chatUser 불러오는 중.... ', chat)
     
-    return <SideMenu currentPage={currentPage} chat={chat} loading={loading} user={user} userPic={userPic}/>;
+    return <SideMenu currentPage={currentPage} chat={chat} loading={loading} user={user} /*userPic={userPic}*//>;
 
 }
 

@@ -37,7 +37,7 @@ export const write = async ctx => {
     console.log(ctx.state.user._id);
     const user_id = ctx.state.user._id; // 현재 로그인된 유저 정보
     // const user_id = '5f9f692d8413900d78dd8773';
-    const user = await User.findById(user_id);
+    const user = await User.findById('5fb49e515a275b267019cf4a');
     console.log('user야 나와라',user);
 
     const post = new Gram({

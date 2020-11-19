@@ -58,7 +58,7 @@ const GramWrite = ({ onSubmit }) => {
 
     return(
         <>
-            <div class="gramW_1">
+            <div className="gramW_1">
                 <form method="post" enctype="multipart/form-data" onSubmit={onSubmit}>
                     <div><div className="gramW_1_back"></div><p>작성하기</p></div>
                     <label for="gramW_1_file">사진선택</label>

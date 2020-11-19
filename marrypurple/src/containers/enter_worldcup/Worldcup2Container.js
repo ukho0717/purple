@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Worldcup2 from '../../components/enter_worldcup/Worldcup2';
 import { withRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { worldcupList } from '../../modules/worldcup';
+import { worldcupList, unloadWorldcup } from '../../modules/worldcup';
 
 const Worldcup2Container = ({ history }) => {
     const dispatch = useDispatch();
@@ -12,17 +12,57 @@ const Worldcup2Container = ({ history }) => {
         loading: loading['worldcup/WORLDCUP_LIST']
     }))
 
-    console.log('userList123',list);
-
-    let usersList = new Array();
-    usersList = list;
-
+    const [users, setUsers] = useState([]);
+    const [display, setDisplay] = useState([]);
+    const [winner, setWinner] = useState([]);
     useEffect(() => {
         dispatch(worldcupList());
-    }, [dispatch]);
+        dispatch(unloadWorldcup);
+
+        if(list){
+
+            setUsers(list);
+            console.log('설정된user',users);
+            setDisplay([list[0], list[1]]);
+            console.log('display',display);
+        }
+        
+    }, [dispatch, list]);
+    // useEffect(() => {
+    //     setUsers(userList);
+    //     console.log('설정된user',users);
+    //     setDisplay([userList[0], userList[1]]);
+    //     console.log('display',display);
+    // }, []);
+    console.log('설정된user2',users);
+    console.log('display2',display);
+
+
+    const clickHandler = user => () => {
+        console.log(user);
+        console.log('users', users);
+        console.log('winner', winner);
+        if(users.length <= 2){
+            if(winner.length === 0){
+                setDisplay([user]);
+                history.push(`/worldcup3/${user._id}`);
+            }else{
+                let updateUser = [...winner, user];
+                setUsers(updateUser);
+                setDisplay([updateUser[0], updateUser[1]]);
+                setWinner([]);
+            }
+        }else if(users.length > 2){
+            setWinner([...winner, user]);
+            setDisplay([users[2], users[3]]);
+            setUsers(users.slice(2));
+        }
+    }
+
+    
 
     return (
-        <Worldcup2 userList={list} history={history} error={error} loading={loading}/>
+        <Worldcup2 history={history} error={error} loading={loading} users={users} display={display} winner={winner} clickHandler={clickHandler}/>
     )
 }
 

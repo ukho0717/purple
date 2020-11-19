@@ -19,12 +19,10 @@ const GramReadContainer = ({ match, history }) => {
         })
     );
     // console.log('유저어어',user);
-    console.log('리스트',listLikeGram);
-
+    // console.log('리스트',listLikeGram);
+    // console.log('gram', gram);
 
     const deleteClick = () => {
-        // console.log('delete');
-        // console.log('아이디', gram_id);
         let result = window.confirm('삭제하시겠습니까?');
         
         if(result){
@@ -34,8 +32,6 @@ const GramReadContainer = ({ match, history }) => {
     }
 
     const heartClick = e => {
-        // console.log('heartClick');
-        // console.log(e.target);
         $(e.target).toggleClass('on');
         if($(e.target).hasClass('on')){
             let heart = 'plus';
@@ -61,10 +57,6 @@ const GramReadContainer = ({ match, history }) => {
     }
 
     const commentSubmit = e => {
-        // console.log('commentSubmit');
-        // console.log(e.target.comment.value);
-        // console.log(e.target.nickName.value);
-
         let nickName = e.target.nickName.value;
         let text = e.target.comment.value;
 

@@ -21,7 +21,8 @@
     margin-bottom: 5px; 
     font-size: 32px; 
     font-weight: bold; 
-    color: #9e7ffe; 
+    color: #9e7ffe;
+    text-align: left;
 }
 #contentBox .gram_2 .gram_2_photo { 
     width: 190px; 
@@ -48,7 +49,8 @@
 #contentBox .gram_3 p { 
     margin-bottom: 5px; 
     font-size: 32px; 
-    font-weight: bold; 
+    font-weight: bold;
+    text-align: left;
 }
 #contentBox .gram_3 .gram_3_photo {
     width: 190px; 
@@ -93,6 +95,7 @@
 #contentBox .gramW_1 div p {
     position: relative;
     left: 35px;
+    text-align: left;
 }
 #contentBox .gramW_1 p { 
     margin-bottom: 10px; 
@@ -158,6 +161,7 @@
     margin: 20px; 
     margin-bottom: 0;
     position: relative;
+    text-align: left;
 }
 #contentBox .gramP_1 .gramP_1_back { 
     width: 25px; 
@@ -244,7 +248,8 @@
 
 #contentBox .gramP_2 { 
     margin: 15px; 
-    margin-top: 10px; 
+    margin-top: 10px;
+    text-align: left;
 }
 #contentBox .gramP_2 #gramP_2_photo { 
     width: 100%; 
@@ -258,7 +263,8 @@
 #contentBox .gramP_3 { 
     margin: 0 15px; 
     padding-bottom: 5px; 
-    border-bottom: 1px solid #E8E8E8; 
+    border-bottom: 1px solid #E8E8E8;
+    text-align: left;
 }
 #contentBox .gramP_3 #gramP_3_heart { 
     width: 30px; 
@@ -286,7 +292,8 @@
 
 #contentBox .gramP_4 { 
     margin: 15px; 
-    margin-top: 10px; 
+    margin-top: 10px;
+    text-align: left;
 }
 #contentBox .gramP_4 p { 
     margin-bottom: 5px;
@@ -302,6 +309,7 @@
 #contentBox .gramP_5 { 
     margin: 0 15px;
     margin-bottom: 15px;
+    text-align: left;
 }
 #contentBox .gramP_5 form {
     position: relative;

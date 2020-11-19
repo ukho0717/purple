@@ -14,7 +14,7 @@ const EnterMain = () => {
 
     return (
         <>
-            <ul class="enterM_1">
+            <ul className="enterM_1">
                 <Link to="/worldcup1"><div><li>이상형 월드컵</li></div></Link>
                 <Link to="/Telepathy"><div><li>텔레파시</li></div></Link>
                 <Link to="/find_main"><div><li>이상형 찾기</li></div></Link>

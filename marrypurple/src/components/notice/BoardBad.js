@@ -30,22 +30,22 @@ const BoardBad = ({ badList }) => {
 
     return (
         <>
-            <div class="gramB_1">
+            <div className="gramB_1">
                 <h2>불량회원</h2>
             </div>
-            <div class="gramB_2">
-                <dl class="gramB_2_list">
+            <div className="gramB_2">
+                <dl className="gramB_2_list">
                     {badList && (
                         <dl>
                             {badList.map(post => (
                                 <>
                                     <dt>
-                                    <a><div class="gramB_2_wrap"><p><span class="gramB_2_id">{post.User.user_nick}</span> - <span class="gramB_2_reason">{post.reason}</span></p><div class="gramB_2_icon"></div></div></a>
+                                    <a><div className="gramB_2_wrap"><p><span className="gramB_2_id">{post.User.user_nick}</span> - <span className="gramB_2_reason">{post.reason}</span></p><div className="gramB_2_icon"></div></div></a>
                                     </dt>
                                     <dd>
-                                        <div class="gramB_2_detail">
-                                            <div class="gramB_2_datail_photo"><img src={post.User.profile_pic}/></div>
-                                            <p class="gramB_2_detail_content">
+                                        <div className="gramB_2_detail">
+                                            <div className="gramB_2_datail_photo"><img src={post.User.profile_pic}/></div>
+                                            <p className="gramB_2_detail_content">
                                                 {post.reason == "음담패설" && (<span>상대방에게 음담패설을 하여</span>)}
                                                 {post.reason == "욕설" && (<span>상대방에게 욕설 하여</span>)}
                                                 {post.reason == "사진도용" && (<span>사진도용을 하여</span>)}신고당하였습니다.<br/>이 회원을 보게되면 운영진에게 신고하여주세요.</p>

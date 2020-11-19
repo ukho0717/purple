@@ -1,5 +1,8 @@
 @media (max-width:768px){
     /* match_list */
+    #content .matchList_1, #content .matchList_2 {
+        text-align: left;
+    }
     #content .matchList_1 .matchList_1_title { 
         margin: 12px 8px; 
     }

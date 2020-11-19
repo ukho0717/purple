@@ -11,31 +11,31 @@ const FAQ3 = () => {
                 <script src="https://kit.fontawesome.com/f4b52f1d75.js" crossorigin="anonymous"></script>
             </Helmet>
             <header>
-                <div class="logo">
+                <div className="logo">
                     <Link to="/Profile"><img src={logo} alt="메리퍼플로고"/></Link>
                 </div>
-                <div class="back_to_main"><a to="/Profile.html">back to main</a></div>
+                <div className="back_to_main"><a to="/Profile.html">back to main</a></div>
             </header>
-            <div class="underline"></div>
-            <div class="menu_trace">
-                <p class="menu_trace_leftside">
+            <div className="underline"></div>
+            <div className="menu_trace">
+                <p className="menu_trace_leftside">
                     <Link to="/FAQ">Marry Purple</Link>
-                    <i class="fas fa-chevron-right"/>
+                    <i className="fas fa-chevron-right"/>
                     <Link to="/FAQ2">Marry Purple 이용자 가이드</Link>
                 </p>
-                <p class="menu_trace_leftside_m">
+                <p className="menu_trace_leftside_m">
                     <Link to="/FAQ">Marry Purple</Link>
-                    <i class="fas fa-chevron-right"/>
+                    <i className="fas fa-chevron-right"/>
                     <br/>
                     <Link to="/FAQ2">Marry Purple 이용자 가이드</Link>
                 </p>
-                <div class="menu_tract_search">
-                    <i class="fas fa-search"/>
+                <div className="menu_tract_search">
+                    <i className="fas fa-search"/>
                     <input type="text" placeholder="검색"/>
                 </div>
             </div>
-            <div class="menu_trace">
-                <div class="content-next3">
+            <div className="menu_trace">
+                <div className="content-next3">
                     <h1>Tinder 소개</h1>
                     <br/>
                     <p>지금까지 200억 건의 매치를 탄생시킨 Tinder 는 전 세계에서 가장 인기 있는 소셜디스커버리앱입니다. 언제 어디에 계시든 틴더만 있다면 새로운 친구를 발견할 수 있습니다. 서울이나 부산, 제주, 전국 어디든 방문하거나 여행하실 때, 현지에서 새 친구를 사귀고 싶다면 Tinder를 열어주세요. 동네친구가 필요할 때도, 나와 취향이 같은 사람과 이야기하고 싶을 때도 틴더가 든든한 친구가 되어 드릴겁니다. 매일 2,600만건, 지금까지 200억건의 친구가 매치되는 이런 소셜앱을 보신 적 있나요? 이런 데이트 앱을 보신 적이 있나요?
@@ -48,28 +48,9 @@ const FAQ3 = () => {
                 </div>
             </div>
             <div id="back_btn"><Link to="/FAQ2">뒤로가기</Link></div>
-            <Link class="Toggle_btn" to="/Profile_main"><i class="fas fa-bars"/></Link>
+            <Link className="Toggle_btn" to="/Profile_main"><i className="fas fa-bars"/></Link>
         </>
     )
 }
 
 export default FAQ3;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

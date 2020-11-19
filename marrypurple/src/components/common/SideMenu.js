@@ -19,9 +19,9 @@ function Haa({list, user}){
 function Chatt({list, user}){
     return(
         <>
-            <Link to={{ pathname:'/chat', data: list, myInfo: user.user_email }} ><li class="message_listP">
-            <div class="message_listP_wrap"><div class="message_listP_photo"><div></div></div>
-            <div><span class="message_listP_id">{list.user_nick}</span></div></div>
+            <Link to={{ pathname:'/chat', data: list, myInfo: user.user_email }} ><li className="message_listP">
+            <div className="message_listP_wrap"><div className="message_listP_photo"><div></div></div>
+            <div><span className="message_listP_id">{list.user_nick}</span></div></div>
             </li></Link>
         </>
     )
@@ -38,6 +38,7 @@ const SideMenu = ({ currentPage, user, chat, userPic }) => {
 
     function script(){
         switch(currentPage){
+            case '/Profile':
             case '/Payment':
                 $('#sub_menu_myprofile').addClass('on').removeClass('off');
                 $('#sub_menu_myprofile').siblings().addClass('off');
@@ -72,7 +73,7 @@ const SideMenu = ({ currentPage, user, chat, userPic }) => {
             case '/find_match':
             case '/gram_main':
             case '/gram_write':
-            case '/gram_post':
+            case '/gram_post/:gram_id':
             case '/board_bad':
                 $('#m3').addClass('on');
                 $('#slide_box div').removeClass('on').removeClass('off');
@@ -96,7 +97,7 @@ const SideMenu = ({ currentPage, user, chat, userPic }) => {
                         break;
                     case '/gram_main':
                     case '/gram_write':
-                    case '/gram_post':
+                    case '/gram_post/:gram_id':
                         $('#left_menu #slide_box #sub_menu_enter ul a:nth-child(4)').addClass('on');
                         break;
                     case '/board_bad':
@@ -170,10 +171,10 @@ const SideMenu = ({ currentPage, user, chat, userPic }) => {
             {/* 모바일 메뉴 */}
             <div id="m_menu">
                 <ul>
-                    <li><Link to="/profile_main"><div><i class="fas fa-address-card"></i></div></Link></li>
-                    <li><Link to="/match"><div><i class="fas fa-heartbeat"></i></div></Link></li>
-                    <li><Link to="/match_list"><div><i class="fas fa-comments"></i></div></Link></li>
-                    <li><Link to="/enter_main"><div><i class="fas fa-plane"></i></div></Link></li>
+                    <li><Link to="/profile_main"><div><i className="fas fa-address-card"></i></div></Link></li>
+                    <li><Link to="/match"><div><i className="fas fa-heartbeat"></i></div></Link></li>
+                    <li><Link to="/match_list"><div><i className="fas fa-comments"></i></div></Link></li>
+                    <li><Link to="/enter_main"><div><i className="fas fa-plane"></i></div></Link></li>
                 </ul>
             </div>
             {/* 웹 메뉴 */}
@@ -196,7 +197,7 @@ const SideMenu = ({ currentPage, user, chat, userPic }) => {
                     </li>
                     <li>
                         <div id="slide_box">
-                            <div id="sub_menu_match" class="off">
+                            <div id="sub_menu_match" className="off">
                                 <ul>
                                     <Link to="match_like"><div><li>나를 좋아요</li></div></Link>
                                     <>
@@ -214,7 +215,7 @@ const SideMenu = ({ currentPage, user, chat, userPic }) => {
                                     </>
                                 </ul>
                             </div>
-                            <div id="sub_menu_message" class="off">
+                            <div id="sub_menu_message" className="off">
                                 <ul id="message_list">
                                     <>
                                         {chat && (
@@ -231,7 +232,7 @@ const SideMenu = ({ currentPage, user, chat, userPic }) => {
                                     </>
                                 </ul>
                             </div>
-                            <div id="sub_menu_enter" class="off">
+                            <div id="sub_menu_enter" className="off">
                                 <ul>
                                     <Link to="/worldcup1"><div><li>이상형 월드컵</li></div></Link>
                                     <Link to="/Telepathy"><div><li>텔레파시</li></div></Link>
@@ -241,14 +242,14 @@ const SideMenu = ({ currentPage, user, chat, userPic }) => {
                                     <Link to="/board_bad"><div><li>불량회원</li></div></Link>
                                 </ul>
                             </div>
-                            <div id="sub_menu_myprofile" class="off">
+                            <div id="sub_menu_myprofile" className="off">
                                 <dl>
                                     <Link to="Payment"><div><dd>결제하기 <span className="sub_menu_myprofile_icon">&gt;</span></dd></div></Link>
                                     <h2>DISCOVERY 설정</h2>
                                     <a>
                                         <div>
                                             <dd>원하는 상대 
-                                                <p class="input_type_radio2">
+                                                <p className="input_type_radio2">
                                                     <input type="radio" name="gender2" id="boy" checked/>
                                                     <label for="boy">남</label>
                                                     <input type="radio" name="gender2" id="all"/>

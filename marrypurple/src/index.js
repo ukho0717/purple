@@ -14,7 +14,6 @@ import { tempSetUser, check } from './modules/user';
 const sagaMiddleware = createSagaMiddleware();  //Saga를 Redux Store에 연결하기 위해 쓰는 미들웨어
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(sagaMiddleware)));// 스토어 안에 만들어 둔 사가미들웨어와 리듀서를 연결해준다.
-sagaMiddleware.run(rootSaga);
 
 function loadUser(){
   try{

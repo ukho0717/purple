@@ -73,7 +73,7 @@ const FAQ2 = () => {
                                 <li><Link to="/FAQ3">메세지를 삭제할 수 있나요?</Link></li>
                                 <li><Link to="/FAQ3">매치 회원에게 어떻게 메시지를 보낼 수 있나요?</Link></li>
                                 <li><Link to="/FAQ3">회원을 어떻게 신고하나요?</Link></li>
-                                <li><a to="/FAQ3">실수로 어떤 회원과의 매치를 취소했어요</a></li>
+                                <li><Link to="/FAQ3">실수로 어떤 회원과의 매치를 취소했어요</Link></li>
                             </ul>
                         </div>
                     </p>
@@ -85,22 +85,3 @@ const FAQ2 = () => {
 }
 
 export default FAQ2;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

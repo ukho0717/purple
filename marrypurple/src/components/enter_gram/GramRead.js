@@ -11,25 +11,24 @@ import { BiTrash } from 'react-icons/bi'
 import { Link } from 'react-router-dom';
 
 const GramWrite = ({ user, gram, listLikeGram, commentSubmit, deleteClick, heartClick , error, loading}) => {
-    // console.log(gram);
-    // console.log(gram.likeUser);
-    // console.log(user);
-    // console.log(listLikeGram);
+    let gram1 = {};
+    let heartClass = '';
+    if(gram){
+        gram1 = gram;
 
-    let LikeList = '';
+        for(let i=0; i<gram1.likeUser.length; i++){
+            if(gram1.likeUser[i] == user._id){
+                heartClass = 'on';
+            }
+        }
+    }
+
+    let LikeList = [];
     if(listLikeGram){
         LikeList = listLikeGram;
     }
-    // console.log(LikeList[0]);
+    console.log(LikeList)
 
-    function script() {
-        // console.log($("#gramP_3_heart").attr('class'));
-        // let className = $("#gramP_3_heart").attr('class');
-        // className.replace('false', '');
-        // console.log(className);
-
-    }
-    
     const clickBack = () => {
         window.history.back();
     }
@@ -125,8 +124,6 @@ const GramWrite = ({ user, gram, listLikeGram, commentSubmit, deleteClick, heart
         }
     }
 
-    script();
-
     if(error){
         return <div><h2>에러가 발생했습니다.</h2></div>
     }
@@ -136,9 +133,9 @@ const GramWrite = ({ user, gram, listLikeGram, commentSubmit, deleteClick, heart
                 <>
                     <div className="gramP_1">
                         <div className="gramP_1_back" onClick={clickBack}></div><div class="gramP_1_myPho">{<img src={gram.User.profile_pic} alt="gram user profile_pic"/>}</div><span className="gramP_id" id="gramP_1_id">{gram.User.user_nick}</span>
-                        {/* {LikeList.map(listLike => listLike._id === gram._id && (
+                        {LikeList.map(listLike => listLike._id === gram._id && (
                             <div id="gramP_1_hot">HOT</div>
-                        ))} */}
+                        ))}
                         {gram.User._id === user._id ? (
                             <div className="gramP_1_trash" onClick={deleteClick}><BiTrash/></div>
                         ) : (
@@ -149,19 +146,7 @@ const GramWrite = ({ user, gram, listLikeGram, commentSubmit, deleteClick, heart
                         <div id="gramP_2_photo"><img src={gram.InstaImage} alt="instaImage"/></div>
                     </div>
                     <div className="gramP_3">
-                        {/* {user._id == gram.likeUser[0] ? (
-                            <div id="gramP_3_heart" className="on" onClick={heartClick}></div>
-                        ) : (
-                            <div id="gramP_3_heart" onClick={heartClick}></div>
-                        )} */}
-                        {/* {gram.likeUser.map(likeuser => likeuser == user._id ? (
-                            <div id="gramP_3_heart" className="on" onClick={heartClick}></div>
-                        ) : (
-                            <div id="gramP_3_heart" onClick={heartClick}></div>
-                        ))} */}
-                        {/* <div id="gramP_3_heart" onClick={heartClick} className={gram.likeUser.map(likeuser => {if(likeuser == user.id){return "on"}})}></div> */}
-                        <div id="gramP_3_heart" onClick={heartClick} className={gram.likeUser.find((uuser) => {return uuser === user._id})}></div>
-
+                        <div id="gramP_3_heart" onClick={heartClick} className={heartClass}></div>
                         <p><span id="gramP_3_count">{gram.likeCount}</span>명이 좋아합니다.</p>
             <p><span className="gramP_id" id="gramP_3_id">{gram.User.user_nick}</span> <span id="gramP_3_content">{gram.content}</span></p>
                     </div>
@@ -172,7 +157,7 @@ const GramWrite = ({ user, gram, listLikeGram, commentSubmit, deleteClick, heart
                     </div>
                     <div className="gramP_5">
                         <form method="patch" onSubmit={commentSubmit}>
-                            <input type="hidden" name="nickName" value={user.user_nick}/><div class="gramP_id" id="gramP_5_id">{user.user_nick}</div><input type="text" name="comment"/> <input type="submit" value="게시" className="gramP_5_button"/>
+                            <input type="hidden" name="nickName" value={user.user_nick}/><div className="gramP_id" id="gramP_5_id">{user.user_nick}</div><input type="text" name="comment"/> <input type="submit" value="게시" className="gramP_5_button"/>
                         </form>
                         
                     </div>

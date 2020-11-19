@@ -19,7 +19,9 @@ const GramMain = ({ listGram }) => {
                 <div className="gram_3">
                     <p>최신 스토리</p>
                     {listGram.map(gram => (
-                        <Link to={`/gram_post/${gram._id}`}><div className="gram_3_photo" /*style={{ background: `url(${gram.InstaImage})`, backgroundSize: '100%', backgroundRepeat: 'no-repeat' }}*/><img src={gram.InstaImage}/></div></Link>
+                        <Link to={`/gram_post/${gram._id}`}>
+                            <div className="gram_3_photo" /*style={{ background: `url(${gram.InstaImage})`, backgroundSize: '100%', backgroundRepeat: 'no-repeat' }}*/><img src={gram.InstaImage}/></div>
+                        </Link>
                     ))}
                 </div>
             )}

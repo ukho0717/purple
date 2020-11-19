@@ -54,58 +54,58 @@ export const ans = async ctx=>{
 }
 
 
-export const ans1 = async ctx=>{
-    const { _id } = ctx.state.user
-    const {ans_user, ans_mine} = ctx.request.body;
-    try{
-        if(ans_user == ans_mine){
-        ctx.status = 200
-        ctx.body = '성공';
-        }else{
-        ctx.status = 300//틀렷을땐이거
-        ctx.body = '틀렸습니다.'
-        }
-    }catch(e){
-        ctx.throw(500,e)
-    }
-}
+// export const ans1 = async ctx=>{
+//     const { _id } = ctx.state.user
+//     const {ans_user, ans_mine} = ctx.request.body;
+//     try{
+//         if(ans_user == ans_mine){
+//         ctx.status = 200
+//         ctx.body = '성공';
+//         }else{
+//         ctx.status = 300//틀렷을땐이거
+//         ctx.body = '틀렸습니다.'
+//         }
+//     }catch(e){
+//         ctx.throw(500,e)
+//     }
+// }
 
-export const ans2 = async ctx=>{
-    const { _id } = ctx.state.user
-    const {ans_user, ans_mine} = ctx.request.body;
-    try{
-        if(ans_user == ans_mine){
-            ctx.status = 200
-            ctx.body = '성공';
-            }else{
-            ctx.status = 300//틀렷을땐이거
-            ctx.body = '틀렸습니다.'
-            }
-    }catch(e){
-        ctx.throw(500,e)
-    }
-}
+// export const ans2 = async ctx=>{
+//     const { _id } = ctx.state.user
+//     const {ans_user, ans_mine} = ctx.request.body;
+//     try{
+//         if(ans_user == ans_mine){
+//             ctx.status = 200
+//             ctx.body = '성공';
+//             }else{
+//             ctx.status = 300//틀렷을땐이거
+//             ctx.body = '틀렸습니다.'
+//             }
+//     }catch(e){
+//         ctx.throw(500,e)
+//     }
+// }
 
-export const ans3 = async ctx=>{
-    const { _id } = ctx.state.user
-    const {user_id, ans_user, ans_mine} = ctx.request.body; //상대방 id가져올땐 telepathy안의 user에서 가져와야함
-    const query = { 'user': _id }
-    const query2 = { 'user': user_id }
-    try{
-        if(ans_user == ans_mine){//마지막것 맞으면 매칭
-            await Matching.findOneAndUpdate(query, { $push: { matched: user_id, like: user_id, pass: user_id } }, {
-                new: true
-            }).exec()//내 매치 pass like 에다가 상대방 id넣기
-            await Matching.findOneAndUpdate(query2, { $push: { matched: _id, like: _id, pass: _id } }, {
-                new: true
-            }).exec()//상대방의 매치 pass like 에다가 내 id 넣기
-            ctx.status = 200
-            ctx.body = '성공';
-        }else{
-            ctx.status = 300
-            ctx.body = '틀렸습니다.'
-        }
-    }catch(e){
-        ctx.throw(500,e)
-    }
-}
+// export const ans3 = async ctx=>{
+//     const { _id } = ctx.state.user
+//     const {user_id, ans_user, ans_mine} = ctx.request.body; //상대방 id가져올땐 telepathy안의 user에서 가져와야함
+//     const query = { 'user': _id }
+//     const query2 = { 'user': user_id }
+//     try{
+//         if(ans_user == ans_mine){//마지막것 맞으면 매칭
+//             await Matching.findOneAndUpdate(query, { $push: { matched: user_id, like: user_id, pass: user_id } }, {
+//                 new: true
+//             }).exec()//내 매치 pass like 에다가 상대방 id넣기
+//             await Matching.findOneAndUpdate(query2, { $push: { matched: _id, like: _id, pass: _id } }, {
+//                 new: true
+//             }).exec()//상대방의 매치 pass like 에다가 내 id 넣기
+//             ctx.status = 200
+//             ctx.body = '성공';
+//         }else{
+//             ctx.status = 300
+//             ctx.body = '틀렸습니다.'
+//         }
+//     }catch(e){
+//         ctx.throw(500,e)
+//     }
+// }

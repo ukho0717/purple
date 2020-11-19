@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
+import { withRouter } from "react-router-dom";
 import TelepathyMakeQuiz3 from '../../components/telepathy/TelepathyMakeQuiz3'
+import '../../lib/styles/Telepathy_make_quiz_fin.scss'
 
-const TelepathyMakeQuizContainer3 = () => {
+const TelepathyMakeQuizContainer3 = ({location}) => {
     const[div, setDiv] = useState({
         unfold:''
     })
@@ -13,6 +15,10 @@ const TelepathyMakeQuizContainer3 = () => {
             setDiv({unfold: ''})
         }
     }
+    
+    const collectmun = location.mun;
+    const collectans = location.ans;
+
     const tel_QnA_situation = [
         {
             open:'mun1open',
@@ -97,9 +103,9 @@ const TelepathyMakeQuizContainer3 = () => {
     ]
     return(
         <>
-            <TelepathyMakeQuiz3 OnToggle={UnfoldToggle} unfoldDiv={div} Qna={tel_QnA_situation} sort={'연애'}/>
+            <TelepathyMakeQuiz3 OnToggle={UnfoldToggle} unfoldDiv={div} Qna={tel_QnA_situation} sort={'연애'} handMun={collectmun} handAns={collectans} />
         </>
     )
 }
 
-export default TelepathyMakeQuizContainer3;
+export default withRouter(TelepathyMakeQuizContainer3);

@@ -91,7 +91,7 @@ const TelepathyMakeQuiz = ({ OnToggle, unfoldDiv, Qna, sort, handMun, handAns })
                         <div><Link to={{ pathname:'/Telepathy_make_quiz2', mun:mun, ans:ans }} id="telepahtyGoGo">등록</Link></div>
                     )}
                     {ans === '' &&(
-                        <div><a id="telepahtyGoGo" onClick={ifDidnt}>등록</a></div>
+                        <div><a href="#next" id="telepahtyGoGo" onClick={ifDidnt}>다음</a></div>
                     )}
                 </section>
             </form>

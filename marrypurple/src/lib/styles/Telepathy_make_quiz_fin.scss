@@ -90,17 +90,17 @@
     color: #ffdbf2;
     margin-bottom: 10px;
 }
-.start_btn > button {
-    border: none;
-    outline: none;
+#start_tele {
+    display: inline-block;
     width: 300px;
-    height: 50px;
+    height: 40px;
     background-color: #fd009f;
     color: #fff;
     font-size: 20px;
     font-weight: bold;
+    padding-top: 10px;
 }
-.start_btn > button:hover{
+#start_tele:hover{
     cursor: pointer;
 }
 .collect_quiz div:nth-child(7){

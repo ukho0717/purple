@@ -69,11 +69,9 @@ const TelepathyMakeQuiz2 = ({ OnToggle, unfoldDiv, Qna, sort, handMun, handAns }
         }
     }
 
-    const whatsIn = () => {
-        console.log("문제는 : ",mun)
-        console.log("답은 : ", ans)
+    const ifDidnt = () => {//답변 선택 안 한 경우
+        alert('답변을 선택해주세요')
     }
-
     return(
         <>
             <p class="guideline">
@@ -101,7 +99,12 @@ const TelepathyMakeQuiz2 = ({ OnToggle, unfoldDiv, Qna, sort, handMun, handAns }
                             selectAns={selectAns}
                         />
                     ))}
-                    <div><Link to={{ pathname:'/Telepathy_make_quiz3', mun:mun, ans:ans }} id="telepahtyGoGo" onClick={whatsIn}>등록</Link></div>
+                    {ans.length === 2 &&(
+                        <div><Link to={{ pathname:'/Telepathy_make_quiz3', mun:mun, ans:ans }} id="telepahtyGoGo">등록</Link></div>
+                    )}
+                    {ans.length !== 2 &&(
+                        <div><a href="#next" id="telepahtyGoGo" onClick={ifDidnt}>다음</a></div>
+                    )}
                 </section>
             </form>
         </>

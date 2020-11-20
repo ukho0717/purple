@@ -12,57 +12,61 @@ const Worldcup2Container = ({ history }) => {
         loading: loading['worldcup/WORLDCUP_LIST']
     }))
 
-    const [users, setUsers] = useState([]);
-    const [display, setDisplay] = useState([]);
-    const [winner, setWinner] = useState([]);
+    // const [users, setUsers] = useState([]);
+    // const [display, setDisplay] = useState([]);
+    // const [winner, setWinner] = useState([]);
     useEffect(() => {
         dispatch(worldcupList());
-        dispatch(unloadWorldcup);
+        // return () => {
+        //     dispatch(unloadWorldcup);
+        // } 
 
-        if(list){
-
-            setUsers(list);
-            console.log('설정된user',users);
-            setDisplay([list[0], list[1]]);
-            console.log('display',display);
-        }
         
-    }, [dispatch, list]);
+    }, [dispatch]);
+
+    console.log('list', list);
+
+    // let item = new Array();
+    // if(list){
+    //     item = list;
+    // }
+    // console.log(item);
+
     // useEffect(() => {
-    //     setUsers(userList);
+    //     setUsers(item);
     //     console.log('설정된user',users);
-    //     setDisplay([userList[0], userList[1]]);
+    //     setDisplay([item[0], item[1]]);
     //     console.log('display',display);
     // }, []);
-    console.log('설정된user2',users);
-    console.log('display2',display);
+    // console.log('설정된user2',users);
+    // console.log('display2',display);
 
 
-    const clickHandler = user => () => {
-        console.log(user);
-        console.log('users', users);
-        console.log('winner', winner);
-        if(users.length <= 2){
-            if(winner.length === 0){
-                setDisplay([user]);
-                history.push(`/worldcup3/${user._id}`);
-            }else{
-                let updateUser = [...winner, user];
-                setUsers(updateUser);
-                setDisplay([updateUser[0], updateUser[1]]);
-                setWinner([]);
-            }
-        }else if(users.length > 2){
-            setWinner([...winner, user]);
-            setDisplay([users[2], users[3]]);
-            setUsers(users.slice(2));
-        }
-    }
+    // const clickHandler = user => () => {
+    //     console.log(user);
+    //     console.log('users', users);
+    //     console.log('winner', winner);
+    //     if(users.length <= 2){
+    //         if(winner.length === 0){
+    //             setDisplay([user]);
+    //             history.push(`/worldcup3/${user._id}`);
+    //         }else{
+    //             let updateUser = [...winner, user];
+    //             setUsers(updateUser);
+    //             setDisplay([updateUser[0], updateUser[1]]);
+    //             setWinner([]);
+    //         }
+    //     }else if(users.length > 2){
+    //         setWinner([...winner, user]);
+    //         setDisplay([users[2], users[3]]);
+    //         setUsers(users.slice(2));
+    //     }
+    // }
 
     
 
     return (
-        <Worldcup2 history={history} error={error} loading={loading} users={users} display={display} winner={winner} clickHandler={clickHandler}/>
+        <Worldcup2 history={history} error={error} loading={loading} list={list}/>
     )
 }
 

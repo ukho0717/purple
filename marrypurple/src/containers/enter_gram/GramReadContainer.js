@@ -33,6 +33,7 @@ const GramReadContainer = ({ match, history }) => {
 
     const heartClick = e => {
         $(e.target).toggleClass('on');
+        e.preventDefault();
         if($(e.target).hasClass('on')){
             let heart = 'plus';
             dispatch(updateLikeGram({

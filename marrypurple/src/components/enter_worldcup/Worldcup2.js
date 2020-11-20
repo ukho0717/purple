@@ -1,48 +1,66 @@
 import React, { useState, useEffect } from 'react';
 import '../../lib/styles/worldcup2.scss';
 
-const Worldcup2 = ({ userList, history, error, loading, users, display, winner, clickHandler }) => {
+const Worldcup2 = ({ history, error, loading, list }) => {
     let item = new Array();
-    if(display){
-        item = display;
+    if(list){
+        item = list;
         // console.log(item);
+        // setUsers(item);
+        // console.log('설정된user',users);
+        // setDisplay([item[0], item[1]]);
+        // console.log('display',display);
+        // setDisplay([item[0], item[1]]);
+
     }
     console.log(item.length);
+    console.log("item",item);
+
+    const [users, setUsers] = useState([item]);
+    const [display, setDisplay] = useState([]);
+    const [winner, setWinner] = useState([]);
+
+    setDisplay([item[0], item[1]]);
+
+    
     
 
-    // const [users, setUsers] = useState([]);
-    // const [display, setDisplay] = useState([]);
-    // const [winner, setWinner] = useState([]);
+    
     // useEffect(() => {
-    //     setUsers(item);
-    //     console.log('설정된user',users);
-    //     setDisplay([item[0], item[1]]);
-    //     console.log('display',display);
+    //     console.log(item)
+    //     setTimeout(() => {
+    //         setUsers(item);
+    //         console.log('설정된user',users);
+    //         setDisplay([item[0], item[1]]);
+    //         console.log('display',display);
+    //     }, 3000);   
+        
+        
     // }, []);
-    // console.log('설정된user2',users);
-    // console.log('display2',display);
+    console.log('설정된user2',users);
+    console.log('display2',display);
 
 
-    // const clickHandler = user => () => {
-    //     console.log(user);
-    //     console.log('users', users);
-    //     console.log('winner', winner);
-    //     if(users.length <= 2){
-    //         if(winner.length === 0){
-    //             setDisplay([user]);
-    //             history.push(`/worldcup3/${user._id}`);
-    //         }else{
-    //             let updateUser = [...winner, user];
-    //             setUsers(updateUser);
-    //             setDisplay([updateUser[0], updateUser[1]]);
-    //             setWinner([]);
-    //         }
-    //     }else if(users.length > 2){
-    //         setWinner([...winner, user]);
-    //         setDisplay([users[2], users[3]]);
-    //         setUsers(users.slice(2));
-    //     }
-    // }
+    const clickHandler = user => () => {
+        console.log(user);
+        console.log('users', users);
+        console.log('winner', winner);
+        if(users.length <= 2){
+            if(winner.length === 0){
+                setDisplay([user]);
+                history.push(`/worldcup3/${user._id}`);
+            }else{
+                let updateUser = [...winner, user];
+                setUsers(updateUser);
+                setDisplay([updateUser[0], updateUser[1]]);
+                setWinner([]);
+            }
+        }else if(users.length > 2){
+            setWinner([...winner, user]);
+            setDisplay([users[2], users[3]]);
+            setUsers(users.slice(2));
+        }
+    }
 
     if(error){
         return (
@@ -57,14 +75,14 @@ const Worldcup2 = ({ userList, history, error, loading, users, display, winner, 
                         <div className="world2_1_header"><div className="Wcup"><div></div></div><span>메리퍼플배 이상형 월드컵 4강 (1/4)</span><div className="Wcup"><div></div></div></div>
                     </div>
                     <div className="world2_2">
-                        {item.map(user => {
+                        {/* {display.map(user => {
                             return (
-                                // <div key={user._id} onClick={clickHandler(user)} className="world2_2_picture">
-                                //     <img src={user.profile_pic[0]} alt="회원 프로필사진"/>
-                                // </div>
-                                <div key={user._id}>{user.user_nick}</div>
+                                <div key={user._id} onClick={clickHandler(user)} className="world2_2_picture">
+                                    <img src={user.profile_pic[0]} alt="회원 프로필사진"/>
+                                </div>
+                                // <div key={user._id}>{user.user_nick}</div>
                             )
-                        })}
+                        })} */}
                     </div>
                 </>
             )}

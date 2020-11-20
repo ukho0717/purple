@@ -54,17 +54,17 @@ const TelepathyMakeQuiz2 = ({ OnToggle, unfoldDiv, Qna, sort, handMun, handAns }
 
     const selectAns = (e, question) => {//답 고르기
         if(mun.length === 1){
-            console.log(mun)
+            // console.log(mun)
             setMun(mun.concat(question))
         }else{
-            console.log(mun)
+            // console.log(mun)
             setMun(mun.slice(0,1).concat(question))
         }
         if(ans.length === 1){
-            console.log(ans)
+            // console.log(ans)
             setAns(ans.concat(e.target.value))
         }else{
-            console.log(ans)
+            // console.log(ans)
             setAns(ans.slice(0,1).concat(e.target.value))
         }
     }
@@ -100,10 +100,10 @@ const TelepathyMakeQuiz2 = ({ OnToggle, unfoldDiv, Qna, sort, handMun, handAns }
                         />
                     ))}
                     {ans.length === 2 &&(
-                        <div><Link to={{ pathname:'/Telepathy_make_quiz3', mun:mun, ans:ans }} id="telepahtyGoGo">등록</Link></div>
+                        <div className="telepahtyGoGoContainer"><Link to={{ pathname:'/Telepathy_make_quiz3', mun:mun, ans:ans }} id="telepahtyGoGo">등록</Link></div>
                     )}
                     {ans.length !== 2 &&(
-                        <div><a href="#next" id="telepahtyGoGo" onClick={ifDidnt}>다음</a></div>
+                        <div className="telepahtyGoGoContainer"><a href="#next" id="telepahtyGoGo" onClick={ifDidnt}>다음</a></div>
                     )}
                 </section>
             </form>

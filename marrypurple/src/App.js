@@ -31,9 +31,14 @@ import TelepathyMakeQuizPage from './pages/TelepathyMakeQuizPage';
 import TelepathyMakeQuizPage2 from './pages/TelepathyMakeQuizPage2';
 import TelepathyMakeQuizPage3 from './pages/TelepathyMakeQuizPage3';
 import TelepathyMakeQuizFin from './pages/TelepathyMakeQuizFin';
+import TelepathyGetQuizPage from './pages/TelepathyGetQuizPage';
+import TelepathyGetQuizPage2 from './pages/TelepathyGetQuizPage2';
+import TelepathyGetQuizPage3 from './pages/TelepathyGetQuizPage3';
 import TeleMunWait from './pages/TeleMunWait';
 import ProfileMainPage from './pages/ProfileMainPage';
 import MatchListPage from './pages/MatchListPage';
+
+import UserNotFoundPage from './pages/UserNotFoundPage'
 
 const App = () => {
   return (
@@ -69,9 +74,13 @@ const App = () => {
       <Route component={TelepathyMakeQuizPage2} path="/Telepathy_make_quiz2"/>
       <Route component={TelepathyMakeQuizPage3} path="/Telepathy_make_quiz3"/>
       <Route component={TelepathyMakeQuizFin} path="/Telepathy_make_quiz_fin"/>
+      <Route component={TelepathyGetQuizPage} path="/Telepathy_get_quiz"/>
+      <Route component={TelepathyGetQuizPage2} path="/Telepathy_get_quiz2"/>
+      <Route component={TelepathyGetQuizPage3} path="/Telepathy_get_quiz3"/>
       <Route component={TeleMunWait} path="/tele_mun_done"/>
       <Route component={ProfileMainPage} path="/profile_main"/>
       <Route component={MatchListPage} path="/match_list"/>
+      <Route component={UserNotFoundPage} path="/user_not_found"/>
     </>
   )
 }

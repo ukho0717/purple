@@ -9,7 +9,7 @@ const TelepathyMakeQuizFin = ({mun, ans}) => {
     return(
         <>
         {mun.length > 0 && ans.length > 0 &&(
-            <>
+            <div id="tele_fin_container">
                 <p class="guideline">
                 <i class="fas fa-chevron-left"></i>
                 텔레파시 통통통
@@ -36,7 +36,7 @@ const TelepathyMakeQuizFin = ({mun, ans}) => {
                     <div class="continue_explain">이대로 진행하려면 시작버튼을 눌러주세요</div>
                     <div class="start_btn"><Link to="/tele_mun_done" onClick={()=>dispatch(teleMun({mun,ans}))} id="start_tele">시작하기</Link></div>
                 </div>
-            </>
+            </div>
         )}
         </>
     )

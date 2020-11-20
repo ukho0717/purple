@@ -45,9 +45,13 @@ export const ans = async ctx=>{
         const page = Math.floor(Math.random() * userCount)//랜덤으로 보여주기 위해 랜덤수 만들기
 
         const question = await Telepathy. //텔레파시의 문제 꺼내오기
-        find({_id:{$ne: _id}})
+        find({user:{$ne: _id}})
         // const ans_user = (list[0].answers)[0] //1번문제의 답 꺼내온거
-        ctx.body = question[page] // 랜덤으로 보여주기
+        if(question){
+            ctx.body = question[page] // 랜덤으로 보여주기
+        }else{
+            ctx.body = ''
+        }
     }catch(e){
         ctx.throw(500,e)
     }
@@ -86,26 +90,26 @@ export const ans = async ctx=>{
 //     }
 // }
 
-// export const ans3 = async ctx=>{
-//     const { _id } = ctx.state.user
-//     const {user_id, ans_user, ans_mine} = ctx.request.body; //상대방 id가져올땐 telepathy안의 user에서 가져와야함
-//     const query = { 'user': _id }
-//     const query2 = { 'user': user_id }
-//     try{
-//         if(ans_user == ans_mine){//마지막것 맞으면 매칭
-//             await Matching.findOneAndUpdate(query, { $push: { matched: user_id, like: user_id, pass: user_id } }, {
-//                 new: true
-//             }).exec()//내 매치 pass like 에다가 상대방 id넣기
-//             await Matching.findOneAndUpdate(query2, { $push: { matched: _id, like: _id, pass: _id } }, {
-//                 new: true
-//             }).exec()//상대방의 매치 pass like 에다가 내 id 넣기
-//             ctx.status = 200
-//             ctx.body = '성공';
-//         }else{
-//             ctx.status = 300
-//             ctx.body = '틀렸습니다.'
-//         }
-//     }catch(e){
-//         ctx.throw(500,e)
-//     }
-// }
+export const ans3 = async ctx=>{
+    const { _id } = ctx.state.user
+    const {user_id} = ctx.request.body; //상대방 id가져올땐 telepathy안의 user에서 가져와야함
+    const query = { 'user': _id }
+    const query2 = { 'user': user_id }
+    try{
+        const matching_user_id = (await Matching.findOne(query2))._id // 상대방의 matching의 _id
+        const matching_my_id = (await Matching.findOne(query))._id // 내 matching의 _id
+        console.log('야야야야쇼킹쇼킹',matching_user_id)
+        console.log(matching_my_id)
+        await Matching.findOneAndUpdate(query, { $push: { matched: matching_user_id, like: matching_user_id, pass: matching_user_id } }, {
+            new: true
+        }).exec()//내 매치 pass like 에다가 상대방 id넣기
+        await Matching.findOneAndUpdate(query2, { $push: { matched: matching_my_id, like: matching_my_id, pass: matching_my_id } }, {
+            new: true
+        }).exec()//상대방의 매치 pass like 에다가 내 id 넣기
+        ctx.status = 200
+        ctx.body = '성공';
+        
+    }catch(e){
+        ctx.throw(500,e)
+    }
+}

@@ -9,7 +9,7 @@ function Haa({list, user}){
     const profilePic = (list.profile_pic)[0]
     return(
     <>
-        <Link to={{ pathname:'/chat', data: list, myInfo: user.user_email }} >
+        <Link to={{ pathname:'/match_profile', data: list, myInfo: user.user_email }} >
             <div style={{ background: `url(${profilePic})`, backgroundSize: '100%', textShadow: '1px 1px 1px gray', backgroundPosition:"center",color:'#fff'}} >{list.user_nick}</div>
         </Link>
     </>

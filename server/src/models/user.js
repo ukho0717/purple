@@ -14,7 +14,7 @@ const UserSchema = new Schema({
     user_nick: String,
     profile_pic : {
         type: [String],
-        default:  '../../images/gorapaduck.jpg'
+        default:  'http://localhost:4000/noone.png'
         },
     regdate:{
         type: Date,

@@ -11,14 +11,14 @@ const TelepathyGetQuizContainer = ({history}) => {
         error: telepathy.error,
         user: user.user
     }));
-
     useEffect(() => {
         dispatch(teleAns());
-        if(telepathy===''){
+        if(telepathy === ''){
             history.push('/user_not_found')
         }
     }, [dispatch,history]);
 
+    console.log(telepathy)
     let mun = [];
     let ans = [];
     let user_nick = '';

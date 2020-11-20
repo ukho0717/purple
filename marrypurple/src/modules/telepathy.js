@@ -7,16 +7,20 @@ import * as telepathyAPI from "../lib/api/telepathy";
 
 const [TELEPATHY_MUN, TELEPATHY_MUN_SUCCESS, TELEPATHY_MUN_FAILURE] = createRequestActionTypes("tele/TELEPATHY_MUN");
 const [TELEPATHY_ANS, TELEPATHY_ANS_SUCCESS, TELEPATHY_ANS_FAILURE] = createRequestActionTypes("tele/TELEPATHY_ANS");
+const [TELEPATHY_FIN, TELEPATHY_FIN_SUCCESS, TELEPATHY_FIN_FAILURE] = createRequestActionTypes("tele/TELEPATHY_FIN");
 
 export const teleMun = createAction(TELEPATHY_MUN,({mun, ans})=>({mun, ans}));
 export const teleAns = createAction(TELEPATHY_ANS);
+export const teleFin = createAction(TELEPATHY_FIN,({user_id})=>({user_id}));
 
 const MunSaga = createRequestSaga(TELEPATHY_MUN, telepathyAPI.telepathyMun); 
 const AnsSaga = createRequestSaga(TELEPATHY_ANS, telepathyAPI.telepathyAns); 
+const FinSaga = createRequestSaga(TELEPATHY_FIN, telepathyAPI.teleFin); 
 
 export function* telepathySaga() {// pass 누르면 passSaga, like누르면 likeSaga, superlike누르면 superSaga
     yield takeLatest(TELEPATHY_MUN, MunSaga);
     yield takeLatest(TELEPATHY_ANS, AnsSaga);
+    yield takeLatest(TELEPATHY_FIN, FinSaga);
 }
 
 const initialState = {

@@ -193,17 +193,14 @@ export const back = async ctx=>{
 //나를 좋아요 한 사람 보기
 export const checkLikeMe = async ctx=>{
     const login_id = ctx.state.user._id//로그인한아이디
+    // const login_id = '5fb7748188c18c0e34a0e4a5';
     const my_id = await Matching.findOne({'user':login_id})
-    const user = await User.findById(login_id)//user안에 id검색하여 상수에저장
+    let likeMeList = []
     try{
         const list = await Matching.find({ like: my_id._id })//내 id포함하고있는것 검색
-        //결제 하지 않았으면 못본다
-        if(user.premium == 'no_sub'){
-            ctx.status = 402
-            ctx.body="결제를하세요"
-        }else{//했으면 볼 수 있다.
-            ctx.body = list.map(user => user.toJSON())
-        }
+        list.map(user => likeMeList.push(user._id))
+        const show_list = await User.find({match:{$in:likeMeList}})
+        ctx.body = show_list.map(list => list.toJSON())
     }catch(e){
         ctx.throw(500,e)
     }

@@ -25,12 +25,14 @@ const TelepathyGetQuizContainer3 = ({history}) => {
     let pic = '';
     let my_pic = '';
     let my_nick='';
+    let user_id = ''
 
     if(telepathy){
         mun = telepathy.questions;
         ans = telepathy.answers;
         pic = telepathy.profile_pic;
         user_nick = telepathy.user_nick;
+        user_id = telepathy.user
     }
     if(user){
         my_pic = (user.profile_pic)[0];
@@ -124,7 +126,7 @@ const TelepathyGetQuizContainer3 = ({history}) => {
     
     return(
         <>
-            <TelepathyGetQuiz3 mun={mun} ans={ans[2]} pic={pic} user_nick={user_nick} my_pic={my_pic} my_nick={my_nick} tot_mun={pick} />
+            <TelepathyGetQuiz3 mun={mun} ans={ans[2]} pic={pic} user_nick={user_nick} my_pic={my_pic} my_nick={my_nick} tot_mun={pick} user_id={user_id} />
         </>
     )
 }

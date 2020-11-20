@@ -1,41 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import '../../lib/styles/worldcup2.scss';
 
-const Worldcup2 = ({ history, error, loading, list }) => {
+const Worldcup2 = ({ history, error, loading, list, usersList }) => {
     let item = new Array();
     if(list){
         item = list;
         // console.log(item);
-        // setUsers(item);
-        // console.log('설정된user',users);
-        // setDisplay([item[0], item[1]]);
-        // console.log('display',display);
-        // setDisplay([item[0], item[1]]);
+    }
 
+    let userList = new Array();
+    if(usersList){
+        userList = usersList;
     }
     console.log(item.length);
-    console.log("item",item);
+    console.log('userList',usersList);
+    
 
-    const [users, setUsers] = useState([item]);
-    const [display, setDisplay] = useState([]);
+    const [users, setUsers] = useState(item);
+    const [display, setDisplay] = useState(userList);
     const [winner, setWinner] = useState([]);
-
-    setDisplay([item[0], item[1]]);
-
-    
-    
-
-    
     // useEffect(() => {
-    //     console.log(item)
-    //     setTimeout(() => {
-    //         setUsers(item);
-    //         console.log('설정된user',users);
-    //         setDisplay([item[0], item[1]]);
-    //         console.log('display',display);
-    //     }, 3000);   
-        
-        
+    //     setUsers(item);
+    //     console.log('설정된user',users);
+    //     setDisplay([item[0], item[1]]);
+    //     console.log('display',display);
     // }, []);
     console.log('설정된user2',users);
     console.log('display2',display);
@@ -67,22 +55,28 @@ const Worldcup2 = ({ history, error, loading, list }) => {
             <div><h2>오류가 발생했습니다.</h2></div>
         )
     }
+    
     return(
         <>  
+            {!list || !usersList && (
+                <>
+                    <div>로딩중</div>
+                </>
+            )}
             {!loading && (
                 <>
                     <div className="world2_1">
                         <div className="world2_1_header"><div className="Wcup"><div></div></div><span>메리퍼플배 이상형 월드컵 4강 (1/4)</span><div className="Wcup"><div></div></div></div>
                     </div>
                     <div className="world2_2">
-                        {/* {display.map(user => {
+                        {display.map(user => {
                             return (
                                 <div key={user._id} onClick={clickHandler(user)} className="world2_2_picture">
                                     <img src={user.profile_pic[0]} alt="회원 프로필사진"/>
                                 </div>
                                 // <div key={user._id}>{user.user_nick}</div>
                             )
-                        })} */}
+                        })}
                     </div>
                 </>
             )}

@@ -14,7 +14,7 @@ const Worldcup3Container = ({ match }) => {
         loading: loading['worldcup/WINNER']
     }));
 
-    console.log('월드컵승자',winner);
+    // console.log('월드컵승자',winner);
 
     useEffect(() => {
         dispatch(winnerProfile(user_id));
@@ -24,7 +24,7 @@ const Worldcup3Container = ({ match }) => {
     }, [dispatch, user_id]);
 
     return (
-        <Worldcup3 winner={winner}/>
+        <Worldcup3 winner={winner} error={error} loading={loading}/>
     )
 }
 

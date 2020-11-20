@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { worldcupList, unloadWorldcup } from '../../modules/worldcup';
 
-const Worldcup2Container = ({ history }) => {
+const Worldcup2Container = ({ history, location, match }) => {
     const dispatch = useDispatch();
     const { list, error, loading } = useSelector(({ worldcup, loading }) => ({
         list: worldcup.list,
@@ -12,20 +12,38 @@ const Worldcup2Container = ({ history }) => {
         loading: loading['worldcup/WORLDCUP_LIST']
     }))
 
+    console.log('history',history);
+
+    console.log('history.data',history.location.data);
+    console.log('location',location);
+    console.log('match',match);
+
+    // const [tests, setTests] = useState(history.location.data);
+    // console.log('tests', tests);
+
     // const [users, setUsers] = useState([]);
     // const [display, setDisplay] = useState([]);
     // const [winner, setWinner] = useState([]);
-    useEffect(() => {
-        dispatch(worldcupList());
-        // return () => {
-        //     dispatch(unloadWorldcup);
-        // } 
+    // useEffect(() => {
+    //     dispatch(worldcupList());
+    //     // return () => {
+    //     //     dispatch(unloadWorldcup);
+    //     // } 
 
         
-    }, [dispatch]);
+    // }, [dispatch]);
 
     console.log('list', list);
+    let usersList = new Array();
+    if(list){
+        usersList = history.location.data;
+        usersList = usersList.slice(0,2);
+    }
+    
+    console.log('usersList', usersList);
 
+
+    
     // let item = new Array();
     // if(list){
     //     item = list;
@@ -66,7 +84,7 @@ const Worldcup2Container = ({ history }) => {
     
 
     return (
-        <Worldcup2 history={history} error={error} loading={loading} list={list}/>
+        <Worldcup2 history={history} error={error} loading={loading} list={list} usersList={usersList}/>
     )
 }
 

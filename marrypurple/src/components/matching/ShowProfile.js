@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ProfilePic from '../matching/pieces/ProfilePic'
 import '../../lib/styles/matchProfile.scss'
 import imgA from '../../lib/images/icon/004980c2c35d4fa37d9635ed7f159c3c.png'
 import imgB from '../../lib/images/icon/f84abf6d0bd53bf97dbb1011aa640499.png'
@@ -14,7 +15,7 @@ const ShowProfile = ({user_data, my_email, unfoldDiv, onToggle}) => {
                 <p><span id="matchP_1_id">{user_data.user_nick}</span> <span id="matchP_1_age">{user_data.user_age}</span></p>
             </div>
             <div class="matchP_2">
-                <div id="matchP_2_photo"></div>
+            <ProfilePic pics={user_data.profile_pic} key={user_data._id}/>
             </div>
             <div class="matchP_3">
                 <div><div id="matchP_3_gender"></div><p>{user_data.user_gender === 'male' &&('남성')}{user_data.user_gender === 'female' &&('여성')}</p></div>

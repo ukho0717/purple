@@ -47,8 +47,8 @@ const Chat = ({history, profile_pic, user_nick, user_email, my_email, getMsg}) =
         <div>
             <div class="message_1">
                 {/* <a href="message_profile.html"><div id="message_1_photo"><div style={{ background: `url(${profile_pic[0]})`, 'background-size': '100%', 'border-radius': '50%','backgroundPosition':"center" }}></div></div> */}
-                <a href="message_profile.html"><div id="message_1_photo"><img src={profile_pic[0]}/></div>
-                <p><span id="message_1_id"></span>{user_nick}님과 매치되었습니다.</p></a>
+                <span><div id="message_1_photo"><img src={profile_pic[0]}/></div>
+                <p><span id="message_1_id"></span>{user_nick}님과 매치되었습니다.</p></span>
             </div>
             <div class="message_2" id="msgBoard" >
                 {/* <p>2020.10.07</p> */}

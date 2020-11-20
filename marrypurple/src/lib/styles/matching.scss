@@ -8,8 +8,26 @@
 #selBtn04 { background: url('../images/icon/cancle.png') no-repeat; background-position: 15px; }
 
 #contentBox .match_2 { width: 100%; height: 420px; position: relative; }
-#contentBox .match_2 .match_2_pre { width: 40px; height: 40px; position: absolute; background: url('../images/icon/free-icon-left-482630.png') no-repeat; background-size: 40px; top: 190px; }
-#contentBox .match_2 .match_2_next { width: 40px; height: 40px; position: absolute; background: url('../images/icon/free-icon-right-482615.png') no-repeat; background-size: 40px; z-index: 100; top: 190px; right: 0; }
+#contentBox .match_2 .match_2_pre { 
+    width: 40px; 
+    height: 40px; 
+    position: absolute; 
+    background: url('../images/icon/free-icon-left-482630.png') no-repeat; 
+    background-size: 40px; 
+    top: 190px; 
+    transform: translate(-300px, 0px)
+}
+#contentBox .match_2 .match_2_next { 
+    width: 40px; 
+    height: 40px; 
+    position: absolute; 
+    background: url('../images/icon/free-icon-right-482615.png') no-repeat; 
+    background-size: 40px; 
+    z-index: 100; 
+    top: 190px; 
+    right: 0; 
+    transform: translate(300px, 0px)
+}
 #contentBox .match_2 #match_2_photo {width: 100%; height: 100%; size:100%}
 #contentBox .match_2 #match_2_photo img { width: 100%; height: 100%; size: 100%;}
 
@@ -93,4 +111,21 @@
     color: #5c5c5c;
     font-weight: bold;
     padding-top: 20px;
+}
+
+.labelClass {
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 50px;
+    cursor: pointer;
+}
+#left {
+    left: -5px;
+    background: url('../images/icon/free-icon-left-482630.png') no-repeat center center;
+}
+#right {
+    right: -5px;
+    background: url('../images/icon/free-icon-right-482615.png') no-repeat center center;
 }

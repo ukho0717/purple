@@ -94,6 +94,7 @@ const App = () => {
       <Route component={AdminLoginPage} path="/Admin"/>
       <Route component={AdminRegistPage} path="/Admin_regist"/>
       <Route component={AdminMainPage} path="/Admin_main"/>
+      <Route component={AdminMainPage} path="/Admin_user"/>
 
     </>
   )

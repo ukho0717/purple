@@ -12,6 +12,8 @@ import telepathy from './enter_telepathy'
 
 import auth from './auth';
 
+import admin from './admin'; //어드민것 불러옴
+
 const api = new Router();
 
 api.use('/posts', posts.routes());
@@ -26,6 +28,8 @@ api.use('/find',find.routes());
 api.use('/telepathy',telepathy.routes());
 
 api.use('/auth',auth.routes());
+
+api.use('/admin', admin.routes())
 
 api.get('/text', ctx => {
     ctx.body = 'test 성공!';

@@ -40,6 +40,7 @@ const TelepathyGetQuiz3 = ({history, mun, ans, pic, user_nick, my_pic, my_nick, 
             history.push('/talktothem')
         }else{
             alert('틀렸습니다. 다음에 다시 시도해 보세요.')
+            history.push('/Telepathy')
         }
     }
     return(

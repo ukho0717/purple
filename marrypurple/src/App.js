@@ -40,6 +40,10 @@ import MatchListPage from './pages/MatchListPage';
 
 import UserNotFoundPage from './pages/UserNotFoundPage'
 
+import AdminLoginPage from './pages/admin/AdminLoginPage';
+import AdminRegistPage from './pages/admin/AdminRegistPage';
+import AdminMainPage from './pages/admin/AdminMainPage';
+
 const App = () => {
   return (
     <>
@@ -81,6 +85,11 @@ const App = () => {
       <Route component={ProfileMainPage} path="/profile_main"/>
       <Route component={MatchListPage} path="/match_list"/>
       <Route component={UserNotFoundPage} path="/user_not_found"/>
+
+      <Route component={AdminLoginPage} path="/Admin"/>
+      <Route component={AdminRegistPage} path="/Admin_regist"/>
+      <Route component={AdminMainPage} path="/Admin_main"/>
+
     </>
   )
 }

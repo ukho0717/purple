@@ -1,21 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../../lib/styles/worldcup3.scss';
 import $ from 'jquery';
 import { Link } from 'react-router-dom';
-import errorImg from '../../lib/images/images/500.png'
+import Error from '../common/Error';
 
 const Worldcup3 = ({ winner, error, loading }) => {
     console.log(winner);
-    if(error || !winner){
+    if(error){
         return (
             <>
-                <div class="col-lg-6 col-lg-offset-3 p404 centered">
-                    <img src={errorImg} alt=""/>
-                    <h1>ERROR 500</h1>
-                    <h3>Ouch!! Something Went Wrong!</h3>
-                    <h5 class="mt">Hey, maybe you will be interested in these pages:</h5>
-                    <p><Link to="/match">Match</Link> | <Link to="/FAQ2">FAQ</Link></p>
-                </div>
+                <Error/>
             </>
         )
     }
@@ -65,18 +59,3 @@ const Worldcup3 = ({ winner, error, loading }) => {
 }
 
 export default Worldcup3;
-
-// export default class Worldcup3 extends Component {
-    
-
-//     render() {
-//         const { onClick } = this.props;
-//         console.log('1234');
-//         return (
-//             <div>
-//                 <h2>test</h2>
-//                 <button onClick={onClick}>버튼</button>
-//             </div>
-//         )
-//     }
-// }

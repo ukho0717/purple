@@ -1,0 +1,205 @@
+@import url(http://fonts.googleapis.com/css?family=Ruda:400,700,900);
+$ruda: (Ruda, sans-serif);
+
+.adminContainer {
+    width: 100%;
+    height: 100%;
+    color: #797979;
+    background: #eaeaea;
+    font-family: $ruda;
+    padding: 0;
+    margin: 0;
+    font-size: 13px;
+
+    .black-bg {
+        background: #22242a;
+        border-bottom: 1px solid #393d46;
+
+        .sidebar-toggle-box {
+            float: left;
+            padding-right: 15px;
+            margin-top: 20px;
+
+            .fa-bars {
+                cursor: pointer;
+                display: inline-block;
+                font-size: 20px;
+                color: #797979;
+                padding-top: 3px;
+            }
+        }
+
+        .logo {
+            font-size: 24px;
+            color: #f2f2f2;
+            float: left;
+            margin-top: 15px;
+            text-transform: uppercase;
+            text-decoration: none;
+            outline: none;
+
+            b {
+                font-weight: 900;
+            }
+
+            span {
+                color: #937ffe;
+            }
+        }
+
+        .top-menu {
+            .pull-right {
+                float: right;
+            }
+
+            .nav {
+                padding-left: 0;
+                margin-bottom: 0;
+                list-style: none;
+
+                &::before {
+                    display: table;
+                    content: " ";
+                }
+
+                &::after {
+                    clear: both;
+                    display: table;
+                    content: " ";
+                }
+
+                li {
+                    float: left;
+                    position: relative;
+                    display: block;
+
+                    .logout {
+                        color: #f2f2f2;
+                        font-size: 12px;
+                        border-radius: 4px;
+                        border: 1px solid #9e7ffe;
+                        padding: 5px 15px;
+                        margin-right: 15px;
+                        background: #9e7ffe;
+                        margin-top: 15px;
+                        position: relative;
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+
+    .header {
+        position: fixed;
+        left: 0;
+        right: 0;
+        z-index: 1002;
+        min-height: 60px;
+        padding: 0 15px;
+    }
+    
+    #sidebar {
+        overflow: hidden;
+        outline: none;
+        margin-left: 0;
+        width: 210px;
+        height: 100%;
+        position: fixed;
+        background: #2f323a;
+
+        .sidebar-menu {
+            margin-top: 75px;
+            padding: 0;
+
+            .centered {
+                color: #f2f2f2;
+                font-weight: 700;
+                text-align: center;
+                font-size: 14px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+
+            li {
+                position: relative;
+                margin-bottom: 5px;
+                margin-left: 10px;
+                margin-right: 10px;
+
+                &.mt{
+                    margin-top: 25px;
+                }
+
+                &.sub-menu{
+                    line-height: 15px;
+                }
+                
+                a {
+                    color: #aeb2b7;
+                    text-decoration: none;
+                    display: block;
+                    padding: 15px 0 15px 10px;
+                    font-size: 12px;
+                    outline: none;
+
+                    &.active {
+                        background: #9e7ffe;
+                        color: #fff;
+                        display: block;
+                    }
+
+                    i {
+                        font-size: 15px;
+                        padding-right: 10px;
+                    }
+                }
+
+            }
+        }
+    }
+
+    #main-content {
+        margin-left: 210px;
+        box-sizing: border-box;
+
+        .wrapper {
+            display: inline-block;
+            margin-top: 60px;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-bottom: 15px;
+            padding-top: 0px;
+            width: 100%;
+            box-sizing: border-box;
+
+            .row {
+                margin-right: -15px;
+                margin-left: -15px;
+
+                &::before {
+                    display: table;
+                    content: " ";
+                }
+
+                &::after {
+                    display: table;
+                    content: " ";
+                    clear: both;
+                }
+
+                .col-lg-9 {
+                    position: relative;
+                    min-height: 1px;
+                    padding-right: 15px;
+                    padding-left: 15px;
+                }
+
+                .main-chart {
+                    padding-top: 20px;
+
+                }
+            }
+        }
+    }
+}

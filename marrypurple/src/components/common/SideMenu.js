@@ -9,7 +9,7 @@ function Haa({list, user}){
     const profilePic = (list.profile_pic)[0]
     return(
     <>
-        <Link to={{ pathname:'/chat', data: list, myInfo: user.user_email }} >
+        <Link to={{ pathname:'/match_profile', data: list, myInfo: user.user_email }} >
             <div style={{ background: `url(${profilePic})`, backgroundSize: '100%', textShadow: '1px 1px 1px gray', backgroundPosition:"center",color:'#fff'}} >{list.user_nick}</div>
         </Link>
     </>
@@ -20,7 +20,12 @@ function Chatt({list, user}){
     return(
         <>
             <Link to={{ pathname:'/chat', data: list, myInfo: user.user_email }} ><li className="message_listP">
-            <div className="message_listP_wrap"><div className="message_listP_photo"><div></div></div>
+            <div className="message_listP_wrap">
+                <div className="message_listP_photo" >
+                    <div
+                    style={{background:`url(${(list.profile_pic)[0]})`,backgroundSize:'100%'}}
+                    ></div>
+                </div>
             <div><span className="message_listP_id">{list.user_nick}</span></div></div>
             </li></Link>
         </>

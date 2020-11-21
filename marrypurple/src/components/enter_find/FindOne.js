@@ -20,9 +20,14 @@ const FindOne = ({onSubmit}) => {
     }
 
     const test = (e) => {
-        e.preventDefault();
-        console.log(styles)
-        dispatch(find({ styles }));
+        if(styles.length <3){
+            e.preventDefault();
+            alert('3개 이상 골라주세요!')
+        }else{
+            e.preventDefault();
+            console.log(styles)
+            dispatch(find({ styles }));
+        }
     }
 
     return(

@@ -9,3 +9,5 @@ export const pass = ({id}) => client.patch("/api/match/pass",{id});
 export const like = ({id}) => client.patch("/api/match/like",{id});
 
 export const superlike = ({id}) => client.patch("/api/match/super",{id});
+
+export const matchlike = () => client.get("/api/match/who")

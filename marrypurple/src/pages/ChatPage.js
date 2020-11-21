@@ -15,7 +15,9 @@ const ChatPage = ({location}) => {
         user_email = location.data.user_email
         my_email = location.myInfo
     }
-
+    console.log(user_nick);
+    console.log(user_email);
+    console.log(my_email);
     return(
         <div id="wrap10">
             <SideMenuContainer/>

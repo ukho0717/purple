@@ -39,13 +39,18 @@ export const mun = async ctx=>{
 
 export const ans = async ctx=>{
     const { _id } = ctx.state.user
+    let matched = [_id]
+    const query = { 'user': _id }
+
     try{
+        const my_match_list = (await Matching.findOne(query).populate('matched')).matched
+        my_match_list.map(list => matched.push(list.user))
         // 카운트 해서 랜덤으로 보여주기
-        const userCount = await Telepathy.countDocuments({user:{$ne: _id}}).exec();
+        const userCount = await Telepathy.countDocuments({user:{$nin: matched}}).exec();
         const page = Math.floor(Math.random() * userCount)//랜덤으로 보여주기 위해 랜덤수 만들기
 
         const question = await Telepathy. //텔레파시의 문제 꺼내오기
-        find({user:{$ne: _id}})
+        find({user:{$nin: matched}})
         // const ans_user = (list[0].answers)[0] //1번문제의 답 꺼내온거
         if(question){
             ctx.body = question[page] // 랜덤으로 보여주기
@@ -98,8 +103,7 @@ export const ans3 = async ctx=>{
     try{
         const matching_user_id = (await Matching.findOne(query2))._id // 상대방의 matching의 _id
         const matching_my_id = (await Matching.findOne(query))._id // 내 matching의 _id
-        console.log('야야야야쇼킹쇼킹',matching_user_id)
-        console.log(matching_my_id)
+
         await Matching.findOneAndUpdate(query, { $push: { matched: matching_user_id, like: matching_user_id, pass: matching_user_id } }, {
             new: true
         }).exec()//내 매치 pass like 에다가 상대방 id넣기
@@ -109,6 +113,30 @@ export const ans3 = async ctx=>{
         ctx.status = 200
         ctx.body = '성공';
         
+    }catch(e){
+        ctx.throw(500,e)
+    }
+}
+export const test = async ctx=>{
+    const _id = '5fb7748188c18c0e34a0e4a5';
+    let matched = [_id]
+    const query = { 'user': _id }
+
+    try{
+        const my_match_list = (await Matching.findOne(query).populate('matched')).matched
+        my_match_list.map(list => matched.push(list.user))
+        // 카운트 해서 랜덤으로 보여주기
+        const userCount = await Telepathy.countDocuments({user:{$nin: matched}}).exec();
+        const page = Math.floor(Math.random() * userCount)//랜덤으로 보여주기 위해 랜덤수 만들기
+
+        const question = await Telepathy. //텔레파시의 문제 꺼내오기
+        find({user:{$nin: matched}})
+        // const ans_user = (list[0].answers)[0] //1번문제의 답 꺼내온거
+        if(question){
+            ctx.body = question[page] // 랜덤으로 보여주기
+        }else{
+            ctx.body = ''
+        }
     }catch(e){
         ctx.throw(500,e)
     }

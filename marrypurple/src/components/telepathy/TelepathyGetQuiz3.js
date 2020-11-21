@@ -1,8 +1,12 @@
-import React,{ useState } from 'react';
+import React,{ useState, useEffect } from 'react';
 import '../../lib/styles/Telepathy_get_quiz.scss'
+import { useDispatch} from "react-redux";
+import {teleFin} from '../../modules/telepathy'
 import { withRouter } from 'react-router-dom';
 
-const TelepathyGetQuiz3 = ({history, mun, ans, pic, user_nick, my_pic, my_nick, tot_mun }) => {
+const TelepathyGetQuiz3 = ({history, mun, ans, pic, user_nick, my_pic, my_nick, tot_mun, user_id }) => {
+    const dispatch = useDispatch();
+
     const [check] = useState({
         ans1:false,
         ans2:false,
@@ -32,7 +36,8 @@ const TelepathyGetQuiz3 = ({history, mun, ans, pic, user_nick, my_pic, my_nick, 
 
     const right = (prop1,prop2) => {
         if(prop1 === prop2){
-            history.push('/Telepathy_get_quiz3')
+            dispatch(teleFin({user_id:user_id}))
+            history.push('/talktothem')
         }else{
             alert('틀렸습니다. 다음에 다시 시도해 보세요.')
         }

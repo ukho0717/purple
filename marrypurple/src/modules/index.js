@@ -18,6 +18,7 @@ import findOne, {findSaga} from './findOne'
 import worldcup, { worldcupSaga } from './worldcup'
 import telepathy, {telepathySaga} from './telepathy';
 import matchLike, { likeListSaga } from './matchLike';
+import admin, { adminUserSaga } from './admin';
 
 const rootReducer = combineReducers({ 
     user,
@@ -37,12 +38,13 @@ const rootReducer = combineReducers({
     findOne,
     worldcup,
     telepathy,
-    matchLike
+    matchLike,
+    admin
 });
 
 export function* rootSaga() {
 
-    yield all([matchSaga(), backSaga(), ctrlSaga(), postSaga(), authSaga(),userSaga(), badListsSaga(), gramListsSaga(), likeGramListsSaga(), writeSaga(), chatSaga(), chatUserSaga(), MsgSaga(), findSaga(), worldcupSaga(), telepathySaga(),likeListSaga() ]);
+    yield all([matchSaga(), backSaga(), ctrlSaga(), postSaga(), authSaga(),userSaga(), badListsSaga(), gramListsSaga(), likeGramListsSaga(), writeSaga(), chatSaga(), chatUserSaga(), MsgSaga(), findSaga(), worldcupSaga(), telepathySaga(),likeListSaga(),adminUserSaga() ]);
 
 }
 

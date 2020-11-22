@@ -4,11 +4,11 @@ import '../../lib/styles/chat.scss'
 import { withRouter } from 'react-router-dom';
 const socket = io.connect('/')
 
-const Chat = ({history, profile_pic, user_nick, user_email, my_email, getMsg}) => {
+const Chat = ({match, profile_pic, user_nick, user_email, my_email, getMsg}) => {
     let Msgs =[];
     if(getMsg){
         Msgs = getMsg
-        console.log(Msgs)
+        // console.log(Msgs)
     }
     const [yourID, setYourID] = useState()
     const [state, setState] = useState({message: '', name: ''});
@@ -94,7 +94,8 @@ const Chat = ({history, profile_pic, user_nick, user_email, my_email, getMsg}) =
                         value={state.message} 
                         label="Message" 
                     /> 
-                    <button>보내기</button></form>
+                    <button>보내기</button>
+                </form>
             </div>
         </div>
     )

@@ -19,7 +19,7 @@ function Haa({list, user}){
 function Chatt({list, user}){
     return(
         <>
-            <Link to={{ pathname:'/chat', data: list, myInfo: user.user_email }} ><li className="message_listP">
+            <Link to={{ pathname:`/chat/${list._id}`, data: list, myInfo: user.user_email }} ><li className="message_listP">
             <div className="message_listP_wrap">
                 <div className="message_listP_photo" >
                     <div

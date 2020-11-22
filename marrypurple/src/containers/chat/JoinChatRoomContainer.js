@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getMsgFrom, unloadMsg } from '../../modules/getMsg'
 import Chat from '../../components/chat/Chat'
 
-const JoinChatRoomContainer = ({ profile_pic, user_nick, user_email, my_email }) => {
+const JoinChatRoomContainer = ({ profile_pic, user_id, user_nick, user_email, my_email }) => {
     const { getMsg, error, loading } = useSelector(({ getMsg, loading }) => ({
         getMsg: getMsg.getMsg,
         error: getMsg.error,
@@ -23,7 +23,7 @@ const JoinChatRoomContainer = ({ profile_pic, user_nick, user_email, my_email })
 
     return(
         <>
-            <Chat profile_pic={profile_pic} user_nick={user_nick} user_email={user_email} my_email={my_email} getMsg={getMsg} />
+            <Chat profile_pic={profile_pic} user_nick={user_nick} user_id={user_id} user_email={user_email} my_email={my_email} getMsg={getMsg} />
         </>
     )
 }

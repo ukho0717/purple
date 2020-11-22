@@ -41,6 +41,7 @@ import MatchListPage from './pages/MatchListPage';
 import ShowProfilePage from './pages/ShowProfilePage'
 import UserNotFoundPage from './pages/UserNotFoundPage'
 import WhoLikesMePage from './pages/WhoLikesMePage';
+import AdminUserPage from './pages/admin/AdminUserPage';
 
 import AdminLoginPage from './pages/admin/AdminLoginPage';
 import AdminRegistPage from './pages/admin/AdminRegistPage';
@@ -94,7 +95,7 @@ const App = () => {
       <Route component={AdminLoginPage} path="/Admin"/>
       <Route component={AdminRegistPage} path="/Admin_regist"/>
       <Route component={AdminMainPage} path="/Admin_main"/>
-      <Route component={AdminMainPage} path="/Admin_user"/>
+      <Route component={AdminUserPage} path="/admin_users"/>
 
     </>
   )

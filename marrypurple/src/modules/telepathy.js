@@ -49,7 +49,16 @@ const telepathy = handleActions(
         [TELEPATHY_ANS_FAILURE]: (state, { payload: error }) => ({  // 로그인 실패
             ...state,
             ctrlError: error,
-        })
+        }),
+        [TELEPATHY_FIN_SUCCESS]: (state, { payload: ans }) => ({ // 로그인 성공
+            ...state,
+            ctrlError: null,
+            ans,
+        }),
+        [TELEPATHY_FIN_FAILURE]: (state, { payload: error }) => ({  // 로그인 실패
+            ...state,
+            ctrlError: error,
+        }),
     },
     initialState,
 );

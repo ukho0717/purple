@@ -65,7 +65,7 @@ const SideMenu = ({ currentPage, user, chat, userPic }) => {
                 break;
             case '/worldcup1':
             case '/worldcup2':
-            case '/worldcup3':
+            case '/worldcup3/:user_id':
             case '/Telepathy':
             case '/Telepathy_make_quiz':
             case '/Telepathy_make_quiz2':
@@ -87,7 +87,7 @@ const SideMenu = ({ currentPage, user, chat, userPic }) => {
                 switch(currentPage){
                     case '/worldcup1':
                     case '/worldcup2':
-                    case '/worldcup3':
+                    case '/worldcup3/:user_id':
                         $('#left_menu #slide_box #sub_menu_enter ul a:nth-child(1)').addClass('on');
                         break;
                     case '/Telepathy':

@@ -11,10 +11,7 @@ const AdminContent = ({ children }) => {
             </Helmet>
             <section id="main-content">
                 <section className="wrapper">
-                    <div className="row">
-                        <div className="col-lg-9 main-chart">{children}
-                        </div>
-                    </div>
+                    {children}
                 </section>
             </section>
         </>

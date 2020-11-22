@@ -45,6 +45,7 @@ import WhoLikesMePage from './pages/WhoLikesMePage';
 import AdminLoginPage from './pages/admin/AdminLoginPage';
 import AdminRegistPage from './pages/admin/AdminRegistPage';
 import AdminMainPage from './pages/admin/AdminMainPage';
+import AdminGramPage from './pages/admin/AdminGramPage';
 
 const App = () => {
   return (
@@ -94,6 +95,7 @@ const App = () => {
       <Route component={AdminLoginPage} path="/Admin"/>
       <Route component={AdminRegistPage} path="/Admin_regist"/>
       <Route component={AdminMainPage} path="/Admin_main"/>
+      <Route component={AdminGramPage} path="/Admin_gram"/>
 
     </>
   )

@@ -34,92 +34,122 @@
     width: 100%; 
 }
 #contentBox .world3_2 { 
-    width:100%; 
-    height: 647px; 
-}
-#contentBox .world3_2 p { 
-    margin-bottom: 5px; 
-    font-size: 68px; 
-    font-weight: bold; 
-    color: #fff; 
-    letter-spacing: 25px; 
-    margin-left: 20px; 
-}
-#contentBox .world3_2 .pictureMain {
-    width: 100%; 
-    height: 30%;  
-    display: inline-block; 
-    text-align: center; 
-    background: url('../images/images/picture3.jpg') no-repeat; 
-    background-size: cover; 
-    background-position: center; 
-    text-align: center; 
-    padding-bottom: 5px; 
-    padding-top: 5px;
-}
-#contentBox .world3_2 .profile {
-    width: 100%; 
-    height: 20%;  
-    display: inline-block; 
-    margin-top: 20px; 
-    margin-left: 10px;
-}
-#contentBox .world3_2 .profile span { 
-    font-size: 1rem; 
-}
-#contentBox .world3_2 .profile h1 span { 
-    margin-left: 10px;
-}
-#contentBox .world3_2 .profile .location { 
-    width: 30px; 
-    height: 30px; 
-    border-radius: 50%; 
-    display: inline-block; 
-    margin-top: 8px;
-}
-#contentBox .world3_2 .profile .location div { 
-    width: 100%; 
-    height: 100%; 
-    background: url('../images/images/location.png') no-repeat; 
-    background-size: 100%; 
-    display: inline-block; 
-    border-radius: 50%; 
-}
-#contentBox .world3_2 .profile #hobbywrap { 
-    margin-top: 20px;
-}
-#contentBox .world3_2 .profile .hobby {
-    display: inline-block; 
-    border: 3px solid gray; 
-    padding: 3px 7px 3px 7px; 
-    border-radius: 7px; 
-    margin: 3px 3px 3px 3px;
+    width:100%;
+    height: 92.4%;
+    position: relative;
+
+    .pictureMain {
+        width: 100%; 
+        height: 300px;  
+        display: inline-block; 
+        text-align: center; 
+        padding-bottom: 5px; 
+        padding-top: 5px;
+
+        div {
+            margin: 0 auto;
+            width: 300px;
+            height: 100%;
+        }
+        
+    }
+
+    .profile {
+        width: 100%; 
+        display: inline-block; 
+        margin-top: 10px;
+
+        .location {
+            margin-top: 8px;
+            margin-left: 20px;
+            margin-right: 20px;
+            position: relative;
+
+            div {
+                width: 30px;
+                height: 30px;
+                background: url('../images/images/location.png') no-repeat;
+                background-size: 100%;
+                display: inline-block;
+                margin-right: 5px;
+            }
+
+            span {
+                position: absolute;
+                top: 5px;
+            }
+        }
+
+        #hobbywrap {
+            margin-top: 10px;
+            margin-left: 20px;
+            margin-right: 20px;
+
+            .hobby {
+                width: fit-content; 
+                border: 1px solid #5C5C5C; 
+                padding: 5px 10px; 
+                border-radius: 30px; 
+                font-size: 14px; 
+                display: inline-block;
+                margin-right: 5px;
+                margin-bottom: 5px;
+            }
+        }
+
+        h1 {
+            margin-left: 20px;
+            margin-right: 20px;
+
+            span {
+                margin-left: 10px;
+                font-size: 1.2rem; 
+            }
+        }
+    }
 }
 #contentBox .world3_2 .sogae {
     width: 100%; 
-    height: 25%; 
-    margin-top: 40px; 
-    margin-left: 10px; 
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
 }
 #contentBox .world3_2 .likeU { 
-    width: 100%;height: 13%; 
+    width: 100%;
+    height: 14%; 
     text-align: center;
-}
-#contentBox .world3_2 .likeU button {
-    width: 100%; 
-    height: 100%; 
-    border: none; 
-    cursor: pointer; 
-    color: rgba(136, 136, 136, 0.77); 
-    font-size: 2.5rem; 
-    letter-spacing: 1.2rem; 
+    position: absolute;
+    bottom: 0;
+    border-top: 1px solid #bdbdbd;
+
+    .likeU_btn {
+        width: 49%;
+        display: inline-block;
+        border-right: 1px solid #bdbdbd;
+        height: 100%;
+
+        &:first-child {
+            svg {
+                color: #ff0000;
+            }
+        }
+    
+        &:last-child {
+            border-right: none;
+        }
+        
+        svg {
+            font-size: 35px;
+            margin-top: 17px;
+        }
+    }
 }
 
 @media (max-width: 768px){
-    #contentBox .world3_2 .sogae { 
-        width: 100%; 
-        height: 52%; 
-        margin-top: 40px; 
-        margin-left: 10px; 
+    #contentBox .world3_2 .likeU {
+        position: relative;
+        border-bottom: 1px solid #bdbdbd;
     }
 }

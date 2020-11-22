@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import '../../../lib/styles/admin/adminstyle.scss';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
+import aside, { script } from './AdminAside';
+
 const AdminHeader = () => {
+    const onClick = () => {
+        // alert('1234');
+        aside.call(script());
+    }
+
     return (
         <>
             <Helmet>
@@ -11,7 +18,7 @@ const AdminHeader = () => {
             </Helmet>
             <adminheader className="header black-bg">
                 <div className="sidebar-toggle-box">
-                    <i className="fas fa-bars"></i>
+                    <i className="fas fa-bars" onClick={onClick}></i>
                 </div>
                 <Link to="/Admin_main" className="logo"><b>MARRY<span>PRUPLE</span></b></Link>
                 <div className="top-menu">

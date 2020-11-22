@@ -3,9 +3,12 @@ import '../../lib/styles/worldcup3.scss';
 import $ from 'jquery';
 import { Link } from 'react-router-dom';
 import Error from '../common/Error';
+import { ImHeart } from 'react-icons/im'
+import { IoMdRefresh } from 'react-icons/io'
 
 const Worldcup3 = ({ winner, error, loading }) => {
-    console.log(winner);
+    // console.log(winner);
+
     if(error){
         return (
             <>
@@ -23,13 +26,14 @@ const Worldcup3 = ({ winner, error, loading }) => {
                     </div>
                     <div className="world3_2">
                         <div className="pictureMain">
-                            <div id="WinPic"><div></div></div>
+                            {/* <div><img src={winner.profile_pic[0]} alt="프로필사진"/></div> */}
+                            <div style={{ background: `url(${winner.profile_pic[0]})`, backgroundSize: '100%', backgroundRepeat: 'no-repeat' }}></div>
                         </div>
                         <div className="profile">
                                 <h1>{winner.user_nick}<span>{winner.user_age}</span></h1>
                                 {winner.address && (
                                     <>
-                                        <div className="location"><div></div></div><span>{winner.address}</span>
+                                        <div className="location"><div></div><span>{winner.address}</span></div>
                                     </>
                                 )}
                                 {winner.personality && winner.personality != "" && (
@@ -42,13 +46,18 @@ const Worldcup3 = ({ winner, error, loading }) => {
                                 
                         </div>
                         {/* 한줄소개가 스키마에 없음 */}
-                        {/* <div className="sogae">
-                            <div>한줄 소개 및 자기소개칸입니다. </div>
-                        </div> */}
-
-                        {/* 좋아요. 다시할래요 */}
+                        <div className="sogae">
+                            한줄 소개 및 자기소개칸입니다.
+                        </div>
                         <div className="likeU">
-                            <Link to="/worldcup1"><button>좋아요</button></Link>
+                            <Link to="/worldcup1" className="likeU_btn">
+                                <ImHeart/>
+                                <div>좋아요</div>
+                            </Link>
+                            <Link to="/worldcup1" className="likeU_btn">
+                                <IoMdRefresh/>
+                                <div>다시할래요</div>
+                            </Link>
                         </div>
                     </div>
                 </>

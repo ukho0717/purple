@@ -32,7 +32,7 @@ const AdminAside = () => {
     //     nowPage = currentPage;
     // }
     // console.log('currentPage',nowPage);
-    // switch(currentPage){
+    // switch(nowPage){
     //     case '/Admin_main':
     //         $('.sidebar-menu').children('li').first().children('a').addClass('active');
     //         break;

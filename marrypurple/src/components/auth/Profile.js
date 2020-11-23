@@ -1,17 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../../lib/styles/profile.scss';
 
 
-const Profile = ({user,auth,error,loading}) =>{
+const Profile = ({user,form,onChange,loading,profileUpdate}) =>{
+    const {profile_pic,brief_intro,address,fav_food,fav_movie,fav_song,user_gender,school} = user;
+    const [bi, setBi] = useState(brief_intro,address,fav_food,fav_movie,fav_song,school);
+    const biChange = e => {
+        setBi(e.target.value);
+        console.log(bi)
+    } 
+    const clickBack = () => {
+        window.history.back();
+    }
     return(
         <>
         {user&&(
+            <form method="patch" onSubmit={commentSubmit}>
             <div className="photo_list">
                 <div className="overflow_profile">
                     <div>
                         <ul className="photo_group">
                             <li className="photo_items">
-                                <div className="photo_profile"><img src={user.profile_pic}/></div>
+                                <div className="photo_profile"><img src={profile_pic}/></div>
                                 <div className="del_btn">
                                     <button><i className="fas fa-trash-alt"></i></button>
                                 </div>
@@ -80,11 +90,11 @@ const Profile = ({user,auth,error,loading}) =>{
                     </div>
                     <div className="self_intro" id="intro">
                         <p>한줄 소개</p>
-                        <p className="input_type_text"><input type="text" value={user.brief_intro} name="brief_intro"/></p>
+                        <p className="input_type_text"><input type="text" name="brief_intro" value={bi} onChange={biChange} /></p>
                     </div>
                     <div className="self_intro" id="live">
                         <p>거주지</p> 
-                        <p className="input_type_text"><input type="text" value={user.address} name="address"/></p>
+                        <p className="input_type_text"><input type="text"  name="address" value={address}/></p>
                     </div>
                 {user.user_gender=="female"&&(
                     <div className="self_intro" id="gender">
@@ -99,7 +109,7 @@ const Profile = ({user,auth,error,loading}) =>{
                         </p>
                     </div>
                         )}
-                {user.user_gender=="male"&&(
+                {user_gender=="male"&&(
                     <div className="self_intro" id="gender">
                         <p>성별</p> 
                         <p className="input_type_radio">
@@ -114,7 +124,7 @@ const Profile = ({user,auth,error,loading}) =>{
                         )}                        
                     <div className="self_intro" id="uni">
                         <p>출신 학교</p> 
-                        <p className="input_type_text"><input type="text" value={user.school} name="school"/></p>
+                        <p className="input_type_text"><input type="text" value={school} name="school"/></p>
                     </div>
                     <div>
                         <p className="veryStressful">나의 이상형</p>
@@ -153,21 +163,22 @@ const Profile = ({user,auth,error,loading}) =>{
                     </div>
                     <div className="self_intro" id="best_song">
                         <p>SPOTIFY 베스트송</p> 
-                        <p className="input_type_text"><input type="text" value={user.fav_song} name="fav_song"/></p>
+                        <p className="input_type_text"><input type="text" value={fav_song} name="fav_song"/></p>
                     </div>
                     <div className="self_intro" id="fav_movie">
                         <p>좋아하는 영화장르</p> 
-                        <p className="input_type_text"><input type="text" value={user.fav_movie} name="fav_movie"/></p>
+                        <p className="input_type_text"><input type="text" value={fav_movie} name="fav_movie"/></p>
                     </div>
                     <div className="self_intro" id="food">
                         <p>음식취향</p> 
-                        <p className="input_type_text"><input type="text" value={user.fav_food} name="fav_food"/></p>
+                        <p className="input_type_text"><input type="text" value={fav_food} name="fav_food"/></p>
                     </div>
                     <div className="submit_btn"><input type="submit" value="수정하기"/></div>
                 </div>
                 </div>
-                        )}
-                        </>
+            </form>
+            )}
+        </>
             )}
         
 export default Profile;

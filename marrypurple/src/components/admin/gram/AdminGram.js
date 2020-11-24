@@ -6,16 +6,16 @@ import $ from 'jquery';
 // import DataTable from "@bit/adeoy.utils.data-table";
 import { MDBDataTable } from 'mdbreact';
 
-const AdminMain = ({ history, listGram }) => {
-    let listGrams = [];
-    if(listGram){
-        listGrams = listGram;
+const AdminGram = ({ history, listAll }) => {
+    let list = [];
+    if(listAll){
+      list = listAll;
     }
 
     let num = 1;
-    for(let i=0; i<listGrams.length; i++){
+    for(let i=0; i<list.length; i++){
       // console.log(listGrams[i]);
-      listGrams[i] = {...listGrams[i], index: num, user_nick: listGrams[i].User.user_nick}
+      list[i] = {...list[i], index: num, user_nick: list[i].User.user_nick}
       num++;
     }
 
@@ -45,22 +45,29 @@ const AdminMain = ({ history, listGram }) => {
             label: '게시 날짜',
             field: 'writeDate',
             sort: 'asc',
+          },
+          {
+            label: '_id',
+            field: '_id',
+            sort: 'asc',
           }
         ],
-        rows: listGrams
+        rows: list
       };
 
-    const click = (e) => {
-      console.log(e.target);
-      // history.push('/Admin_gram_read/12345');
-    };
+    const click = e => {
+      const _id = $(e.target).parent().children('td:last-child')[0].innerText;
+      console.log($(e.target).parent().children('td:last-child')[0].innerText);
+
+      history.push(`/Admin_gram_read/${_id}`);
+    }
 
     return (
         <>
             <Helmet>
                 <script src="https://kit.fontawesome.com/f4b52f1d75.js" crossorigin="anonymous"></script>
             </Helmet>
-            <h3><i class="fa fa-angle-right"></i> 메리퍼플그램</h3>
+            <h3><i className="fa fa-angle-right"></i> 메리퍼플그램</h3>
             <MDBDataTable
                 striped
                 bordered
@@ -72,4 +79,4 @@ const AdminMain = ({ history, listGram }) => {
     )
 }
 
-export default AdminMain;
+export default AdminGram;

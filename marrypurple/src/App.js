@@ -47,6 +47,7 @@ import AdminLoginPage from './pages/admin/AdminLoginPage';
 import AdminRegistPage from './pages/admin/AdminRegistPage';
 import AdminMainPage from './pages/admin/AdminMainPage';
 import AdminGramPage from './pages/admin/AdminGramPage';
+import AdminGramReadPage from './pages/admin/AdminGramReadPage';
 
 const App = () => {
   return (
@@ -97,6 +98,7 @@ const App = () => {
       <Route component={AdminRegistPage} path="/Admin_regist"/>
       <Route component={AdminMainPage} path="/Admin_main"/>
       <Route component={AdminGramPage} path="/Admin_gram"/>
+      <Route component={AdminGramReadPage} path="/Admin_gram_read/:_id"/>
       <Route component={AdminUserPage} path="/admin_users"/>
 
     </>

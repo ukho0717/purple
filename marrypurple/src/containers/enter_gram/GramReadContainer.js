@@ -64,14 +64,14 @@ const GramReadContainer = ({ match, history }) => {
         e.preventDefault();
 
         dispatch(updateCommentGram({
-            // _id: gram_id,
-            // nickName,
-            // text
+            _id: gram_id,
+            nickName,
+            text
         }));
-        // dispatch(readGram(gram_id));
-        // return () => {
-        //     dispatch(unloadGram());
-        // }
+        dispatch(readGram(gram_id));
+        return () => {
+            dispatch(unloadGram());
+        }
     }
 
     useEffect(() => {

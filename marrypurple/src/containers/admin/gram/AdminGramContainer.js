@@ -2,26 +2,26 @@ import React, { useEffect } from 'react';
 import AdminGram from '../../../components/admin/gram/AdminGram';
 import { withRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { gramListPosts } from '../../../modules/listGram';
+import { gramListAllPosts } from '../../../modules/listGram';
 
 const AdminGramContainer = ({ history }) => {
     const dispatch = useDispatch();
-    const { listGram, error, loading } = useSelector(
+    const { listAll, error, loading } = useSelector(
         ({ listGram, loading }) => ({
-            listGram: listGram.list,
+            listAll: listGram.listAll,
             error: listGram.error,
-            loading: loading['gram/GRAMLIST_POSTS']
+            loading: loading['gram/GRAMLISTALL_POSTS']
         })
     );
     
-        console.log('listGram', listGram);
+        console.log('listGram', listAll);
 
     useEffect(() => {
-        dispatch(gramListPosts());
+        dispatch(gramListAllPosts());
     }, [dispatch]);
     
     return (
-        <AdminGram history={history} listGram={listGram}/>
+        <AdminGram history={history} listAll={listAll}/>
     )
 }
 

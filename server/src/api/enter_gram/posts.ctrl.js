@@ -5,6 +5,18 @@ import User from '../../models/user';
 
 const { ObjectId } = mongoose.Types;
 
+function getCurrentDate(){
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = date.getMonth();
+    var today = date.getDate();
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var seconds = date.getSeconds();
+    var milliseconds = date.getMilliseconds();
+    return new Date(Date.UTC(year, month, today, hours, minutes, seconds, milliseconds));
+}
+
 export const write = async ctx => {
     console.log('/posts write 호출');
 
@@ -34,7 +46,8 @@ export const write = async ctx => {
             user_nick: user.user_nick,
             _id: user._id,
             profile_pic: user.profile_pic[0]
-        }
+        },
+        writeDate: getCurrentDate()
     });
     try{
         await post.save();
@@ -48,7 +61,7 @@ export const likeList = async ctx => {
     console.log('/posts likeList 호출');
 
     try{
-        const posts = await Gram.find().sort({ likeCount: -1 }).limit(4).exec();
+        const posts = await Gram.find({ showInsta: true }).sort({ likeCount: -1 }).limit(4).exec();
         ctx.body = posts.map(post => post.toJSON());
     }catch(e){
         ctx.throw(500, 0);
@@ -57,6 +70,17 @@ export const likeList = async ctx => {
 
 export const list = async ctx => {
     console.log('/posts list 호출');
+
+    try{
+        const posts = await Gram.find({ showInsta: true }).sort({ _id: -1 }).exec();
+        ctx.body = posts.map(post => post.toJSON());
+    }catch(e){
+        ctx.throw(500, e);
+    }
+};
+
+export const listAll = async ctx => {
+    console.log('/posts listAll 호출');
 
     try{
         const posts = await Gram.find().sort({ _id: -1 }).exec();
@@ -133,6 +157,34 @@ export const updateComment = async ctx => {
     try{
         const post = await Gram.findById(_id);
         post.updateOne({ $push: {comment: {nickName: nickName, text: text }}}).exec();
+        ctx.body = post;
+    }catch(e){
+        ctx.throw(500, e);
+    }
+}
+
+export const updateHide = async ctx => {
+    console.log('/posts updateHide 호출');
+
+    const { post_id } = ctx.params;
+
+    try{
+        const post = await Gram.findById(post_id);
+        post.updateOne({ showInsta: false }).exec();
+        ctx.body = post;
+    }catch(e){
+        ctx.throw(500, e);
+    }
+}
+
+export const updateShow = async ctx => {
+    console.log('/posts updateShow 호출');
+
+    const { post_id } = ctx.params;
+
+    try{
+        const post = await Gram.findById(post_id);
+        post.updateOne({ showInsta: true }).exec();
         ctx.body = post;
     }catch(e){
         ctx.throw(500, e);

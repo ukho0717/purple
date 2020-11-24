@@ -10,7 +10,7 @@ const FoundOnePage = ({location}) => {
     if(location.data){
         name = location.data
     }
-    console.log('어디까지 데이터가 가는지 추적.',name)
+    // console.log('어디까지 데이터가 가는지 추적.',name)
     return(
         <div id="wrap10">
             <SideMenuContainer/>

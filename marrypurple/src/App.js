@@ -16,7 +16,7 @@ import FindPwPage from './pages/FindPwPage';
 import ChangePwPage from './pages/ChangePwPage';
 import MatchingPage from './pages/MatchingPage'
 import BackUserPage from './pages/BackUserPage';
-import ChatPage from './pages/ChatPage'
+import ChatPage from './pages/ChatPage';
 import PaymentPage from './pages/PaymentPage';
 import ProfilePage from './pages/ProfilePage';
 import EnterMainPage from './pages/EnterMainPage';

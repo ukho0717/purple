@@ -2,13 +2,16 @@ import React from 'react';
 import '../../lib/styles/Telepathy.scss'
 import UFO from '../../lib/images/images/UFO.png'
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-const Telepathy = () => {
+const Telepathy = ({history}) => {
+    const onClick = () => {
+        history.goBack();
+    }
     return(
         <div class="telepathy_container">
             <p class="guideline">
-                <i class="fas fa-chevron-left"></i>
-                텔레파시 통통통
+                <i class="fas fa-chevron-left" onClick={onClick}>텔레파시 통통통</i>
             </p>
             <img src={UFO} alt="텔레파시통통이미지"/>
             <Link to="/Telepathy_make_quiz" id="make_quiz">출제하기</Link>
@@ -20,4 +23,4 @@ const Telepathy = () => {
     )
 }
 
-export default Telepathy;
+export default withRouter(Telepathy);

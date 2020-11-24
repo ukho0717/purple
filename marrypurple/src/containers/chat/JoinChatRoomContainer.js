@@ -10,7 +10,7 @@ const JoinChatRoomContainer = ({ profile_pic, user_id, user_nick, user_email, my
         loading: loading['chat/Get_MSG']
     }));
 
-    console.log('메세지',getMsg)
+    // console.log('메세지',getMsg)
     //  내정보와 상대의 정보를 보내서 불러온다.
 
     const dispatch = useDispatch();

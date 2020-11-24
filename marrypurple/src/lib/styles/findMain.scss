@@ -18,3 +18,9 @@
     text-align: center;
     padding-top: 20px;
 }
+
+@media (max-width:768px){
+    /* find_main */
+    #contentBox .findMain_1 { min-height: 625px; }
+    #contentBox .findMain_1 #findMain_1_btn button { width: 30vw; }
+}

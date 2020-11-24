@@ -8,7 +8,12 @@ const FoundOneContainer = ({data}) => {
     }
     return(
         <>
+        {data !== 'none' &&(
             <FoundOne who={styles}/>
+        )}
+        {data === 'none' &&(
+            <div>하이</div>
+        )}
         </>
     )
 }

@@ -34,8 +34,37 @@ export const select = async ctx=>{
         let my_style = list[0]? list[0]: null
     
         // 내이상형 유저 정보 보냄
-        ctx.body = await User.findOne({match:my_style})
-    
+        const have = await User.findOne({match:my_style})
+        const dontHave = {
+            address: "",
+            authToken: "",
+            brief_intro: "",
+            fav_food: "",
+            fav_movie: "",
+            fav_song: "",
+            hashedUser_pw: "",
+            login_time: "",
+            match: "",
+            match_gender: "both",
+            personality: [],
+            premium: "",
+            profile_pic: ["http://localhost:4000/annonymous.png"],
+            provider: "",
+            regdate: "",
+            school: "",
+            stopAccount: "",
+            user_age: 0,
+            user_email: "",
+            user_gender: "",
+            user_nick: "사용자를 찾을 수 없습니다.",
+            __v: 0,
+            _id: "cantFind"
+        }
+        if(have){
+            ctx.body = have
+        }else{
+            ctx.body = dontHave
+        }
     }catch(e){
         ctx.throw(500,e);
     }

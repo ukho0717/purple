@@ -93,17 +93,17 @@
 .my_answer_div > div:nth-child(3){
     border-radius: 0 0 20px 20px;
 }
-// input[type="submit"]{
-//     width: 300px;
-//     height: 50px;
-//     outline: none;
-//     border: none;
-//     background-color: #9400a3;
-//     color: #fff;
-//     font-size: 20px;
-//     font-weight: bold;
-//     margin-top: 20px;
-// }
+#get_quiz_select_btn{
+    width: 300px;
+    height: 50px;
+    outline: none;
+    border: none;
+    background-color: #9400a3;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+}
 // input[type="submit"]:hover{
 //     cursor: pointer;
 // }

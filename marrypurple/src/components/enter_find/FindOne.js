@@ -3,7 +3,7 @@ import '../../lib/styles/findOne.scss'
 import { useDispatch, useSelector } from "react-redux";
 import { find } from '../../modules/findOne'
 
-const FindOne = ({onClick}) => {
+const FindOne = () => {
     const dispatch = useDispatch();
     const [styles, setStyles]=useState([])
     const onToggle = (e) => {
@@ -27,7 +27,6 @@ const FindOne = ({onClick}) => {
             e.preventDefault();
             console.log(styles)
             dispatch(find({ styles }));
-            onClick();
         }
     }
 

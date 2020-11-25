@@ -86,7 +86,7 @@ const TelepathyGetQuiz = ({history, mun, ans, pic, user_nick, my_pic, my_nick, t
                         </div>
                     </div>
                 </div>
-                <div><input type="submit" value="선택" onClick={() => right(myAns, ans[0])}/></div>
+                <div><input type="submit" value="선택" id="get_quiz_select_btn" onClick={() => right(myAns, ans[0])}/></div>
             </div>
         </div>
         )}

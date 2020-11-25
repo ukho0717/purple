@@ -19,7 +19,6 @@ export function* findSaga(){
 
 const initialState = {
     one: null,
-    check: 'checked',
     error:null
 };
 

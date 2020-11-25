@@ -29,7 +29,7 @@ const MatchingItem = ({ back, list, onToggle, showProfile, onToggle_report, urlA
         </div>
         <div className="match_3">
             <div>
-            <span id="userid">{user_nick}</span> <span id="userage">{user_age}</span> <a href="#aaa" onClick={() => onToggle()}><div>프로필 더보기</div></a>
+            <span id="userid">{user_nick}</span> <span id="userage">{user_age}</span> <a href="#aaa" onClick={() => onToggle()}><div id="more_profile">프로필 더보기</div></a>
         </div>
         </div>
         {showProfile.profileActive === true && (

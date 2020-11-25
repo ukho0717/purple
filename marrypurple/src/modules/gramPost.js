@@ -29,6 +29,11 @@ const [
     HIDE_UPDATE_GRAM_SUCCESS,
     HIDE_UPDATE_GRAM_FAILURE
 ] = createRequestActionTypes('gram/HIDE_UPDATE_GRAM');  // 게시글 숨기는 업데이트
+const [
+    SHOW_UPDATE_GRAM,
+    SHOW_UPDATE_GRAM_SUCCESS,
+    SHOW_UPDATE_GRAM_FAILURE
+] = createRequestActionTypes('gram/SHOW_UPDATE_GRAM');  // 게시글 보이는 업데이트
 
 export const readGram = createAction(READ_GRAM, _id => _id);
 export const unloadGram = createAction(UNLOAD_GRAM);
@@ -36,18 +41,21 @@ export const deleteGram = createAction(DELETE_GRAM, _id => _id);
 export const updateCommentGram = createAction(COMMENT_UPDATE_GRAM, ({ _id, nickName, text }) => ({ _id, nickName, text }));
 export const updateLikeGram = createAction(LIKE_UPDATE_GRAM, ({ gram_id, heart }) => ({ gram_id, heart }));
 export const updateHideGram = createAction(HIDE_UPDATE_GRAM, gram_id =>  gram_id);
+export const updateShowGram = createAction(SHOW_UPDATE_GRAM, gram_id =>  gram_id);
 
 const readGramSaga = createRequestSaga(READ_GRAM, gramPostsAPI.gramRead);
 const deleteGramSaga = createRequestSaga(DELETE_GRAM, gramPostsAPI.gramDelete);
 const updateCommentGramSaga = createRequestSaga(COMMENT_UPDATE_GRAM, gramPostsAPI.gramCommentUpdate);
 const updateLikeGramSaga = createRequestSaga(LIKE_UPDATE_GRAM, gramPostsAPI.gramLikeUpdate);
 const updateHideGramSaga = createRequestSaga(HIDE_UPDATE_GRAM, gramPostsAPI.gramHideUpdate);
+const updateShowGramSaga = createRequestSaga(SHOW_UPDATE_GRAM, gramPostsAPI.gramShowUpdate);
 export function* postSaga(){
     yield takeLatest(READ_GRAM, readGramSaga);
     yield takeLatest(DELETE_GRAM, deleteGramSaga);
     yield takeLatest(COMMENT_UPDATE_GRAM, updateCommentGramSaga);
     yield takeLatest(LIKE_UPDATE_GRAM, updateLikeGramSaga);
     yield takeLatest(HIDE_UPDATE_GRAM, updateHideGramSaga);
+    yield takeLatest(SHOW_UPDATE_GRAM, updateShowGramSaga);
 }
 
 const initialState = {
@@ -125,6 +133,20 @@ const gramPost = handleActions (
             gram,
         }),
         [HIDE_UPDATE_GRAM_FAILURE]: (state, { payload: error }) => ({
+            ...state,
+            gramError: error
+        }),
+        [SHOW_UPDATE_GRAM]: state => ({
+            ...state,
+            gram: null,
+            gramError: null
+        }),
+        [SHOW_UPDATE_GRAM_SUCCESS]: (state, { payload: gram }) => ({
+            ...state,
+            gramError: null,
+            gram,
+        }),
+        [SHOW_UPDATE_GRAM_FAILURE]: (state, { payload: error }) => ({
             ...state,
             gramError: error
         }),

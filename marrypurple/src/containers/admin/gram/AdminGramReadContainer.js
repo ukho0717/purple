@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import AdminGramRead from '../../../components/admin/gram/AdminGramRead';
 import { withRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { readGram, unloadGram, updateHideGram } from '../../../modules/gramPost';
+import { readGram, unloadGram, updateHideGram, updateShowGram } from '../../../modules/gramPost';
 
 const AdminGramContainer = ({ match }) => {
     const { _id } = match.params;
@@ -27,15 +27,26 @@ const AdminGramContainer = ({ match }) => {
     }, [dispatch, gram_id]);
 
     const onClickHide = () => {
-        alert('숨김');
-        dispatch(updateHideGram(gram_id));
-        // dispatch(readGram(gram_id));
-        // return () => {
-        //     dispatch(unloadGram());
-        // }
+        let result = window.confirm('게시물을 안보이게 하시겠습니까?');
+        if(result){
+            alert('게시물을 안보이게 하였습니다.');
+            dispatch(updateHideGram(gram_id));
+            dispatch(readGram(gram_id));
+            return () => {
+                dispatch(unloadGram());
+            }
+        }
     }
     const onClickShow = () => {
-        alert('보임');
+        let result = window.confirm('게시물을 보이게 하시겠습니까?');
+        if(result){
+            alert('게시물을 보이게 하였습니다.')
+            dispatch(updateShowGram(gram_id));
+            dispatch(readGram(gram_id));
+            return () => {
+                dispatch(unloadGram());
+            }
+        }
     }
 
     const clickBack = () => {

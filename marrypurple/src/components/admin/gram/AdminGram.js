@@ -64,9 +64,6 @@ const AdminGram = ({ history, listAll }) => {
 
     return (
         <>
-            <Helmet>
-                <script src="https://kit.fontawesome.com/f4b52f1d75.js" crossorigin="anonymous"></script>
-            </Helmet>
             <h3><i className="fa fa-angle-right"></i> 메리퍼플그램</h3>
             <MDBDataTable
                 striped

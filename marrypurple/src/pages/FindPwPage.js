@@ -1,13 +1,13 @@
 import React from "react";
-import FindPw from "../components/auth/find_pw";
+import FindPwForm from "../containers/auth/FindPwForm";
+
 
 const FindPwPage = () => {
     return(
-        <div>
-            <FindPw>
 
-            </FindPw>
-        </div>
+            <FindPwForm/>
+
+
     );
 };
 

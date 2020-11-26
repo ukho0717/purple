@@ -1,6 +1,6 @@
 import Joi from "@hapi/joi";
 import User from "../../models/user";
-
+import nodemailer from 'nodemailer';
 
 export const register = async (ctx) => {
   console.log('회원가입중')
@@ -43,11 +43,12 @@ export const register = async (ctx) => {
 };
 
 export const read = async (ctx) => {
-  const { user_id } = ctx.params;
+  console.log("읽기!!")
+  const user_id = ctx.state.user._id;
   console.log(user_id);
   try{
       const post = await User.findById(user_id).exec();
-      ctx.body = post.toJSON();
+      ctx.body = post;
   }catch(e){
       ctx.throw(500, e);
   }
@@ -86,6 +87,7 @@ export const login = async (ctx) => {
   }
 };
 
+
 export const findpw = async (ctx) => {
   // 비밀번호찾기
   const { user_email } = ctx.request.body;
@@ -111,9 +113,10 @@ export const findpw = async (ctx) => {
 };
 
 //비밀번호 수정
-export const changePw = async ctx => { //특정필드만 수정
+export const changePw = async (ctx) => { //특정필드만 수정
   console.log('비밀번호 수정');
-  const { user_email } = ctx.params;
+  
+  
 
   const schema = Joi.object().keys({
     user_pw: Joi.string(),
@@ -125,21 +128,21 @@ export const changePw = async ctx => { //특정필드만 수정
       ctx.body = result.error;
       return;
   }
-  const{user_pw} = ctx.request.body;
+  const user_pw = ctx.request.body.user_pw;
   try{
-      const user = await User.findById(user_email);
-      user.updateOne({ $push:{user_pw:user_pw}}).exec()
-      if(!user){
-          ctx.status = 404;
-          return;
-      }
-      await user.setUser_pw(user_pw);
-      await user.save();
-      ctx.body = change;
+    const user = await User.updateOne({$push:{user_pw:user_pw}}).exec();
+    // await user.setUser_pw(user_pw);
+      // if(!user){
+      //     ctx.status = 404;
+      //     return;
+      // }
+      ctx.body = user;
   }catch(e){
       ctx.throw(500, e);
   }
 }
+
+
 
 export const check = async (ctx) => {
   console.log('로그인유저123', ctx.state);
@@ -174,42 +177,81 @@ export const remove = async (ctx) => {
 };
 
 //프로필수정
-export const profileUpdate = async ctx => {
+export const profileUpdate = async (ctx) => {
+  
+  console.log("프로필수정중")
+
   const user_id = ctx.state.user._id;
+  
 
-  const schema = Joi.object().keys({
-    brief_intro: Joi.string(),
-    address: Joi.string(),
-    school: Joi.string(),
-    personality: Joi.array().items(Joi.string()),
-    fav_song: Joi.string(),
-    fav_movie: Joi.string(),
-    fav_food: Joi.string(),
-    profile_pic: Joi.array().items(Joi.string()),
-  });
+  // const schema = Joi.object().keys({
+  //   brief_intro: Joi.string(),
+  //   address: Joi.string(),
+  //   school: Joi.string(),
+  //   personality: Joi.array().items(Joi.string()),
+  //   fav_song: Joi.string(),
+  //   fav_movie: Joi.string(),
+  //   fav_food: Joi.string(),
+  //   profile_pic: Joi.array().items(Joi.string()),
+  // });
 
-  const result = schema.validate(ctx.request.body);
+  // const result = schema.validate(ctx.request.body);
 
-  if (result.error) {
-    ctx.status = 400;
-    ctx.body = result.error;
-    return;
-  }
-  const {brief_intro,address,school,personality,fav_song,fav_movie,fav_food,profile_pic} = ctx.request.body;
+  // if (result.error) {
+  //   ctx.status = 400;
+  //   ctx.body = result.error;
+  //   return;
+  // }
+  // const {brief_intro,address,school,personality,fav_song,fav_movie,fav_food,profile_pic} = ctx.request.body;
+  // console.log("Dfasdfsdafaf" +address)
+  const nextData = { ...ctx.request.body };
+
   try{
-    const user = await User.findById(user_id);
-    user.updateOne({ $push:{brief_intro:brief_intro,address:address,school:school,personality:personality,fav_song:fav_song,fav_movie:fav_movie,fav_food:fav_food,profile_pic:profile_pic}}).exec();
+    const user = await User.findByIdAndUpdate(user_id, nextData, {new: true}).exec(); 
+      
+    // post.updateOne({ $push:{brief_intro:brief_intro,address:address,school:school,personality:personality,fav_song:fav_song,fav_movie:fav_movie,fav_food:fav_food,profile_pic:profile_pic}}).exec();
     if(!user){
         ctx.status = 404;
         return;
     }
+
+    // const profile_pic = [{
+    //   key:ctx.state.user._id,
+    //     name:ctx.state.user._id
+    // }]
+    //   const user2 = await User.update({"_id" :user_id ,"items":{ $not:{$elemMatch:profile_pic[1]}}},{$addToSet:{"items":{$each:profile_pic}}});
+      
+    //   if(!user2){
+    //     ctx.status = 404;
+    //     return;
+    //   }
+      await user.save();
+      // ctx.body = user2;
+    
     ctx.body = user;
 }catch(e){
     ctx.throw(500, e);
 }
 }
 //사진 추가
+export const addPic = async ctx =>{
+  console.log("사진추가가가가가")
+  try{
+    for(i=0; i<9; i++){
 
+      const user = await User.update({"profile_pic":{ $not:{$elemMatch:categories[i]}}},{$addToSet:{"profile_pic":{$each:categories}}});
+      
+      if(!user){
+        ctx.status = 404;
+        return;
+      }
+      await user.save();
+      ctx.body = user;
+    }
+    }catch(e){
+      ctx.throw(500,e)
+    }
+}
 //sns 회원가입
 export const snsRegister = async (ctx) => {
   const { id } = ctx.params;
@@ -241,7 +283,42 @@ export const snsRegister = async (ctx) => {
 }catch(e){
     ctx.throw(500, e);
 }
-}
 
+}
+//메일보내기
+export const sendmail = async (ctx) =>{
+  console.log("메일보내기")
+  // const user_email = ctx.request.body.user_email;
+  console.log("user메일22" + ctx.request.body);
+
+  // console.log("user메일" + user_email)
+  const transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth:{
+      user: 'a01051817748@gmail.com',
+      pass: '!@as2830'
+    },
+    host: 'smtp.gmail.com',
+    port: '465'
+  });
+  
+  let mailOptions = {
+    from: "메리퍼플 <marry@gmail.com>",
+    to: "ukho0711@naver.com",
+    subject: "메리퍼플 인증메일입니다",
+    text: "입력하세요~"
+  };
+  
+  await transporter.sendMail(mailOptions, (err, info) => {
+    transporter.close();
+    if(err){
+        console.log(err);
+    }else{
+      
+        console.log("메일이 정상적으로 발송되었습니다.");
+    }
+});
+
+};
 
 

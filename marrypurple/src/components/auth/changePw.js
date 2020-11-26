@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import '../../lib/styles/regist.scss';
 import rLogo from '../../lib/img/rLogo.png';
 
-const changePw = () => {
+const changePw = ({changepwSubmit,user,form,onChange}) => {
     return(
         <div id="wrapM">
         <div id="container">
@@ -14,14 +14,14 @@ const changePw = () => {
                 <div class="regiT findPw">
                     <h1>비밀번호 변경</h1>
                 </div>
-            <form action="/rePw" method="post">
+            <form method="patch" onSubmit={changepwSubmit}>
                 <div class="regiPw reInputPw">
                     <div class="changePw">
-                        <input type="password" name="userPw" placeholder="변경할 비밀번호"/>
+                        <input type="password" name="user_pw"  onChange={onChange} placeholder="변경할 비밀번호"/>
                     </div>
                 </div>
                 <div class="reBtn">
-                    <input class="rePw" type="button" name="rePw2" value="변경하기"/>
+                    <input class="rePw" type="submit" name="rePw2" value="변경하기"/>
                 </div>
             </form>
             </div>

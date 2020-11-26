@@ -1,13 +1,9 @@
 import React from "react";
-import ChangePw from "../components/auth/changePw";
-
+import ChangePwForm from "../containers/auth/ChangePwForm";
 const ChangePwPage = () => {
     return(
-        <div>
-            <ChangePw>
 
-            </ChangePw>
-        </div>
+            <ChangePwForm/>
     );
 };
 

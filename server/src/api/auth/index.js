@@ -1,5 +1,6 @@
 import Router from "koa-router";
 import * as authCtrl from "./auth.ctrl";
+import nodemailer from 'nodemailer'
 
 let passport = require('passport');
 
@@ -10,12 +11,14 @@ const auth = new Router();
 auth.post("/register",authCtrl.register);
 auth.post("/login", authCtrl.login);
 auth.post("/findpw", authCtrl.findpw);
-auth.patch("/changePw/:id", authCtrl.changePw);
-auth.patch("/profile", authCtrl.profileUpdate);
+auth.patch("/changePw", authCtrl.changePw);
+auth.patch("/profile", authCtrl.profileUpdate );
 auth.get("/profile", authCtrl.read);
 auth.get("/check", authCtrl.check);
 auth.post("/logout", authCtrl.logout);
 auth.patch("/snsRegister/:id",authCtrl.snsRegister);
+auth.patch("/profile/:id", authCtrl.addPic );
+auth.post('/mailOk', authCtrl.sendmail);
 
 
 //sns

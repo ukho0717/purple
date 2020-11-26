@@ -1,9 +1,10 @@
 import React, {useEffect, useState } from "react";
 import { useDispatch,useSelector} from "react-redux";
 import FindPw from '../../components/auth/find_pw';
-import { changeField,initializeForm,findpw} from "../../modules/findpw";
+import { changeField,initializeForm,findpw} from "../../modules/auth";
 import {withRouter} from "react-router-dom";
 import {check} from "../../modules/user";
+// import { sendmail } from "../../lib/api/auth";
 
 const FindPwForm = ({history}) =>{
     const [error,setError]= useState(null);
@@ -25,6 +26,11 @@ const FindPwForm = ({history}) =>{
             }),
         );
     };
+    // const mailClick=()=>{
+    //     dispatch(sendmail);
+    //     history.push('/findPw')
+    // }
+
     const onSubmit = (event) => {
         console.log("비밀번호찾기");
         event.preventDefault();
@@ -63,7 +69,7 @@ const FindPwForm = ({history}) =>{
                 onChange={onChange}
                 onSubmit={onSubmit}
                 error={error}
-
+                // mailClick={mailClick}
             />
         );
 };

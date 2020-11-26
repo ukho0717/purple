@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../../../lib/styles/admin/adminstyle.scss';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
@@ -7,7 +7,6 @@ import aside, { script } from './AdminAside';
 
 const AdminHeader = () => {
     const onClick = () => {
-        // alert('1234');
         aside.call(script());
     }
 

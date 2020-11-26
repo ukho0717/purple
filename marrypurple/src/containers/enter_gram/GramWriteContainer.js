@@ -8,10 +8,10 @@ import { changeField, initializeForm, writeGram } from '../../modules/gramWrite'
 const GramWriteContainer = ({ history }) => {
     const [error, serError] = useState(null);
     const dispatch = useDispatch();
-    const { gram, gramError } = useSelector(({ gramWrite }) => ({
-        gram: gramWrite.gram,
-        gramError: gramWrite.gramError
-    }));
+    // const { gram, gramError } = useSelector(({ gramWrite }) => ({
+    //     gram: gramWrite.gram,
+    //     gramError: gramWrite.gramError
+    // }));
     
     const onSubmit = e => {
         console.log('onSubmit');

@@ -1,67 +1,51 @@
 #main-content {
     .wrapper {
-        .dataTables_wrapper {
+        .admin_gram_table {
+            .dataTables_wrapper {
 
-            & > div:first-child {
-                position: relative;
-                margin-bottom: 10px;
-
-                .col-md-6 {
-                    display: inline-block !important;
+                & > div:first-child {
+                    position: relative;
+                    margin-bottom: 10px;
     
-                    &:last-child {
-                        position: absolute;
-                        right: 0;
+                    .col-md-6 {
+                        display: inline-block !important;
+        
+                        &:last-child {
+                            position: absolute;
+                            right: 0;
+                        }
                     }
                 }
-            }
-
-            & > div:nth-child(2) {
-                margin-bottom: 10px;
-
-                table {
-                    width: 100%;
-
-                    thead {
-                        &:last-child {
-                            display: none;
-                        }
-                        th {
-                            border-bottom: 2px solid dimgray;
-                            border-right: 2px solid dimgray;
-                            padding: 5px 0;
-
-                            &:nth-child(1) {
-                                width: 10%;
-                            }
-                            &:nth-child(2) {
-                                width: 20%;
-                            }
-                            &:nth-child(3) {
-                                width: 30%;
-                            }
-                            &:nth-child(4) {
-                                width: 15%;
-                            }
-                            &:nth-child(5) {
-                                width: 25%;
-                                border-right: none;
-                            }
-                            &:nth-child(6) {
+    
+                & > div:nth-child(2) {
+                    margin-bottom: 10px;
+    
+                    table {
+                        width: 100%;
+    
+                        thead {
+                            &:last-child {
                                 display: none;
                             }
-                        }
-                    }
-
-                    tbody {
-                        tr {
-                            td {
-                                text-align: center;
+                            th {
+                                border-bottom: 2px solid dimgray;
+                                border-right: 2px solid dimgray;
                                 padding: 5px 0;
-                                border-bottom: 1px solid dimgray;
-                                border-right: 1px solid dimgray;
-
+    
+                                &:nth-child(1) {
+                                    width: 10%;
+                                }
+                                &:nth-child(2) {
+                                    width: 20%;
+                                }
+                                &:nth-child(3) {
+                                    width: 30%;
+                                }
+                                &:nth-child(4) {
+                                    width: 15%;
+                                }
                                 &:nth-child(5) {
+                                    width: 25%;
                                     border-right: none;
                                 }
                                 &:nth-child(6) {
@@ -69,35 +53,54 @@
                                 }
                             }
                         }
-                    }
-                }
-            }
-            
-            & > div:last-child {
-                position: relative;
-
-                div {
-                    display: inline-block;
-
-                    
-                }
-
-                & > div:last-child {
-                    position: absolute;
-                    right: 0;
-
-                    li { 
-                        float: left;
-                        margin-right: 10px;
-
-                        &:last-child {
-                            margin-right: 0;
+    
+                        tbody {
+                            tr {
+                                td {
+                                    text-align: center;
+                                    padding: 5px 0;
+                                    border-bottom: 1px solid dimgray;
+                                    border-right: 1px solid dimgray;
+    
+                                    &:nth-child(5) {
+                                        border-right: none;
+                                    }
+                                    &:nth-child(6) {
+                                        display: none;
+                                    }
+                                }
+                            }
                         }
                     }
                 }
+                
+                & > div:last-child {
+                    position: relative;
+    
+                    div {
+                        display: inline-block;
+    
+                        
+                    }
+    
+                    & > div:last-child {
+                        position: absolute;
+                        right: 0;
+    
+                        li { 
+                            float: left;
+                            margin-right: 10px;
+    
+                            &:last-child {
+                                margin-right: 0;
+                            }
+                        }
+                    }
+                }
+                
             }
-            
         }
+        
 
         .read_container {
             position: relative;

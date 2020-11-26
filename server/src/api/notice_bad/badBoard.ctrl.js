@@ -1,12 +1,11 @@
 import BadBoard from '../../models/badBoard';
-import mongoose from 'mongoose';
 import Joi from '@hapi/joi';
 import User from '../../models/user';
 
-const { ObjectId } = mongoose.Types;
-
 export const write = async ctx => {
     console.log('/badBoard write 호출');
+
+    const { _id, reason } = ctx.request.body;
 
     const schema = Joi.object().keys({
         _id : Joi.string().required(),
@@ -20,10 +19,7 @@ export const write = async ctx => {
         return;
     }
 
-    const { _id, reason } = ctx.request.body;
-    // const user_email = ctx.state.user_email;
     const user = await User.findById(_id);
-    console.log('불러와지는가',user);
     const post = new BadBoard({
         reason,
         User: {
@@ -40,6 +36,8 @@ export const write = async ctx => {
 };
 
 export const list = async ctx => {
+    console.log('/badBoard list 호출');
+
     try{
         const posts = await BadBoard.find().sort({ _id: -1 }).exec();
         ctx.body = posts.map(post => post.toJSON());

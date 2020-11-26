@@ -93,12 +93,6 @@ const AdminAside = () => {
                             <span>불량회원</span>
                             </Link>
                         </li>
-                        {/* <li className="sub-menu">
-                            <Link to="Adimn_notice">
-                            <i className="fa fa-tasks"></i>
-                            <span>공지사항</span>
-                            </Link>
-                        </li> */}
                     </ul>
                 </div>
             </adminaside>

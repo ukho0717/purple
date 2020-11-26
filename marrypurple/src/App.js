@@ -104,7 +104,7 @@ const App = () => {
       <Route component={AdminGramPage} path="/Admin_gram"/>
       <Route component={AdminGramReadPage} path="/Admin_gram_read/:_id"/>
       <Route component={AdminUserPage} path="/admin_users"/>
-      <Route component={AdminBadListPage} path="/admin_badList"/>
+      <Route component={AdminBadListPage} path="/Admin_badList"/>
       <Route component={AdminBadWritePage} path="/Admin_bad_write"/>
 
     </>

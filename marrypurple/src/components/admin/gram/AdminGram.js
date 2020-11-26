@@ -65,13 +65,15 @@ const AdminGram = ({ history, listAll }) => {
     return (
         <>
             <h3><i className="fa fa-angle-right"></i> 메리퍼플그램</h3>
-            <MDBDataTable
-                striped
-                bordered
-                hover
-                onClick={click}
-                data={data}
-            />
+            <div className="admin_gram_table">
+              <MDBDataTable
+                  striped
+                  bordered
+                  hover
+                  onClick={click}
+                  data={data}
+              />
+            </div>
         </>
     )
 }

@@ -179,6 +179,20 @@ $ruda: (Ruda, sans-serif);
 
 @media (max-width:768px){
     .adminContainer {
+        .black-bg {
+            .top-menu {
+                .nav {
+                    li {
+                        .logout {
+                            padding: 5px 6px;
+                            margin-right: 0;
+                            margin-top: 19px;
+                        }
+                    }
+                }
+            }
+        }
+
         .header {
             position: absolute;
         }

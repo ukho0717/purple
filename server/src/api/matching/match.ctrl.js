@@ -205,3 +205,16 @@ export const checkLikeMe = async ctx=>{
         ctx.throw(500,e)
     }
 }
+
+// 신고하기
+export const report = async ctx=>{
+    const {reason} = ctx.request.body; //신고한 이유
+    const { id } = ctx.request.body//상대방id(user스키마의 _id)
+
+    try{
+        await User.findOneAndUpdate({'_id':id},{$push:{reported: reason}},{new:true}).exec()
+        ctx.body = '성공'
+    }catch(e){
+        ctx.throw(500,e)
+    }
+}

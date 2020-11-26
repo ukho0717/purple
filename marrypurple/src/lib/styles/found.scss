@@ -65,3 +65,21 @@
     height: 55px;
     color: rgb(0, 136, 34);
 }
+#next_time{
+    width: 55px;
+    height: 55px;
+    color: rgb(0, 136, 34);
+}
+#flex_div_next{
+    margin: 0 auto;
+    width: 80%;
+    margin-top: 30px;
+}
+#flex_div_next a{
+    display: inline-block;
+    width: 100%;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid #ccc;
+    background-color: #eee;
+}

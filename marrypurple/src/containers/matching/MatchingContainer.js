@@ -23,6 +23,15 @@ const MatchingContainer = ({match}) => {
             reportActive : !showProfile.reportActive
         })
     };
+
+    const onClickReport = (text) => {
+        if(window.confirm('신고하시겠습니까? (사유 : '+ text+')')){
+            alert('신고되었습니다.')
+        }else{
+            alert('신고하지 않습니다')
+        }
+    }
+
     const dispatch = useDispatch();
     const { matching, error, loading } = useSelector(({ matching, loading }) => ({
         matching: matching.matching,
@@ -44,6 +53,7 @@ const MatchingContainer = ({match}) => {
             showProfile={showProfile} 
             onToggle_report={onToggle_report}
             urlAddress = {urlAddress}
+            onClickReport={onClickReport}
         />
     )
 }

@@ -1,3 +1,4 @@
+import { boolean } from '@hapi/joi';
 import mongoose from 'mongoose';
 
 const { Schema } = mongoose;
@@ -5,7 +6,7 @@ const { Schema } = mongoose;
 const GramSchema = new Schema({
     writeDate: {
         type: Date,
-        default: Date.now
+        default: Date.now()
     },
     InstaImage: String,
     content: String,
@@ -22,7 +23,11 @@ const GramSchema = new Schema({
         _id: String,
         profile_pic: String
     },
-    likeUser: [String]
+    likeUser: [String],
+    showInsta: {
+        type: Boolean,
+        default: true
+    }
 });
 
 const Gram = mongoose.model('Gram', GramSchema);

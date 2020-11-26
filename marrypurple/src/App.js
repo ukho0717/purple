@@ -16,7 +16,7 @@ import FindPwPage from './pages/FindPwPage';
 import ChangePwPage from './pages/ChangePwPage';
 import MatchingPage from './pages/MatchingPage'
 import BackUserPage from './pages/BackUserPage';
-import ChatPage from './pages/ChatPage'
+import ChatPage from './pages/ChatPage';
 import PaymentPage from './pages/PaymentPage';
 import ProfilePage from './pages/ProfilePage';
 import EnterMainPage from './pages/EnterMainPage';
@@ -47,6 +47,11 @@ import AdminLoginPage from './pages/admin/AdminLoginPage';
 import AdminRegistPage from './pages/admin/AdminRegistPage';
 import AdminMainPage from './pages/admin/AdminMainPage';
 import AdminGramPage from './pages/admin/AdminGramPage';
+import AdminGramReadPage from './pages/admin/AdminGramReadPage';
+import AdminBadListPage from './pages/admin/AdminBadListPage';
+import AdminBadWritePage from './pages/admin/AdminBadWritePage';
+
+
 
 const App = () => {
   return (
@@ -97,7 +102,10 @@ const App = () => {
       <Route component={AdminRegistPage} path="/Admin_regist"/>
       <Route component={AdminMainPage} path="/Admin_main"/>
       <Route component={AdminGramPage} path="/Admin_gram"/>
+      <Route component={AdminGramReadPage} path="/Admin_gram_read/:_id"/>
       <Route component={AdminUserPage} path="/admin_users"/>
+      <Route component={AdminBadListPage} path="/admin_badList"/>
+      <Route component={AdminBadWritePage} path="/Admin_bad_write"/>
 
     </>
   )

@@ -5,14 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const AdminAsideContainer = ({ match }) => {
     // const dispatch = useDispatch();
-    const { currentPage } = useSelector(() => ({
-        currentPage: match.path,
-    }));
+    // const { currentPage } = useSelector(() => ({
+    //     currentPage: match.path,
+    // }));
 
     // console.log(match.path);
 
     return (
-        <AdminAside currentPage={currentPage}/>
+        <AdminAside currentPage={match.path}/>
     )
 }
 

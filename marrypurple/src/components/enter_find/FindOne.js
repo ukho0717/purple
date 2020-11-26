@@ -3,7 +3,7 @@ import '../../lib/styles/findOne.scss'
 import { useDispatch, useSelector } from "react-redux";
 import { find } from '../../modules/findOne'
 
-const FindOne = ({onSubmit}) => {
+const FindOne = () => {
     const dispatch = useDispatch();
     const [styles, setStyles]=useState([])
     const onToggle = (e) => {
@@ -86,7 +86,7 @@ const FindOne = ({onSubmit}) => {
                         <input type="checkbox" className="styles" value="양심적인" id="conscience" onClick={(e)=>onToggle(e)} /><label for="conscience">양심적인</label>
                         <input type="checkbox" className="styles" value="계획적인" id="organized" onClick={(e)=>onToggle(e)} /><label for="organized">계획적인</label>
                         <div class="findF_3">
-                            <button>완료</button>
+                        <button >완료</button>
                         </div>
                     </form>
                 </div>

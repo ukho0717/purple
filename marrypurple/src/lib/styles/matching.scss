@@ -103,6 +103,9 @@
 
 .dim-layer .pop-layer {
     display: block;
+    position: relative;
+    left: 37.5vw;
+    top: 23.5vh;
 }
 
 #cantFindUser{
@@ -128,4 +131,27 @@
 #right {
     right: -5px;
     background: url('../images/icon/free-icon-right-482615.png') no-repeat center center;
+}
+@media (max-width:768px){
+    #contentBox .match_3 div a div {
+        width: 140px;
+        height: 40px;
+        text-align: center;
+    }
+    #contentBox .match_4 #placeIco{
+        width: 40px;
+    }
+    #contentBox .match_2{
+        max-width: 420px;
+        max-height: 420px;
+        margin: 0 auto;
+    }
+    #contentBox .match_2 div{
+        height: 100%;
+    }
+    #layer2 {
+        position: relative;
+        top: 20vh;
+        left: 10vw;
+    }
 }

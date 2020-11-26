@@ -1,6 +1,7 @@
 import React,{ useState } from 'react';
 import '../../lib/styles/Telepathy_get_quiz.scss'
 import { withRouter } from 'react-router-dom';
+import NuUser from '../common/NoUser'
 
 const TelepathyGetQuiz = ({history, mun, ans, pic, user_nick, my_pic, my_nick, tot_mun }) => {
     const [check] = useState({
@@ -38,8 +39,11 @@ const TelepathyGetQuiz = ({history, mun, ans, pic, user_nick, my_pic, my_nick, t
             history.push('/Telepathy')
         }
     }
+    console.log('mun = ',pic)
     return(
-        <div id="getQuizWrapper">
+        <>
+        {pic !== '' &&(
+            <div id="getQuizWrapper">
             <div class="nth_quiz">1번째 질문</div>
             <div class="situation">취향</div>
             <div id="quiz">
@@ -82,9 +86,14 @@ const TelepathyGetQuiz = ({history, mun, ans, pic, user_nick, my_pic, my_nick, t
                         </div>
                     </div>
                 </div>
-                <div><input type="submit" value="선택" onClick={() => right(myAns, ans[0])}/></div>
+                <div><input type="submit" value="선택" id="get_quiz_select_btn" onClick={() => right(myAns, ans[0])}/></div>
             </div>
         </div>
+        )}
+        {pic === '' &&(
+            <NuUser/>
+        )}
+        </>
     )
 }
 

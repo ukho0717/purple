@@ -13,9 +13,6 @@ const TelepathyGetQuizContainer = ({history}) => {
     }));
     useEffect(() => {
         dispatch(teleAns());
-        if(telepathy === ''){
-            history.push('/user_not_found')
-        }
     }, [dispatch,history]);
 
     console.log(telepathy)

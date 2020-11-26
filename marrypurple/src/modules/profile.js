@@ -1,5 +1,12 @@
 // import { createAction, handleActions } from 'redux-actions';
+<<<<<<< HEAD
 // import produce from "immer";
+=======
+<<<<<<< HEAD
+// import produce from "immer";
+=======
+>>>>>>> 2cf6053e159fdbe7f9dc9fd45da53964834f02f0
+>>>>>>> ed61bf815cc78cfe92d3a2be8cd8ef64f918a0a7
 // import createRequestSaga, { createRequestActionTypes } from '../lib/createRequestSaga';
 // import * as authAPI from '../lib/api/auth';
 // import { takeLatest } from 'redux-saga/effects';
@@ -75,7 +82,15 @@
 //         }),
 //         [READ_PROFILE_FAILURE]:(state,{payload:error})=>({
 //             ...state,
+<<<<<<< HEAD
 //             authError:error
+=======
+<<<<<<< HEAD
+//             authError:error
+=======
+//             error
+>>>>>>> 2cf6053e159fdbe7f9dc9fd45da53964834f02f0
+>>>>>>> ed61bf815cc78cfe92d3a2be8cd8ef64f918a0a7
 //         }),
 //         [UNLOAD_PROFILE]:()=>initialState,
 //         [UPDATE_PROFILE]:state =>({
@@ -87,7 +102,15 @@
 //             authError: null,
 //             auth,
 //         }),
+<<<<<<< HEAD
 //         [UPDATE_PROFILE_FAILURE]:(state,{payload:error})=>({
+=======
+<<<<<<< HEAD
+//         [UPDATE_PROFILE_FAILURE]:(state,{payload:error})=>({
+=======
+//         [UPDATE_PROFILE_FAILURE]:(state,{payload:auth})=>({
+>>>>>>> 2cf6053e159fdbe7f9dc9fd45da53964834f02f0
+>>>>>>> ed61bf815cc78cfe92d3a2be8cd8ef64f918a0a7
 //             ...state,
 //             authError:error
 //         }),

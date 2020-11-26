@@ -26,14 +26,15 @@ const GramWriteContainer = ({ history }) => {
             InstaImage,
             content
         }));
+
+        history.push('/gram_main');
     }
 
-    useEffect(() => {
-        if(gram){
-            // alert('성공');
-            history.push('/gram_main');
-        }
-    }, [dispatch, gram]);
+    // useEffect(() => {
+    //     if(gram){
+    //         // alert('성공');
+    //     }
+    // }, [dispatch, gram]);
 
     return (
         <GramWrite onSubmit={onSubmit}/>

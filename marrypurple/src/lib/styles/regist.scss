@@ -20,6 +20,7 @@ input[type=button], input[type=submit],input[type=file] { cursor: pointer;}
 #wrap { width: 100%; height:100%;}
 
 /* 회원가입 */
+
 #Rheader {width: 100%; height: 130px; border-bottom: 0.1rem solid goldenrod}
 #container{ margin: 0 auto; width: 100%; }
 .rContainer { width: 100%; }
@@ -80,6 +81,7 @@ input[type=button], input[type=submit],input[type=file] { cursor: pointer;}
 .changePw { position: relative; margin: 0 auto; text-align: center;}
 .changePw input{display: inline-block; padding-top: 16px; padding-bottom: 16px; padding-left: 20px; padding-right: 20px; width: 420px; border: 2px solid #e8e8e8; border-radius: 8px; background-color: #f5f7fa; margin: 0 auto}
 .reInputPw span { margin-left: 200px;}
+.errorMsg1 {  text-align: center; margin-top: 30px; color: red;}
 @media screen and (max-width: 768px){
     .regiT { padding-top: 20px;}
     .inputId { width: 220px; height: 57px; }
@@ -97,5 +99,6 @@ input[type=button], input[type=submit],input[type=file] { cursor: pointer;}
     .getNick {display: inline-block; padding-top: 16px; padding-bottom: 16px; padding-left: 20px; padding-right: 20px; width: 210px; border: 2px solid #e8e8e8; border-radius: 8px; background-color: #f5f7fa; margin: 0 auto;}
     .findPw { margin-top: 160px;}
     .changePw input{ width: 300px;}
+    .errorMsg1 {  text-align: center; margin-top: 30px; color: red;}
 }
 

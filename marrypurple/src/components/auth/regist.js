@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import '../../lib/styles/regist.scss'
 import rLogo from '../../lib/img/rLogo.png';
 
 const Register = ({type,form,onSubmit,error,onChange,fileSelectHandler}) => {
     console.log(form)
     return(
+    <Router>
     <div id="wrapM">
         <div>{error}</div>
         <div id="container">
@@ -30,12 +32,14 @@ const Register = ({type,form,onSubmit,error,onChange,fileSelectHandler}) => {
                                 onChange={onChange}
                                 />
                         </div>
+                    <Link to="/mailOk">
                         <input 
                             className="getE" 
                             type="button" 
                             name="idCheck" 
                             value="인증 받기"
                         />
+                    </Link>
                     </div>
                 </div> 
                 <div className="regiId">
@@ -89,7 +93,7 @@ const Register = ({type,form,onSubmit,error,onChange,fileSelectHandler}) => {
                         <input type="file" 
                         name="profile_pic" 
                         onChange={fileSelectHandler}
-                        // value={form.profile_pic} 
+                        value={form.profile_pic} 
                         />
                     </div>
                     <div className="inputPro inputPro2"> 
@@ -113,6 +117,7 @@ const Register = ({type,form,onSubmit,error,onChange,fileSelectHandler}) => {
             </div>
         </div>
     </div>
+    </Router>
     )
 }
 

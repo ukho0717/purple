@@ -1,10 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import '../../lib/styles/regist.scss';
 import rLogo from '../../lib/img/rLogo.png';
 
 const FindPw = ({type,form,onChange,onSubmit,error}) => {
+    const mailClick =()=>{
+        document.cookie = "user={form.user_email}; max-age=3600"
+    }
     return(
+    <Router>
         <div id="wrapM">
         <div id="container">
             <div id="Rheader">
@@ -19,31 +24,42 @@ const FindPw = ({type,form,onChange,onSubmit,error}) => {
                     <p><span class="idText">아이디</span></p>
                     <div>
                         <div class="inputId">
-                            <input  
+                            <input 
                                 class="flexS" 
                                 type="text" 
-                                name="userId"
+                                name="user_email"
                                 placeholder="이메일 주소(아이디)"
                                 onChange={onChange}
-                                value={form.user_email} 
+                                value={form.user_email}
                             />
                         </div>
-                        <input class="getE" type="button" name="idCheck" value="인증 받기"/>
+                        <Link to="/mailOk"><input class="getE" type="button" name="idCheck"  value="인증 받기"/>                            
+                        <input  
+                                class="flexS" 
+                                type="hidden" 
+                                name="user_email"
+                                placeholder="이메일 주소(아이디)"
+                                onChange={onChange}
+                                value={form.user_email}
+                            /></Link>
                     </div>
                 </div> 
                 <div class="regiId">
                     <div class="inputId">
                         <input class="reNum" type="text" name="chkNum" placeholder="인증번호"/>
                     </div>
-                    <input class="getE" type="button" name="Check" value="인증"/>
+                    <input class="getE" type="button" name="Check" onClick={mailClick} value="인증"/>
                 </div>
+                <div className="errorMsg1">{error}</div>
                 <div class="reBtn">
-                    <a><Link to="/changePw"><input class="rePw" type="button" name="rePw1" value="변경하기" onClick={onClick}/></Link></a>
+                    <a><input class="rePw" type="submit" name="rePw1" value="변경하기"/></a>
                 </div>
             </form>
             </div>
         </div>
     </div>
+    </Router>
+
     )
 }
 export default FindPw;

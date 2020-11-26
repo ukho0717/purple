@@ -4,7 +4,7 @@ import MatchingItem from './pieces/MatchingItem';
 import Error from './pieces/error'
 import { BiExitFullscreen } from 'react-icons/bi';
 
-const Matching = ({urlAddress, matching, error, loading, onToggle, onToggle_report, showProfile, back}) => {
+const Matching = ({onClickReport, urlAddress, matching, error, loading, onToggle, onToggle_report, showProfile, back}) => {
   if(error){
       console.log(error)
       return<div><Error/></div>
@@ -21,6 +21,7 @@ const Matching = ({urlAddress, matching, error, loading, onToggle, onToggle_repo
                       onToggle_report={onToggle_report}
                       key={list._id}
                       urlAddress= {urlAddress}
+                      onClickReport={onClickReport}
                     />
                 ))}
             </div>
@@ -34,7 +35,8 @@ const Matching = ({urlAddress, matching, error, loading, onToggle, onToggle_repo
             onToggle_report={onToggle_report}
             key={back._id}
             urlAddress= {urlAddress}
-          />
+            onClickReport={onClickReport}
+            />
         </div>
       )}
     </>

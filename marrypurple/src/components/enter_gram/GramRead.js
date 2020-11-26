@@ -109,6 +109,7 @@ const GramWrite = ({ user, gram, listLikeGram, commentSubmit, deleteClick, heart
         let $current = $(e.target.parentNode);
         $current.toggleClass('on');
         $current.parent().siblings().children('a').removeClass('on');
+        console.log('1234',$current);
         if($current.hasClass('on')){
             $('.pop-layer2 button').css({
                 'background': 'linear-gradient( to left, #FFD7DD, #9E7FFE )'

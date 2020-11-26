@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { useSelector } from "react-redux";
 import FindOne from '../../components/enter_find/FindOne'
 import { withRouter } from "react-router-dom";
@@ -7,7 +7,6 @@ const FindOneContainer = ({history}) => {
     // useSelector로 리덕스 스토어 state에 접근하는것.
     const { findOne } = useSelector(({ findOne }) => ({
         findOne: findOne.one,
-        check: findOne.check
     }));
 
     useEffect(() => {

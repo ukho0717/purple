@@ -64,7 +64,7 @@ const Payment = ({ onSubmit, loading, error }) => {
                                 <p>￦13,000 / 월 60% 할인</p>
                             </div>
                             <div className="choose test_css">
-                                <label><div className="inputCircle"></div><input type="radio" name="pay" id="6months" value="6개월" checked onClick={radioClick}/> 6개월</label>
+                                <label><div className="inputCircle"></div><input type="radio" name="pay" id="6months" value="6개월" defaultChecked onClick={radioClick}/> 6개월</label>
                                 <p>￦19,700 / 월 37% 할인</p>
                             </div>
                             <div className="choose">

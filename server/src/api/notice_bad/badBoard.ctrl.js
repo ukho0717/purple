@@ -6,8 +6,8 @@ import User from '../../models/user';
 const { ObjectId } = mongoose.Types;
 
 export const write = async ctx => {
-    // console.log('badBoard write');
-    // console.log('ctx.request', ctx.request);
+    console.log('/badBoard write 호출');
+
     const schema = Joi.object().keys({
         _id : Joi.string().required(),
         reason: Joi.string().required()

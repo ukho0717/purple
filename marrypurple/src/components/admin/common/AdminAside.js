@@ -32,7 +32,7 @@ const AdminAside = () => {
     //     nowPage = currentPage;
     // }
     // console.log('currentPage',nowPage);
-    // switch(currentPage){
+    // switch(nowPage){
     //     case '/Admin_main':
     //         $('.sidebar-menu').children('li').first().children('a').addClass('active');
     //         break;
@@ -71,34 +71,34 @@ const AdminAside = () => {
                         <h5 className="centered">admin</h5>
                         <li className="mt">
                             <Link /*className="active"*/ to="/Admin_main">
-                            <i className="fa fa-dashboard"></i>
+                            <i class="fas fa-home"></i>
                             <span>main</span>
                             </Link>
                         </li>
                         <li className="sub-menu">
                             <Link to="/Admin_users">
-                            <i className="fa fa-desktop"></i>
+                            <i class="fas fa-users"></i>
                             <span>회원</span>
                             </Link>
                         </li>
                         <li className="sub-menu">
                             <Link to="/Admin_gram">
-                            <i className="fa fa-cogs"></i>
+                            <i class="fab fa-instagram"></i>
                             <span>메리퍼플그램</span>
                             </Link>
                         </li>
                         <li className="sub-menu">
                             <Link to="/Admin_badList">
-                            <i className="fa fa-book"></i>
+                            <i class="fas fa-user-alt-slash"></i>
                             <span>불량회원</span>
                             </Link>
                         </li>
-                        <li className="sub-menu">
+                        {/* <li className="sub-menu">
                             <Link to="Adimn_notice">
                             <i className="fa fa-tasks"></i>
                             <span>공지사항</span>
                             </Link>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
             </adminaside>

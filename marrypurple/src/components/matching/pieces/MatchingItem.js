@@ -9,7 +9,7 @@ import imgC from '../../../lib/images/icon/f84abf6d0bd53bf97dbb1011aa640499.png'
 import imgD from '../../../lib/images/icon/49f19f63a24305a4f1dedfd8481c01e2.png';
 import imgE from '../../../lib/images/icon/8c6f9b49103dd67cf3bfd50f561b46d6.png';
 
-const MatchingItem = ({ back, list, onToggle, showProfile, onToggle_report, urlAddress }) => {
+const MatchingItem = ({ back, list, onToggle, showProfile, onToggle_report, urlAddress,onClickReport }) => {
   // console.log('showProfile.reportActive : ', showProfile.reportActive)
     const dispatch = useDispatch();
     const { profile_pic, user_nick, address, user_age, personality, brief_intro, match, _id} = list;
@@ -29,7 +29,7 @@ const MatchingItem = ({ back, list, onToggle, showProfile, onToggle_report, urlA
         </div>
         <div className="match_3">
             <div>
-            <span id="userid">{user_nick}</span> <span id="userage">{user_age}</span> <a href="#aaa" onClick={() => onToggle()}><div>프로필 더보기</div></a>
+            <span id="userid">{user_nick}</span> <span id="userage">{user_age}</span> <a href="#aaa" onClick={() => onToggle()}><div id="more_profile">프로필 더보기</div></a>
         </div>
         </div>
         {showProfile.profileActive === true && (
@@ -55,25 +55,25 @@ const MatchingItem = ({ back, list, onToggle, showProfile, onToggle_report, urlA
                         <div>
                         <ul>
                             <li>
-                            <a href="#aaa">
+                            <a href="#aaa" onClick={()=>onClickReport('부적절한 사진')}>
                                 <div><img src={imgB} alt="부적절한 사진"/></div>
                                 <div>부적절한 사진</div>
                             </a>
                             </li>
                             <li>
-                            <a href="#aaa">
+                            <a href="#aaa" onClick={()=>onClickReport("스팸으로 의심됨")} >
                                 <div><img src={imgC} alt="스팸으로 의심됨"/></div>
                                 <div>스팸으로 의심됨</div>
                             </a>
                             </li>
                             <li>
-                            <a href="#aaa">
+                            <a href="#aaa" onClick={()=>onClickReport("부적절한 메시지")} >
                                 <div><img src={imgD} alt="부적절한 메시지"/></div>
                                 <div>부적절한 메시지</div>
                             </a>
                             </li>
                             <li>
-                            <a href="#aaa">
+                            <a href="#aaa" onClick={()=>onClickReport("기타")} >
                                 <div><img src={imgE} alt="부적절한 메시지"/></div>
                                 <div>기타</div>
                             </a>

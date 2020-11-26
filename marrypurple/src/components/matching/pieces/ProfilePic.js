@@ -9,13 +9,17 @@ const Container = styled.div`
 const SliderContainer = styled.div`
     width: 100%;
     display: flex; //이미지들을 가로로 나열
+    height: 420px;
 `;
 const IMG = styled.img`
-    width: 100%;
+    max-width: 420px;
+    max-height: 420px;
 `;
 const Slide = ({ img }) => {
     return (
-        <IMG src={img} />
+        <div style={{minWidth:'420px', textAlign:'center'}}>
+            <div style={{margin:'auto'}}><IMG src={img} /></div>
+        </div>
     );
 }
 

@@ -28,6 +28,7 @@ let upload = koaMulter({
 const posts = new Router();
 posts.get('/like', postsCtrl.likeList);
 posts.get('/', postsCtrl.list);
+posts.get('/all', postsCtrl.listAll);
 
 posts.post('/', upload.single('file'), postsCtrl.write);
 
@@ -35,5 +36,7 @@ posts.get('/:post_id', postsCtrl.read);
 posts.delete('/:post_id', postsCtrl.remove);
 posts.patch('/like/:post_id/:heart', postsCtrl.updateLike);
 posts.patch('/comment', postsCtrl.updateComment);
+posts.patch('/hide/:post_id', postsCtrl.updateHide);
+posts.patch('/show/:post_id', postsCtrl.updateShow);
 
 export default posts;

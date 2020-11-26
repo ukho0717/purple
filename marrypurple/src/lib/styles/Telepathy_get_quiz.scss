@@ -93,7 +93,7 @@
 .my_answer_div > div:nth-child(3){
     border-radius: 0 0 20px 20px;
 }
-input[type="submit"]{
+#get_quiz_select_btn{
     width: 300px;
     height: 50px;
     outline: none;
@@ -104,15 +104,15 @@ input[type="submit"]{
     font-weight: bold;
     margin-top: 20px;
 }
-input[type="submit"]:hover{
-    cursor: pointer;
-}
-input[type="radio"]{
-    visibility:hidden;
-}
-label:hover{
-    cursor: pointer;
-}
+// input[type="submit"]:hover{
+//     cursor: pointer;
+// }
+// input[type="radio"]{
+//     visibility:hidden;
+// }
+// label:hover{
+//     cursor: pointer;
+// }
 
 #ans1_label, #ans2_label, #ans3_label {
     margin-right: 10px;

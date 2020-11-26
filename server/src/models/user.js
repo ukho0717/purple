@@ -67,6 +67,7 @@ const UserSchema = new Schema({
         default : 'both'
     },
     match:{ type: mongoose.Schema.Types.ObjectId, ref: 'Matching' },
+    reported:{type: [String], default:''},
     provider: {type: String, default:''},
     authToken : {type: String , default:''},
     facebook:{},

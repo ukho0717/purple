@@ -46,6 +46,7 @@ const MarryLogin = ({type, form, onChange, onSubmit, error }) => {
                     value={form.user_pw}
                 />
             </div>
+            <div>{error}</div>
             <div className="loginQ">
                 <p><a><Link to="/regist">로그인 하실 수 없으신가요??</Link></a></p>
             </div>

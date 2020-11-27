@@ -289,7 +289,7 @@ export const snsRegister = async (ctx) => {
 export const sendmail = async (ctx) =>{
   console.log("메일보내기")
   // const user_email = ctx.request.body.user_email;
-  console.log("user메일22" + ctx.request.body);
+  console.log("user메일22"+  ctx.request.body.user_email);
 
   // console.log("user메일" + user_email)
   const transporter = nodemailer.createTransport({

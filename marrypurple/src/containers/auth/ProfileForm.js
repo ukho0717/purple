@@ -48,7 +48,6 @@ const ProfileForm = ({match,history})=>{
         let fav_movie = e.target.fav_movie.value;
         let fav_food = e.target.fav_food.value;
         let profile_pic = (e.target.profile_array.value).split(',');
-        alert(profile_pic);
         alert("수정되었습니다")
         e.preventDefault();
 
@@ -90,7 +89,7 @@ const ProfileForm = ({match,history})=>{
     // }, [user, history]);
     
     return(
-        <Profile type="updateProfile"  user={user} form={form} onChange={onChange} profileSubmit={profileSubmit} loading={loading} error={authError} profile={user.profile_pic}/>
+        <Profile type="updateProfile"  user={user} form={form} onChange={onChange} profileSubmit={profileSubmit} loading={loading} error={authError} profile={user.profile_pic} personal={user.personality}/>
     )
 }
   export default withRouter(ProfileForm);

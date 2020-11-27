@@ -1,11 +1,10 @@
 import React from 'react';
 import '../../../lib/styles/admin/adminBad.scss';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
 import $ from 'jquery';
 import { MDBDataTable } from 'mdbreact';
 
-const AdminBadList = ({ badList }) => {
+const AdminBadList = ({ badList, history, loading }) => {
     let list = [];
     if(badList){
         list = badList;
@@ -44,28 +43,31 @@ const AdminBadList = ({ badList }) => {
         rows: list
     };
 
-    // console.log($('tbody tr td:nth-child(2)').length);
-    // for(let i=0; i<$('tbody tr td:nth-child(2)').length; i++){
-    //     console.log('1234');
-    //     console.log($('tbody tr td:nth-child(2)')[i].innerHTML);
-    //     let img = $('tbody tr td:nth-child(2)')[i].innerHTML;
-    //     console.log(img);
-    //     $('tbody tr td:nth-child(2)')[i].innerHTML = `<div style="width: 100px; height: 100px; background: url('${img}') no-repeat; background-size: 100%; margin: 0 auto;"></div>`;
-    // }
+    const click = e => {
+      const _id = $(e.target).parent().children('td:last-child')[0].innerText;
+      console.log($(e.target).parent().children('td:last-child')[0].innerText);
+
+      history.push(`/Admin_bad_read/${_id}`);
+    }
 
     return (
         <>
-            <h3><i className="fa fa-angle-right"></i> 불량회원</h3>
-            <Link to="/Admin_bad_write" className="badBtn"><div>불량회원 등록</div></Link>
-            <h4>불량회원 리스트</h4>
-            <div className="admin_bad_table">
-              <MDBDataTable
-                  striped
-                  bordered
-                  hover
-                  data={data}
-              />
-            </div>
+          {!loading && (
+            <>
+              <h3><i className="fa fa-angle-right"></i> 불량회원</h3>
+              <Link to="/Admin_bad_write" className="badBtn"><div>불량회원 등록</div></Link>
+              <h4>불량회원 리스트</h4>
+              <div className="admin_bad_table">
+                <MDBDataTable
+                    striped
+                    bordered
+                    hover
+                    onClick={click}
+                    data={data}
+                />
+              </div>
+            </>
+          )}
         </>
     )
 }

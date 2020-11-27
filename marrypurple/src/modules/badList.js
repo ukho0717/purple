@@ -13,7 +13,21 @@ const [
     WRITE_BAD_SUCCESS,
     WRITE_BAD_FAILURE
 ] = createRequestActionTypes('badBoard/WRITE_BAD');   // 불량회원 등록
-
+const [
+    READ_BAD,
+    READ_BAD_SUCCESS,
+    READ_BAD_FAILURE
+] = createRequestActionTypes('badBoard/READ_BAD');  // 불량회원 정보 읽어오기
+const [
+    DELETE_BAD,
+    DELETE_BAD_SUCCESS,
+    DELETE_BAD_FAILURE
+] = createRequestActionTypes('badBoard/DELETE_BAD');   // 리스트에서 불량회원 지우기
+const [
+    UPDATE_BAD,
+    UPDATE_BAD_SUCCESS,
+    UPDATE_BAD_FAILURE
+] = createRequestActionTypes('badBoard/UPDATE_BAD');  // 불량회원 업데이트
 
 export const badListPosts = createAction(
     BADLIST_POSTS,
@@ -23,17 +37,27 @@ export const writeBad = createAction(WRITE_BAD, ({ _id, reason }) => ({
     _id,
     reason
 }));
+export const readBad = createAction(READ_BAD, _id => _id);
+export const deleteBad = createAction(DELETE_BAD, bad_id => bad_id);
+export const updateBad = createAction(UPDATE_BAD, ({ bad_id, reason }) => ({ bad_id, reason }));
 
 const badListPostsSaga = createRequestSaga(BADLIST_POSTS, badListAPI.badList);
 const writeBadSaga = createRequestSaga(WRITE_BAD, badListAPI.badWrite);
+const readBadSaga = createRequestSaga(READ_BAD, badListAPI.badRead);
+const deleteBadSaga = createRequestSaga(DELETE_BAD, badListAPI.badRemove);
+const updateBadSaga = createRequestSaga(UPDATE_BAD, badListAPI.badUpdate);
 export function* badListsSaga(){
     yield takeLatest(BADLIST_POSTS, badListPostsSaga);
     yield takeLatest(WRITE_BAD, writeBadSaga);
+    yield takeLatest(READ_BAD, readBadSaga);
+    yield takeLatest(DELETE_BAD, deleteBadSaga);
+    yield takeLatest(UPDATE_BAD, updateBadSaga);
 }
 
 const initialState = {
     _id: '',
     reason: '',
+    badPost: null,
     badList: null,
     error: null
 }
@@ -59,6 +83,51 @@ const badList = handleActions(
             badList,
         }),
         [WRITE_BAD_FAILURE]: (state, { payload: error }) => ({
+            ...state,
+            error,
+        }),
+        [READ_BAD]: state => ({
+            ...state,
+            badPost: null,
+            badList: null,
+            error: null
+        }),
+        [READ_BAD_SUCCESS]: (state, { payload: badPost }) => ({
+            ...state,
+            error: null,
+            badPost,
+        }),
+        [READ_BAD_FAILURE]: (state, { payload: error }) => ({
+            ...state,
+            error,
+        }),
+        [DELETE_BAD]: state => ({
+            ...state,
+            badPost: null,
+            badList: null,
+            error: null
+        }),
+        [DELETE_BAD_SUCCESS]: (state, { payload: badPost }) => ({
+            ...state,
+            error: null,
+            badPost,
+        }),
+        [DELETE_BAD_FAILURE]: (state, { payload: error }) => ({
+            ...state,
+            error,
+        }),
+        [UPDATE_BAD]: state => ({
+            ...state,
+            badPost: null,
+            badList: null,
+            error: null
+        }),
+        [UPDATE_BAD_SUCCESS]: (state, { payload: badPost }) => ({
+            ...state,
+            error: null,
+            badPost,
+        }),
+        [UPDATE_BAD_FAILURE]: (state, { payload: error }) => ({
             ...state,
             error,
         }),

@@ -26,6 +26,16 @@ const FindPwForm = ({history}) =>{
             }),
         );
     };
+    const sendmailer = (event) =>{
+        console.log("이메일 난수 보내기")
+        event.preventDefault();
+        const {user_email} =form;
+        console.log("DSdsadsad"+ user_email)
+            //    history.push('/mailOk')
+        // console.log("DSdsadsad"+ number)
+
+        // dispatch({user_email})
+    }
     // const mailClick=()=>{
     //     dispatch(sendmail);
     //     history.push('/findPw')
@@ -69,6 +79,7 @@ const FindPwForm = ({history}) =>{
                 onChange={onChange}
                 onSubmit={onSubmit}
                 error={error}
+                sendmailer={sendmailer}
                 // mailClick={mailClick}
             />
         );

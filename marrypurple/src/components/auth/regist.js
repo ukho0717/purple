@@ -3,13 +3,25 @@ import { Link } from 'react-router-dom';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import '../../lib/styles/regist.scss'
 import rLogo from '../../lib/img/rLogo.png';
+import { check } from '../../lib/api/auth';
 
 const Register = ({type,form,onSubmit,error,onChange,fileSelectHandler}) => {
     console.log(form)
+    const number = "1111";
+    function mailChk(){
+        
+        if(number==document.getElementById("inNUm").value)
+        {alert("인증되었습니다.")
+
+    }
+        else if(number != document.getElementById("inNUm").value){
+            alert("인증실패!")
+
+        }
+
+    };
     return(
-    <Router>
-    <div id="wrapM">
-        <div>{error}</div>
+        <div id="wrapM">
         <div id="container">
             <div id="Rheader">
                     <a><Link to="/" className="rLogo"><img src={rLogo} alt="회원가입로고"/></Link></a>
@@ -18,6 +30,7 @@ const Register = ({type,form,onSubmit,error,onChange,fileSelectHandler}) => {
                 <div className="regiT">
                     <h1>계정 만들기</h1>
                 </div>
+        <Router>
             <form onSubmit={onSubmit} method="post" action="/api/auth" enctype="multipart/form-data">
                 <div className="regiId">
                     <p><span className="idText">아이디</span></p>
@@ -44,9 +57,9 @@ const Register = ({type,form,onSubmit,error,onChange,fileSelectHandler}) => {
                 </div> 
                 <div className="regiId">
                     <div className="inputId">
-                        <input className="reNum" type="text" name="chkNum" placeholder="인증번호"/>
+                        <input className="reNum" id="inNUm" type="text" name="chkNum" placeholder="인증번호"/>
                     </div>
-                    <input className="getE" type="button" name="Check" value="인증"/>
+                    <input className="getE" type="button" name="Check" onClick={mailChk} value="인증"/>
                 </div>
                 <div className="regiPw">
                     <p><span>비밀번호</span></p>
@@ -57,7 +70,7 @@ const Register = ({type,form,onSubmit,error,onChange,fileSelectHandler}) => {
                             placeholder="비밀번호" 
                             onChange={onChange}
                             value={form.user_pw}
-                        />
+                            />
                     </div>
                 </div>
                 <div className="regiId regiGender">
@@ -106,18 +119,20 @@ const Register = ({type,form,onSubmit,error,onChange,fileSelectHandler}) => {
                         onChange={onChange} placeholder="닉네임"/>
                     </div>
                 </div>
+
                 <div className="regiId regiGo">
                     {/* <input type="submit" name="regi" value="가입하기"/> */}
                     <button>가입하기</button>
                 </div>
             </form>
+        </Router>
                 <div className="regiId regiBack">
                     <p><a> <Link to="/login">이미 가입하셨다면? 로그인하세요.</Link></a></p>
                 </div>
             </div>
+
         </div>
     </div>
-    </Router>
     )
 }
 

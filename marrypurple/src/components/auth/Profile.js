@@ -3,33 +3,33 @@ import '../../lib/styles/profile.scss';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const Profile = ({user,form,onChange,loading,profileSubmit,error, profile}) =>{
- 
-    const {brief_intro,address,fav_food,fav_movie,fav_song,user_gender,personality,school} = user;
+const Profile = ({user,form,onChange,loading,profileSubmit,error, profile,personal}) =>{
+
+    const {brief_intro,address,fav_food,fav_movie,fav_song,user_gender,school} = user;
     const elements=[];
 
     const [profile_pic, setProfile_pic] = useState(profile);
-    
     const [bi, setBi] = useState(brief_intro);
     const [ad, setAd] =useState(address);
     const [ff, setFf] = useState(fav_food);
     const [fm, setFm] = useState(fav_movie);
     const [fs, setFs] = useState(fav_song);
     const [sc,setSc] = useState(school);
-    // const [per, setPer]= useState([personality])
+    const [personality, setPersonality]= useState(personal);
     // const [pic, setPic]= useState([profile_pic])
     
-    
+
     const fileSelectHandler = (event) =>{
         imgbbUploader(event.target.files[0]).then(resp => {
-          console.log(resp.data.data.url);
-          var i='';
-          for(var k = 0; k < profile_pic.length; k++){
-              i += profile_pic[k] + ',';
-          }
-          i += resp.data.data.url;
-          setProfile_pic(i.split(','));
+        console.log(resp.data.data.url);
+        var i='';
+        for(var k = 0; k < profile_pic.length; k++){
+            i += profile_pic[k] + ',';
+        }
+        i += resp.data.data.url;
+        setProfile_pic(i.split(','));
     })}
+
 
     useEffect(()=> {
         console.log(profile_pic);
@@ -38,17 +38,41 @@ const Profile = ({user,form,onChange,loading,profileSubmit,error, profile}) =>{
     const picarr = profile_pic;
     for(let i = 0; i<picarr.length; i++){
         elements.push(<img src={picarr[i]}/>)
+    } 
+    
+
+
+    function onRemove0(){
+        picarr.splice(0,1);
     }
-    // const elements2=[];
-    // const personarr=[personality]
-    // for(let i=0; i<personarr.length; i++){
-    //     if(personarr[i]==valueByName){
-    //         elements2.push(<checked/>)
-    //     }
-    // 
-    // }
+    function onRemove1(){
+        picarr.splice(1,1);
+    }
+    function onRemove2(){
+        picarr.splice3(2,1);
+    }
+    function onRemove3(){
+        picarr.splice(3,1);
+    }
+    function onRemove4(){
+        picarr.splice(4,1);
+    }
+    function onRemove5(){
+        picarr.splice(5,1);
+    }
+    function onRemove6(){
+        picarr.splice(6,1);
+    }
+    function onRemove7(){
+        picarr.splice(7,1);
+    }
+    function onRemove8(){
+        picarr.splice(8,1);
+    }
     
+
     
+
     const imgbbUploader = ( img ) => {
         let body = new FormData()
         body.set('key', 'fc932c3718be04e605f6d38678fc9533')
@@ -101,19 +125,19 @@ const Profile = ({user,form,onChange,loading,profileSubmit,error, profile}) =>{
                             <li className="photo_items">
                                 <div className="photo_profile">{elements[0]}</div>
                                 <div className="del_btn">
-                                    <button><i className="fas fa-trash-alt"></i></button>
+                                    <button onClick={onRemove0}><i className="fas fa-trash-alt"></i></button>
                                 </div>
                             </li>
                             <li className="photo_items">
                                 <div className="photo_profile">{elements[1]}</div>
                                 <div className="del_btn">
-                                    <button><i className="fas fa-trash-alt"></i></button>
+                                    <button onClick={onRemove1}><i className="fas fa-trash-alt"></i></button>
                                 </div>
                             </li>
                             <li className="photo_items">
                                 <div className="photo_profile">{elements[2]}</div>
                                 <div className="del_btn">
-                                    <button><i className="fas fa-trash-alt"></i></button>
+                                    <button onClick={onRemove2}><i className="fas fa-trash-alt"></i></button>
                                 </div>
                             </li>
                         </ul>
@@ -123,19 +147,19 @@ const Profile = ({user,form,onChange,loading,profileSubmit,error, profile}) =>{
                             <li className="photo_items">
                                 <div className="photo_profile">{elements[3]}</div>
                                 <div className="del_btn">
-                                    <button><i className="fas fa-trash-alt"></i></button>
+                                    <button onClick={onRemove3}><i className="fas fa-trash-alt"></i></button>
                                 </div>
                             </li>
                             <li className="photo_items">
                                 <div className="photo_profile">{elements[4]}</div>
                                 <div className="del_btn">
-                                    <button><i className="fas fa-trash-alt"></i></button>
+                                    <button onClick={onRemove4}><i className="fas fa-trash-alt"></i></button>
                                 </div>
                             </li>
                             <li className="photo_items">
                                 <div className="photo_profile">{elements[5]}</div>
                                 <div className="del_btn">
-                                    <button><i className="fas fa-trash-alt"></i></button>
+                                    <button onClick={onRemove5}><i className="fas fa-trash-alt"></i></button>
                                 </div>
                             </li>
                         </ul>
@@ -145,19 +169,19 @@ const Profile = ({user,form,onChange,loading,profileSubmit,error, profile}) =>{
                             <li className="photo_items">
                                 <div className="photo_profile">{elements[6]}</div>
                                 <div className="del_btn">
-                                    <button><i className="fas fa-trash-alt"></i></button>
+                                    <button onClick={onRemove6}><i className="fas fa-trash-alt"></i></button>
                                 </div>
                             </li>
                             <li className="photo_items">
                                 <div className="photo_profile">{elements[7]}</div>
                                 <div className="del_btn">
-                                    <button><i className="fas fa-trash-alt"></i></button>
+                                    <button onClick={onRemove7}><i className="fas fa-trash-alt"></i></button>
                                 </div>
                             </li>
                             <li className="photo_items">
                                 <div className="photo_profile">{elements[8]}</div>
                                 <div className="del_btn">
-                                    <button><i className="fas fa-trash-alt"></i></button>
+                                    <button onClick={onRemove8}><i className="fas fa-trash-alt"></i></button>
                                 </div>
                             </li>
                         </ul>

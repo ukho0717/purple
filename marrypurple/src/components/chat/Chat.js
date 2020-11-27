@@ -52,7 +52,7 @@ const Chat = ({match, profile_pic, user_nick, user_email, my_email, getMsg}) => 
             </div>
             <div class="message_2" id="msgBoard" >
                 {/* <p>2020.10.07</p> */}
-                {Msgs.map(({sender, message}, index)=>{
+                {Msgs && Msgs.map(({sender, message}, index)=>{
                     if(sender === my_email){
                         return(
                             <div key={index} class="message_2_me">

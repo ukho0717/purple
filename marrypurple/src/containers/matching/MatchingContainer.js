@@ -3,13 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import Matching from '../../components/matching/Matching';
 import { matchingList, unloadList } from '../../modules/matching'
 import { withRouter } from 'react-router-dom';
+import {report_} from '../../modules/report';
 
 const MatchingContainer = ({match}) => {
     const urlAddress = match.url 
 
     const [showProfile, setShowProfile] = useState({
         profileActive: false,
-        reportActive: false
+        reportActive: false,
+        reportFinish: false
     })
     const onToggle = () => {
         setShowProfile({
@@ -24,9 +26,16 @@ const MatchingContainer = ({match}) => {
         })
     };
 
-    const onClickReport = (text) => {
+    const onClickReport = (text, id) => {
         if(window.confirm('신고하시겠습니까? (사유 : '+ text+')')){
-            alert('신고되었습니다.')
+            dispatch(report_({id: id, reason: text}))
+            if(alert('신고되었습니다.')){
+                setShowProfile({
+                    ...showProfile,
+                    reportFinish : !showProfile.reportFinish
+                })
+            }
+            
         }else{
             alert('신고하지 않습니다')
         }

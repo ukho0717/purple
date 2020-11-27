@@ -24,7 +24,8 @@ export const write = async ctx => {
         reason,
         User: {
             user_nick: user.user_nick,
-            profile_pic: user.profile_pic[0]
+            profile_pic: user.profile_pic[0],
+            _id: user._id
         }
     });
     try{
@@ -47,8 +48,9 @@ export const list = async ctx => {
 };
 
 export const read = async (ctx) => {
+    console.log('/badBoard list 호출');
+
     const { bad_id } = ctx.params;
-    console.log(bad_id);
     try{
         const post = await BadBoard.findById(bad_id).exec();
         ctx.body = post.toJSON();
@@ -58,6 +60,8 @@ export const read = async (ctx) => {
 };
 
 export const remove = async ctx => {
+    console.log('/badBoard remove 호출');
+
     const { bad_id } = ctx.params;
     console.log(bad_id);
     try{
@@ -69,9 +73,13 @@ export const remove = async ctx => {
 };
 
 export const update = async ctx => {
-    const { bad_id } = ctx.params;
+    console.log('/badBoard update 호출');
+    console.log(ctx.request.body);
+
+    const { bad_id, reason } = ctx.request.body;
 
     const schema = Joi.object().keys({
+        bad_id: Joi.string(),
         reason: Joi.string()
     });
 
@@ -83,8 +91,10 @@ export const update = async ctx => {
     }
 
     try{
-        const post = await BadBoard.findByIdAndUpdate(bad_id, ctx.request.body, {
-            new: true
+        const post = await BadBoard.findByIdAndUpdate(bad_id, {
+            $set: { 
+                reason: reason
+            }
         }).exec();
         if(!post){
             ctx.status = 404;

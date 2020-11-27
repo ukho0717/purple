@@ -127,6 +127,64 @@
                 }
             }
         }
+
+        .admin_bad_read_form {
+            div {
+                position: relative;
+                font-size: 16px;
+                margin-bottom: 15px;
+                line-height: 29px;
+                height: fit-content;
+
+                span {
+                    position: absolute;
+                    right: 0;
+                    width: 80%;
+                }
+                div {
+                    display: inline-block;
+                    position: absolute;
+                    right: 0;
+                    width: 80%;
+                    margin-bottom: 0;
+
+                    img {
+                        max-width: 400px;
+                        max-height: 400px;
+                        width: 94%;
+                    }
+                }
+                select {
+                    position: absolute;
+                    right: 0;
+                    width: 80.5%;
+                    height: 30px;
+                }
+
+                &:nth-child(3) {
+                    height: 400px;
+                }
+
+                &:last-child {
+                    input {
+                        position: relative;
+                        width: 33%;
+                        height: 35px;
+                        background: #fff;
+                        border: 1px solid #2c2c2c;
+
+                        &:nth-child(2) {
+                            background: #2c2c2c;
+                            color: #fff;
+                        }
+                        &:last-child {
+                            position: absolute;
+                            right: 0;
+                        }
+                    }
+                }
+            }
+        }
         
         h4 {
             color: #2c2c2c;
@@ -151,6 +209,56 @@
                         position: absolute;
                         right: 0;
                         width: 65.5%;
+                    }
+                }
+            }
+
+            .admin_bad_read_form {
+                div {
+                    span {
+                        width: 60%;
+                    }
+                    div {
+                        display: block;
+                        position: relative;
+                        right: 0;
+                        width: 100%;
+                        
+                        img {
+                            max-width: 400px;
+                            max-height: 400px;
+                            width: 100%;
+                            height: 92vw;
+                        }
+                    }
+                    
+                    &:first-child {
+                        span {
+                            font-size: 0.84rem;
+                        }
+                    }
+                    &:nth-child(3) {
+                        height: 100vw;
+                        max-height: 430px;
+                    }
+                    &:last-child {
+                        input {
+                            position: relative;
+                            width: 100%;
+                            height: 35px;
+                            background: #fff;
+                            border: 1px solid #2c2c2c;
+                            margin-bottom: 5px;
+    
+                            &:nth-child(2) {
+                                background: #2c2c2c;
+                                color: #fff;
+                            }
+                            &:last-child {
+                                position: relative;
+                                right: 0;
+                            }
+                        }
                     }
                 }
             }

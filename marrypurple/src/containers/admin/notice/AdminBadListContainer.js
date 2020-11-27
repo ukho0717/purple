@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { badListPosts } from '../../../modules/badList';
 import qs from 'qs';
 
-const AdminGramContainer = ({ location }) => {
+const AdminBadListContainer = ({ location, history }) => {
     const dispatch = useDispatch();
     const { badList, error, loading } = useSelector(
         ({ badList, loading }) => ({
@@ -24,8 +24,8 @@ const AdminGramContainer = ({ location }) => {
     
     console.log(badList);
     return (
-        <AdminBadList badList={badList}/>
+            <AdminBadList badList={badList} history={history} loading={loading}/>
     )
 }
 
-export default withRouter(AdminGramContainer);
+export default withRouter(AdminBadListContainer);

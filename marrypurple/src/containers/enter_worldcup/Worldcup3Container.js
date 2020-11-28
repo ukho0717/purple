@@ -3,18 +3,16 @@ import Worldcup3 from '../../components/enter_worldcup/Worldcup3';
 import { withRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { winnerProfile, unloadWinner } from '../../modules/worldcup';
+import { like } from '../../modules/ctrl'
 
 const Worldcup3Container = ({ match }) => {
     const { user_id } = match.params;
-    console.log('user_id',user_id);
     const dispatch = useDispatch();
     const { winner, error, loading } = useSelector(({ worldcup, loading }) => ({
         winner: worldcup.winner,
         error: worldcup.error,
         loading: loading['worldcup/WINNER']
     }));
-
-    // console.log('월드컵승자',winner);
 
     useEffect(() => {
         dispatch(winnerProfile(user_id));
@@ -23,8 +21,12 @@ const Worldcup3Container = ({ match }) => {
         }
     }, [dispatch, user_id]);
 
+    const likeBtn = () => {
+        dispatch(like({ id: user_id }))
+    }
+
     return (
-        <Worldcup3 winner={winner} error={error} loading={loading}/>
+        <Worldcup3 winner={winner} error={error} loading={loading} likeBtn={likeBtn}/>
     )
 }
 

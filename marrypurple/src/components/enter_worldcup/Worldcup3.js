@@ -6,14 +6,10 @@ import Error from '../common/Error';
 import { ImHeart } from 'react-icons/im'
 import { IoMdRefresh } from 'react-icons/io'
 
-const Worldcup3 = ({ winner, error, loading }) => {
-    // console.log(winner);
-
+const Worldcup3 = ({ winner, error, loading, likeBtn }) => {
     if(error){
         return (
-            <>
-                <Error/>
-            </>
+            <Error/>
         )
     }
 
@@ -45,12 +41,13 @@ const Worldcup3 = ({ winner, error, loading }) => {
                                 )}
                                 
                         </div>
-                        {/* 한줄소개가 스키마에 없음 */}
-                        <div className="sogae">
-                            한줄 소개 및 자기소개칸입니다.
-                        </div>
+                        {winner.brief_intro && (
+                            <div className="sogae">
+                                {winner.brief_intro}
+                            </div>
+                        )}
                         <div className="likeU">
-                            <Link to="/worldcup1" className="likeU_btn">
+                            <Link to="/worldcup1" className="likeU_btn" onClick={likeBtn}>
                                 <ImHeart/>
                                 <div>좋아요</div>
                             </Link>
@@ -62,7 +59,6 @@ const Worldcup3 = ({ winner, error, loading }) => {
                     </div>
                 </>
             )}
-            
         </>
     )
 }

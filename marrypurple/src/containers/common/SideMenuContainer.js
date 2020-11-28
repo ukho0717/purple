@@ -15,7 +15,10 @@ const SideMenuContainer = ({ match }) => {
         loading: loading['chat/CHAT_LIST']
     }));
 
-    const userPic = user.profile_pic;
+    let userPic = []
+    if(user){
+        userPic = user.profile_pic;
+}
 
     useEffect(() => {
         dispatch(chatUser());

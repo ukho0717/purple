@@ -13,7 +13,6 @@ const Chat = ({match, profile_pic, user_nick, user_email, my_email, getMsg}) => 
     const [yourID, setYourID] = useState()
     const [state, setState] = useState({message: '', name: ''});
     const [chat, setChat] = useState([])
-    const [preload, setPreload] = useState([])
 
     useEffect(()=>{
         socket.on('yourId',id =>{
@@ -22,10 +21,7 @@ const Chat = ({match, profile_pic, user_nick, user_email, my_email, getMsg}) => 
         socket.on('message', (data) => {
             setChat([...chat, data])
         })
-        socket.on('preloadup',(data)=>{
-            setPreload([...preload,data])
-        });
-    },[chat,preload])
+    },[chat])
 
     const onTextChange = (e) =>{
         setState({...state, [e.target.name]:e.target.value})
@@ -33,6 +29,7 @@ const Chat = ({match, profile_pic, user_nick, user_email, my_email, getMsg}) => 
 
     const onMessageSubmit = (e) => {
         e.preventDefault()//계속 새로고침하는것을 막아주는 함수.
+        console.log(yourID)
         const {name, message} = state
         const output = {
             id: yourID,
@@ -43,6 +40,11 @@ const Chat = ({match, profile_pic, user_nick, user_email, my_email, getMsg}) => 
         socket.emit('sendMessage', output)  // 메세지 보내기
         setState({message:'', name})
     }
+    function giveMeId(){
+        const ddata = ''
+        socket.emit('giveMe', ddata)
+    }
+    giveMeId();
     return(
         <div>
             <div class="message_1">
@@ -69,6 +71,8 @@ const Chat = ({match, profile_pic, user_nick, user_email, my_email, getMsg}) => 
                 })}
                 {chat.map(({data, id}, index)=>{
                     if(id === yourID){
+                        // console.log('id: ',id)
+                        // console.log('yourId: ', yourID)
                         return(
                             <div key={index} class="message_2_me">
                                 <div class="message_2_me_text"><div>{data}</div></div>

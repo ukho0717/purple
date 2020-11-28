@@ -23,9 +23,7 @@ const MatchingItem = ({ back, list, onToggle, showProfile, onToggle_report, urlA
             <a href="/match" onClick={()=>dispatch(pass({ id: match }))}><div className="match_1_button" id="selBtn04"></div></a>
         </div>
         <div className="match_2">
-        <ProfilePic pics={profile_pic} key={_id}/>
-            
-            {/* <div id="match_2_photo"><img src={profile_pic} alt="프로필사진"/></div> */}
+            {profile_pic && <ProfilePic pics={profile_pic} key={_id}/>}
         </div>
         <div className="match_3">
             <div>
@@ -36,7 +34,7 @@ const MatchingItem = ({ back, list, onToggle, showProfile, onToggle_report, urlA
         <div className="match_4">
             <div id="placeIco"></div><p>{address}</p>
             <div className="match_4_hobbys">
-                <Personality personality={personality}/>
+                {personality && <Personality personality={personality}/>}
             </div>
             <div className="match_4_text">
                 {brief_intro}

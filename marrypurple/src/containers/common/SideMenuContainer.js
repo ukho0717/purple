@@ -23,9 +23,18 @@ const SideMenuContainer = ({ match }) => {
             dispatch(unloadChatUser());
         };
     }, [dispatch]);
-    // console.log('매칭된 chatUser 불러오는 중.... ', chat)
+
+    const boyClick = () => {
+        alert('boy');
+    }
+    const allClick = () => {
+        alert('all');
+    }
+    const girlClick = () => {
+        alert('girl');
+    }
     
-    return <SideMenu currentPage={currentPage} chat={chat} loading={loading} user={user} userPic={userPic}/>;
+    return <SideMenu currentPage={currentPage} chat={chat} loading={loading} user={user} userPic={userPic} boyClick={boyClick} allClick={allClick} girlClick={girlClick}/>;
 
 }
 

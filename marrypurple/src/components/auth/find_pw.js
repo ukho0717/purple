@@ -48,7 +48,7 @@ const FindPw = ({type,form,onChange,onSubmit,error,sendmailer}) => {
     // }
 
     return(
-    <Router>
+    <>
         <div id="wrapM">
         <div id="container">
             <div id="Rheader">
@@ -98,7 +98,7 @@ const FindPw = ({type,form,onChange,onSubmit,error,sendmailer}) => {
             </div>
         </div>
     </div>
-    </Router>
+    </>
 
     )
 }

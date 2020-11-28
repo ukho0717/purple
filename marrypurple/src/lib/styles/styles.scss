@@ -279,7 +279,7 @@ a {
     position: relative; 
     box-sizing: border-box; 
 }
-#left_menu #slide_box #sub_menu_myprofile a:first-child dd, #left_menu #slide_box #sub_menu_myprofile a:nth-child(3) dd, #left_menu #slide_box #sub_menu_myprofile a:nth-child(6) dd, #left_menu #slide_box #sub_menu_myprofile a:nth-child(8) dd, #left_menu #slide_box #sub_menu_myprofile a:nth-child(10) dd, #left_menu #slide_box #sub_menu_myprofile a:nth-child(14) dd, #left_menu #slide_box #sub_menu_myprofile a:nth-child(15) dd, #left_menu #slide_box #sub_menu_myprofile a:nth-child(16) dd { 
+#left_menu #slide_box #sub_menu_myprofile a:first-child dd, #left_menu #slide_box #sub_menu_myprofile a:nth-child(3) dd, #left_menu #slide_box #sub_menu_myprofile a:nth-child(5) dd, #left_menu #slide_box #sub_menu_myprofile a:nth-child(7) dd, #left_menu #slide_box #sub_menu_myprofile a:nth-child(9) dd, #left_menu #slide_box #sub_menu_myprofile a:nth-child(13) dd, #left_menu #slide_box #sub_menu_myprofile a:nth-child(14) dd, #left_menu #slide_box #sub_menu_myprofile a:nth-child(15) dd { 
     border-top: 1px solid #E8E8E8; 
 }
 #left_menu #slide_box #sub_menu_myprofile dl h2 { 
@@ -288,7 +288,7 @@ a {
     font-size: 16px; 
     font-weight: 600; 
 }
-#left_menu #slide_box #sub_menu_myprofile a:nth-child(15) dd, #left_menu #slide_box #sub_menu_myprofile a:nth-child(16) dd { 
+#left_menu #slide_box #sub_menu_myprofile a:nth-child(14) dd, #left_menu #slide_box #sub_menu_myprofile a:nth-child(15) dd { 
     margin-top: 20px; 
     text-align: center; 
 }
@@ -305,13 +305,13 @@ a {
 #left_menu #slide_box #sub_menu_myprofile dl dd:hover span { 
     color: #9E7FFE; 
 }
-#left_menu #slide_box #sub_menu_myprofile div:nth-child(4) dd > span { 
-    position: absolute; 
-    right: 16px; 
-}
-#left_menu #slide_box #sub_menu_myprofile div:nth-child(4) dd:hover span { 
-    color: #2C2C2C; 
-}
+// #left_menu #slide_box #sub_menu_myprofile div:nth-child(4) dd > span { 
+//     position: absolute; 
+//     right: 16px; 
+// }
+// #left_menu #slide_box #sub_menu_myprofile div:nth-child(4) dd:hover span { 
+//     color: #2C2C2C; 
+// }
 
 #left_menu #slide_box #sub_menu_myprofile .input_type_radio2 { 
     height: 40px; 

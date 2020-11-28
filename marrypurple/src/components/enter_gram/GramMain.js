@@ -18,9 +18,9 @@ const GramMain = ({ listGram }) => {
             {listGram && (
                 <div className="gram_3">
                     <p>최신 스토리</p>
-                    {listGram.map(gram => (
+                    {listGram.map((gram, index) => (
                         <Link to={`/gram_post/${gram._id}`}>
-                            <div className="gram_3_photo" /*style={{ background: `url(${gram.InstaImage})`, backgroundSize: '100%', backgroundRepeat: 'no-repeat' }}*/><img src={gram.InstaImage}/></div>
+                            <div className="gram_3_photo" key={index} /*style={{ background: `url(${gram.InstaImage})`, backgroundSize: '100%', backgroundRepeat: 'no-repeat' }}*/><img src={gram.InstaImage}/></div>
                         </Link>
                     ))}
                 </div>

@@ -32,18 +32,17 @@ function Chatt({list, user}){
     )
 }
 
-const SideMenu = ({ currentPage, user, chat, userPic }) => {
+const SideMenu = ({ currentPage, user, chat, userPic, boyClick, allClick, girlClick }) => {
     // console.log('~~~',currentPage);
 
     let userPicImg = '';
-    // console.log(userPic);
     if(userPic){
         userPicImg = userPic;
     }
 
     function script(){
         switch(currentPage){
-            case '/Profile':
+            case '/profile':
             case '/Payment':
                 $('#sub_menu_myprofile').addClass('on').removeClass('off');
                 $('#sub_menu_myprofile').siblings().addClass('off');
@@ -255,20 +254,20 @@ const SideMenu = ({ currentPage, user, chat, userPic }) => {
                                         <div>
                                             <dd>원하는 상대 
                                                 <p className="input_type_radio2">
-                                                    <input type="radio" name="gender2" id="boy" checked/>
+                                                    <input type="radio" name="gender2" id="boy" defaultChecked onClick={boyClick}/>
                                                     <label for="boy">남</label>
-                                                    <input type="radio" name="gender2" id="all"/>
+                                                    <input type="radio" name="gender2" id="all" onClick={allClick}/>
                                                     <label id="md2" for="all">모두</label>
-                                                    <input type="radio" name="gender2" id="girl"/>
+                                                    <input type="radio" name="gender2" id="girl" onClick={girlClick}/>
                                                     <label for="girl">여</label>
                                                 </p>
                                             </dd>
                                         </div>
                                     </a>
-                                    <div><dd>
+                                    {/* <div><dd>
                                         <div>연령대 <span id="slider-value"></span>
                                             <div slider id="slider-distance">
-                                                {/* <div>
+                                                <div>
                                                     <div inverse-left style="width:100%;"></div>
                                                     <div inverse-right style="width:100%;"></div>
                                                     <div range style="left:0%;right:0%;"></div>
@@ -301,10 +300,10 @@ const SideMenu = ({ currentPage, user, chat, userPic }) => {
                                                 children[9].style.left=value+'%';
                                                 // children[13].style.left=value+'%';
                                                 children[13].childNodes[1].innerHTML=this.value;" />
-                                                <span id="slider-between">-</span> */}
+                                                <span id="slider-between">-</span>
                                             </div>
                                         </div>
-                                    </dd></div>
+                                    </dd></div> */}
                                     <h2>알림</h2>
                                     <Link to="#"><div><dd>푸시알림 <span className="sub_menu_myprofile_icon">&gt;</span></dd></div></Link>
                                     <h2>도움말·고객 지원</h2>

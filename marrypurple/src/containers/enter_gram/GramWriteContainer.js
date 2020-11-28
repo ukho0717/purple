@@ -30,14 +30,12 @@ const GramWriteContainer = ({ history }) => {
         history.push('/gram_main');
     }
 
-    // useEffect(() => {
-    //     if(gram){
-    //         // alert('성공');
-    //     }
-    // }, [dispatch, gram]);
+    const backClick = () => {
+        history.goBack();
+    }
 
     return (
-        <GramWrite onSubmit={onSubmit}/>
+        <GramWrite onSubmit={onSubmit} backClick={backClick}/>
     )
 }
 

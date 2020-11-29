@@ -1,33 +1,25 @@
 import React from 'react';
-// import styled from 'styled-components';
 import '../../lib/styles/gram.scss';
 import $ from 'jquery';
-// import { Helmet } from 'react-helmet';
 import img1 from '../../lib/images/icon/004980c2c35d4fa37d9635ed7f159c3c.png';
 import img2 from '../../lib/images/icon/f84abf6d0bd53bf97dbb1011aa640499.png';
 import img3 from '../../lib/images/icon/49f19f63a24305a4f1dedfd8481c01e2.png';
 import img4 from '../../lib/images/icon/8c6f9b49103dd67cf3bfd50f561b46d6.png';
 import { BiTrash } from 'react-icons/bi'
 import { Link } from 'react-router-dom';
+import Error from '../common/Error';
 
 const GramWrite = ({ user, gram, listLikeGram, commentSubmit, deleteClick, heartClick , error, loading}) => {
     let gram1 = {};
     let heartClass = '';
     if(gram){
         gram1 = gram;
-
         for(let i=0; i<gram1.likeUser.length; i++){
             if(gram1.likeUser[i] == user._id){
                 heartClass = 'on';
             }
         }
     }
-
-    let LikeList = [];
-    if(listLikeGram){
-        LikeList = listLikeGram;
-    }
-    console.log(LikeList)
 
     const clickBack = () => {
         window.history.back();
@@ -37,7 +29,6 @@ const GramWrite = ({ user, gram, listLikeGram, commentSubmit, deleteClick, heart
         let media = window.matchMedia('( max-width: 768px )');
         if(media.matches === true){
             let $href = $(e.target.parentNode).attr('href');
-            // layer_popup2($href);
 
             let $el = $($href);        //레이어의 id를 $el 변수에 저장
             let isDim = $el.prev().hasClass('dimBg2');   //dimmed 레이어를 감지하기 위한 boolean 변수
@@ -70,7 +61,6 @@ const GramWrite = ({ user, gram, listLikeGram, commentSubmit, deleteClick, heart
             });
         }else{
             let $href = $(e.target.parentNode).attr('href');
-            // layer_popup($href);
 
             let $el = $($href);        //레이어의 id를 $el 변수에 저장
             let isDim = $el.prev().hasClass('dimBg2');   //dimmed 레이어를 감지하기 위한 boolean 변수
@@ -105,7 +95,6 @@ const GramWrite = ({ user, gram, listLikeGram, commentSubmit, deleteClick, heart
     }
 
     const clickA = e => {
-        // console.log(e.target.parentNode);
         let $current = $(e.target.parentNode);
         $current.toggleClass('on');
         $current.parent().siblings().children('a').removeClass('on');
@@ -126,15 +115,15 @@ const GramWrite = ({ user, gram, listLikeGram, commentSubmit, deleteClick, heart
     }
 
     if(error){
-        return <div><h2>에러가 발생했습니다.</h2></div>
+        return <Error/>
     }
     return(
         <>
-            {!loading && gram && user && (
+            {!loading && gram && user && listLikeGram && (
                 <>
                     <div className="gramP_1">
                         <div className="gramP_1_back" onClick={clickBack}></div><div class="gramP_1_myPho">{<img src={gram.User.profile_pic} alt="gram user profile_pic"/>}</div><span className="gramP_id" id="gramP_1_id">{gram.User.user_nick}</span>
-                        {LikeList.map(listLike => listLike._id === gram._id && (
+                        {listLikeGram.map(listLikeGram => listLikeGram._id === gram._id && (
                             <div id="gramP_1_hot">HOT</div>
                         ))}
                         {gram.User._id === user._id ? (

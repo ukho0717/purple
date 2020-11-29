@@ -23,9 +23,7 @@ const MatchingItem = ({ back, list, onToggle, showProfile, onToggle_report, urlA
             <a href="/match" onClick={()=>dispatch(pass({ id: match }))}><div className="match_1_button" id="selBtn04"></div></a>
         </div>
         <div className="match_2">
-        <ProfilePic pics={profile_pic} key={_id}/>
-            
-            {/* <div id="match_2_photo"><img src={profile_pic} alt="프로필사진"/></div> */}
+            {profile_pic && <ProfilePic pics={profile_pic} key={_id}/>}
         </div>
         <div className="match_3">
             <div>
@@ -36,7 +34,7 @@ const MatchingItem = ({ back, list, onToggle, showProfile, onToggle_report, urlA
         <div className="match_4">
             <div id="placeIco"></div><p>{address}</p>
             <div className="match_4_hobbys">
-                <Personality personality={personality}/>
+                {personality && <Personality personality={personality}/>}
             </div>
             <div className="match_4_text">
                 {brief_intro}
@@ -55,31 +53,36 @@ const MatchingItem = ({ back, list, onToggle, showProfile, onToggle_report, urlA
                         <div>
                         <ul>
                             <li>
-                            <a href="#aaa" onClick={()=>onClickReport('부적절한 사진')}>
+                            <a href="#aaa" onClick={()=>onClickReport('부적절한 사진', _id)}>
                                 <div><img src={imgB} alt="부적절한 사진"/></div>
                                 <div>부적절한 사진</div>
                             </a>
                             </li>
                             <li>
-                            <a href="#aaa" onClick={()=>onClickReport("스팸으로 의심됨")} >
+                            <a href="#aaa" onClick={()=>onClickReport("스팸으로 의심됨", _id)} >
                                 <div><img src={imgC} alt="스팸으로 의심됨"/></div>
                                 <div>스팸으로 의심됨</div>
                             </a>
                             </li>
                             <li>
-                            <a href="#aaa" onClick={()=>onClickReport("부적절한 메시지")} >
+                            <a href="#aaa" onClick={()=>onClickReport("부적절한 메시지", _id)} >
                                 <div><img src={imgD} alt="부적절한 메시지"/></div>
                                 <div>부적절한 메시지</div>
                             </a>
                             </li>
                             <li>
-                            <a href="#aaa" onClick={()=>onClickReport("기타")} >
+                            <a href="#aaa" onClick={()=>onClickReport("기타", _id)} >
                                 <div><img src={imgE} alt="부적절한 메시지"/></div>
                                 <div>기타</div>
                             </a>
                             </li>
                         </ul>
-                        <button className="popup_close" onClick={() => onToggle_report()}><span>취소</span></button>
+                        <button className="popup_close" onClick={() => onToggle_report()}>
+                            <span>
+                                {showProfile.reportFinish === true && "취소"}
+                                {showProfile.reportFinish === false && "신고완료"}
+                            </span>
+                            </button>
                         </div>
                     </div>
                 </div>

@@ -5,7 +5,8 @@ const { Schema } = mongoose;
 const BadBoardSchema = new Schema({
     User: {
         profile_pic: String,
-        user_nick: String
+        user_nick: String,
+        _id: String
     },
     reason: String
 });

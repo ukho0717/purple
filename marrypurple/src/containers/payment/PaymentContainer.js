@@ -9,11 +9,8 @@ const PaymentContainer = ({ history }) => {
     const dispatch = useDispatch();
     const { user, loading, error } = useSelector(({ user, payment, loading }) => ({
         user: user.user,
-        // error: payment.error,
         loading: loading['payment/PAYMENT']
-    }))
-
-    // console.log('유저야', user);
+    }));
 
     const onSubmit = () => {
         let user_id = user._id;
@@ -33,20 +30,20 @@ const PaymentContainer = ({ history }) => {
         let result = window.confirm( pay + ' 결제하시겠습니까?');
 
         if(result){
-            // console.log(premium);
+            console.log(premium);
             dispatch(paymentU({
-                user_id,
                 premium
             }));
-            history.push('/match');
+            alert('결제가 완료되었습니다.');
+            // history.push('/match');
         }else{
-            history.push('/profile');
+            history.push('/payment');
         }
         
     }
 
     return (
-        <Payment onSubmit={onSubmit} loading={loading} error={error}/>
+        <Payment onSubmit={onSubmit} /*loading={loading} error={error}*//>
     )
 }
 

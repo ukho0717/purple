@@ -32,18 +32,21 @@ function Chatt({list, user}){
     )
 }
 
+<<<<<<< HEAD
 const SideMenu = ({ currentPage, user, chat, userPic,onLogout }) => {
+=======
+const SideMenu = ({ currentPage, user, chat, userPic, boyClick, allClick, girlClick }) => {
+>>>>>>> da90950c02eb979db2b236feadbcb0ba2d605a24
     // console.log('~~~',currentPage);
 
     let userPicImg = '';
-    // console.log(userPic);
     if(userPic){
         userPicImg = userPic;
     }
 
     function script(){
         switch(currentPage){
-            case '/Profile':
+            case '/profile':
             case '/Payment':
                 $('#sub_menu_myprofile').addClass('on').removeClass('off');
                 $('#sub_menu_myprofile').siblings().addClass('off');
@@ -255,56 +258,16 @@ const SideMenu = ({ currentPage, user, chat, userPic,onLogout }) => {
                                         <div>
                                             <dd>원하는 상대 
                                                 <p className="input_type_radio2">
-                                                    <input type="radio" name="gender2" id="boy" checked/>
-                                                    <label for="boy">남</label>
-                                                    <input type="radio" name="gender2" id="all"/>
-                                                    <label id="md2" for="all">모두</label>
-                                                    <input type="radio" name="gender2" id="girl"/>
-                                                    <label for="girl">여</label>
+                                                    <input type="radio" name="gender2" id="boy2" defaultChecked onClick={boyClick}/>
+                                                    <label for="boy2">남</label>
+                                                    <input type="radio" name="gender2" id="all2" onClick={allClick}/>
+                                                    <label id="md2" for="all2">모두</label>
+                                                    <input type="radio" name="gender2" id="girl2" onClick={girlClick}/>
+                                                    <label for="girl2">여</label>
                                                 </p>
                                             </dd>
                                         </div>
                                     </a>
-                                    <div><dd>
-                                        <div>연령대 <span id="slider-value"></span>
-                                            <div slider id="slider-distance">
-                                                {/* <div>
-                                                    <div inverse-left style="width:100%;"></div>
-                                                    <div inverse-right style="width:100%;"></div>
-                                                    <div range style="left:0%;right:0%;"></div>
-                                                    <span thumb style="left:0%;"></span>
-                                                    <span thumb style="left:100%;"></span>
-                                                    <div sign style="left:84%;">
-                                                        <span id="value">18</span>
-                                                    </div>
-                                                
-                                                    <div sign style="left:96%;">
-                                                        <span id="value">55</span>
-                                                    </div>
-                                                </div>
-                                                <input type="range" value="18" max="55" min="18" step="1" oninput="
-                                                this.value=Math.min(this.value,this.parentNode.childNodes[5].value-1);
-                                                let value = ((this.value-18)/parseInt(this.max))*100
-                                                var children = this.parentNode.childNodes[1].childNodes;
-                                                children[1].style.width=value+'%';
-                                                children[5].style.left=value+'%';
-                                                children[7].style.left=value+'%';
-                                                // children[11].style.left=value+'%';
-                                                children[11].childNodes[1].innerHTML=this.value;" />
-                                            
-                                                <input type="range" value="55" max="55" min="18" step="1" oninput="
-                                                this.value=Math.max(this.value,this.parentNode.childNodes[3].value-(-1));
-                                                let value = (this.value/parseInt(this.max))*100
-                                                var children = this.parentNode.childNodes[1].childNodes;
-                                                children[3].style.width=(100-value)+'%';
-                                                children[5].style.right=(100-value)+'%';
-                                                children[9].style.left=value+'%';
-                                                // children[13].style.left=value+'%';
-                                                children[13].childNodes[1].innerHTML=this.value;" />
-                                                <span id="slider-between">-</span> */}
-                                            </div>
-                                        </div>
-                                    </dd></div>
                                     <h2>알림</h2>
                                     <Link to="#"><div><dd>푸시알림 <span className="sub_menu_myprofile_icon">&gt;</span></dd></div></Link>
                                     <h2>도움말·고객 지원</h2>

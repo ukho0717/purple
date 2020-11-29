@@ -1,9 +1,5 @@
 import React from 'react';
 import '../../../lib/styles/admin/adminBad.scss';
-import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
-import $ from 'jquery';
-import { MDBDataTable } from 'mdbreact';
 
 const AdminBadWrite = ({ onSubmit, onClick }) => {
     return (

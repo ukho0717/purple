@@ -22,31 +22,31 @@ const UserSchema = new Schema({
     },
     brief_intro: {
         type: String,
-        default: ''
+        default: null
     },
     address: {
         type: String,
-        default: ''
+        default: null
     },
     school: {
         type: String,
-        default: ''
+        default: null
     },
     personality: {
         type: [String],
-        default: ''
+        default: null
     },
     fav_song: {
         type: String,
-        default: ''
+        default: null
     },
     fav_movie: {
         type: String,
-        default: ''
+        default: null
     },
     fav_food: {
         type: String,
-        default: ''
+        default: null
     },
     login_time:{
         type: Date,
@@ -67,7 +67,7 @@ const UserSchema = new Schema({
         default : 'both'
     },
     match:{ type: mongoose.Schema.Types.ObjectId, ref: 'Matching' },
-    reported:{type: [String], default:''},
+    reported:{type: [String], default:null},
     provider: {type: String, default:''},
     authToken : {type: String , default:''},
     facebook:{},

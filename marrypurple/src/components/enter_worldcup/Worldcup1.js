@@ -1,17 +1,9 @@
 import React from 'react';
 import '../../lib/styles/worldcup.scss';
-import $ from 'jquery';
-import { Link } from 'react-router-dom';
 import heart from '../../lib/images/images/heart.png'
 import fight from '../../lib/images/images/fight.png'
 
 const Worldcup1 = ({ list, history }) => {
-    console.log(list);
-    const script = () => {
-
-    }
-
-    script();
 
     const onClick = () => {
         if(list){
@@ -39,9 +31,7 @@ const Worldcup1 = ({ list, history }) => {
                     <img src={fight} alt="fight image"/>
                 </div>
                 <div className="startS">
-                    {/* <Link to="/worldcup2"><button>시작하기</button></Link> */}
                     <button onClick={onClick}>시작하기</button>
-
                 </div>
             </div>
         </>

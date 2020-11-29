@@ -3,6 +3,6 @@ import * as paymentCtrl from './payment.ctrl';
 
 const payment = new Router();
 payment.get('/', paymentCtrl.list);
-payment.patch('/:premium', paymentCtrl.update);
+payment.patch('/', paymentCtrl.update);
 
 export default payment;

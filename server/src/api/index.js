@@ -4,6 +4,7 @@ import badBoard from './notice_bad';
 import faq from './notice_faq';
 import payment from './payment';
 import worldcup from './enter_worldcup';
+import side from './side';
 
 import match from './matching'
 import chat from './chat';
@@ -21,6 +22,7 @@ api.use('/badBoard', badBoard.routes());
 api.use('/faq', faq.routes());
 api.use('/payment', payment.routes());
 api.use('/worldcup', worldcup.routes());
+api.use('/side', side.routes());
 
 api.use('/match',match.routes());
 api.use('/chat',chat.routes());

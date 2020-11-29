@@ -1,21 +1,12 @@
 import React, { Component } from 'react';
-// import styled from 'styled-components';
 import '../../lib/styles/gram.scss';
 import $ from 'jquery';
-// import { Helmet } from 'react-helmet';
 import axios from 'axios';
 
-const GramWrite = ({ onSubmit }) => {
-    const script = () => {
-        $('.gramW_1_back').on('click', function(){
-            window.history.back();
-        });
-    }
-
+const GramWrite = ({ onSubmit, backClick }) => {
+    
     function readURL(input) {
         if(input.files && input.files[0]) {
-            // console.log('파일이름', input.files[0].name);
-            // console.log(input.files[0].name);
             var reader = new FileReader();
         
             reader.onload = function (e) {
@@ -25,14 +16,11 @@ const GramWrite = ({ onSubmit }) => {
             }
         
             reader.readAsDataURL(input.files[0]);
-            // $('#gramW_1_file').addClass(res.data.data.url);
         }
     }
 
     const fileSelectHandler = e =>{
         imgbbUploader(e.target.files[0]).then(res => {
-            // console.log(res.data.data.url);
-            // console.log(e.target);
             readURL(e.target);
             $('#gramW_1_file').addClass(res.data.data.url);
         });
@@ -54,13 +42,11 @@ const GramWrite = ({ onSubmit }) => {
         })
     }
 
-    script();
-
     return(
         <>
             <div className="gramW_1">
-                <form method="post" enctype="multipart/form-data" onSubmit={onSubmit}>
-                    <div><div className="gramW_1_back"></div><p>작성하기</p></div>
+                <form method="post" enctype="multipart/form-data" onSubmit={onSubmit} action="/gram_main">
+                    <div><div className="gramW_1_back" onClick={backClick}></div><p>작성하기</p></div>
                     <label for="gramW_1_file">사진선택</label>
                     <input type="file" id="gramW_1_file" name="file" onChange={fileSelectHandler}/>
                     <div id="gramW_1_photo">

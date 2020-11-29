@@ -84,6 +84,7 @@ const imgbbUploader = ( img ) => {
     dispatch(initializeForm("register"));
   }, [dispatch]);
 
+<<<<<<< HEAD
   useEffect(() => {
     if (authError) {
       // if (authError.response.status === 409) {
@@ -96,6 +97,20 @@ const imgbbUploader = ( img ) => {
       return;
     }
   }, [ authError, dispatch, error]);
+=======
+  // useEffect(() => {
+  //   if (authError) {
+  //     if (authError.response.status === 409) {
+  //       setError("이미 존재하는 계정명입니다.");
+  //       return;
+  //     }
+  //     console.log(`error!`);
+  //     console.log(authError);
+  //     setError("회원가입 실패");
+  //     return;
+  //   }
+  // }, [ authError, dispatch, error]);
+>>>>>>> da90950c02eb979db2b236feadbcb0ba2d605a24
   useEffect(()=>{
     if (auth) {
       console.log("성공");

@@ -1,18 +1,9 @@
 import React from 'react';
-// import styled from 'styled-components';
 import '../../lib/styles/gram.scss';
-import $ from 'jquery';
-// import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 
 const GramLikeMain = ({ listLikeGram }) => {
-    // console.log(listLikeGram);
-    const script = () => {
-
-    }
-
-    script();
-
+    
     return(
         <>
             <div class="gram_1">
@@ -22,9 +13,9 @@ const GramLikeMain = ({ listLikeGram }) => {
             {listLikeGram && (
                 <div className="gram_2">
                     <p>HOT</p>
-                    {listLikeGram.map(likeGram => (
+                    {listLikeGram.map((likeGram, index) => (
                         <Link to={`/gram_post/${likeGram._id}`}>
-                            <div className="gram_2_photo" style={{ background: `url(${likeGram.InstaImage})`, backgroundSize: '100%', backgroundRepeat: 'no-repeat', backgroundPosition: 'center' }}></div>
+                            <div className="gram_2_photo" key={index} /*style={{ background: `url(${likeGram.InstaImage})`, backgroundSize: '100%', backgroundRepeat: 'no-repeat', backgroundPosition: 'center' }} */><img src={likeGram.InstaImage}/></div>
                         </Link>
                     ))}
                 </div>

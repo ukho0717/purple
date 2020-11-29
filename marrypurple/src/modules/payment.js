@@ -27,9 +27,10 @@ const payment = handleActions(
             ...state,
             error: null
         }),
-        [PAYMENT_SUCCESS]: state => ({
+        [PAYMENT_SUCCESS]: (state, { payload: payment }) => ({
             ...state,
-            error: null
+            error: null,
+            payment
         }),
         [PAYMENT_FAILURE]: (state, { payload: error }) => ({
             ...state,

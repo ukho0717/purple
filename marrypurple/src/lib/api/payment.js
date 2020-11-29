@@ -1,3 +1,3 @@
 import client from './client';
 
-export const paymentUpdate = ({ user_id, premium }) => client.patch(`/api/payment/${premium}`);
+export const paymentUpdate = premium => client.patch('/api/payment/', premium);

@@ -50,8 +50,7 @@ import AdminGramPage from './pages/admin/AdminGramPage';
 import AdminGramReadPage from './pages/admin/AdminGramReadPage';
 import AdminBadListPage from './pages/admin/AdminBadListPage';
 import AdminBadWritePage from './pages/admin/AdminBadWritePage';
-
-
+import AdminBadReadPage from './pages/admin/AdminBadReadPage';
 
 const App = () => {
   return (
@@ -106,6 +105,7 @@ const App = () => {
       <Route component={AdminUserPage} path="/admin_users"/>
       <Route component={AdminBadListPage} path="/Admin_badList"/>
       <Route component={AdminBadWritePage} path="/Admin_bad_write"/>
+      <Route component={AdminBadReadPage} path="/Admin_bad_read/:_id"/>
 
     </>
   )

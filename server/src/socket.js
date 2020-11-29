@@ -3,7 +3,7 @@ let login_ids = {};
 const socketEvents = (io)=>{
     io.on('connection', (socket) => { // 웹소켓 연결 시
         console.log('웹소켓이 실행됩니다.');
-
+        console.log('yourId', socket.id)
         socket.emit('yourId', socket.id);
 
         //로그인
@@ -16,10 +16,15 @@ const socketEvents = (io)=>{
     
             console.log('접속한 클라이언트 id 갯수 : %d', Object.keys(login_ids).length);
         });
+        socket.on('giveMe', function(){
+            socket.emit('yourId', socket.id);
+        })
 
         // 메세지 보내기 + DB에 메세지 넣기
         socket.on('sendMessage', function(data) {
-            console.log('message 이벤트를 받았습니다.');
+            socket.emit('yourId', socket.id);
+
+            console.log('message 이벤트를 받았습니다.',data);
             if(login_ids[data.recepient]){
                 io.sockets.emit('message', data);
             }else{

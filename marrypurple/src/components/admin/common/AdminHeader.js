@@ -22,7 +22,7 @@ const AdminHeader = () => {
                 <Link to="/Admin_main" className="logo"><b>MARRY<span>PRUPLE</span></b></Link>
                 <div className="top-menu">
                     <ul className="nav pull-right top-menu">
-                    <li><Link className="logout" to="/Admin_login">Logout</Link></li>
+                    <li><Link className="logout" to="/Admin">Logout</Link></li>
                     </ul>
                 </div>
             </adminheader>

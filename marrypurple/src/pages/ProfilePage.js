@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfileContainer from '../containers/auth/ProfileForm';
+import ProfileContainer from '../containers/auth/ProfileContainer';
 import SideMenuContainer from '../containers/common/SideMenuContainer';
 import ContentContainer from '../containers/common/ContentContainer';
 

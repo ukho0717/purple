@@ -32,7 +32,7 @@ function Chatt({list, user}){
     )
 }
 
-const SideMenu = ({ currentPage, user, chat, userPic }) => {
+const SideMenu = ({ currentPage, user, chat, userPic,onLogout }) => {
     // console.log('~~~',currentPage);
 
     let userPicImg = '';
@@ -187,8 +187,8 @@ const SideMenu = ({ currentPage, user, chat, userPic }) => {
                 <ul>
                     <li>
                         <ul id="myprofile">
-                            <Link to="/Profile" id="myprofile_btn"><li><div id="myPho">
-                                <img src={userPicImg[0]}/>
+                            <Link to="/profile" id="myprofile_btn"><li><div id="myPho">
+                                <img src={userPicImg[1]}/>
                             <div></div></div><span>나의 프로필</span></li></Link>
                             <Link to="work"><li></li></Link>
                         </ul>
@@ -315,7 +315,7 @@ const SideMenu = ({ currentPage, user, chat, userPic }) => {
                                     <Link to="/FAQ"><div><dd>안전을 위한 도움말 <span className="sub_menu_myprofile_icon">&gt;</span></dd></div></Link>
                                     <h2>법적 고지</h2>
                                     <Link to="/FAQ"><div><dd>개인정보 취급방침 <span className="sub_menu_myprofile_icon">&gt;</span></dd></div></Link>
-                                    <Link href="#"><div><dd>로그아웃</dd></div></Link>
+                                    <div onClick={onLogout}><dd>로그아웃</dd></div>
                                     <Link href="#"><div><dd>계정삭제</dd></div></Link>
                                 </dl>
                             </div>

@@ -107,7 +107,7 @@ const initialState = {
     brief_intro:'',
     address:'',
     school:'',
-    personality:'',
+    personality:[],
     fav_song:'',
     fav_movie:'',
     fav_food:'',
@@ -117,7 +117,7 @@ const initialState = {
     brief_intro:'',
     address:'',
     school:'',
-    personality:'',
+    personality:[],
     fav_song:'',
     fav_movie:'',
     fav_food:'',
@@ -199,9 +199,9 @@ const auth = handleActions(
     authError: error,
   }),
 
-  [READ_PROFILE_SUCCESS]:(state,{payload:auth})=>({
+  [READ_PROFILE_SUCCESS]:(state,{payload:readProfileSaga})=>({
     ...state,
-    auth
+    readProfileSaga
   }),
   [READ_PROFILE_FAILURE]:(state,{payload:error})=>({
     ...state,

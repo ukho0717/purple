@@ -86,10 +86,10 @@ const imgbbUploader = ( img ) => {
 
   useEffect(() => {
     if (authError) {
-      if (authError.response.status === 409) {
-        setError("이미 존재하는 계정명입니다.");
-        return;
-      }
+      // if (authError.response.status === 409) {
+      //   setError("이미 존재하는 계정명입니다.");
+      //   return;
+      // }
       console.log(`error!`);
       console.log(authError);
       setError("회원가입 실패");
@@ -108,7 +108,7 @@ const imgbbUploader = ( img ) => {
     if (user) {
       console.log(`check API success`);
       console.log(user);
-      history.push("/match");
+      history.push("/main");
       try {
         localStorage.getItem("user", JSON.stringify(user));
       } catch (e) {

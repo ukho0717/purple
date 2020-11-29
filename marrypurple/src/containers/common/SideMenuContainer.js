@@ -4,8 +4,9 @@ import { withRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import SideMenu from '../../components/common/SideMenu';
 import { chatUser, unloadChatUser } from '../../modules/chat'
+import { logout} from '../../modules/user'
 
-const SideMenuContainer = ({ match }) => {
+const SideMenuContainer = ({ match, history }) => {
     const dispatch = useDispatch();
     const { chat, error, loading, currentPage, user } = useSelector(({ chat, loading, user }) => ({
         chat: chat.chat,
@@ -15,17 +16,22 @@ const SideMenuContainer = ({ match }) => {
         loading: loading['chat/CHAT_LIST']
     }));
 
+    if(!user){
+        history.push('/');
+    }
     const userPic = user.profile_pic;
+    console.log(userPic)
+
 
     useEffect(() => {
         dispatch(chatUser());
-        return () => {
-            dispatch(unloadChatUser());
-        };
     }, [dispatch]);
     // console.log('매칭된 chatUser 불러오는 중.... ', chat)
-    
-    return <SideMenu currentPage={currentPage} chat={chat} loading={loading} user={user} userPic={userPic}/>;
+    const onLogout = () => {
+        dispatch(logout());
+        history.push('/')
+    };
+    return <SideMenu currentPage={currentPage} chat={chat} loading={loading} user={user} userPic={userPic} onLogout={onLogout}/>;
 
 }
 

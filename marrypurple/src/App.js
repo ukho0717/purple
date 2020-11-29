@@ -76,7 +76,7 @@ const App = () => {
       <Route component={BackUserPage} path="/back"/>
       <Route component={ChatPage} path="/chat"/>
       <Route component={PaymentPage} path="/Payment"/>
-      <Route component={ProfilePage} path="/profile"/>
+      <Route component={ProfilePage} exact path="/profile"/>
       <Route component={EnterMainPage} path="/enter_main"/>
       <Route component={Worldcup1Page} path="/worldcup1"/>
       <Route component={Worldcup2Page} path="/worldcup2"/>

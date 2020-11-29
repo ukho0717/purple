@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link} from 'react-router-dom';
-// import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import '../../lib/styles/regist.scss';
 import rLogo from '../../lib/img/rLogo.png';
 

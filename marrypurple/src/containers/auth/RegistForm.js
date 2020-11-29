@@ -96,6 +96,10 @@ const imgbbUploader = ( img ) => {
       return;
     }
   }, [ authError, dispatch, error]);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5b5aded944295ec6a9bf489a99ea9463f95c0b69
   useEffect(()=>{
     if (auth) {
       console.log("성공");

@@ -11,23 +11,29 @@ export const list = async ctx => {
 export const update = async ctx => {
     console.log('/payment update 호출');
 
-    console.log(ctx.params);
-    console.log(ctx);
+    const _id = ctx.state.user._id;
 
-    // const { premium } = ctx.params;
-    // const id = ctx.state.user._id;
+    const schema = Joi.object().keys({
+        premium: Joi.string().required()
+    });
 
-    // try{
-    //     const post = await User.findByIdAndUpdate(id, { premium: premium }, {
-    //         new: true
-    //     }).exec();
-    //     console.log('post', post);
-    //     if(!post){
-    //         ctx.status = 404;
-    //         return;
-    //     }
-    //     ctx.body = post;
-    // }catch(e){
-    //     ctx.throw(500, e);
-    // }
+    const result = schema.validate(ctx.request.body);
+    if(result.error){
+        ctx.status = 400;
+        ctx.body = result.error;
+        return;
+    }
+
+    try{
+        const post = await User.findByIdAndUpdate(_id, ctx.request.body, {
+            new: true
+        }).exec();
+        if(!post){
+            ctx.status = 404;
+            return;
+        }
+        ctx.body = post;
+    }catch(e){
+        ctx.throw(500, e);
+    }
 }

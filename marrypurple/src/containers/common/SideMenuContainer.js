@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import SideMenu from '../../components/common/SideMenu';
 import { chatUser, unloadChatUser } from '../../modules/chat'
+import { updateGender } from '../../modules/side'
 
 const SideMenuContainer = ({ match }) => {
     const dispatch = useDispatch();
@@ -28,13 +29,19 @@ const SideMenuContainer = ({ match }) => {
     }, [dispatch]);
 
     const boyClick = () => {
-        alert('boy');
+        dispatch(updateGender({
+            match_gender: 'male'
+        }))
     }
     const allClick = () => {
-        alert('all');
+        dispatch(updateGender({
+            match_gender: 'both'
+        }))
     }
     const girlClick = () => {
-        alert('girl');
+        dispatch(updateGender({
+            match_gender: 'female'
+        }))
     }
     
     return <SideMenu currentPage={currentPage} chat={chat} loading={loading} user={user} userPic={userPic} boyClick={boyClick} allClick={allClick} girlClick={girlClick}/>;

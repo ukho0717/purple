@@ -28,6 +28,11 @@ const [
     UPDATE_BAD_SUCCESS,
     UPDATE_BAD_FAILURE
 ] = createRequestActionTypes('badBoard/UPDATE_BAD');  // 불량회원 업데이트
+const [
+    REPORT_LIST,
+    REPORT_LIST_SUCCESS,
+    REPORT_LIST_FAILURE
+] = createRequestActionTypes('badBoard/REPORT_LIST'); // 신고 리스트 가져오기
 
 export const badListPosts = createAction(
     BADLIST_POSTS,
@@ -40,18 +45,21 @@ export const writeBad = createAction(WRITE_BAD, ({ _id, reason }) => ({
 export const readBad = createAction(READ_BAD, _id => _id);
 export const deleteBad = createAction(DELETE_BAD, bad_id => bad_id);
 export const updateBad = createAction(UPDATE_BAD, ({ bad_id, reason }) => ({ bad_id, reason }));
+export const reportBadList = createAction(REPORT_LIST);
 
 const badListPostsSaga = createRequestSaga(BADLIST_POSTS, badListAPI.badList);
 const writeBadSaga = createRequestSaga(WRITE_BAD, badListAPI.badWrite);
 const readBadSaga = createRequestSaga(READ_BAD, badListAPI.badRead);
 const deleteBadSaga = createRequestSaga(DELETE_BAD, badListAPI.badRemove);
 const updateBadSaga = createRequestSaga(UPDATE_BAD, badListAPI.badUpdate);
+const reportListSaga = createRequestSaga(REPORT_LIST, badListAPI.reportList);
 export function* badListsSaga(){
     yield takeLatest(BADLIST_POSTS, badListPostsSaga);
     yield takeLatest(WRITE_BAD, writeBadSaga);
     yield takeLatest(READ_BAD, readBadSaga);
     yield takeLatest(DELETE_BAD, deleteBadSaga);
     yield takeLatest(UPDATE_BAD, updateBadSaga);
+    yield takeLatest(REPORT_LIST, reportListSaga);
 }
 
 const initialState = {
@@ -59,6 +67,7 @@ const initialState = {
     reason: '',
     badPost: null,
     badList: null,
+    reportList: null,
     error: null
 }
 
@@ -128,6 +137,22 @@ const badList = handleActions(
             badPost,
         }),
         [UPDATE_BAD_FAILURE]: (state, { payload: error }) => ({
+            ...state,
+            error,
+        }),
+        [REPORT_LIST]: state => ({
+            ...state,
+            badPost: null,
+            badList: null,
+            reportList: null,
+            error: null
+        }),
+        [REPORT_LIST_SUCCESS]: (state, { payload: reportList }) => ({
+            ...state,
+            error: null,
+            reportList,
+        }),
+        [REPORT_LIST_FAILURE]: (state, { payload: error }) => ({
             ...state,
             error,
         }),

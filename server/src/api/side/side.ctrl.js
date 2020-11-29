@@ -1,5 +1,4 @@
 import User from '../../models/user';
-import mongoose from 'mongoose';
 import Joi from '@hapi/joi';
 
 export const updateGender = async ctx => {
@@ -30,5 +29,4 @@ export const updateGender = async ctx => {
     }catch(e){
         ctx.throw(500, e);
     }
-
 }

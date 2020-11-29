@@ -7,7 +7,7 @@ const Payment = ({ onSubmit, loading, error }) => {
     const radioClick = e => {
         $('.go_pay form div').removeClass('test_css');
         $(e.target).parent().parent().addClass('test_css');
-        console.log($("input[name='pay']:checked").val());
+        // console.log($("input[name='pay']:checked").val());
     }
 
     if(error){

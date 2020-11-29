@@ -2,6 +2,7 @@ import BadBoard from '../../models/badBoard';
 import Joi from '@hapi/joi';
 import User from '../../models/user';
 
+// 불량회원 게시판 글쓰기
 export const write = async ctx => {
     console.log('/badBoard write 호출');
 
@@ -36,6 +37,7 @@ export const write = async ctx => {
     }
 };
 
+// 불량회원 게시판 읽어오기
 export const list = async ctx => {
     console.log('/badBoard list 호출');
 
@@ -47,6 +49,7 @@ export const list = async ctx => {
     }
 };
 
+// 불량회원 게시판 글 읽어오기
 export const read = async (ctx) => {
     console.log('/badBoard list 호출');
 
@@ -59,6 +62,7 @@ export const read = async (ctx) => {
     }
 };
 
+// 불량회원 게시판 글 삭제
 export const remove = async ctx => {
     console.log('/badBoard remove 호출');
 
@@ -72,6 +76,7 @@ export const remove = async ctx => {
     }
 };
 
+// 불량회원 게시판 글 수정
 export const update = async ctx => {
     console.log('/badBoard update 호출');
     console.log(ctx.request.body);
@@ -101,6 +106,18 @@ export const update = async ctx => {
             return;
         }
         ctx.body = post;
+    }catch(e){
+        ctx.throw(500, e);
+    }
+};
+
+// 신고목록 가져오기
+export const reportList = async ctx => {
+    console.log('/badBoard reportList 호출');
+
+    try{
+        const posts = await User.find({ reported: { $ne: [] } }).sort({ _id: -1 }).exec();
+        ctx.body = posts.map(post => post.toJSON());
     }catch(e){
         ctx.throw(500, e);
     }

@@ -2,6 +2,9 @@ import Router from 'koa-router';
 import * as badBoardCtrl from './badBoard.ctrl';
 
 const badBoard = new Router();
+
+badBoard.get('/report', badBoardCtrl.reportList);
+
 badBoard.get('/', badBoardCtrl.list);
 badBoard.post('/', badBoardCtrl.write);
 

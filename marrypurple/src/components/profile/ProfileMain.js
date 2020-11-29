@@ -3,7 +3,18 @@ import '../../lib/styles/profileMain.scss';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
 
-const ProfileMain = ({ boyClick, allClick, girlClick }) => {
+const ProfileMain = ({ user, boyClick, allClick, girlClick }) => {
+    let userProfile = {};
+    if(user){
+        userProfile = user;
+        if(userProfile.match_gender === 'both'){
+            $('.input_type_radio3 #all3').attr('checked', true);
+        }else if(userProfile.match_gender === 'male'){
+            $('.input_type_radio3 #boy3').attr('checked', true);
+        }else if(userProfile.match_gender === 'female'){
+            $('.input_type_radio3 #girl3').attr('checked', true);
+        }
+    }
 
     return (
         <>
@@ -15,7 +26,7 @@ const ProfileMain = ({ boyClick, allClick, girlClick }) => {
                     <div>
                         <dd>원하는 상대 
                             <p className="input_type_radio3">
-                                <input type="radio" name="gender3" id="boy3" defaultChecked onClick={boyClick}/>
+                                <input type="radio" name="gender3" id="boy3" onClick={boyClick}/>
                                 <label for="boy3">남</label>
                                 <input type="radio" name="gender3" id="all3" onClick={allClick}/>
                                 <label id="md3" for="all3">모두</label>

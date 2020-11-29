@@ -32,16 +32,26 @@ function Chatt({list, user}){
     )
 }
 
-<<<<<<< HEAD
-const SideMenu = ({ currentPage, user, chat, userPic,onLogout }) => {
-=======
-const SideMenu = ({ currentPage, user, chat, userPic, boyClick, allClick, girlClick }) => {
->>>>>>> da90950c02eb979db2b236feadbcb0ba2d605a24
+
+const SideMenu = ({ currentPage, user, chat, userPic, boyClick, allClick, girlClick, onLogout }) => {
     // console.log('~~~',currentPage);
 
-    let userPicImg = '';
+    let userPicImg = [];
     if(userPic){
         userPicImg = userPic;
+    }
+    console.log(userPicImg);
+
+    let userProfile = {};
+    if(user){
+        userProfile = user;
+        if(userProfile.match_gender === 'both'){
+            $('.input_type_radio2 #all2').attr('checked', true);
+        }else if(userProfile.match_gender === 'male'){
+            $('.input_type_radio2 #boy2').attr('checked', true);
+        }else if(userProfile.match_gender === 'female'){
+            $('.input_type_radio2 #girl2').attr('checked', true);
+        }
     }
 
     function script(){
@@ -191,7 +201,7 @@ const SideMenu = ({ currentPage, user, chat, userPic, boyClick, allClick, girlCl
                     <li>
                         <ul id="myprofile">
                             <Link to="/profile" id="myprofile_btn"><li><div id="myPho">
-                                <img src={userPicImg[1]}/>
+                                <img src={userPicImg[0]}/>
                             <div></div></div><span>나의 프로필</span></li></Link>
                             <Link to="work"><li></li></Link>
                         </ul>
@@ -258,7 +268,7 @@ const SideMenu = ({ currentPage, user, chat, userPic, boyClick, allClick, girlCl
                                         <div>
                                             <dd>원하는 상대 
                                                 <p className="input_type_radio2">
-                                                    <input type="radio" name="gender2" id="boy2" defaultChecked onClick={boyClick}/>
+                                                    <input type="radio" name="gender2" id="boy2" onClick={boyClick}/>
                                                     <label for="boy2">남</label>
                                                     <input type="radio" name="gender2" id="all2" onClick={allClick}/>
                                                     <label id="md2" for="all2">모두</label>

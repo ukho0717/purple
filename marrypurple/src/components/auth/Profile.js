@@ -3,7 +3,7 @@ import '../../lib/styles/profile.scss';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const Profile = ({user,form,onChange,loading,profileSubmit,error, profile,personal}) =>{
+const Profile = ({user,form,profileSubmit,error, profile,personal}) =>{
 
     const {brief_intro,address,fav_food,fav_movie,fav_song,user_gender,school} = user;
 
@@ -47,8 +47,6 @@ const Profile = ({user,form,onChange,loading,profileSubmit,error, profile,person
     //     console.log("Dfdasfdsfsad"+ setPersonality)
     // }
 
-
-    
     const fileSelectHandler = (event) =>{
         imgbbUploader(event.target.files[0]).then(resp => {
         console.log(resp.data.data.url);
@@ -60,15 +58,16 @@ const Profile = ({user,form,onChange,loading,profileSubmit,error, profile,person
         setProfile_pic(i.split(','));
     })}
 
-    var picarr;
+
     useEffect(()=> {
-        picarr = user.profile_pic;
-        for(let i = 0; i< picarr.length; i++){
-            elements.push(<img src={picarr[i]}/>)
-        } 
-    },[profile_pic, bi, sc, ad, personality, fs, fm, ff, picarr])
+        console.log(profile_pic);
+    },[profile_pic, bi, sc, ad, personality, fs, fm, ff])
 
-
+    const picarr = profile_pic;
+    for(let i = 0; i<picarr.length; i++){
+        elements.push(<img src={picarr[i]}/>)
+    } 
+    
     const imgbbUploader = ( img ) => {
         let body = new FormData()
         body.set('key', 'fc932c3718be04e605f6d38678fc9533')
@@ -84,6 +83,42 @@ const Profile = ({user,form,onChange,loading,profileSubmit,error, profile,person
             data: body
         })
     }
+    
+    // const fileSelectHandler = (event) =>{
+    //     imgbbUploader(event.target.files[0]).then(resp => {
+    //     console.log(resp.data.data.url);
+    //     var i='';
+    //     for(var k = 0; k < profile_pic.length; k++){
+    //         i += profile_pic[k] + ',';
+    //     }
+    //     i += resp.data.data.url;
+    //     setProfile_pic(i.split(','));
+    // })}
+
+    // var picarr;
+    // useEffect(()=> {
+    //     picarr = user.profile_pic;
+    //     for(let i = 0; i< picarr.length; i++){
+    //         elements.push(<img src={picarr[i]}/>)
+    //     } 
+    // },[profile_pic, bi, sc, ad, personality, fs, fm, ff, picarr])
+
+
+    // const imgbbUploader = ( img ) => {
+    //     let body = new FormData()
+    //     body.set('key', 'fc932c3718be04e605f6d38678fc9533')
+    //     body.append('image', img)
+    
+    //     return axios({
+    //         url: 'https://api.imgbb.com/1/upload',
+    //         method: 'post',
+    //         timeout: 0,
+    //         processData: false,
+    //         mimeType: "multipart/form-data",
+    //         contentType: false,
+    //         data: body
+    //     })
+    // }
     const biChange = e => {
         setBi(e.target.value);
     }
@@ -139,10 +174,10 @@ const Profile = ({user,form,onChange,loading,profileSubmit,error, profile,person
     // }
 
     if(user){
-        picarr = user.profile_pic;
-        for(let i = 0; i< picarr.length; i++){
-            elements.push(<img src={picarr[i]}/>)
-        } 
+        // picarr = user.profile_pic;
+        // for(let i = 0; i< picarr.length; i++){
+        //     elements.push(<img src={picarr[i]}/>)
+        // } 
     return(
         <>
         {user&&(

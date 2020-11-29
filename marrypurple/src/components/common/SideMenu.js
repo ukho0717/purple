@@ -32,11 +32,7 @@ function Chatt({list, user}){
     )
 }
 
-<<<<<<< HEAD
-const SideMenu = ({ currentPage, user, chat, userPic,onLogout }) => {
-=======
-const SideMenu = ({ currentPage, user, chat, userPic, boyClick, allClick, girlClick }) => {
->>>>>>> da90950c02eb979db2b236feadbcb0ba2d605a24
+const SideMenu = ({ currentPage, user, chat, userPic,onLogout,boyClick, allClick, girlClick}) => {
     // console.log('~~~',currentPage);
 
     let userPicImg = '';

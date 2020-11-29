@@ -7,7 +7,7 @@ import { check } from '../../lib/api/auth';
 
 const Register = ({type,form,onSubmit,error,onChange,fileSelectHandler}) => {
     console.log(form)
-    const number = "1111";
+    const number = "7363";
     function mailChk(){
         
         if(number==document.getElementById("inNUm").value)
@@ -15,7 +15,7 @@ const Register = ({type,form,onSubmit,error,onChange,fileSelectHandler}) => {
 
     }
         else if(number != document.getElementById("inNUm").value){
-            alert("인증실패!")
+            alert("인증번호를 올바르게 입력하세요!")
 
         }
 
@@ -121,6 +121,7 @@ const Register = ({type,form,onSubmit,error,onChange,fileSelectHandler}) => {
                 </div>
 
                 <div className="regiId regiGo">
+                    
                     {/* <input type="submit" name="regi" value="가입하기"/> */}
                     <button>가입하기</button>
                 </div>

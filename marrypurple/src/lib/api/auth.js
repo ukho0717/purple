@@ -18,5 +18,5 @@ export const findpw = ({user_email})=> client.post("/api/auth/findpw",{user_emai
 
 export const changepw = ({user_pw}) => client.patch('/api/auth/changepw',{user_pw});
 
-export const sendmail =({user_email}) => client.post("/api/auth/mailOk",{user_email});
+export const sendmail =() => client.post("/api/auth/mailOk");
 

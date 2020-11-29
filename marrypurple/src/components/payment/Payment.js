@@ -1,17 +1,17 @@
 import React from 'react';
 import '../../lib/styles/payment.scss';
 import $ from 'jquery';
+import Error from '../common/Error';
 
 const Payment = ({ onSubmit, loading, error }) => {
     const radioClick = e => {
-        // console.log(e.target);
         $('.go_pay form div').removeClass('test_css');
         $(e.target).parent().parent().addClass('test_css');
         console.log($("input[name='pay']:checked").val());
     }
 
     if(error){
-        return <div><h2>에러가 발생했습니다.</h2></div>
+        return <Error/>
     }
     return (
         <>

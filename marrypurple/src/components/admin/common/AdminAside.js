@@ -1,67 +1,42 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../../../lib/styles/admin/adminstyle.scss';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
 import $ from 'jquery';
 
 export function script() {
-    
+    let media = window.matchMedia('( max-width: 768px )');
+    if(media.matches == true) {
+        // 모바일
+        
+        if ($('#sidebar > ul').is(":visible") === true) {
+            $('#sidebar > ul').hide();
+        } else {
+            $('#sidebar > ul').show();
+        }
+    }else{
+        // 웹
 
-    if ($('#sidebar > ul').is(":visible") === true) {
-        $('#main-content').css({
-            'margin-left': '0px'
-        });
-        $('#sidebar').css({
-            'margin-left': '-210px'
-        });
-        $('#sidebar > ul').hide();
-    } else {
-        $('#main-content').css({
-            'margin-left': '210px'
-        });
-        $('#sidebar > ul').show();
-        $('#sidebar').css({
-            'margin-left': '0'
-        });
+        if ($('#sidebar > ul').is(":visible") === true) {
+            $('#main-content').css({
+                'margin-left': '0px'
+            });
+            $('#sidebar').css({
+                'margin-left': '-210px'
+            });
+            $('#sidebar > ul').hide();
+        } else {
+            $('#main-content').css({
+                'margin-left': '210px'
+            });
+            $('#sidebar > ul').show();
+            $('#sidebar').css({
+                'margin-left': '0'
+            });
+        }
     }
 }
 
 const AdminAside = () => {
-    // let nowPage = '';
-    // if(currentPage){
-    //     nowPage = currentPage;
-    // }
-    // console.log('currentPage',nowPage);
-    // switch(nowPage){
-    //     case '/Admin_main':
-    //         $('.sidebar-menu').children('li').first().children('a').addClass('active');
-    //         break;
-    //     case '/Admin_users':
-    //         $('.sidebar-menu').children('li:nth-child(3)').children('a').addClass('active');
-    //         break;
-    //     case '/Admin_gram':
-    //         $('.sidebar-menu').children('li:nth-child(4)').children('a').addClass('active');
-    //         break;
-    //     case '/Admin_badList':
-    //         $('.sidebar-menu').children('li:nth-child(5)').children('a').addClass('active');
-    //         break;
-    //     case '/Adimn_notice':
-    //         $('.sidebar-menu').children('li:nth-child(6)').children('a').addClass('active');
-    //         break;
-    //     default:
-            
-    // }
-
-    // let media = window.matchMedia('( max-width: 768px )');
-    // if(media.matches === true){
-    //     $('#main-content').css({
-    //         'margin-left': '0px'
-    //     });
-    //     $('#sidebar').css({
-    //         'margin-left': '-210px'
-    //     });
-    //     $('#sidebar > ul').hide();
-    // }
 
     return (
         <>

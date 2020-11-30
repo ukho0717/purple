@@ -32,12 +32,7 @@ function Chatt({list, user}){
     )
 }
 
-<<<<<<< HEAD
-const SideMenu = ({ currentPage, user, chat, userPic,onLogout,boyClick, allClick, girlClick}) => {
-=======
-
 const SideMenu = ({ currentPage, user, chat, userPic, boyClick, allClick, girlClick, onLogout }) => {
->>>>>>> 5b5aded944295ec6a9bf489a99ea9463f95c0b69
     // console.log('~~~',currentPage);
 
     let userPicImg = [];
@@ -68,6 +63,7 @@ const SideMenu = ({ currentPage, user, chat, userPic, boyClick, allClick, girlCl
             case '/match':
             case '/match_like':
             case '/match_profile':
+            case '/back':
                 $('#m1').addClass('on');
                 $('#slide_box div').removeClass('on').removeClass('off');
                 $('#sub_menu_match').addClass('on');
@@ -75,6 +71,7 @@ const SideMenu = ({ currentPage, user, chat, userPic, boyClick, allClick, girlCl
                 break;
             case '/message':
             case '/message_profile':
+            case '/chat':
                 $('#m2').addClass('on');
                 $('#slide_box div').removeClass('on').removeClass('off');
                 $('#sub_menu_message').addClass('on');
@@ -90,6 +87,9 @@ const SideMenu = ({ currentPage, user, chat, userPic, boyClick, allClick, girlCl
             case '/Telepathy_make_quiz_fin':
             case '/tele_mun_done':
             case '/Telepathy_get_quiz':
+            case '/Telepathy_get_quiz2':
+            case '/Telepathy_get_quiz3':
+            case '/talktothem':
             case '/find_main':
             case '/find_select':
             case '/find_match':
@@ -109,7 +109,14 @@ const SideMenu = ({ currentPage, user, chat, userPic, boyClick, allClick, girlCl
                         break;
                     case '/Telepathy':
                     case '/Telepathy_make_quiz':
+                    case '/Telepathy_make_quiz2':
+                    case '/Telepathy_make_quiz3':
+                    case '/Telepathy_make_quiz_fin':
+                    case '/tele_mun_done':
                     case '/Telepathy_get_quiz':
+                    case '/Telepathy_get_quiz2':
+                    case '/Telepathy_get_quiz3':
+                    case '/talktothem':
                         $('#left_menu #slide_box #sub_menu_enter ul a:nth-child(2)').addClass('on');
                         break;
                     case '/find_main':
@@ -282,8 +289,8 @@ const SideMenu = ({ currentPage, user, chat, userPic, boyClick, allClick, girlCl
                                             </dd>
                                         </div>
                                     </a>
-                                    <h2>알림</h2>
-                                    <Link to="#"><div><dd>푸시알림 <span className="sub_menu_myprofile_icon">&gt;</span></dd></div></Link>
+                                    <h2 style={{display: 'none'}}>알림</h2>
+                                    <Link to="#" style={{display: 'none'}}><div><dd>푸시알림 <span className="sub_menu_myprofile_icon">&gt;</span></dd></div></Link>
                                     <h2>도움말·고객 지원</h2>
                                     <Link to="/FAQ2"><div><dd>도움말·고객 지원 <span className="sub_menu_myprofile_icon">&gt;</span></dd></div></Link>
                                     <h2>커뮤니티</h2>
@@ -292,7 +299,7 @@ const SideMenu = ({ currentPage, user, chat, userPic, boyClick, allClick, girlCl
                                     <Link to="/FAQ"><div><dd>안전을 위한 도움말 <span className="sub_menu_myprofile_icon">&gt;</span></dd></div></Link>
                                     <h2>법적 고지</h2>
                                     <Link to="/FAQ"><div><dd>개인정보 취급방침 <span className="sub_menu_myprofile_icon">&gt;</span></dd></div></Link>
-                                    <div onClick={onLogout}><dd>로그아웃</dd></div>
+                                    <Link href="#"><div onClick={onLogout}><dd>로그아웃</dd></div></Link>
                                     <Link href="#"><div><dd>계정삭제</dd></div></Link>
                                 </dl>
                             </div>

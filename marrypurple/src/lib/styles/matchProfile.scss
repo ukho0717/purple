@@ -1,5 +1,5 @@
 #content .matchP_1 { margin: 15px; text-align: center; position: relative; }
-#content .matchP_1 .back { width: 25px; height: 25px; background: url('../images/icon/back.png') no-repeat; background-size: 100%; display: inline-block; position: absolute; left: 0; top: 7px; }
+#content .matchP_1 .back { width: 25px; height: 25px; background: url('../images/icon/back.png') no-repeat; background-size: 100%; display: inline-block; position: absolute; left: 0; top: 7px; cursor: pointer; }
 #content .matchP_1 p { display: inline-block; }
 #content .matchP_1 #matchP_1_id { color: #2C2C2C; font-size: 28px; font-weight: bold; }
 #content .matchP_1 #matchP_1_age { color: #2C2C2C; font-size: 24px; }

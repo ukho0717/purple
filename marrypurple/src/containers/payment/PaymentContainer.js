@@ -13,7 +13,6 @@ const PaymentContainer = ({ history }) => {
     }));
 
     const onSubmit = () => {
-        let user_id = user._id;
         let premium = '';
         let pay = $("input[name='pay']:checked").val();
         switch(pay){
@@ -37,13 +36,13 @@ const PaymentContainer = ({ history }) => {
             alert('결제가 완료되었습니다.');
             // history.push('/match');
         }else{
-            history.push('/payment');
+            history.push('/profile');
         }
         
     }
 
     return (
-        <Payment onSubmit={onSubmit} /*loading={loading} error={error}*//>
+        <Payment onSubmit={onSubmit} history={history} loading={loading} error={error}/>
     )
 }
 

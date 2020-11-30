@@ -69,7 +69,7 @@ const UserSchema = new Schema({
     match:{ type: mongoose.Schema.Types.ObjectId, ref: 'Matching' },
     reported:{type: [String], default:null},
     provider: {type: String, default:''},
-    authToken : {type: String , default:''},
+    authToken : {type: String , default:null},
     facebook:{},
     kakao:{},
     google:{}

@@ -1,6 +1,7 @@
 import Joi from "@hapi/joi";
 import User from "../../models/user";
 import nodemailer from 'nodemailer';
+import Matching from '../../models/matching';
 
 export const register = async (ctx) => {
   console.log('회원가입중')
@@ -207,13 +208,20 @@ export const profileUpdate = async (ctx) => {
   const nextData = { ...ctx.request.body };
 
   try{
-    const user = await User.findByIdAndUpdate(user_id, nextData, {new: true}).exec(); 
+    const user = await User.findByIdAndUpdate(user_id, nextData, {new: true}).exec();
+
+    const post = await Matching.findOneAndUpdate({user: user_id}, {personality: ctx.request.body.personality}, {new: true}).exec();
       
     // post.updateOne({ $push:{brief_intro:brief_intro,address:address,school:school,personality:personality,fav_song:fav_song,fav_movie:fav_movie,fav_food:fav_food,profile_pic:profile_pic}}).exec();
     if(!user){
         ctx.status = 404;
         return;
     }
+
+    if(!post){
+      ctx.status = 404;
+      return;
+  }
 
     // const profile_pic = [{
     //   key:ctx.state.user._id,

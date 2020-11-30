@@ -3,12 +3,18 @@ import ProfileMain from '../../components/profile/ProfileMain';
 import { withRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateGender } from '../../modules/side'
+import { logout} from '../../modules/user'
 
-const ProfileMainContainer = () => {
+const ProfileMainContainer = ({ history }) => {
     const dispatch = useDispatch();
     const { user } = useSelector(({ user }) => ({
         user: user.user
     }));
+
+    const onLogout = () => {
+        dispatch(logout());
+        history.push('/')
+    };
 
     const boyClick = () => {
         dispatch(updateGender({
@@ -27,7 +33,7 @@ const ProfileMainContainer = () => {
     }
 
     return (
-        <ProfileMain user={user} boyClick={boyClick} allClick={allClick} girlClick={girlClick}/>
+        <ProfileMain user={user} boyClick={boyClick} allClick={allClick} girlClick={girlClick} onLogout={onLogout}/>
     )
 }
 

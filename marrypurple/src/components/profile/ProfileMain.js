@@ -3,7 +3,7 @@ import '../../lib/styles/profileMain.scss';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
 
-const ProfileMain = ({ user, boyClick, allClick, girlClick }) => {
+const ProfileMain = ({ user, boyClick, allClick, girlClick, onLogout }) => {
     let userProfile = {};
     if(user){
         userProfile = user;
@@ -36,8 +36,8 @@ const ProfileMain = ({ user, boyClick, allClick, girlClick }) => {
                         </dd>
                     </div>
                 </a>
-                <h2>알림</h2>
-                <Link to="#"><div><dd>푸시알림 <span className="sub_menu_myprofile_icon">&gt;</span></dd></div></Link>
+                <h2 style={{display: 'none'}}>알림</h2>
+                <Link to="#" style={{display: 'none'}}><div><dd>푸시알림 <span className="sub_menu_myprofile_icon">&gt;</span></dd></div></Link>
                 <h2>도움말·고객 지원</h2>
                 <Link to="FAQ2"><div><dd>도움말·고객 지원 <span className="sub_menu_myprofile_icon">&gt;</span></dd></div></Link>
                 <h2>커뮤니티</h2>
@@ -46,7 +46,7 @@ const ProfileMain = ({ user, boyClick, allClick, girlClick }) => {
                 <Link to="FAQ"><div><dd>안전을 위한 도움말 <span className="sub_menu_myprofile_icon">&gt;</span></dd></div></Link>
                 <h2>법적 고지</h2>
                 <Link to="FAQ"><div><dd>개인정보 취급방침 <span className="sub_menu_myprofile_icon">&gt;</span></dd></div></Link>
-                <Link to="#"><div><dd>로그아웃</dd></div></Link>
+                <Link to="#" onClick={onLogout}><div><dd>로그아웃</dd></div></Link>
                 <Link to="#"><div><dd>계정삭제</dd></div></Link>
             </dl>
         </>

@@ -25,6 +25,7 @@ export const select = async ctx=>{
             "$setIntersection": [styles, '$personality' ] 
             }
         }}}])
+        console.log('list', list);
         
         //가장 많은 이상형을 가진 유저의 _id 순서로 정렬
         list = list.sort(function(a, b) {

@@ -1,5 +1,6 @@
 import User from '../../models/user';
 import Joi from '@hapi/joi';
+import Matching from '../../models/matching';
 
 export const updateGender = async ctx => {
     console.log('/side updateGender 호출');
@@ -21,7 +22,13 @@ export const updateGender = async ctx => {
         const post = await User.findByIdAndUpdate(_id, ctx.request.body, {
             new: true
         }).exec();
+        const post2 = await Matching.findOneAndUpdate({user: _id}, ctx.request.body, {new: true}).exec();
+
         if(!post){
+            ctx.status = 404;
+            return;
+        }
+        if(!post2){
             ctx.status = 404;
             return;
         }

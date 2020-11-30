@@ -6,6 +6,8 @@ const FoundOneContainer = ({data}) => {
     if(data){
         styles = data
     }
+
+    console.log(data);
     return(
         <>
         {data !== 'none' &&(

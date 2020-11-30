@@ -8,10 +8,15 @@ import imgC from '../../lib/images/icon/49f19f63a24305a4f1dedfd8481c01e2.png'
 import imgD from '../../lib/images/icon/8c6f9b49103dd67cf3bfd50f561b46d6.png'
 
 const ShowProfile = ({user_data, my_email, unfoldDiv, onToggle}) => {
+
+    const onClick = () => {
+        window.history.back();
+    }
+
     return(
         <>
             <div class="matchP_1">
-                <a href="match_like.html"><div class="back"></div></a>
+                <div><div class="back" onClick={onClick}></div></div>
                 <p><span id="matchP_1_id">{user_data.user_nick}</span> <span id="matchP_1_age">{user_data.user_age}</span></p>
             </div>
             <div class="matchP_2">

@@ -26,6 +26,7 @@ const MatchList = ({chat,user}) => {
                 <h2>메시지</h2><span class="matchList_count">{chat&&(chat.length)}</span>
             </div>
             <div className="matchList_2_content">
+                <Link to="/match_like" className="likeMeLink"><div>나를 좋아요</div></Link>
                 {chat &&(
                     chat.map(list=> <Chatt list={list} user={user} />)
                 )}

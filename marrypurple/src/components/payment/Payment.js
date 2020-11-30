@@ -3,7 +3,12 @@ import '../../lib/styles/payment.scss';
 import $ from 'jquery';
 import Error from '../common/Error';
 
-const Payment = ({ onSubmit, loading, error }) => {
+const Payment = ({ onSubmit, loading, error, history }) => {
+    
+    const cancelClick = () => {
+        history.push('/profile');
+    }
+
     const radioClick = e => {
         $('.go_pay form div').removeClass('test_css');
         $(e.target).parent().parent().addClass('test_css');
@@ -73,7 +78,7 @@ const Payment = ({ onSubmit, loading, error }) => {
                             </div>
                             <p className="buttons" id="pay_button"><input type="submit" value="결제"/></p>
                         </form>
-                        <p className="buttons"><input type="button" value="취소"/></p>
+                        <p className="buttons"><input type="button" value="취소" onClick={cancelClick}/></p>
                     </div>
                 </div>
             )}

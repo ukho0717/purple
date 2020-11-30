@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+// import {BrowserRouter as Router, Route} from 'react-router-dom';
 import '../../lib/styles/regist.scss'
 import rLogo from '../../lib/img/rLogo.png';
 import { check } from '../../lib/api/auth';
+import $ from 'jquery';
+
 
 const Register = ({type,form,onSubmit,error,onChange,fileSelectHandler}) => {
     console.log(form)
@@ -20,6 +22,15 @@ const Register = ({type,form,onSubmit,error,onChange,fileSelectHandler}) => {
         }
 
     };
+
+    function onMail(){
+        alert("메일 전송완료!")
+    }
+
+    console.log($('.reNum').val());
+
+    
+
     return(
         <div id="wrapM">
         <div id="container">
@@ -30,7 +41,7 @@ const Register = ({type,form,onSubmit,error,onChange,fileSelectHandler}) => {
                 <div className="regiT">
                     <h1>계정 만들기</h1>
                 </div>
-        <Router>
+        {/* <Router> */}
             <form onSubmit={onSubmit} method="post" action="/api/auth" enctype="multipart/form-data">
                 <div className="regiId">
                     <p><span className="idText">아이디</span></p>
@@ -45,14 +56,15 @@ const Register = ({type,form,onSubmit,error,onChange,fileSelectHandler}) => {
                                 onChange={onChange}
                                 />
                         </div>
-                    <Link to="/mailOk">
+                    {/* <Link to="/mailOk"> */}
                         <input 
                             className="getE" 
-                            type="button" 
+                            type="submit" 
                             name="idCheck" 
                             value="인증 받기"
+                            // onClick={onMail}
                         />
-                    </Link>
+                    {/* </Link> */}
                     </div>
                 </div> 
                 <div className="regiId">
@@ -106,7 +118,6 @@ const Register = ({type,form,onSubmit,error,onChange,fileSelectHandler}) => {
                         <input type="file" 
                         name="profile_pic" 
                         onChange={fileSelectHandler}
-                        value={form.profile_pic} 
                         />
                     </div>
                     <div className="inputPro inputPro2"> 
@@ -126,7 +137,7 @@ const Register = ({type,form,onSubmit,error,onChange,fileSelectHandler}) => {
                     <button>가입하기</button>
                 </div>
             </form>
-        </Router>
+        {/* </Router> */}
                 <div className="regiId regiBack">
                     <p><a> <Link to="/login">이미 가입하셨다면? 로그인하세요.</Link></a></p>
                 </div>

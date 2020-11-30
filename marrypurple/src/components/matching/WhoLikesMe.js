@@ -5,7 +5,7 @@ import '../../lib/styles/matchLike.scss'
 const PhotoList = ({list}) => {
     return(
         <>
-            <Link to={{path:"/match_profile", data:list}}>
+            <Link to={{pathname:"/match_profile", data:list}}>
                 <div 
                     class="matchL_1_like"
                     style={{background: `url(${(list.profile_pic)[0]})`,backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: '100%'}}
@@ -30,6 +30,7 @@ const BluredPhotoList = ({list}) => {
 }
 
 const WhoLikesMe = ({matchLike, didPay}) => {
+    console.log(didPay);
     const likeList = []
     if(matchLike){
         matchLike.map(list => likeList.push(list))
@@ -54,9 +55,12 @@ const WhoLikesMe = ({matchLike, didPay}) => {
                 </ul>
                 
             </div>
-            <div id="matchL_1_btn">
-                <div><Link to="/Payment" id="match_like_btn_">나를 좋아한 사람 보기</Link></div>
-            </div>
+            {didPay === 'no_sub' &&(
+                <div id="matchL_1_btn">
+                    <div><Link to="/Payment" id="match_like_btn_">나를 좋아한 사람 보기</Link></div>
+                </div>
+            )}
+            
         </>
     )
 }

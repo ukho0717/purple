@@ -2,8 +2,22 @@ import React, {useEffect, useState} from 'react';
 import '../../lib/styles/profile.scss';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import $ from 'jquery';
 
 const Profile = ({user,form,profileSubmit,error, profile,personal}) =>{
+    let userProfile = {};
+    if(user){
+        userProfile = user;
+        
+        for(let j=0; j<$('input[type=checkbox]').length; j++){
+            for(let i=0; i<userProfile.personality.length; i++){
+                if($('input[type=checkbox]')[j].value == userProfile.personality[i]){
+                    $('input[type=checkbox]')[j].setAttribute('checked', true);
+                }
+                
+            }
+        }
+    }
 
     const {brief_intro,address,fav_food,fav_movie,fav_song,user_gender,school} = user;
 
@@ -299,78 +313,78 @@ const Profile = ({user,form,profileSubmit,error, profile,personal}) =>{
                         <p className="input_type_text"><input type="text" value={sc} onChange={scChange} name="school"/></p>
                     </div>
                     <div>
-                        <p className="veryStressful">나의 이상형</p>
+                        <p className="veryStressful">나의 성향</p>
                         <section className="self_intro_check" id="self_intro_check_id">
                             <p className="selects">
-                                <input type="checkbox" name="personality" id="cute"  value="cute" onClick={(e)=>onToggle(e)}/><label for="cute" >귀여운</label>
-                                <input type="checkbox" name="personality" id="mature" value="mature" onClick={(e)=>onToggle(e)} /><label for="mature">어른스러운</label>
-                                <input type="checkbox" name="personality" id="sexy" value="sexy" onClick={(e)=>onToggle(e)} /><label for="sexy">섹시한</label>
-                                <input type="checkbox" name="personality" id="manly"  value="manly" onClick={(e)=>onToggle(e)} /><label for="manly">남자다운</label>
+                                <input type="checkbox" name="personality" id="cute"  value="귀여운" onClick={(e)=>onToggle(e)}/><label for="cute" >귀여운</label>
+                                <input type="checkbox" name="personality" id="mature" value="어른스러운" onClick={(e)=>onToggle(e)} /><label for="mature">어른스러운</label>
+                                <input type="checkbox" name="personality" id="sexy" value="섹시한" onClick={(e)=>onToggle(e)} /><label for="sexy">섹시한</label>
+                                <input type="checkbox" name="personality" id="manly"  value="남자다운" onClick={(e)=>onToggle(e)} /><label for="manly">남자다운</label>
                             </p>
                             <p className="selects">
-                                <input type="checkbox" name="personality" id="natural"  value="natural" onClick={(e)=>onToggle(e)} /><label for="natural">청순한</label>
-                                <input type="checkbox" name="personality" id="curious"  value="curious"  onClick={(e)=>onToggle(e)}/><label for="curious">호기심많은</label>
-                                <input type="checkbox" name="personality" id="serious"  value="serious"  onClick={(e)=>onToggle(e)}/><label for="serious">진중한</label>
-                                <input type="checkbox" name="personality" id="agressive"  value="agressive"  onClick={(e)=>onToggle(e)}/><label for="agressive">과감한</label>
+                                <input type="checkbox" name="personality" id="natural"  value="청순한" onClick={(e)=>onToggle(e)} /><label for="natural">청순한</label>
+                                <input type="checkbox" name="personality" id="curious"  value="호기심많은"  onClick={(e)=>onToggle(e)}/><label for="curious">호기심많은</label>
+                                <input type="checkbox" name="personality" id="serious"  value="진중한"  onClick={(e)=>onToggle(e)}/><label for="serious">진중한</label>
+                                <input type="checkbox" name="personality" id="agressive"  value="과감한"  onClick={(e)=>onToggle(e)}/><label for="agressive">과감한</label>
                             </p>
                             <p className="selects">
-                                <input type="checkbox" name="personality" id="intelli"  value="intelli"  onClick={(e)=>onToggle(e)}/><label for="intelli">지적인</label>
-                                <input type="checkbox" name="personality" id="tsndere"  value="tsndere"  onClick={(e)=>onToggle(e)}/><label for="tsndere">츤데레</label>
-                                <input type="checkbox" name="personality" id="honesty"  value="honesty"  onClick={(e)=>onToggle(e)}/><label for="honesty">솔직한</label>
-                                <input type="checkbox" name="personality" id="growth"  value="growth" onClick={(e)=>onToggle(e)}/><label for="growth">성숙한</label>
+                                <input type="checkbox" name="personality" id="intelli"  value="지적인"  onClick={(e)=>onToggle(e)}/><label for="intelli">지적인</label>
+                                <input type="checkbox" name="personality" id="tsndere"  value="츤데레"  onClick={(e)=>onToggle(e)}/><label for="tsndere">츤데레</label>
+                                <input type="checkbox" name="personality" id="honesty"  value="솔직한"  onClick={(e)=>onToggle(e)}/><label for="honesty">솔직한</label>
+                                <input type="checkbox" name="personality" id="growth"  value="성숙한" onClick={(e)=>onToggle(e)}/><label for="growth">성숙한</label>
                             </p>
                             <p className="selects">
-                                <input type="checkbox" name="personality" id="cool"  value="cool"  onClick={(e)=>onToggle(e)}/><label for="cool">쿨한</label>
-                                <input type="checkbox" name="personality" id="humorous"  value="humorous"  onClick={(e)=>onToggle(e)}/><label for="humorous">유머있는</label>
-                                <input type="checkbox" name="personality" id="careful"  value="careful"  onClick={(e)=>onToggle(e)}/><label for="careful">배려심많은</label>
-                                <input type="checkbox" name="personality" id="timid"  value="timid" onClick={(e)=>onToggle(e)}/><label for="timid">소심한</label>
+                                <input type="checkbox" name="personality" id="cool"  value="쿨한"  onClick={(e)=>onToggle(e)}/><label for="cool">쿨한</label>
+                                <input type="checkbox" name="personality" id="humorous"  value="유머있는"  onClick={(e)=>onToggle(e)}/><label for="humorous">유머있는</label>
+                                <input type="checkbox" name="personality" id="careful"  value="배려심많은"  onClick={(e)=>onToggle(e)}/><label for="careful">배려심많은</label>
+                                <input type="checkbox" name="personality" id="timid"  value="소심한" onClick={(e)=>onToggle(e)}/><label for="timid">소심한</label>
                             </p>
                             <p className="selects">
-                                <input type="checkbox" name="personality" id="cynical"  value="cynical"  onClick={(e)=>onToggle(e)}/><label for="cynical">시니컬한</label>
-                                <input type="checkbox" name="personality" id="tall"  value="tall" onClick={(e)=>onToggle(e)}/><label for="tall">키가큰</label>
-                                <input type="checkbox" name="personality" id="small"  value="small"  onClick={(e)=>onToggle(e)}/><label for="small">아담한</label>
-                                <input type="checkbox" name="personality" id="outgoing"  value="outgoing"  onClick={(e)=>onToggle(e)}/><label for="outgoing">쾌활한</label>
+                                <input type="checkbox" name="personality" id="cynical"  value="시니컬한"  onClick={(e)=>onToggle(e)}/><label for="cynical">시니컬한</label>
+                                <input type="checkbox" name="personality" id="tall"  value="키가큰" onClick={(e)=>onToggle(e)}/><label for="tall">키가큰</label>
+                                <input type="checkbox" name="personality" id="small"  value="아담한"  onClick={(e)=>onToggle(e)}/><label for="small">아담한</label>
+                                <input type="checkbox" name="personality" id="outgoing"  value="쾌활한"  onClick={(e)=>onToggle(e)}/><label for="outgoing">쾌활한</label>
                             </p>
                             <p className="selects">
-                                <input type="checkbox" className="styles" value="어리버리" id="clumsy" value="clumsy"  onClick={(e)=>onToggle(e)}/><label for="clumsy">어리버리</label>
-                                <input type="checkbox" className="styles" value="감성적" id="emotional" value="emotional" onClick={(e)=>onToggle(e)}/><label for="emotional">감성적</label>
-                                <input type="checkbox" className="styles" value="책임감있는" id="leadership" value="leadership"  onClick={(e)=>onToggle(e)} /><label for="leadership">책임감있는</label>
-                                <input type="checkbox" className="styles" value="통통튀는" id="bubbly" value="bubbly" onClick={(e)=>onToggle(e)}  /><label for="bubbly">통통튀는</label>
+                                <input type="checkbox" className="styles" id="clumsy" value="어리버리"  onClick={(e)=>onToggle(e)}/><label for="clumsy">어리버리</label>
+                                <input type="checkbox" className="styles" id="emotional" value="감성적" onClick={(e)=>onToggle(e)}/><label for="emotional">감성적</label>
+                                <input type="checkbox" className="styles" id="leadership" value="책임감있는"  onClick={(e)=>onToggle(e)} /><label for="leadership">책임감있는</label>
+                                <input type="checkbox" className="styles" id="bubbly" value="통통튀는" onClick={(e)=>onToggle(e)}  /><label for="bubbly">통통튀는</label>
                             </p>
                             <p className="selects">
-                                <input type="checkbox" className="styles" value="드립장인" id="funny" value="funny"  onClick={(e)=>onToggle(e)} /><label for="funny">드립장인</label>
-                                <input type="checkbox" className="styles" value="깔끔한" id="tidy" value="tidy" onClick={(e)=>onToggle(e)} /><label for="tidy">깔끔한</label>
-                                <input type="checkbox" className="styles" value="힘이센" id="strong" value="strong"onClick={(e)=>onToggle(e)}/><label for="strong">힘이센</label>
-                                <input type="checkbox" className="styles" value="인정많은" id="empathy"value="empathy" onClick={(e)=>onToggle(e)}/><label for="empathy">인정많은</label>
+                                <input type="checkbox" className="styles" id="funny" value="드립장인"  onClick={(e)=>onToggle(e)} /><label for="funny">드립장인</label>
+                                <input type="checkbox" className="styles" id="tidy" value="깔끔한" onClick={(e)=>onToggle(e)} /><label for="tidy">깔끔한</label>
+                                <input type="checkbox" className="styles" id="strong" value="힘이센"onClick={(e)=>onToggle(e)}/><label for="strong">힘이센</label>
+                                <input type="checkbox" className="styles" id="empathy"value="인정많은" onClick={(e)=>onToggle(e)}/><label for="empathy">인정많은</label>
                             </p>
                             <p className="selects">
-                                <input type="checkbox" className="styles" value="뚝딱이" id="ddukddak" value="ddukddak"  onClick={(e)=>onToggle(e)} /><label for="ddukddak">뚝딱이</label>
-                                <input type="checkbox" className="styles" value="사회성좋은" id="social" value="social"  onClick={(e)=>onToggle(e)}/><label for="social">사회성좋은</label>
-                                <input type="checkbox" className="styles" value="믿음직한" id="trustworthy" value="trustworthy"  onClick={(e)=>onToggle(e)} /><label for="trustworthy">믿음직한</label>
-                                <input type="checkbox" className="styles" value="미식가" id="foodlover" value="foodlover" onClick={(e)=>onToggle(e)} /><label for="foodlover">미식가</label> 
+                                <input type="checkbox" className="styles" id="ddukddak" value="뚝딱이"  onClick={(e)=>onToggle(e)} /><label for="ddukddak">뚝딱이</label>
+                                <input type="checkbox" className="styles" id="social" value="사회성좋은"  onClick={(e)=>onToggle(e)}/><label for="social">사회성좋은</label>
+                                <input type="checkbox" className="styles" id="trustworthy" value="믿음직한"  onClick={(e)=>onToggle(e)} /><label for="trustworthy">믿음직한</label>
+                                <input type="checkbox" className="styles" id="foodlover" value="미식가" onClick={(e)=>onToggle(e)} /><label for="foodlover">미식가</label> 
                             </p>
                             <p className="selects">
-                                <input type="checkbox" className="styles" value="활동적인" id="active"  value="active" onClick={(e)=>onToggle(e)} /><label for="active">활동적인</label>
-                                <input type="checkbox" className="styles" value="고양이파" id="catperson" value="catperson"  onClick={(e)=>onToggle(e)}/><label for="catperson">고양이파</label>
-                                <input type="checkbox" className="styles" value="강아지파" id="dogperson" value="dogperson"   onClick={(e)=>onToggle(e)}/><label for="dogperson">강아지파</label>
-                                <input type="checkbox" className="styles" value="부먹" id="pour" value="pour"   onClick={(e)=>onToggle(e)}/><label for="pour">부먹</label>   
+                                <input type="checkbox" className="styles" id="active"  value="활동적인" onClick={(e)=>onToggle(e)} /><label for="active">활동적인</label>
+                                <input type="checkbox" className="styles" id="catperson" value="고양이파"  onClick={(e)=>onToggle(e)}/><label for="catperson">고양이파</label>
+                                <input type="checkbox" className="styles" id="dogperson" value="강아지파"   onClick={(e)=>onToggle(e)}/><label for="dogperson">강아지파</label>
+                                <input type="checkbox" className="styles" id="pour" value="부먹"   onClick={(e)=>onToggle(e)}/><label for="pour">부먹</label>   
                             </p>
                         <p className="selects">
-                            <input type="checkbox" className="styles" value="찍먹" id="dip" value="dip"  onClick={(e)=>onToggle(e)} /><label for="dip">찍먹</label>
-                            <input type="checkbox" className="styles" value="바깥순이" id="outgirl" value="outgirl"  onClick={(e)=>onToggle(e)} /><label for="outgirl">바깥순이</label>
-                            <input type="checkbox" className="styles" value="바깥돌이" id="outboy"  value="outboy"  onClick={(e)=>onToggle(e)}/><label for="outboy">바깥돌이</label>
-                            <input type="checkbox" className="styles" value="집순이" id="homebodygirl" value="homebodygirl"  onClick={(e)=>onToggle(e)}/><label for="homebodygirl">집순이</label>   
+                            <input type="checkbox" className="styles" id="dip" value="찍먹"  onClick={(e)=>onToggle(e)} /><label for="dip">찍먹</label>
+                            <input type="checkbox" className="styles" id="outgirl" value="바깥순이"  onClick={(e)=>onToggle(e)} /><label for="outgirl">바깥순이</label>
+                            <input type="checkbox" className="styles" id="outboy"  value="바깥돌이"  onClick={(e)=>onToggle(e)}/><label for="outboy">바깥돌이</label>
+                            <input type="checkbox" className="styles" id="homebodygirl" value="집순이"  onClick={(e)=>onToggle(e)}/><label for="homebodygirl">집순이</label>   
                         </p>
                         <p className="selects">
-                            <input type="checkbox" className="styles" value="집돌이" id="hombodyboy" value="hombodyboy" onClick={(e)=>onToggle(e)} /><label for="hombodyboy">집돌이</label>
-                            <input type="checkbox" className="styles" value="친근한" id="friendly" value="friendly" onClick={(e)=>onToggle(e)} /><label for="friendly">친근한</label>
-                            <input type="checkbox" className="styles" value="독립적인" id="independency" value="independency"onClick={(e)=>onToggle(e)} /><label for="independency">독립적인</label>
-                            <input type="checkbox" className="styles" value="무던한" id="dull" value="dull"  onClick={(e)=>onToggle(e)}/><label for="dull">무던한</label>    
+                            <input type="checkbox" className="styles" id="hombodyboy" value="집돌이" onClick={(e)=>onToggle(e)} /><label for="hombodyboy">집돌이</label>
+                            <input type="checkbox" className="styles" id="friendly" value="친근한" onClick={(e)=>onToggle(e)} /><label for="friendly">친근한</label>
+                            <input type="checkbox" className="styles" id="independency" value="독립적인"onClick={(e)=>onToggle(e)} /><label for="independency">독립적인</label>
+                            <input type="checkbox" className="styles" id="dull" value="무던한"  onClick={(e)=>onToggle(e)}/><label for="dull">무던한</label>    
                         </p>
                         <p className="selects">
-                            <input type="checkbox" className="styles" value="멘탈왕" id="mentalking"  value="mentalking" onClick={(e)=>onToggle(e)}/><label for="mentalking">멘탈왕</label>
-                            <input type="checkbox" className="styles" value="양심적인" id="conscience" value="conscience" onClick={(e)=>onToggle(e)} /><label for="conscience">양심적인</label>
-                            <input type="checkbox" className="styles" value="계획적인" id="organized" value="organized"  onClick={(e)=>onToggle(e)}/><label for="organized">계획적인</label>   
+                            <input type="checkbox" className="styles" id="mentalking"  value="멘탈왕" onClick={(e)=>onToggle(e)}/><label for="mentalking">멘탈왕</label>
+                            <input type="checkbox" className="styles" id="conscience" value="양심적인" onClick={(e)=>onToggle(e)} /><label for="conscience">양심적인</label>
+                            <input type="checkbox" className="styles" id="organized" value="계획적인"  onClick={(e)=>onToggle(e)}/><label for="organized">계획적인</label>   
                         </p>
                         </section>
                     </div>

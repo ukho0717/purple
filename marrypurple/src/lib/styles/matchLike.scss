@@ -1,10 +1,10 @@
 #content .matchL_1 { margin: 15px; }
 #content .matchL_1 p { text-align: center; color: #5C5C5C; font-size: 22px; margin-bottom: 10px; }
 #content .matchL_1 #matchL_1_list { padding: 0 10px; }
-#content .matchL_1 #matchL_1_list .matchL_1_like { width: 180px; height: 180px; display: inline-block;  margin-right: 5px; margin-bottom: 5px; background: url('../images/images/C2005270925279578r.jpeg') no-repeat; background-size: 100%; z-index: 1; }
+#content .matchL_1 #matchL_1_list .matchL_1_like { width: 180px; height: 180px; display: inline-block;  margin-right: 10px; margin-bottom: 10px; background: url('../images/images/C2005270925279578r.jpeg') no-repeat; background-size: 100%; z-index: 1; }
 #content .matchL_1 #matchL_1_list .matchL_1_like::after { background: rgba(0, 0, 0, 0.5); z-index: 10; }
 #content .matchL_1 #matchL_1_list a:nth-child(2n) .matchL_1_like { margin-right: 0; }
-#content #matchL_1_btn { width: inherit; position: fixed; bottom: 50px; margin: auto; }
+#content #matchL_1_btn { width: inherit; position: fixed; bottom: 190px; margin: auto; }
 #content #matchL_1_btn div { width: fit-content; margin: 0 auto; }
 #match_like_btn_  {
     display: inline-block;
@@ -39,4 +39,18 @@
     height: 100%;
     size: 100%;
     filter: blur(6px)
+}
+
+@media (max-width:768px){
+    #matchL_1_btn {
+        box-sizing: content-box !important;
+
+        div {
+            box-sizing: content-box !important;
+
+            a {
+                box-sizing: content-box !important;
+            }
+        }
+    }
 }

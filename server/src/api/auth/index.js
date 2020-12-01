@@ -18,7 +18,7 @@ auth.get("/check", authCtrl.check);
 auth.post("/logout", authCtrl.logout);
 auth.patch("/snsRegister/:id",authCtrl.snsRegister);
 auth.patch("/profile/:id", authCtrl.addPic );
-auth.post('/mailOk', authCtrl.sendmail);
+
 
 
 //sns

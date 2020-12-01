@@ -173,8 +173,15 @@
         max-height: 420px;
         margin: 0 auto;
     }
-    #contentBox .match_2 div{
-        height: 100%;
+    // #contentBox .match_2 div{
+    //     height: 100%;
+    // }
+    #paymentBtn {
+        box-sizing: content-box;
+
+        div {
+            box-sizing: content-box;
+        }
     }
     #layer2 {
         position: relative;

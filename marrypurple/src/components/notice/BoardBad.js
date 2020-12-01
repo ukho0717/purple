@@ -46,9 +46,9 @@ const BoardBad = ({ badList }) => {
                                         <div className="gramB_2_detail">
                                             <div className="gramB_2_datail_photo"><img src={post.User.profile_pic}/></div>
                                             <p className="gramB_2_detail_content">
-                                                {post.reason == "부적절한 메시지" && (<span>상대방에게 부적절한 메시지를 전송하여</span>)}
-                                                {post.reason == "스팸으로 의심됨" && (<span>스팸으로 으심되어</span>)}
-                                                {post.reason == "부적절한 사진" && (<span>부적절한 사진을 사용하여</span>)}신고당하였습니다.<br/>이 회원을 보게되면 운영진에게 신고하여주세요.</p>
+                                                {post.reason === "부적절한 메시지" && (<span>상대방에게 부적절한 메시지를 전송하여</span>)}
+                                                {post.reason === "스팸으로 의심됨" && (<span>스팸으로 의심되어</span>)}
+                                                {post.reason === "부적절한 사진" && (<span>부적절한 사진을 사용하여</span>)}신고당하였습니다.<br/>이 회원을 보게되면 운영진에게 신고하여주세요.</p>
                                         </div>
                                     </dd>
                                 </>

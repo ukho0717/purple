@@ -83,3 +83,22 @@
     border: 1px solid #ccc;
     background-color: #eee;
 }
+
+@media (max-width:768px){
+    .common_div {
+        margin: 5px auto;
+    }
+
+    .labelClass {
+        top: 30%;
+    }
+
+    #flex_div a {
+        width: 48%;
+        box-sizing: content-box;
+    }
+
+    #flex_div{
+        box-sizing: content-box;
+    }
+}

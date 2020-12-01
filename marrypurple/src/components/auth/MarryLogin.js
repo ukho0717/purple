@@ -48,10 +48,7 @@ const MarryLogin = ({type, form, onChange, onSubmit, error }) => {
             </div>
             {/* <div>{error}</div> */}
             <div className="loginQ">
-                <p><a><Link to="/regist">로그인 하실 수 없으신가요??</Link></a></p>
-            </div>
-            <div className="loginQ pwQ">
-                <p><a><Link to="/findPw">비밀번호를 잊으셨나요??</Link></a></p>
+                <p><a><Link to="/regist">계정이 없으신가요??</Link></a></p>
             </div>
             <div id="MLlogin">
                 <button className="loginBtn" onClick={Onclick}><span>로그인</span></button>

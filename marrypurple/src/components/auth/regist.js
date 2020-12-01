@@ -5,11 +5,14 @@ import '../../lib/styles/regist.scss'
 import rLogo from '../../lib/img/rLogo.png';
 import { check } from '../../lib/api/auth';
 import $ from 'jquery';
-
+import emailjs from 'emailjs-com';
 
 const Register = ({type,form,onSubmit,error,onChange,fileSelectHandler}) => {
     console.log(form)
-    const number = "7363";
+    let number = Math.floor(Math.random() * 1000000)+100000; 
+    if(number>1000000){                                      
+       number = number - 100000;                             
+    }
     function mailChk(){
         
         if(number==document.getElementById("inNUm").value)
@@ -23,16 +26,71 @@ const Register = ({type,form,onSubmit,error,onChange,fileSelectHandler}) => {
 
     };
 
-    function onMail(){
-        alert("메일 전송완료!")
-    }
+    // function onMail(){
+    //     alert("메일 전송완료!")
+    // }
 
     console.log($('.reNum').val());
-
     
 
+
+    function sendEmail(e){
+        e.preventDefault();
+
+        // var templateParams = { name: e.target.user_email.value, number:""}; emailjs.send('wookoko', 'template_yooxomy', templateParams) .then(function(response) { console.log('SUCCESS!', response.status, response.text); }, function(error) { console.log('FAILED...', error); });
+    // code fragment 
+    var data = { 
+    service_id: 'wookoko',
+    template_id: 'template_yooxomy',
+    user_id: 'user_xcIXIiBioOn5nB5s5Icpw',
+    template_params: { 
+        'user_email': form.user_email,
+        'contact_number': number 
+    } 
+}; 
+
+$.ajax('https://api.emailjs.com/api/v1.0/email/send', { 
+    type: 'POST', 
+    data: JSON.stringify(data), 
+    contentType: 'application/json' 
+}).done(function() { 
+    alert('메일을 보냈습니다!'); 
+}).fail(function(error) { 
+    alert('Oops... ' + JSON.stringify(error));
+});
+
+}
+    //     emailjs.sendForm('wookoko','template_yooxomy', e.target,'user_xcIXIiBioOn5nB5s5Icpw').then((result)=>{
+    //         console.log(result.text);
+    //     },(error)=>{
+    //         console.log(error.text);
+    //     });
+    // }
     return(
         <div id="wrapM">
+    {/* <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // https://dashboard.emailjs.com/admin/integration
+            emailjs.init('user_xcIXIiBioOn5nB5s5Icpw')
+        })();
+    </script>
+    <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                // generate a five digit number for the contact_number variable
+                this.contact_number.value = Math.random() * 100000 | 0;
+                // these IDs from the previous steps
+                emailjs.sendForm('wookoko', 'template_yooxomy', this)
+                    .then(function() {
+                        console.log('SUCCESS!');
+                    }, function(error) {
+                        console.log('FAILED...', error);
+                    });
+            })
+        }
+    </script> */}
         <div id="container">
             <div id="Rheader">
                     <a><Link to="/" className="rLogo"><img src={rLogo} alt="회원가입로고"/></Link></a>
@@ -43,13 +101,15 @@ const Register = ({type,form,onSubmit,error,onChange,fileSelectHandler}) => {
                 </div>
         {/* <Router> */}
             <form onSubmit={onSubmit} method="post" action="/api/auth" enctype="multipart/form-data">
+    
                 <div className="regiId">
+                    <input type="hidden" name="contact_number" value={number}></input>
                     <p><span className="idText">아이디</span></p>
                     <div>
                         <div className="inputId">
                             <input  
                                 className="flexS" 
-                                type="text" 
+                                type="email" 
                                 name="user_email"  
                                 placeholder="이메일 주소(아이디)" 
                                 value={form.user_email}
@@ -60,13 +120,16 @@ const Register = ({type,form,onSubmit,error,onChange,fileSelectHandler}) => {
                         <input 
                             className="getE" 
                             type="submit" 
-                            name="idCheck" 
+                            name="contact-form" 
+                            id="contact-form"
                             value="인증 받기"
+                            onClick={sendEmail}
                             // onClick={onMail}
-                        />
+                            />
                     {/* </Link> */}
                     </div>
                 </div> 
+
                 <div className="regiId">
                     <div className="inputId">
                         <input className="reNum" id="inNUm" type="text" name="chkNum" placeholder="인증번호"/>

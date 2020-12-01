@@ -12,7 +12,7 @@ const AdminMain = ({ user, reportList }) => {
     }
     let count = 0;
     for(let i=0; i<userList.length; i++){
-        if(date.getUTCFullYear()+'-'+(date.getUTCMonth() + 1)+'-'+date.getUTCDate() === userList[i].regdate.slice(0,10)){
+        if(date.getUTCFullYear()+'-'+(date.getUTCMonth() + 1)+'-0'+date.getUTCDate() === userList[i].regdate.slice(0,10)){
             count++;
         }
     }

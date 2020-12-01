@@ -53,7 +53,13 @@ const LoginForm = ({ history }) => {
       dispatch(check());
     }
   }, [authError, auth, dispatch]);
-
+  useEffect(()=>{
+    if(authError){
+      if(authError.response.status===401){
+        alert("아이디 또는 비밀번호가 일치하지 않습니다")
+      }
+    }
+  }, [authError])
   useEffect(() => {
     if (user) {
       history.push("/match");

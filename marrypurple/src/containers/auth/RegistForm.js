@@ -71,37 +71,9 @@ console.log('profile_pic',profile_pic);
     console.log("회원가입시도")
     event.preventDefault();
 
-    console.log(event.target.idCheck.value);
+  
 
-    if(event.target.idCheck.value !=="인증 받기"){
-      alert("인증받기")
-      const transporter = nodemailer.createTransport({
-        service: 'Gmail',
-        auth:{
-          user: 'a01051817748@gmail.com',
-          pass: '!@as2830'
-        },
-        host: 'smtp.gmail.com',
-        port: '465'
-      });
     
-      let mailOptions = {
-        from: "메리퍼플 <marry@gmail.com>",
-        to: "ukho0711@naver.com",
-        subject: "메리퍼플 인증메일입니다",
-        text: "5555"
-      };
-    
-      await transporter.sendMail(mailOptions, (err, info) => {
-        transporter.close();
-        if(err){
-          console.log(err);
-        }else{
-          
-          console.log("메일이 정상적으로 발송되었습니다.");
-        }
-      })
-    }
     
     const { user_email, user_pw, user_gender,user_age,user_nick} = form;
     if ([user_email, user_pw, user_gender,user_age,user_nick].includes("")) {
@@ -136,12 +108,12 @@ console.log('profile_pic',profile_pic);
       dispatch(check());
       return;
     }
-  }, [auth])
+  }, [auth,dispatch])
   useEffect(() => {
     if (user) {
       console.log(`check API success`);
       console.log(user);
-      history.push("/");
+      history.push("/marrylogin");
       try {
         localStorage.getItem("user", JSON.stringify(user));
       } catch (e) {

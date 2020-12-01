@@ -266,7 +266,8 @@ const Profile = ({user,form,profileSubmit,error, profile,personal}) =>{
                     </div>
                     <div className="add_photo_btn">
                         <p>사진을 추가해 프로필을 변경해보세요</p>
-                        <p className="picName"><span>프로필 사진</span></p>
+                        {/* <p className="picName"><span>프로필 사진</span></p> */}
+                        <label for="filebtn2">사진선택</label>
                         <input type="file" 
                         name="profile_pic"
                         onChange={fileSelectHandler}
